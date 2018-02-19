@@ -24,8 +24,20 @@ SECRET_KEY = ')_skici6_!9h0$zjbxm26yxr!wca@2daw^(4jd%=crnsivyw*f'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+import os
+# import warnings
 
-ALLOWED_HOSTS = []
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+HOST = "localhost"
+SECRET_KEY = "---"
+DEBUG = True
+ALLOWED_HOSTS = ['*']
+# DEFAULT_FROM_EMAIL = 'healthchecks@example.org'
+USE_PAYMENTS = False
+REGISTRATION_OPEN = True
+
+#iALLOWED_HOSTS = []
 
 
 # Application definition
