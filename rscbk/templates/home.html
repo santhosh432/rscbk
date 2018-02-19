@@ -9,7 +9,8 @@
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
 {% load staticfiles %}
 
-
+ <form  method="post">
+                               {% csrf_token %}
 <div class="container">
 	<div class="row">
 		<div class="col-md-6 col-sm-6 col-xs-6 col-md-offset-3">
@@ -29,10 +30,10 @@
   				</div>
   				<form>
   					<div class="col-3">
-			        	<input class="effect-2" type="text" placeholder="Login...">
+			        	<input required name="username" class="effect-2" type="text" placeholder="Login...">
 			            <span class="focus-border"></span>
 
-			            <input class="effect-2" type="password" placeholder="Password...">
+			            <input required name="password" class="effect-2" type="password" placeholder="Password...">
 			            <span class="focus-border"></span>
 			        </div>
 
@@ -42,15 +43,16 @@
 
   				</form>
   			</div>
-  			<a href="#">
+  			<style>
+.button2 {background-color: #008CBA;} /* Blue */</style>
   				<div class="enterButton">
-	  				<i class="fa fa-lock fa-2x text-white"></i><br>
-	  				<span class="enterText text-white">Enter</span>
+	  			<button class="button2" type=submit>	<i class="fa fa-lock fa-2x text-white"></i></button><br>
 	  			</div>
-  			</a>
+  			
 		</div>
 	</div>
 </div>
+</form>
 <style>
 body {
 	background-color: #e3e7ed;

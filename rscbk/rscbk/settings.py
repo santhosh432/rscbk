@@ -144,3 +144,5 @@ STATICFILES_FINDERS = (
     'compressor.finders.CompressorFinder',
 )
 STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.CachedStaticFilesStorage'
+LOGIN_URL = '/login/'
+LOGIN_REDIRECT_URL= '/dashboard/'
