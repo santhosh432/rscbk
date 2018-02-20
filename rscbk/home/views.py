@@ -7,6 +7,10 @@ from django.contrib.messages import *
 
 from django.shortcuts import render
 
+def home(request):
+    context = {}
+    return render(request,'main.html',context)
+
 # Create your views here.
 def homepage(request):
     context = {}
