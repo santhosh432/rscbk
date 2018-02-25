@@ -16,6 +16,14 @@ def homepage(request):
     context = {}
     return render(request,'home.html',context)
 
-@login_required
+
+def myuserdashboard(request):
+    print('ok')
+    return render(request, 'userdashboard.html')
+
+
+# @login_required
 def dashboard(request):
     return render(request,'dashboard.html')
+
+
