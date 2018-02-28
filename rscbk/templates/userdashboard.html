@@ -50,7 +50,7 @@ text-align: center;
 border-radius: 8px;
 }
 .catli { padding : 13px;
-         width:40%;
+         width:30%;
          text-align:center;
          color:white;
          background-color:white;
@@ -59,6 +59,7 @@ border-radius: 8px;
 background-color: #d57565;
 border-radius:15px;
 font-weight:bold;
+font-size:12px;
 
 }
 .st {
@@ -78,7 +79,7 @@ padding: 10px;
 text-align: center;
 background-color: #615540;
 border-radius: 6px;
-font-size: 18px;
+font-size: 14px;
 font-weight: bold;
     box-shadow: 5px 5px 5px #bdb7b7;
 
@@ -99,44 +100,48 @@ border-radius: 8px;
 font-weight:bold;
 box-shadow: 6px 6px 13px 3px #5d5553;
 }
-
-	</style>
+.header-search
+{
+padding-left: 65px;
+max-width: 500px;
+}
+</style>
 </head>
 
 <body>
 	<!-- HEADER -->
 	<header>
 		<!-- top Header -->
-		<div id="top-header">
-			<div class="container">
-				<div class="pull-left">
-					<span>Welcome to My-shop!</span>
-				</div>
-				<div class="pull-right">
-					<ul class="header-top-links">
-						<li><a href="#">Store</a></li>
-						<li><a href="#">Newsletter</a></li>
-						<li><a href="#">FAQ</a></li>
-						<li class="dropdown default-dropdown">
-							<a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">ENG <i class="fa fa-caret-down"></i></a>
-							<ul class="custom-menu">
-								<li><a href="#">English (ENG)</a></li>
-								<li><a href="#">Russian (Ru)</a></li>
-								<li><a href="#">French (FR)</a></li>
-								<li><a href="#">Spanish (Es)</a></li>
-							</ul>
-						</li>
-						<li class="dropdown default-dropdown">
-							<a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">USD <i class="fa fa-caret-down"></i></a>
-							<ul class="custom-menu">
-								<li><a href="#">USD ($)</a></li>
-								<li><a href="#">EUR (€)</a></li>
-							</ul>
-						</li>
-					</ul>
-				</div>
-			</div>
-		</div>
+		<!--<div id="top-header">-->
+			<!--<div class="container">-->
+				<!--<div class="pull-left">-->
+					<!--<span>Welcome to My-shop!</span>-->
+				<!--</div>-->
+				<!--<div class="pull-right">-->
+					<!--<ul class="header-top-links">-->
+						<!--<li><a href="#">Store</a></li>-->
+						<!--<li><a href="#">Newsletter</a></li>-->
+						<!--<li><a href="#">FAQ</a></li>-->
+						<!--<li class="dropdown default-dropdown">-->
+							<!--<a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">ENG <i class="fa fa-caret-down"></i></a>-->
+							<!--<ul class="custom-menu">-->
+								<!--<li><a href="#">English (ENG)</a></li>-->
+								<!--<li><a href="#">Russian (Ru)</a></li>-->
+								<!--<li><a href="#">French (FR)</a></li>-->
+								<!--<li><a href="#">Spanish (Es)</a></li>-->
+							<!--</ul>-->
+						<!--</li>-->
+						<!--<li class="dropdown default-dropdown">-->
+							<!--<a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">USD <i class="fa fa-caret-down"></i></a>-->
+							<!--<ul class="custom-menu">-->
+								<!--<li><a href="#">USD ($)</a></li>-->
+								<!--<li><a href="#">EUR (€)</a></li>-->
+							<!--</ul>-->
+						<!--</li>-->
+					<!--</ul>-->
+				<!--</div>-->
+			<!--</div>-->
+		<!--</div>-->
 		<!-- /top Header
 
 
@@ -191,56 +196,56 @@ box-shadow: 6px 6px 13px 3px #5d5553;
 							<ul class="custom-menu">
 								<li><a href="#"><i class="fa fa-user-o"></i> My Account</a></li>
 								<li><a href="#"><i class="fa fa-heart-o"></i> My Wishlist</a></li>
-								<li><a href="#"><i class="fa fa-exchange"></i> Compare</a></li>
-								<li><a href="#"><i class="fa fa-check"></i> Checkout</a></li>
-								<li><a href="#"><i class="fa fa-unlock-alt"></i> Login</a></li>
-								<li><a href="#"><i class="fa fa-user-plus"></i> Create An Account</a></li>
+								<!--<li><a href="#"><i class="fa fa-exchange"></i> Compare</a></li>-->
+								<!--<li><a href="#"><i class="fa fa-check"></i> Checkout</a></li>-->
+								<!--<li><a href="#"><i class="fa fa-unlock-alt"></i> Login</a></li>-->
+								<!--<li><a href="#"><i class="fa fa-user-plus"></i> Create An Account</a></li>-->
 							</ul>
 						</li>
 						<!-- /Account -->
 
 						<!-- Cart -->
-						<li class="header-cart dropdown default-dropdown">
-							<a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
-								<div class="header-btns-icon">
-									<i class="fa fa-shopping-cart"></i>
-									<span class="qty">3</span>
-								</div>
-								<strong class="text-uppercase">My Cart:</strong>
-								<br>
-								<span>35.20$</span>
-							</a>
-							<div class="custom-menu">
-								<div id="shopping-cart">
-									<div class="shopping-cart-list">
-										<div class="product product-widget">
-											<div class="product-thumb">
-												<img src="./img/thumb-product01.jpg" alt="">
-											</div>
-											<div class="product-body">
-												<h3 class="product-price">$32.50 <span class="qty">x3</span></h3>
-												<h2 class="product-name"><a href="#">Product Name Goes Here</a></h2>
-											</div>
-											<button class="cancel-btn"><i class="fa fa-trash"></i></button>
-										</div>
-										<div class="product product-widget">
-											<div class="product-thumb">
-												<img src="{% static 'shopstatic/img/thumb-product01.jpg' %}" alt="">
-											</div>
-											<div class="product-body">
-												<h3 class="product-price">$32.50 <span class="qty">x3</span></h3>
-												<h2 class="product-name"><a href="#">Product Name Goes Here</a></h2>
-											</div>
-											<button class="cancel-btn"><i class="fa fa-trash"></i></button>
-										</div>
-									</div>
-									<div class="shopping-cart-btns">
-										<button class="main-btn">View Cart</button>
-										<button class="primary-btn">Checkout <i class="fa fa-arrow-circle-right"></i></button>
-									</div>
-								</div>
-							</div>
-						</li>
+						<!--<li class="header-cart dropdown default-dropdown">-->
+							<!--<a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">-->
+								<!--<div class="header-btns-icon">-->
+									<!--<i class="fa fa-shopping-cart"></i>-->
+									<!--<span class="qty">3</span>-->
+								<!--</div>-->
+								<!--<strong class="text-uppercase">My Cart:</strong>-->
+								<!--<br>-->
+								<!--<span>35.20$</span>-->
+							<!--</a>-->
+							<!--<div class="custom-menu">-->
+								<!--<div id="shopping-cart">-->
+									<!--<div class="shopping-cart-list">-->
+										<!--<div class="product product-widget">-->
+											<!--<div class="product-thumb">-->
+												<!--<img src="./img/thumb-product01.jpg" alt="">-->
+											<!--</div>-->
+											<!--<div class="product-body">-->
+												<!--<h3 class="product-price">$32.50 <span class="qty">x3</span></h3>-->
+												<!--<h2 class="product-name"><a href="#">Product Name Goes Here</a></h2>-->
+											<!--</div>-->
+											<!--<button class="cancel-btn"><i class="fa fa-trash"></i></button>-->
+										<!--</div>-->
+										<!--<div class="product product-widget">-->
+											<!--<div class="product-thumb">-->
+												<!--<img src="{% static 'shopstatic/img/thumb-product01.jpg' %}" alt="">-->
+											<!--</div>-->
+											<!--<div class="product-body">-->
+												<!--<h3 class="product-price">$32.50 <span class="qty">x3</span></h3>-->
+												<!--<h2 class="product-name"><a href="#">Product Name Goes Here</a></h2>-->
+											<!--</div>-->
+											<!--<button class="cancel-btn"><i class="fa fa-trash"></i></button>-->
+										<!--</div>-->
+									<!--</div>-->
+									<!--<div class="shopping-cart-btns">-->
+										<!--<button class="main-btn">View Cart</button>-->
+										<!--<button class="primary-btn">Checkout <i class="fa fa-arrow-circle-right"></i></button>-->
+									<!--</div>-->
+								<!--</div>-->
+							<!--</div>-->
+						<!--</li>-->
 						<!-- /Cart -->
 
 						<!-- Mobile nav toggle-->
@@ -258,35 +263,35 @@ box-shadow: 6px 6px 13px 3px #5d5553;
 	<!-- /HEADER -->
   <div class="panel panel-default">
 
-	<div class="panel-body" style="padding-left: 110px; padding-right: 110px;">
-		<div class="row">
-			<div class="col-md-3">
-				<div class="countst">
-					Total Items : 7898878
-				</div>
-			</div>
-			<div class="col-md-3">
-				<div class="countst">
-					Total Worth : Rs: 4545646456
+	<!--<div class="panel-body" style="padding-left: 110px; padding-right: 110px;">-->
+		<!--<div class="row">-->
+			<!--<div class="col-md-3">-->
+				<!--<div class="countst">-->
+					<!--Total Items : 7898878-->
+				<!--</div>-->
+			<!--</div>-->
+			<!--<div class="col-md-3">-->
+				<!--<div class="countst">-->
+					<!--Total Worth : Rs: 4545646456-->
 
-				</div>
-			</div>
-			<div class="col-md-3">
-				<div class="countst">
-					Total Worth : Rs: 4545646456
+				<!--</div>-->
+			<!--</div>-->
+			<!--<div class="col-md-3">-->
+				<!--<div class="countst">-->
+					<!--Total Worth : Rs: 4545646456-->
 
-				</div>
-			</div>
-			<div class="col-md-3">
-				<div class="countst">
-					Total Worth : Rs: 4545646456
+				<!--</div>-->
+			<!--</div>-->
+			<!--<div class="col-md-3">-->
+				<!--<div class="countst">-->
+					<!--Total Worth : Rs: 4545646456-->
 
-				</div>
-			</div>
+				<!--</div>-->
+			<!--</div>-->
 
-		</div>
+		<!--</div>-->
 
-	</div>
+	<!--</div>-->
   </div>
 	<!-- NAVIGATION-->
 	<div class="container">
@@ -295,11 +300,45 @@ box-shadow: 6px 6px 13px 3px #5d5553;
 				<div class="subhead">
 					Categories
 				</div>
+
+				<div class="row">
+						<div class="col-md-6">
+							<div class="countst">
+								Total Items : 7898878
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="countst">
+								Total Worth : Rs: 4545646456
+
+							</div>
+
+						</div>
+				</div>
+
+
 			</div>
 			<div class="col-md-6">
 				<div class="subhead">
 					My Products
 				</div>
+
+
+				<div class="row">
+						<div class="col-md-6">
+							<div class="countst">
+								Total Items : 7898878
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="countst">
+								Total Worth : Rs: 4545646456
+
+							</div>
+
+						</div>
+				</div>
+
 			</div>
 
 		</div>
@@ -468,7 +507,6 @@ box-shadow: 6px 6px 13px 3px #5d5553;
 						<ul class="list-links">
 							<li><a href="#">About Us</a></li>
 							<!--<li><a href="#">Shiping & Return</a></li>-->
-							<li><a href="#">Shiping Guide</a></li>
 							<li><a href="#">FAQ</a></li>
 						</ul>
 					</div>
@@ -476,18 +514,18 @@ box-shadow: 6px 6px 13px 3px #5d5553;
 				<!-- /footer widget -->
 
 				<!-- footer subscribe -->
-				<div class="col-md-3 col-sm-6 col-xs-6">
-					<div class="footer">
-						<h3 class="footer-header">Stay Connected</h3>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.</p>
-						<form>
-							<div class="form-group">
-								<input class="input" placeholder="Enter Email Address">
-							</div>
-							<button class="primary-btn">Join Newslatter</button>
-						</form>
-					</div>
-				</div>
+				<!--<div class="col-md-3 col-sm-6 col-xs-6">-->
+					<!--<div class="footer">-->
+						<!--<h3 class="footer-header">Stay Connected</h3>-->
+						<!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.</p>-->
+						<!--<form>-->
+							<!--<div class="form-group">-->
+								<!--<input class="input" placeholder="Enter Email Address">-->
+							<!--</div>-->
+							<!--<button class="primary-btn">Join Newslatter</button>-->
+						<!--</form>-->
+					<!--</div>-->
+				<!--</div>-->
 				<!-- /footer subscribe -->
 			</div>
 			<!-- /row -->
