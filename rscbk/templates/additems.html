@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+	<title>E-SHOP HTML Template</title>
+
+	<!-- Google font -->
+	<link href="https://fonts.googleapis.com/css?family=Hind:400,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+
+	<!-- Bootstrap -->
+	<link type="text/css" rel="stylesheet" href="{% static 'shopstatic/css/bootstrap.min.css' %}" />
+
+	<!-- Slick -->
+	<link type="text/css" rel="stylesheet" href="{% static 'shopstatic/css/slick.css' %}" />
+	<link type="text/css" rel="stylesheet" href="{% static 'shopstatic/css/slick-theme.css' %}" />
+
+	<!-- nouislider -->
+	<link type="text/css" rel="stylesheet" href="{% static 'shopstatic/css/nouislider.min.css' %}" />
+
+	<!-- Font Awesome Icon -->
+	<link rel="stylesheet" href="{% static 'shopstatic/css/font-awesome.min.css' %}">
+  <link href='http://fonts.googleapis.com/css?family=Josefin+Slab' rel='stylesheet'  type='text/css'>
+	<!-- Custom stlylesheet -->
+	<link type="text/css" rel="stylesheet" href="{% static 'shopstatic/css/style.css' %}" />
+
+	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+		  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->
+
+	<style>
+	.stheader{text-shadow: 1px 1px 5px #a9a3a3;}
+		.banner > img {
+    width: 80%;
+
+}
+.info{
+background-color: #8ea4d1;
+padding: 5px;
+text-align: center;
+border-radius: 8px;
+}
+.catli { padding : 13px;
+         width:30%;
+         text-align:center;
+         color:white;
+         background-color:white;
+         }
+.well {
+background-color: #d57565;
+border-radius:15px;
+font-weight:bold;
+font-size:12px;
+
+}
+.st {
+background-color: #685757;
+color: white;
+padding: 5px;
+text-align: center;
+border-radius: 4px;
+height:50px;
+
+}
+
+.countst {
+
+color: white;
+padding: 10px;
+text-align: center;
+background-color: #615540;
+border-radius: 6px;
+font-size: 14px;
+font-weight: bold;
+    box-shadow: 5px 5px 5px #bdb7b7;
+
+}
+li:hover{background-color:white;
+font-size:14px;
+box-shadow: 6px 6px 13px 3px #5d5553;
+
+}
+
+.subhead{
+
+padding: 15px;
+background-color: #0d2851;
+color: white;
+text-align: center;
+border-radius: 8px;
+font-weight:bold;
+box-shadow: 6px 6px 13px 3px #5d5553;
+}
+.header-search
+{
+padding-left: 65px;
+max-width: 500px;
+}
+</style>
+</head>
+
+<body>
+{% include 'header.html' %}
+
+<div class="container">
+    <div class="well">
+        Add items
+    </div>
+    <div class="">
+    <form class="form">
+        <table>
+                    {{ addform.as_table }}
+
+        </table>
+    </form>
+
+    </div>
+</div>
+
+</body>
+

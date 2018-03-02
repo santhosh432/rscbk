@@ -18,6 +18,7 @@ from django.contrib import admin
 from home.views import *
 from django.contrib.auth import views as auth_views
 
+from categories import views as catviews
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$',home),
@@ -25,5 +26,6 @@ urlpatterns = [
     url(r'myuserdashboard/', myuserdashboard),
 
     url(r'dashboard/',dashboard),
+    url(r'additems/',catviews.additems , name='additems'),
 
 ]
