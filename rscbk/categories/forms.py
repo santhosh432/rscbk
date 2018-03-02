@@ -7,4 +7,4 @@ class AdditemForm(forms.ModelForm):
     # model = Category
     class Meta:
         model = Items
-        exclude = ('',)
+        exclude = ('itemuser',)

@@ -116,11 +116,13 @@ max-width: 500px;
         Add items
     </div>
     <div class="">
-    <form class="form">
+    <form class="form" action="{% url 'additems' %}" method="POST">
         <table>
+            {% csrf_token %}
                     {{ addform.as_table }}
 
         </table>
+        <input type="submit" name="submit" value="Submit">
     </form>
 
     </div>

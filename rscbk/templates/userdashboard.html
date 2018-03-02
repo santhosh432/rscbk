@@ -214,7 +214,7 @@ max-width: 500px;
 			<div class="col-md-6">
 
 				<div class="row">
-					<div class="col-md-2 info"><a href="">Add item</a> </div>
+					<div class="col-md-2 info"><a href="{% url 'additems' %}">Add item</a> </div>
 					<div class="col-md-2 info">Edit item</div>
 					<div class="col-md-2 info">Delete item</div>
 					<div class="col-md-2 info">Give away</div>
@@ -232,56 +232,19 @@ max-width: 500px;
 					<div class="col-md-2 st">Locations</div>
 				</div>
 
+
+					{% for useritems in items %}
+
 				<div class="row">
-					<div class="col-md-2">101</div>
-					<div class="col-md-2">Short Desc one</div>
-					<div class="col-md-2">Books</div>
+					<div class="col-md-2">{{ useritems.id }}</div>
+					<div class="col-md-2">{{ useritems.item_name }}</div>
+					<div class="col-md-2">{{ useritems.category }}</div>
 					<div class="col-md-2"><img src="{% static 'shopstatic/img/product01.jpg' %}" alt="" class="" width="60" height="60"></div>
-					<div class="col-md-2">1230</div>
-					<div class="col-md-2">Locations</div>
+					<div class="col-md-2">{{ useritems.price }}</div>
+					<div class="col-md-2">{{ useritems.location }}</div>
 				</div>
+					{% endfor %}
 
-				<div class="row">
-					<div class="col-md-2">102</div>
-					<div class="col-md-2">Short Desc two</div>
-					<div class="col-md-2">Bags</div>
-					<div class="col-md-2"><img src="{% static 'shopstatic/img/product02.jpg' %}" alt="" class="" width="60" height="60"></div>
-					<div class="col-md-2">456</div>
-					<div class="col-md-2">Hyderabad</div>
-				</div>
-
-				<div class="row">
-					<div class="col-md-2">104</div>
-					<div class="col-md-2">dfjdfjd</div>
-					<div class="col-md-2">Electronics</div>
-					<div class="col-md-2"><img src="{% static 'shopstatic/img/product03.jpg' %}" alt="" class="" width="60" height="60"></div>
-					<div class="col-md-2">1245</div>
-					<div class="col-md-2">Vizag</div>
-				</div>
-				<div class="row">
-					<div class="col-md-2">104</div>
-					<div class="col-md-2">dfjdfjd</div>
-					<div class="col-md-2">Electronics</div>
-					<div class="col-md-2"><img src="{% static 'shopstatic/img/product04.jpg' %}" alt="" class="" width="60" height="60"></div>
-					<div class="col-md-2">1245</div>
-					<div class="col-md-2">Delhi</div>
-				</div>
-				<div class="row">
-					<div class="col-md-2">104</div>
-					<div class="col-md-2">dfjdfjd</div>
-					<div class="col-md-2">Electronics</div>
-					<div class="col-md-2"><img src="{% static 'shopstatic/img/product05.jpg' %}" alt="" class="" width="60" height="60"></div>
-					<div class="col-md-2">1245</div>
-					<div class="col-md-2">Cochin</div>
-				</div>
-				<div class="row">
-					<div class="col-md-2">104</div>
-					<div class="col-md-2">dfjdfjd</div>
-					<div class="col-md-2">Electronics</div>
-					<div class="col-md-2"><img src="{% static 'shopstatic/img/product06.jpg' %}" alt="" class="" width="60" height="60"></div>
-					<div class="col-md-2">1245</div>
-					<div class="col-md-2">Mumbai</div>
-				</div>
 
   <ul class="pager">
     <li class="previous"><a href="#">Previous</a></li>

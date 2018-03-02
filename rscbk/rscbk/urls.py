@@ -23,7 +23,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$',home),
     url(r'^login', auth_views.login, {'template_name': 'home.html'} ,name='login'),
-    url(r'myuserdashboard/', myuserdashboard),
+    url(r'myuserdashboard/', myuserdashboard ,name='myuserdashboard'),
 
     url(r'dashboard/',dashboard),
     url(r'additems/',catviews.additems , name='additems'),

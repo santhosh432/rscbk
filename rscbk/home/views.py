@@ -20,8 +20,9 @@ def homepage(request):
 
 def myuserdashboard(request):
     cat = Category.objects.all()
+    items = Items.objects.filter(itemuser=request.user)
     print('ok')
-    return render(request, 'userdashboard.html',{'allcat':cat})
+    return render(request, 'userdashboard.html',{'allcat':cat,'items':items})
 
 
 # @login_required
