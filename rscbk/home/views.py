@@ -17,12 +17,17 @@ def homepage(request):
     context = {}
     return render(request,'home.html',context)
 
-
+@login_required
 def myuserdashboard(request):
     cat = Category.objects.all()
     items = Items.objects.filter(itemuser=request.user)
+    print(items.count())
+    useritemscount = items.count()
+    print(sum([tot.price for tot in items]))
+    totcount = sum([tot.price for tot in items])
+
     print('ok')
-    return render(request, 'userdashboard.html',{'allcat':cat,'items':items})
+    return render(request, 'userdashboard.html',{'allcat':cat,'items':items,'useritemscount':useritemscount,'totcount':totcount})
 
 
 # @login_required

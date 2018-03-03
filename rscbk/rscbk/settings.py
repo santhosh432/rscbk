@@ -146,4 +146,4 @@ STATICFILES_FINDERS = (
 )
 STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.CachedStaticFilesStorage'
 LOGIN_URL = '/login/'
-LOGIN_REDIRECT_URL= '/dashboard/'
+LOGIN_REDIRECT_URL= '/myuserdashboard/'

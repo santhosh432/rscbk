@@ -23,6 +23,8 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$',home),
     url(r'^login', auth_views.login, {'template_name': 'home.html'} ,name='login'),
+    url(r'^logout/$', auth_views.logout, {'next_page': '/login/'}, name="logout"),
+
     url(r'myuserdashboard/', myuserdashboard ,name='myuserdashboard'),
 
     url(r'dashboard/',dashboard),

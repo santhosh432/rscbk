@@ -1,7 +1,10 @@
 from django.shortcuts import render,redirect
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 from .forms import AdditemForm
+
+@login_required
 def additems(request):
     addform = AdditemForm()
     if request.method == 'POST':

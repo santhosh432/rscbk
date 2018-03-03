@@ -13,6 +13,13 @@ class Category(models.Model):
 
 
 # all items
+itemstatus_choice = (
+    ('A', 'Available'),
+    ('S', 'Sold out'),
+
+)
+
+
 class Items(models.Model):
     category = models.ForeignKey(Category)
     item_name = models.CharField(max_length=25, help_text='item short description')
@@ -22,6 +29,7 @@ class Items(models.Model):
     months_used = models.PositiveSmallIntegerField(help_text='No of Years')
     years_used = models.PositiveSmallIntegerField(help_text='No of Months')
     itemuser = models.ForeignKey(User, null=True, blank=True)
+    item_status = models.CharField(max_length=3, help_text='Current Item Status', choices=itemstatus_choice, default='A')
 
     def __str__(self):
         return '{0}'.format(self.category, self.item_name)
