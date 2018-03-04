@@ -214,9 +214,9 @@ max-width: 500px;
 			<div class="col-md-6">
 
 				<div class="row">
-					<div class="col-md-2 info"><a href="{% url 'additems' %}">Add item</a> </div>
-					<div class="col-md-2 info">Edit item</div>
-					<div class="col-md-2 info">Delete item</div>
+					<div class="col-md-2 info"><a href="{% url 'additems' %}"><i class="fa fa-plus-circle"></i></a> </div>
+					<!--<div class="col-md-2 info">Edit item</div>-->
+					<!--<div class="col-md-2 info">Delete item</div>-->
 					<div class="col-md-2 info">Give away</div>
 					<div class="col-md-2 info">Others</div>
 				</div>
@@ -227,9 +227,10 @@ max-width: 500px;
 					<div class="col-md-2 st"> Item code</div>
 					<div class="col-md-2 st">Short Desc</div>
 					<div class="col-md-2 st">Categories</div>
-					<div class="col-md-2 st">Images</div>
+					<div class="col-md-2 st"><i class="fa fa-picture-o"></i></div>
 					<div class="col-md-2 st">Exchange worth</div>
-					<div class="col-md-2 st">Locations</div>
+					<div class="col-md-2 st"><i class="fa fa-map-marker"></i></div>
+					<!--<div class="col-md-1 st"><i class="fa fa-remove"></i></div>-->
 				</div>
 
 
@@ -240,8 +241,9 @@ max-width: 500px;
 					<div class="col-md-2">{{ useritems.item_name }}</div>
 					<div class="col-md-2">{{ useritems.category }}</div>
 					<div class="col-md-2"><img src="{% static 'shopstatic/img/product01.jpg' %}" alt="" class="" width="60" height="60"></div>
-					<div class="col-md-2">{{ useritems.price }}</div>
+					<div class="col-md-2"><i class="fa fa-rupee"></i>{{ useritems.price }}</div>
 					<div class="col-md-2">{{ useritems.location }}</div>
+					<!--<div class="col-md-2"><i class="fa fa-delete"></i></div>-->
 				</div>
 					{% endfor %}
 
