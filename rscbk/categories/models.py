@@ -30,6 +30,7 @@ class Items(models.Model):
     years_used = models.PositiveSmallIntegerField(help_text='No of Months')
     itemuser = models.ForeignKey(User, null=True, blank=True)
     item_status = models.CharField(max_length=3, help_text='Current Item Status', choices=itemstatus_choice, default='A')
-
+    item_image = models.ImageField(upload_to='myitems/', help_text='Upload item image 1',default='null')
+    item_image2 = models.ImageField(upload_to='myitems/', help_text='Upload item image 2',default='null')
     def __str__(self):
         return '{0}'.format(self.category, self.item_name)

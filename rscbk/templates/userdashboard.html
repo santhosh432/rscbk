@@ -240,7 +240,7 @@ max-width: 500px;
 					<div class="col-md-2">{{ useritems.id }}</div>
 					<div class="col-md-2">{{ useritems.item_name }}</div>
 					<div class="col-md-2">{{ useritems.category }}</div>
-					<div class="col-md-2"><img src="{% static 'shopstatic/img/product01.jpg' %}" alt="" class="" width="60" height="60"></div>
+					<div class="col-md-2"> <img src="{{ useritems.item_image.url }}" alt="*" class="img img-thumbnails" width="20" height="30"></div>
 					<div class="col-md-2"><i class="fa fa-rupee"></i>{{ useritems.price }}</div>
 					<div class="col-md-2">{{ useritems.location }}</div>
 					<!--<div class="col-md-2"><i class="fa fa-delete"></i></div>-->

@@ -75,6 +75,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media', # media..
             ],
         },
     },
@@ -147,3 +148,7 @@ STATICFILES_FINDERS = (
 STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.CachedStaticFilesStorage'
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL= '/myuserdashboard/'
+
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'rscmedia')

@@ -8,3 +8,4 @@ class AdditemForm(forms.ModelForm):
     class Meta:
         model = Items
         exclude = ('itemuser',)
+

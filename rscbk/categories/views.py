@@ -8,8 +8,9 @@ from .forms import AdditemForm
 def additems(request):
     addform = AdditemForm()
     if request.method == 'POST':
-        addform = AdditemForm(request.POST)
+        addform = AdditemForm(request.POST,request.FILES)
         if addform.is_valid():
+            print(addform)
             form = addform.save(commit=False)
             form.itemuser = request.user
             form.save()
