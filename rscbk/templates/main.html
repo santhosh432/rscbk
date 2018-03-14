@@ -1,330 +1,524 @@
-{%include "base.html"%}
-<div id="myCarousel" class="carousel slide head-t-mar-70" data-interval="false">
-  <!-- Indicators -->
-  <ol class="carousel-indicators">
-    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-    <li data-target="#myCarousel" data-slide-to="1"></li>
-    <li data-target="#myCarousel" data-slide-to="2"></li>
-  </ol>
-  <div class="carousel-inner">
-    <div class="item active">
-      <img src="https://images.pexels.com/photos/66997/pexels-photo-66997.jpeg?w=940&h=650&auto=compress&cs=tinysrgb" style="width:100%" class="img-responsive">
-      <div class="container">
-        <div class="caraous-title">
-            <div class="col-md-12">
-                <div class="col-md-6">
-                    <span>Non-Profit Organization</span>
-                    <h1>Small Effort <br> Make Big Change </h1>
-                    <h3>We are non-profit NGO & Charity Organization</h3>
-                    <a class="btn btn-lg btn-primary site-btn" href="#">Learn More</a>
-                </div>
-                <div class="col-md-6 caraous-img-box">
-                   <img src="http://wpocean.com/tf/html/naima/assets/img/app/about-app.png"class="img-responsive">
-                </div>
-                
-            </div>
-        
+<html>
+<head>
+<title>Barterkings</title>
+</head>
+<body>
+{% load staticfiles %}
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<!--FONT AWESOME CDN LINK FOR FONT-AWESOME FONT -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-toggle collapsed" data-target="#navbar" data-toggle="collapse">
+                <i class="fa fa-chevron-down faa-vertical animated"></i>
+            </a>
+            <a tabindex="0" class="navbar-brand faa-pulse faa-slow animated" data-toggle="popover" data-trigger="focus" data-html="true" data-placement="bottom" data-title="Brand Quote..." data-content="<img class='img-responsive' height='140' width='140' src='data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=='/<p>Your Brand Image</p>">
+                <i class="fa fa-balance-scale"></i>
+                <i class="fa fa-lg">B</i>
+                <i class="fa fa-lg">a</i>
+                <i class="fa fa-lg">r</i>
+                <i class="fa fa-lg">t</i>
+                <i class="fa fa-lg">e</i>
+                <i class="fa fa-lg">r</i>
+                <i class="fa fa-lg">K</i>
+                <i class="fa fa-lg">i</i>
+                <i class="fa fa-lg">n</i>
+                <i class="fa fa-lg">g</i>
+                <i class="fa fa-lg">s</i>
+
+            </a>
         </div>
-      </div>
-    </div>
-    <div class="item">
-      <img src="https://images.pexels.com/photos/760681/pexels-photo-760681.jpeg?w=940&h=650&auto=compress&cs=tinysrgb" class="img-responsive">
-      <div class="container">
-        <div class="caraous-title">
-            <div class="col-md-12">
-                <div class="col-md-6">
-                    <span>Non-Profit Organization</span>
-                    <h1>Small Effort <br> Make Big Change </h1>
-                    <h3>We are non-profit NGO & Charity Organization</h3>
-                    <a class="btn btn-lg btn-primary site-btn" href="#">Learn More</a>
-                </div>
-                <div class="col-md-6 caraous-img-box">
-                   <img src="http://premiumlayers.net/demo/html/maxlaw/assets/images/slide-men.png"class="img-responsive">
-                </div>
-            </div>
-        
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a class="faa-parent animated-hover">
+                       <i class="fa fa-fw fa-lg fa-home faa-tada faa-fast"></i>Home
+                    </a>
+                </li>
+                <li>
+                    <a class="faa-parent animated-hover">
+    	               <i class="fa fa-fw fa-lg fa-quote-left faa-tada faa-fast"></i>About Us
+                    </a>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle faa-parent animated-hover" data-toggle="dropdown">
+    	               <i class="fa fa-fw fa-lg fa-th faa-tada faa-fast"></i>Products
+    	               <span class="fa fa-caret-down"></span>
+                    </a>
+                    <ul class="dropdown-menu" role="menu">
+    	               <li>
+    		              <a class="faa-parent animated-hover">
+    			             <i class="fa fa-fw fa-level-down faa-tada faa-fast"></i>Portfolio
+    		              </a>
+    	               </li>
+    	               <li>
+    		              <a class="faa-parent animated-hover">
+    			             <i class="fa fa-fw fa-external-link faa-tada faa-fast"></i>Individual
+    		              </a>
+    	               </li>
+    	               <li>
+    		              <a class="faa-parent animated-hover">
+    			             <i class="fa fa-fw fa-search faa-tada faa-fast"></i>Search
+    		              </a>
+    	               </li>	
+    	               <li>
+    		              <a class="faa-parent animated-hover">
+    			             <i class="fa fa-fw fa-file-pdf-o faa-tada faa-fast"></i>Product Detail
+    		              </a>
+    	               </li>
+    	               <li class="divider"></li>
+    	               <li>
+    		              <a class="faa-parent animated-hover">
+    			             <i class="fa fa-fw fa-flag faa-tada faa-fast"></i>Specification
+    		              </a>
+    	               </li>
+                    </ul>
+                </li>
+                <li>
+                    <a class="faa-parent animated-hover">
+	                   <i class="fa fa-fw fa-lg fa-map-marker faa-tada faa-fast"></i>Contact Us
+                    </a>
+                </li>
+                <li>
+                    <a class="faa-parent animated-hover" href="https://github.com/rscbarterkings/rscbk">
+                           <i class="fa fa-fw fa-lg fab fa-github faa-tada faa-fast"></i>Github
+                    </a>
+                </li>
+
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="/login" class="faa-parent animated-hover">
+	                   <i class="fa fa-fw fa-lg fa-sign-in faa-tada faa-fast"></i>LogIn
+                    </a>
+                </li>
+            </ul>
         </div>
-      </div>
     </div>
-    <div class="item">
-      <img src="https://images.pexels.com/photos/763771/pexels-photo-763771.jpeg?w=940&h=650&auto=compress&cs=tinysrgb" class="img-responsive">
-      <div class="container">
-        <div class="caraous-title">
-            <div class="col-md-12">
-                <div class="col-md-6">
-                    <span>Non-Profit Organization</span>
-                    <h1>Small Effort <br> Make Big Change </h1>
-                    <h3>We are non-profit NGO & Charity Organization</h3>
-                    <a class="btn btn-lg btn-primary site-btn" href="#">Learn More</a>
-                </div>
-            </div>
-        
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- Controls -->
-  <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-    <span class="icon-prev"></span>
-  </a>
-  <a class="right carousel-control" href="#myCarousel" data-slide="next">
-    <span class="icon-next"></span>
-  </a>  
-</div>  
-  
-<div class="title-area area-padding">
-    <div class="container">
-        <div class="row text-center">
-	    <div class="col-md-offset-2 col-md-8 col-sm-12 text-center"> 
-                <h3>We provide technology-enabled enterprise solutions that empower people to adopt better health behaviors and make smarter healthcare decisions.</h3>
-                <h3 class="span">The result? A better return on everyone’s investment in health and well-being.</h3>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="blog-section area-padding ">
+</nav>
 <div class="container">
-	<div class="row text-center">
-	       <div class="col-sm-6 col-md-4">
-							<div class="blog-box">
-								<div class="blog-box-image">
-									<img src="https://images.pexels.com/photos/6384/woman-hand-desk-office.jpg?w=940&h=650&auto=compress&cs=tinysrgb" class="img-responsive" alt="">
-								</div>
-								<div class="blog-box-content">
-									<h4><a href="#">Exception Consurement Experience</a></h4>
-									<p>Phasellus lorem enim, luctus ut velit eget, convallis egestas eros. 
-									Sed ornare ligula eget tortor tempor, quis porta tellus dictum.</p>
-									<a href="" class="btn btn-default site-btn">Read More</a>
-								</div>
-							</div>
-						</div> <!-- End Col -->					
-			<div class="col-sm-6 col-md-4">
-							<div class="blog-box">
-								<div class="blog-box-image">
-									<img src="https://images.pexels.com/photos/374897/pexels-photo-374897.jpeg?w=940&h=650&auto=compress&cs=tinysrgb" class="img-responsive" alt="">
-								</div>
-								<div class="blog-box-content">
-									<h4><a href="#">Exception Consurement Experience</a></h4>
-									<p>Phasellus lorem enim, luctus ut velit eget, convallis egestas eros. 
-									Sed ornare ligula eget tortor tempor, quis porta tellus dictum.</p>
-									<a href="" class="btn btn-default site-btn">Read More</a>
-								</div>
-							</div>
-						</div> <!-- End Col -->				
-			<div class="col-sm-6 col-md-4">
-							<div class="blog-box">
-								<div class="blog-box-image">
-									<img src="https://images.pexels.com/photos/541522/pexels-photo-541522.jpeg?w=940&h=650&auto=compress&cs=tinysrgb" class="img-responsive" alt="">
-								</div>
-								<div class="blog-box-content">
-									<h4><a href="#">Exception Consurement Experience</a></h4>
-									<p>Phasellus lorem enim, luctus ut velit eget, convallis egestas eros. 
-									Sed ornare ligula eget tortor tempor, quis porta tellus dictum.</p>
-									<a href="" class="btn btn-default site-btn">Read More</a>
-								</div>
-							</div>
-						</div> <!-- End Col -->
-    </div>
-</div>
-</div>
-<div class="service-area area-padding">
-    <div class="container">
-        <div class="row text-center">
-            <div class="col-md-12">
-                <div class="sec-title">
-                    <h3 class="span">What sets us apart?</h3>
-                    <p>WE BRING IT ALL TOGETHER.</p>
-                </div>
-            </div>
+    <div class="col-xs-12 hl-left">
+        <h2 class="text-center"><img  height="100" width="150" src="{% static 'admin/img/logo.png' %}"><br> BarterKings</h2>
+        <div class="progress active" style="height:5px;">
+            <div class="progress-bar progress-bar-striped progress-devider progress-bar-success"></div>
+            <div class="progress-bar progress-bar-striped progress-devider progress-bar-primary"></div>
+            <div class="progress-bar progress-bar-striped progress-devider progress-bar-danger"></div>
+            <div class="progress-bar progress-bar-striped progress-devider progress-bar-info"></div>
+            <div class="progress-bar progress-bar-striped progress-devider"></div>
+            <div class="progress-bar progress-bar-striped progress-devider progress-bar-info"></div>
+            <div class="progress-bar progress-bar-striped progress-devider progress-bar-danger"></div>
+            <div class="progress-bar progress-bar-striped progress-devider progress-bar-primary"></div>
+            <div class="progress-bar progress-bar-striped progress-devider progress-bar-success"></div>
         </div>
-        <div class="row text-center">
-            <div class="col-md-4 service-box1">
-                <div class="service-icon">
-                    <i class="fa fa-user" aria-hidden="true"></i>
-                </div>
-                <div class="service-title">
-                    <h4>Exception Consurement Experience</h4>
-                    <p>RedBrick blends a dynamic digital experience and one-to-one clinical support to integrate better habits and smarter health choices into the way people live and work.</p>
-                </div>
-            </div>
-            <div class="col-md-4 service-box2">
-                <div class="service-icon">
-                    <i class="fa fa-user" aria-hidden="true"></i>
-                </div>
-                <div class="service-title">
-                    <h4>Exception Consurement Experience</h4>
-                    <p>RedBrick blends a dynamic digital experience and one-to-one clinical support to integrate better habits and smarter health choices into the way people live and work.</p>
-                </div>
-            </div>
-            <div class="col-md-4 service-box3">
-                <div class="service-icon">
-                    <i class="fa fa-user" aria-hidden="true"></i>
-                </div>
-                <div class="service-title">
-                    <h4>Exception Consurement Experience</h4>
-                    <p>RedBrick blends a dynamic digital experience and one-to-one clinical support to integrate better habits and smarter health choices into the way people live and work.</p>
-                </div>
-            </div>
-
-
+<p>This is a platform where you can Exchange your New or used items for Money or other Items we explain how this exchange will happen. Let’s start with navigation items on the top right. They take the visitor to a specific section where they will be educated.
+</p><p>So what's you are waiting for just Sigup and post your stuff by categories and check with the other's stuff to exchange, We will be having the total flexability to exchange the items in favor of Money or Items or both. 
+</p><p>The ‘back-to-top’ button on the right bottom of the screen takes the visitor back to the navigation menu. This button uses a fixed positioning with 20px right and bottom coordinates that ‘pin’ it into position.         
+</p>
         </div>
     </div>
 </div>
-<div class="subscribe-area area-padding">
-    <div class="container">
-        <div class="row text-center">
-            <div class="col-md-12">
-                <h3 class="span">Let's get started.</h3>
-                <button type="button" class="btn site-btn">Contact Us</button>
-            </div>
-        </div>
-    </div>
-</div>
+<script>
+</script>
 <style>
- /**** Generic CSS ****************/
-.head-t-mar-70 {margin-top:70px;}
-i {font-size:80px;color:#;}
-.area-padding{padding:60px 0px 60px 0px;}
-h3 {font-weight:400;}
-h4 {font-weight:600;}
-.span{color:#dd0000;}
-a {color:#000;}
-a:hover {color:#dd0000;text-decoration:none;}
-p {font-size:15px;}
-/************** Service CSS ******/
-.service-area {background:#;}
-.service-box1 {padding:15px;background:#53b2b0;color:#fff;}
-.service-box2 {padding:15px;background:#ba0b51;color:#fff;}
-.service-box3 {padding:15px;background:#518e4a;color:#fff;}
- /************* Carousel CSS **************/
- .item img {width:100%; max-height:450px;display: block;}
-.caraous-title {
-    position: absolute;
-    top: 20%;
-    left: 15.8%;
-    right: auto;
-    width: 96.66666666666666%;
-    color: #000;
+.dropdown-menu>li>a,
+.navbar-default .navbar-nav>li>a,
+.navbar-default .navbar-nav >.active>a,
+.navbar-default .navbar-header>a,
+.navbar-default .navbar-nav>.active>a,
+.navbar-default .navbar-nav .open .dropdown-menu>li>a
+{
+    color:#2C3E50;
+	transition:all 1s;
+	-o-transition:all 1s;
+	-moz-transition:all 1s;
+	-webkit-transition:all 1s
 }
-.caraous-title h1 {color:#000;font-size:55px; font-weight:700;}
-.caraous-title h3 {margin-bottom:30px;color:#fff;font-size:24px;}
-.caraous-title span {color:#aa1f43;font-size:20px;}
-.caraous-img-box img {width:50%;}
-/* Button */
-.site-btn{padding:2px 25px 2px 25px;background:#DF314D;font-size:14px;color:#fff;}
-.site-btn:hover{background:#C9223D;color:#fff;}
-
- /* Navigation CSS */
-.caret-up {
-  width: 0; 
-  height: 0; 
-  border-left: 4px solid rgba(0, 0, 0, 0);
-  border-right: 4px solid rgba(0, 0, 0, 0);
-  border-bottom: 4px solid;
-
-  display: inline-block;
-  margin-left: 2px;
-  vertical-align: middle;
+.dropdown-menu>li>a:hover,
+.navbar-default .navbar-nav>li>a:hover,
+.navbar-default .navbar-nav >.active>a,
+.navbar-default .navbar-header>a:hover,
+.navbar-default .navbar-nav>.active>a:hover,
+.navbar-default .navbar-nav .open .dropdown-menu>li>a:hover
+{
+	color:#FFFFFF;
+	background:#2C3E50
 }
-.dropdown-menu {padding:0px;}
-.dropdown-menu > li > a:hover {
-color: #fff;
-text-decoration: none;
-background-color: #fe2d5b ;
+a
+{
+    cursor:pointer;
 }
-.dropdown-menu > li > a {padding:5px; border-bottom:1px solid #fff;margin:0px;}
-.navbar-default {
-  background-color: #ffffff;
-  border-color: #ffffff;
-  border-top:10px solid #fe2d5b;
-  padding:20px 0px 10px 0px;
-  font-weight:600;
-  letter-spacing:1px;
-  font-size:16px;
-  box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.19);
+a:hover .fa
+{
+    -webkit-animation:fa-spin 1s;animation:fa-spin 1s
+}
+.hl-left
+{
+    border:1px dotted #5C4383;
+    border-left:5px solid #5C4383;
+    padding:30px;
+    border-radius:10px;
+    margin-bottom:60px;
+    background-color:#FBFBFB;
+}
+.progress-devider
+{
+    width: 11.11111111111111%;
 }
 
-.navbar-default .navbar-brand {
-  color: #242424;
+
+/*
+ * Font Awesome Animation
+ */
+/* WRENCHING */
+@keyframes wrench {
+	0%{transform:rotate(-12deg)}
+	8%{transform:rotate(12deg)}
+	10%{transform:rotate(24deg)}
+	18%{transform:rotate(-24deg)}
+	20%{transform:rotate(-24deg)}
+	28%{transform:rotate(24deg)}
+	30%{transform:rotate(24deg)}
+	38%{transform:rotate(-24deg)}
+	40%{transform:rotate(-24deg)}
+	48%{transform:rotate(24deg)}
+	50%{transform:rotate(24deg)}
+	58%{transform:rotate(-24deg)}
+	60%{transform:rotate(-24deg)}
+	68%{transform:rotate(24deg)}
+	75%,100%{transform:rotate(0deg)}
 }
-.navbar-default .navbar-brand:hover,
-.navbar-default .navbar-brand:focus {
-  color: #fe2d5b;
+.faa-wrench.animated,
+.faa-wrench.animated-hover:hover,
+.faa-parent.animated-hover:hover > .faa-wrench {
+	animation: wrench 2.5s ease infinite;
+	transform-origin-x: 90%;
+	transform-origin-y: 35%;
+	transform-origin-z: initial;
 }
-.navbar-default .navbar-text {
-  color: #242424;
+.faa-wrench.animated.faa-fast,
+.faa-wrench.animated-hover.faa-fast:hover,
+.faa-parent.animated-hover:hover > .faa-wrench.faa-fast {
+	animation: wrench 1.2s ease infinite;
 }
-.navbar-default .navbar-nav > li > a {
-  color: #242424;
-}
-.navbar-default .navbar-nav > li > a:hover,
-.navbar-default .navbar-nav > li > a:focus {
-  color: #fe2d5b;
-}
-.navbar-default .navbar-nav > .active > a,
-.navbar-default .navbar-nav > .active > a:hover,
-.navbar-default .navbar-nav > .active > a:focus {
-  color: #fe2d5b;
-  background-color: #ffffff;
-}
-.navbar-default .navbar-nav > .open > a,
-.navbar-default .navbar-nav > .open > a:hover,
-.navbar-default .navbar-nav > .open > a:focus {
-  color: #fe2d5b;
-  background-color: #ffffff;
-}
-.navbar-default .navbar-toggle {
-  border-color: #ffffff;
-}
-.navbar-default .navbar-toggle:hover,
-.navbar-default .navbar-toggle:focus {
-  background-color: #ffffff;
-}
-.navbar-default .navbar-toggle .icon-bar {
-  background-color: #242424;
-}
-.navbar-default .navbar-collapse,
-.navbar-default .navbar-form {
-  border-color: #242424;
-}
-.navbar-default .navbar-link {
-  color: #242424;
-}
-.navbar-default .navbar-link:hover {
-  color: #fe2d5b;
+.faa-wrench.animated.faa-slow,
+.faa-wrench.animated-hover.faa-slow:hover,
+.faa-parent.animated-hover:hover > .faa-wrench.faa-slow {
+	animation: wrench 3.7s ease infinite;
 }
 
-@media (max-width: 767px) {
-  .navbar-default .navbar-nav .open .dropdown-menu > li > a {
-    color: #242424;
-  }
-  .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
-  .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
-    color: #fe2d5b;
-  }
-  .navbar-default .navbar-nav .open .dropdown-menu > .active > a,
-  .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover,
-  .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
-    color: #fe2d5b;
-    background-color: #ffffff;
-  }
+/* BELL */
+@keyframes ring {
+	0%{transform:rotate(-15deg)}
+	2%{transform:rotate(15deg)}
+	4%{transform:rotate(-18deg)}
+	6%{transform:rotate(18deg)}
+	8%{transform:rotate(-22deg)}
+	10%{transform:rotate(22deg)}
+	12%{transform:rotate(-18deg)}
+	14%{transform:rotate(18deg)}
+	16%{transform:rotate(-12deg)}
+	18%{transform:rotate(12deg)}
+	20%,100%{transform:rotate(0deg)}
+}
+.faa-ring.animated,
+.faa-ring.animated-hover:hover,
+.faa-parent.animated-hover:hover > .faa-ring {
+	animation: ring 2s ease infinite;
+	transform-origin-x: 50%;
+	transform-origin-y: 0px;
+	transform-origin-z: initial;
+}
+.faa-ring.animated.faa-fast,
+.faa-ring.animated-hover.faa-fast:hover,
+.faa-parent.animated-hover:hover > .faa-ring.faa-fast {
+	animation: ring 1s ease infinite;
+}
+.faa-ring.animated.faa-slow,
+.faa-ring.animated-hover.faa-slow:hover,
+.faa-parent.animated-hover:hover > .faa-ring.faa-slow {
+	animation: ring 3s ease infinite;
+}
+
+/* VERTICAL */
+@keyframes vertical {
+	0%{transform:translate(0,-3px)}
+	4%{transform:translate(0,3px)}
+	8%{transform:translate(0,-3px)}
+	12%{transform:translate(0,3px)}
+	16%{transform:translate(0,-3px)}
+	20%{transform:translate(0,3px)}
+	22%,100%{transform:translate(0,0)}
+}
+.faa-vertical.animated,
+.faa-vertical.animated-hover:hover,
+.faa-parent.animated-hover:hover > .faa-vertical {
+	animation: vertical 2s ease infinite;
+}
+.faa-vertical.animated.faa-fast,
+.faa-vertical.animated-hover.faa-fast:hover,
+.faa-parent.animated-hover:hover > .faa-vertical.faa-fast {
+	animation: vertical 1s ease infinite;
+}
+.faa-vertical.animated.faa-slow,
+.faa-vertical.animated-hover.faa-slow:hover,
+.faa-parent.animated-hover:hover > .faa-vertical.faa-slow {
+	animation: vertical 4s ease infinite;
+}
+
+/* HORIZONTAL */
+@keyframes horizontal {
+	0%{transform:translate(0,0)}
+	6%{transform:translate(5px,0)}
+	12%{transform:translate(0,0)}
+	18%{transform:translate(5px,0)}
+	24%{transform:translate(0,0)}
+	30%{transform:translate(5px,0)}
+	36%,100%{transform:translate(0,0)}
+}
+.faa-horizontal.animated,
+.faa-horizontal.animated-hover:hover,
+.faa-parent.animated-hover:hover > .faa-horizontal {
+	animation: horizontal 2s ease infinite;
+}
+.faa-horizontal.animated.faa-fast,
+.faa-horizontal.animated-hover.faa-fast:hover,
+.faa-parent.animated-hover:hover > .faa-horizontal.faa-fast {
+	animation: horizontal 1s ease infinite;
+}
+.faa-horizontal.animated.faa-slow,
+.faa-horizontal.animated-hover.faa-slow:hover,
+.faa-parent.animated-hover:hover > .faa-horizontal.faa-slow {
+	animation: horizontal 3s ease infinite;
+}
+
+/* FLASHING */
+@keyframes flash {
+	0%,100%,50%{opacity:1}
+	25%,75%{opacity:0}
+}
+.faa-flash.animated,
+.faa-flash.animated-hover:hover,
+.faa-parent.animated-hover:hover > .faa-flash {
+	animation: flash 2s ease infinite;
+}
+.faa-flash.animated.faa-fast,
+.faa-flash.animated-hover.faa-fast:hover,
+.faa-parent.animated-hover:hover > .faa-flash.faa-fast {
+	animation: flash 1s ease infinite;
+}
+.faa-flash.animated.faa-slow,
+.faa-flash.animated-hover.faa-slow:hover,
+.faa-parent.animated-hover:hover > .faa-flash.faa-slow {
+	animation: flash 3s ease infinite;
+}
+
+/* BOUNCE */
+@keyframes bounce {
+	0%,10%,20%,50%,80%,100%{transform:translateY(0)}
+	40%{transform:translateY(-15px)}
+	60%{transform:translateY(-15px)}
+}
+.faa-bounce.animated,
+.faa-bounce.animated-hover:hover,
+.faa-parent.animated-hover:hover > .faa-bounce {
+	animation: bounce 2s ease infinite;
+}
+.faa-bounce.animated.faa-fast,
+.faa-bounce.animated-hover.faa-fast:hover,
+.faa-parent.animated-hover:hover > .faa-bounce.faa-fast {
+	animation: bounce 1s ease infinite;
+}
+.faa-bounce.animated.faa-slow,
+.faa-bounce.animated-hover.faa-slow:hover,
+.faa-parent.animated-hover:hover > .faa-bounce.faa-slow {
+	animation: bounce 3s ease infinite;
+}
+
+/* SPIN */
+@keyframes spin{
+	0%{transform:rotate(0deg)}
+	100%{transform:rotate(359deg)}
+}
+.faa-spin.animated,
+.faa-spin.animated-hover:hover,
+.faa-parent.animated-hover:hover > .faa-spin {
+	animation: spin 1.5s linear infinite;
+}
+.faa-spin.animated.faa-fast,
+.faa-spin.animated-hover.faa-fast:hover,
+.faa-parent.animated-hover:hover > .faa-spin.faa-fast {
+	animation: spin 0.7s linear infinite;
+}
+.faa-spin.animated.faa-slow,
+.faa-spin.animated-hover.faa-slow:hover,
+.faa-parent.animated-hover:hover > .faa-spin.faa-slow {
+	animation: spin 2.2s linear infinite;
+}
+
+/* FLOAT */
+@keyframes float{
+	0%{transform: translateY(0)}
+	50%{transform: translateY(-6px)}
+	100%{transform: translateY(0)}
+}
+.faa-float.animated,
+.faa-float.animated-hover:hover,
+.faa-parent.animated-hover:hover > .faa-float {
+	animation: float 2s linear infinite;
+}
+.faa-float.animated.faa-fast,
+.faa-float.animated-hover.faa-fast:hover,
+.faa-parent.animated-hover:hover > .faa-float.faa-fast {
+	animation: float 1s linear infinite;
+}
+.faa-float.animated.faa-slow,
+.faa-float.animated-hover.faa-slow:hover,
+.faa-parent.animated-hover:hover > .faa-float.faa-slow {
+	animation: float 3s linear infinite;
+}
+
+/* PULSE */
+@keyframes pulse {
+	0% {transform: scale(1.1)}
+ 	50% {transform: scale(0.8)}
+ 	100% {transform: scale(1.1)}
+}
+.faa-pulse.animated,
+.faa-pulse.animated-hover:hover,
+.faa-parent.animated-hover:hover > .faa-pulse {
+	animation: pulse 2s linear infinite;
+}
+.faa-pulse.animated.faa-fast,
+.faa-pulse.animated-hover.faa-fast:hover,
+.faa-parent.animated-hover:hover > .faa-pulse.faa-fast {
+	animation: pulse 1s linear infinite;
+}
+.faa-pulse.animated.faa-slow,
+.faa-pulse.animated-hover.faa-slow:hover,
+.faa-parent.animated-hover:hover > .faa-pulse.faa-slow {
+	animation: pulse 3s linear infinite;
+}
+
+/* SHAKE */
+.faa-shake.animated,
+.faa-shake.animated-hover:hover,
+.faa-parent.animated-hover:hover > .faa-shake {
+	animation: wrench 2.5s ease infinite;
+}
+.faa-shake.animated.faa-fast,
+.faa-shake.animated-hover.faa-fast:hover,
+.faa-parent.animated-hover:hover > .faa-shake.faa-fast {
+	animation: wrench 1.2s ease infinite;
+}
+.faa-shake.animated.faa-slow,
+.faa-shake.animated-hover.faa-slow:hover,
+.faa-parent.animated-hover:hover > .faa-shake.faa-slow {
+	animation: wrench 3.7s ease infinite;
+}
+
+/* TADA */
+@keyframes tada {
+	0% {transform: scale(1)}
+	10%,20% {transform:scale(.9) rotate(-8deg);}
+	30%,50%,70% {transform:scale(1.3) rotate(8deg)}
+	40%,60% {transform:scale(1.3) rotate(-8deg)}
+	80%,100% {transform:scale(1) rotate(0)}
+}
+
+.faa-tada.animated,
+.faa-tada.animated-hover:hover,
+.faa-parent.animated-hover:hover > .faa-tada {
+	animation: tada 2s linear infinite;
+}
+.faa-tada.animated.faa-fast,
+.faa-tada.animated-hover.faa-fast:hover,
+.faa-parent.animated-hover:hover > .faa-tada.faa-fast {
+	animation: tada 1s linear infinite;
+}
+.faa-tada.animated.faa-slow,
+.faa-tada.animated-hover.faa-slow:hover,
+.faa-parent.animated-hover:hover > .faa-tada.faa-slow {
+	animation: tada 3s linear infinite;
+}
+
+/* PASSING */
+@keyframes passing {
+	0% {transform:translateX(-50%); opacity:0}
+	50% {transform:translateX(0%); opacity:1}
+	100% {transform:translateX(50%); opacity:0}
+}
+
+.faa-passing.animated,
+.faa-passing.animated-hover:hover,
+.faa-parent.animated-hover:hover > .faa-passing {
+	animation: passing 2s linear infinite;
+}
+.faa-passing.animated.faa-fast,
+.faa-passing.animated-hover.faa-fast:hover,
+.faa-parent.animated-hover:hover > .faa-passing.faa-fast {
+	animation: passing 1s linear infinite;
+}
+.faa-passing.animated.faa-slow,
+.faa-passing.animated-hover.faa-slow:hover,
+.faa-parent.animated-hover:hover > .faa-passing.faa-slow {
+	animation: passing 3s linear infinite;
+}
+
+/* PASSING REVERSE */
+
+@keyframes passing-reverse {
+	0% {transform:translateX(50%); opacity:0}
+	50% {transform:translateX(0%); opacity:1}
+	100% {transform:translateX(-50%); opacity:0}
+}
+
+.faa-passing-reverse.animated,
+.faa-passing-reverse.animated-hover:hover,
+.faa-parent.animated-hover:hover > .faa-passing-reverse {
+	animation: passing-reverse 2s linear infinite;
+}
+.faa-passing-reverse.animated.faa-fast,
+.faa-passing-reverse.animated-hover.faa-fast:hover,
+.faa-parent.animated-hover:hover > .faa-passing-reverse.faa-fast {
+	animation: passing-reverse 1s linear infinite;
+}
+.faa-passing-reverse.animated.faa-slow,
+.faa-passing-reverse.animated-hover.faa-slow:hover,
+.faa-parent.animated-hover:hover > .faa-passing-reverse.faa-slow {
+	animation: passing-reverse 3s linear infinite;
+}
+
+/* WAVE */
+@keyframes burst {
+	0% {opacity:.6}
+	50% {transform:scale(1.8);opacity:0}
+	100%{opacity:0}
+}
+.faa-burst.animated,
+.faa-burst.animated-hover:hover,
+.faa-parent.animated-hover:hover > .faa-burst {
+	animation: burst 2s infinite linear
+}
+.faa-burst.animated.faa-fast,
+.faa-burst.animated-hover.faa-fast:hover,
+.faa-parent.animated-hover:hover > .faa-burst.faa-fast {
+	animation: burst 1s infinite linear
+}
+.faa-burst.animated.faa-slow,
+.faa-burst.animated-hover.faa-slow:hover,
+.faa-parent.animated-hover:hover > .faa-burst.faa-slow {
+	animation: burst 3s infinite linear
+}
 </style>
 <script>
-  $(function(){
-        $(".dropdown").hover(            
-          function() {
-            $('.dropdown-menu', this).stop( true, true ).fadeIn("fast");
-            $(this).toggleClass('open');
-            $('b', this).toggleClass("caret caret-up");                
-          },
-          function() {
-            $('.dropdown-menu', this).stop( true, true ).fadeOut("fast");
-            $(this).toggleClass('open');
-            $('b', this).toggleClass("caret caret-up");                
-          });
-      });
+$(function(){$('[data-toggle="popover"]').popover()});
 </script>
-
-
-
-{%include "footer.html"%}
+  <center>      <p >© 2013 Company Name. All rights reserved</p>
+ </center> 
+</body></html>
