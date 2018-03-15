@@ -6,7 +6,10 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.messages import *
 from categories.models import Category,Items
 from django.shortcuts import render
-
+from django.contrib.auth.models import User
+from django.shortcuts import render_to_response
+from django.template import RequestContext
+from django.shortcuts import render
 def home(request):
     context = {}
     return render(request,'main.html',context)
@@ -21,12 +24,8 @@ def homepage(request):
 def myuserdashboard(request):
     cat = Category.objects.all()
     items = Items.objects.filter(itemuser=request.user)
-    print(items.count())
     useritemscount = items.count()
-    print(sum([tot.price for tot in items]))
     totcount = sum([tot.price for tot in items])
-
-    print('ok')
     return render(request, 'userdashboard.html',{'allcat':cat,'items':items,'useritemscount':useritemscount,'totcount':totcount})
 
 
@@ -34,4 +33,27 @@ def myuserdashboard(request):
 def dashboard(request):
     return render(request,'dashboard.html')
 
+def sign_up(request):
+        users = User.objects.all()
+        context={}
+        if request.method == 'POST':
+                # sign-up
+                if "s_username" in request.POST and 's_pass' in request.POST and 's_passr' in request.POST and 'email' in request.POST:
+                        username = request.POST.get('s_username')
+                        password = request.POST.get('s_pass')
+                        passwordr = request.POST.get('s_passr')
+                        email = request.POST.get('email')
+
+                        if password == passwordr:
+                                try:
+                                        User.objects.create_user(username, email, password)
+                                        user = authenticate(username=username, password=password)
+                                        login(request, user)
+                                        return HttpResponseRedirect(reverse('home'))
+                                except:
+                                        error_info="Error, please check inputs..."
+                                        #ireturn render_to_response('sign_up.html', locals(), context_instance=RequestContext(request))
+                                        return render(request, 'signup.html', context)
+        #ireturn render_to_response('sign_up.html',  context_instance=RequestContext(request))
+        return render(request, 'signup.html', context)
 

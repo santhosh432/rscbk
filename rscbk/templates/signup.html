@@ -1,0 +1,24 @@
+ <table width="100%px" height="160" border="0">
+        <tr>
+                <td width="35%">
+                                <h2>Sign-Up</h2>{{ error_info }}
+                                <form style="display:inline;" action="/signup/" method="post" id="f_register">
+                                        {% csrf_token %}
+                                        Username:
+                                        <input autocomplete="off" type="text" name="s_username" maxlength="20" size="20" class="form-control" placeholder="username"/>
+                                        E-mail:
+                                        <input autocomplete="off" type="text" name="email" maxlength="60" size="60" class="form-control" placeholder="e-mail" />
+                                        Password:
+                                        <input autocomplete="off" type="password" name="s_pass" maxlength="20" size="20" class="form-control" placeholder="password"/>
+                                        Password Confirmation:
+                                        <input autocomplete="off" type="password" name="s_passr" maxlength="20" size="20"class="form-control" placeholder="password"/>
+                                        <p style="line-height: 5px;">
+                                        <input type="submit" value="Sign up" class="btn btn-default"/>
+                                        </p>
+                                </form>
+
+                </td>
+        </tr>
+</table>
+
+
