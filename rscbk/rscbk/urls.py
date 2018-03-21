@@ -33,6 +33,7 @@ urlpatterns = [
     url(r'^logout/$', auth_views.logout, {'next_page': '/login/'}, name="logout"),
 
     url(r'myuserdashboard/', myuserdashboard ,name='myuserdashboard'),
+    url(r'myuserdashboard_with_cat/(?P<cat_id>\d+)/$', myuserdashboard_with_cat ,name='myuserdashboard_withargument'),
 
     url(r'dashboard/',dashboard),
     url(r'additems/',catviews.additems , name='additems'),
