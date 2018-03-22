@@ -180,7 +180,8 @@
                                     } 
                                 </script>{% if heading != "All"%} 
                                 <div class="row">
-                                        <div class="col-md-2 info"><a onclick="popupCenter('{% url 'additems' %}', 'myPop1',750,750);" href="javascript:void(0);" title="add iteams"><i class="fa fa-plus-circle"></i></a> </div>
+                                        <!--<div class="col-md-2 info"><a onclick="popupCenter('{% url 'additems' %}', 'myPop1',750,750);" href="javascript:void(0);" title="add iteams"><i class="fa fa-plus-circle"></i></a> </div>-->
+                                        <div class="col-md-2 info"><a href="{% url 'additems' %}" target="_blank" title="add iteams"><i class="fa fa-plus-circle"></i></a> </div>
                                         <!--<div class="col-md-2 info">Edit item</div>-->
                                         <!--<div class="col-md-2 info">Delete item</div>-->
                                         <div class="col-md-2 "><a href="" title="give away"><i class="fa fa-refresh"></i></a></div>
