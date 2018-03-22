@@ -31,11 +31,15 @@ def myuserdashboard(request):
 
 def myuserdashboard_with_cat(request,cat_id=None):
     cat = Category.objects.all()
-    items = Items.objects.filter(category__id=cat_id)
+    items_cat = Items.objects.filter(category__id=cat_id)
+    items = Items.objects.filter(itemuser=request.user)
     useritemscount = items.count()
     totcount = sum([tot.price for tot in items])
+    useritemscount_cat = items_cat.count()
+    totcount_cat = sum([tot.price for tot in items_cat])
+
     heading = "All"
-    return render(request, 'userdashboard.html',{'allcat':cat,'items':items,'useritemscount':useritemscount,'totcount':totcount,'heading':heading})
+    return render(request, 'userdashboard.html',{'allcat':cat,'items':items,'useritemscount':useritemscount,'totcount':totcount,'useritemscount_cat':useritemscount_cat,'totcount_cat':totcount_cat,'heading':heading,'items_cat':items_cat})
 
 
 # @login_required

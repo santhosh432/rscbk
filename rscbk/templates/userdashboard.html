@@ -12,7 +12,7 @@
 <body class="home">
     <div class="container-fluid display-table">
         <div class="row display-table-row">
-            <div class="col-md-2 col-sm-1 hidden-xs display-table-cell v-align box" id="navigation">
+            <!--<div class="col-md-2 col-sm-1 hidden-xs display-table-cell v-align box" id="navigation">
                 <div class="logo">
                     <a hef="home.html"><img src="{% static 'admin/img/logo.png' %}" alt="merkery_logo" class="hidden-xs hidden-sm">
                         <img src="{% static 'admin/img/logo.png' %}" alt="merkery_logo" class="visible-xs visible-sm circle-logo">
@@ -24,7 +24,7 @@
                         <li><a href="/settings"><i class="fa fa-cog" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Setting</span></a></li>
                     </ul>
                 </div>
-            </div>
+            </div>-->
             <div class="col-md-10 col-sm-11 display-table-cell v-align">
                 <!--<button type="button" class="slide-toggle">Slide Toggle</button> -->
                 <div class="row">
@@ -40,12 +40,15 @@
                                     </button>
                                 </div>
                             </nav>
-                            <div style="background-color: lightgrey;" class="search hidden-xs hidden-sm">
-                                <input type="text" placeholder="Search" id="search">
+<img src="{% static 'admin/img/logo.png' %}" width='100' height='100'>
+                   <div class="search hidden-xs hidden-sm">BarterKings
                             </div>
                         </div>
                         <div class="col-md-5">
-                            <div class="header-rightside">
+                            <div class="header-rightside">                                <ul class="list-inline header-top pull-right">
+
+                               <input type="text" placeholder="Search" id="search">
+</ul>
                                 <ul class="list-inline header-top pull-right">
                                      <li><a href="{% url 'logout' %}"><i class="fa fa-sign-out"></i> Logout</a></li>
                                 </ul>
@@ -75,12 +78,12 @@
                                 <div  class="row">
                                                 <div class="col-md-6">
                                                         <div class="countst">
-                                                               <b>Total Items</b> :9949494 
+                                                               <b>Total Items</b> :{%if useritemscount_cat%} {{useritemscount_cat}}{%else%}9949494{%endif%} 
                                                         </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                         <div class="countst">
-                                                                <b>Total Worth</b> : Rs: 98383883838
+                                                                <b>Total Worth</b> : Rs: {%if totcount_cat%} {{totcount_cat}}{%else%}9949494{%endif%}
 
                                                         </div>
 
@@ -101,7 +104,30 @@
 
 
                                 </ul>
-                            </div>
+                             <div style="background-color: lightgrey;" class="row">
+                                      <h4>  <div class="col-md-2 st"> Item code</div>
+                                        <div class="col-md-2 st">Short Desc</div>
+                                        <div class="col-md-2 st">Categories</div>
+                                        <div class="col-md-2 st"><i class="fa fa-picture-o"></i></div>
+                                        <div class="col-md-2 st">Exchange worth</div>
+                                        <div class="col-md-2 st"><i class="fa fa-map-marker"></i></div>
+                                        <!--<div class="col-md-1 st"><i class="fa fa-remove"></i></div>-->
+                                        </h4>
+                                </div>
+                                  {% for useritems in items_cat %}
+
+                                <div style=" background-color: lightblue;" class="row">
+                                        <div class="col-md-2">{{ useritems.id }}</div>
+                                        <div class="col-md-2">{{ useritems.item_name }}</div>
+                                        <div class="col-md-2">{{ useritems.category }}</div>
+                                        <div class="col-md-2"> <img src="{{ useritems.item_image.url }}" alt="*" class="img img-thumbnails" width="20" height="30"></div>
+                                        <div class="col-md-2"><i class="fa fa-rupee"></i>{{ useritems.price }}</div>
+                                        <div class="col-md-2">{{ useritems.location }}</div>
+                                        <!--<div class="col-md-2"><i class="fa fa-delete"></i></div>-->
+                                </div>
+                                   {% endfor %}
+                                   
+                           </div>
                         </div>
                         <div class="col-md-7 col-sm-7 col-xs-12 gutter">
                              
