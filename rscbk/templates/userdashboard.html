@@ -2,6 +2,115 @@
 <head>
 <title>Dashboard</title>
 </head>
+
+{% load staticfiles %}
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<!--FONT AWESOME CDN LINK FOR FONT-AWESOME FONT -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-toggle collapsed" data-target="#navbar" data-toggle="collapse">
+                <i class="fa fa-chevron-down faa-vertical animated"></i>
+            </a>
+            <a tabindex="0" class="navbar-brand faa-pulse faa-slow animated" data-toggle="popover" data-trigger="focus" data-html="true" data-placement="bottom" data-title="Brand Quote..." data-content="<img class='img-responsive' height='140' width='140' src='data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=='/<p>Your Brand Image</p>">
+                <i class="fa fa-balance-scale"></i>
+                <i class="fa fa-lg">B</i>
+                <i class="fa fa-lg">a</i>
+                <i class="fa fa-lg">r</i>
+                <i class="fa fa-lg">t</i>
+                <i class="fa fa-lg">e</i>
+                <i class="fa fa-lg">r</i>
+                <i class="fa fa-lg">K</i>
+                <i class="fa fa-lg">i</i>
+                <i class="fa fa-lg">n</i>
+                <i class="fa fa-lg">g</i>
+                <i class="fa fa-lg">s</i>
+
+            </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a class="faa-parent animated-hover">
+                       <i class="fa fa-fw fa-lg fa-home faa-tada faa-fast"></i>Home
+                    </a>
+                </li>
+                <li>
+                    <a class="faa-parent animated-hover">
+    	               <i class="fa fa-fw fa-lg fa-quote-left faa-tada faa-fast"></i>About Us
+                    </a>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle faa-parent animated-hover" data-toggle="dropdown">
+    	               <i class="fa fa-fw fa-lg fa-th faa-tada faa-fast"></i>Products
+    	               <span class="fa fa-caret-down"></span>
+                    </a>
+                    <ul class="dropdown-menu" role="menu">
+    	               <li>
+    		              <a class="faa-parent animated-hover">
+    			             <i class="fa fa-fw fa-level-down faa-tada faa-fast"></i>Portfolio
+    		              </a>
+    	               </li>
+    	               <li>
+    		              <a class="faa-parent animated-hover">
+    			             <i class="fa fa-fw fa-external-link faa-tada faa-fast"></i>Individual
+    		              </a>
+    	               </li>
+    	               <li>
+    		              <a class="faa-parent animated-hover">
+    			             <i class="fa fa-fw fa-search faa-tada faa-fast"></i>Search
+    		              </a>
+    	               </li>
+    	               <li>
+    		              <a class="faa-parent animated-hover">
+    			             <i class="fa fa-fw fa-file-pdf-o faa-tada faa-fast"></i>Product Detail
+    		              </a>
+    	               </li>
+    	               <li class="divider"></li>
+    	               <li>
+    		              <a class="faa-parent animated-hover">
+    			             <i class="fa fa-fw fa-flag faa-tada faa-fast"></i>Specification
+    		              </a>
+    	               </li>
+                    </ul>
+                </li>
+                <li>
+                    <a class="faa-parent animated-hover">
+	                   <i class="fa fa-fw fa-lg fa-map-marker faa-tada faa-fast"></i>Contact Us
+                    </a>
+                </li>
+                <li>
+                    <a class="faa-parent animated-hover" href="https://github.com/rscbarterkings/rscbk">
+                           <i class="fa fa-fw fa-lg fab fa-github faa-tada faa-fast"></i>Github
+                    </a>
+                </li>
+                <li>
+                    <a class="faa-parent animated-hover" href="#">
+                           <i class="fa fa-fw fa-lg fab fa-search faa-tada faa-fast"></i><input type=text size="100" placeholder="enter search item here">
+                    </a>
+                </li>
+                <li>
+                    <a href="#"><i class="fa fa-fw fa-lg fab fa-user faa-tada faa-fast"></i> Login by: <b>{{request.user}}</b>
+                    </a>
+                </li>
+                <li>
+                    <a class="faa-parent animated-hover" href="{% url 'logout' %}"><i class="fa fa-sign-out"></i> Logout
+                    </a>
+                </li>
+
+
+                                </ul>
+
+
+        </div>
+    </div>
+</nav>
 {% load static %}
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
@@ -10,87 +119,27 @@
 
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 <body class="home">
-    <div class="container-fluid display-table">
-        <div class="row display-table-row">
-            <!--<div class="col-md-2 col-sm-1 hidden-xs display-table-cell v-align box" id="navigation">
-                <div class="logo">
-                    <a hef="home.html"><img src="{% static 'admin/img/logo.png' %}" alt="merkery_logo" class="hidden-xs hidden-sm">
-                        <img src="{% static 'admin/img/logo.png' %}" alt="merkery_logo" class="visible-xs visible-sm circle-logo">
-                    </a><h3><font color=white>Barter<b>kings</b></font></h3>
-                </div>
-                <div class="navi">
-                    <ul>
-                        <li class="active"><a href="/myuserdashboard"><i class="fa fa-home" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Home</span></a></li>
-                        <li><a href="/settings"><i class="fa fa-cog" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Setting</span></a></li>
-                    </ul>
-                </div>
-            </div>-->
-            <div class="col-md-10 col-sm-11 display-table-cell v-align">
-                <!--<button type="button" class="slide-toggle">Slide Toggle</button> -->
-                <div class="row">
-                    <header>
-                        <div class="col-md-7">
-                            <nav class="navbar-default pull-left">
-                                <div class="navbar-header">
-                                    <button type="button" class="navbar-toggle collapsed" data-toggle="offcanvas" data-target="#side-menu" aria-expanded="false">
-                                        <span class="sr-only">Toggle navigation</span>
-                                        <span class="icon-bar"></span>
-                                        <span class="icon-bar"></span>
-                                        <span class="icon-bar"></span>
-                                    </button>
-                                </div>
-                            </nav>
-<img src="{% static 'admin/img/logo.png' %}" width='100' height='100'>
-                   <div class="search hidden-xs hidden-sm">BarterKings
-                            </div>
-                        </div>
-                        <div class="col-md-5">
-                            <div class="header-rightside">
-                                <ul class="list-inline header-top pull-right">
-                                     <li><a href="{% url 'logout' %}"><i class="fa fa-sign-out"></i> Logout</a></li>
-                                </ul>
-                                <ul class="list-inline header-top pull-right">
-                                     <li><a href="#"><i class="fa fa-lock"></i> Change Paswword</a></li>
-                                </ul>
-
-                                <ul class="list-inline header-top pull-right">
-                                     <li><a href="#"><i class="fa fa-user"></i> Login by: <b>{{request.user}}</b></a></li>
-                                </ul>
-                                 <ul class="list-inline header-top pull-right">
-                                   <li> <input type="text" placeholder="Search" id="search"></li>
-                                 </ul>
-
-                            </div>
-                        </div>
-                    </header>
-                </div>
-
-
    <div class="user-dashboard">
-                    <h3><i><font color='royalblue'>Hello,<b>{{request.user}}</b> welcome to BarterKings Bazar</font></i></h3>
                     <div class="row">
                         <div class="col-md-5 col-sm-5 col-xs-12 gutter">
 
                             <div class="sales">
-                               <h2>Stock Available</h2>
-
 
                                 <div  class="row">
                                                 <div class="col-md-6">
                                                         <div class="countst">
-                                                               <b>Total Items</b> :{%if useritemscount_cat%} {{useritemscount_cat}}{%else%}9949494{%endif%}
+                                                              <font size=3> <b>Total Items</b> :{%if useritemscount_cat%} {{useritemscount_cat}}{%else%}9949494{%endif%}</font>
                                                         </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                         <div class="countst">
-                                                                <b>Total Worth</b> : Rs: {%if totcount_cat%} {{totcount_cat}}{%else%}9949494{%endif%}
+                                                                <font size=3><b>Total Value</b> : Rs: {%if totcount_cat%} {{totcount_cat}}{%else%}9949494{%endif%}</font>
 
                                                         </div>
 
                                                 </div>
                                 </div>
                                 <hr>
-                                <h2>Categories</h2><br><br><br>
 
                                 <ul class="nav nav-pills">
                                 {% for category in allcat %}
@@ -132,23 +181,21 @@
                         <div class="col-md-7 col-sm-7 col-xs-12 gutter">
 
                             <div class="sales report">
-                                <h2>{{heading}} Stock</h2>
-
 
                                 <div  class="row">
                                                 <div class="col-md-6">
                                                         <div class="countst">
-                                                               <b>Total Items</b> : {{ useritemscount }}
+                                                               <font size=3><b>Total Items</b> : {{ useritemscount }}</font>
                                                         </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                         <div class="countst">
-                                                                <b>Total Worth</b> : Rs: {{ totcount }}
+                                                                <font size=3><b>Total Value</b> : Rs: {{ totcount }}</font>
 
                                                         </div>
 
                                                 </div>
-                                </div><hr><h2>{{heading}} Product List</h2><br><br><br>
+                                </div><hr>
                                 <div style="background-color: lightgrey;" class="row">
                                       <h4>
                                         <div class="col-md-2 st"> Item code</div>
@@ -178,7 +225,7 @@
                                     var top = (screen.height/2)-(h/2);
                                     return window.open(url, title, 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width='+w+', height='+h+', top='+top+', left='+left);
                                     }
-                                </script>{% if heading != "All"%}
+                                </script>
                                 <div class="row">
                                         <!--<div class="col-md-2 info"><a onclick="popupCenter('{% url 'additems' %}', 'myPop1',750,750);" href="javascript:void(0);" title="add iteams"><i class="fa fa-plus-circle"></i></a> </div>-->
                                         <div class="col-md-2 info"><a href="{% url 'additems' %}" title="add iteams"><i class="fa fa-plus-circle"></i></a> </div>
@@ -186,7 +233,7 @@
                                         <!--<div class="col-md-2 info">Delete item</div>-->
                                         <div class="col-md-2 "><a href="" title="give away"><i class="fa fa-refresh"></i></a></div>
 
-                            </div>{%endif%}
+                            </div>
 
                             </div>
                         </div>
@@ -913,17 +960,5 @@ $(document).ready(function(){
 
 
 </script>
-<div class="container">
-  <div class="row">
-  <hr>
-    <div class="col-lg-12">
-      <div class="col-md-8">
-        <a href="#">Terms of Service</a> | <a href="#">Privacy</a>
-      </div>
-      <div class="col-md-4">
-        <p class="muted pull-right">© 2013 Company Name. All rights reserved</p>
-      </div>
-    </div>
-  </div>
-</div>
+
 

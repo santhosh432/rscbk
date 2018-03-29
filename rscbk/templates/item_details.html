@@ -1,7 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
 {% load static %}
+<head>
+    <style>
+        table{
+            margin:auto;
+            font-size:18px;
+        }
+        th, td {
+            padding:5px;
+        }
+    </style>
+</head>
 <body>
-    Hello
+    <table>
+        <tr>
+            <td><b> Category </b></td>
+            <td> {{ obj.category }} </td>
+        </tr>
+        <tr>
+            <td><b> Item Name </b></td>
+            <td> {{ obj.item_name }} </td>
+        </tr>
+        <tr>
+            <td><b> Item Description </b></td>
+            <td> {{ obj.item_full_desc }} </td>
+        </tr>
+        <tr>
+            <td><b> Price </b></td>
+            <td> {{ obj.price }} </td>
+        </tr>
+        <tr>
+            <td><b> Location </b></td>
+            <td> {{ obj.location }} </td>
+        </tr>
+        <tr>
+            <td><b> Months Used</b></td>
+            <td> {{ obj.months_used }}</td>
+        </tr>
+        <tr>
+            <td><b> Years Used </b></td>
+            <td> {{ obj.years_used }} </td>
+        </tr>
+        <tr>
+            <td><b> Item User</b></td>
+            <td> {{ obj.item_user }} </td>
+        </tr>
+        <tr>
+            <td><b> Item Status </b></td>
+            <td> {{ obj.item_status }}</td>
+        </tr>
+        <tr>
+            <td><b> Item Image </b></td>
+            <td><img src="/media/{{ obj.item_image }}"/></td>
+        </tr>
+        <tr>
+            <td><b> Item Image2 </b></td>
+            <td><img src="/media/{{ obj.item_image }}"/></td>
+        </tr>
+    </table>
 </body>
 </html>
