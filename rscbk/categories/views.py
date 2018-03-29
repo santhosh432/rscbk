@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 from .forms import AdditemForm
+from categories.models import *
 
 @login_required
 def additems(request):
@@ -17,3 +18,10 @@ def additems(request):
             return redirect('myuserdashboard')
 
     return render(request, 'additems.html', {'addform':addform})
+
+@login_required
+def view_item(request, item_id):
+    itm_obj = Items.objects.get(id=item_id)
+
+    context = {'obj':itm_obj}
+    return render(request, 'item_details.html', context)

@@ -45,26 +45,26 @@
                             </div>
                         </div>
                         <div class="col-md-5">
-                            <div class="header-rightside">  
+                            <div class="header-rightside">
                                 <ul class="list-inline header-top pull-right">
                                      <li><a href="{% url 'logout' %}"><i class="fa fa-sign-out"></i> Logout</a></li>
                                 </ul>
                                 <ul class="list-inline header-top pull-right">
                                      <li><a href="#"><i class="fa fa-lock"></i> Change Paswword</a></li>
                                 </ul>
-    
+
                                 <ul class="list-inline header-top pull-right">
                                      <li><a href="#"><i class="fa fa-user"></i> Login by: <b>{{request.user}}</b></a></li>
                                 </ul>
                                  <ul class="list-inline header-top pull-right">
                                    <li> <input type="text" placeholder="Search" id="search"></li>
                                  </ul>
- 
+
                             </div>
                         </div>
                     </header>
                 </div>
-           
+
 
    <div class="user-dashboard">
                     <h3><i><font color='royalblue'>Hello,<b>{{request.user}}</b> welcome to BarterKings Bazar</font></i></h3>
@@ -78,7 +78,7 @@
                                 <div  class="row">
                                                 <div class="col-md-6">
                                                         <div class="countst">
-                                                               <b>Total Items</b> :{%if useritemscount_cat%} {{useritemscount_cat}}{%else%}9949494{%endif%} 
+                                                               <b>Total Items</b> :{%if useritemscount_cat%} {{useritemscount_cat}}{%else%}9949494{%endif%}
                                                         </div>
                                                 </div>
                                                 <div class="col-md-6">
@@ -126,11 +126,11 @@
                                         <!--<div class="col-md-2"><i class="fa fa-delete"></i></div>-->
                                 </div>
                                    {% endfor %}
-                                   
+
                            </div>
                         </div>
                         <div class="col-md-7 col-sm-7 col-xs-12 gutter">
-                             
+
                             <div class="sales report">
                                 <h2>{{heading}} Stock</h2>
 
@@ -163,7 +163,7 @@
                                   {% for useritems in items %}
 
                                 <div style=" background-color: lightblue;" class="row">
-                                        <div class="col-md-2">{{ useritems.id }}</div>
+                                        <div class="col-md-2"><a onclick="popupCenter('{% url 'view_item' useritems.id %}', 'myPop2',750,750);" href="javascript:void(0);">{{ useritems.id }}</a></div>
                                         <div class="col-md-2">{{ useritems.item_name }}</div>
                                         <div class="col-md-2">{{ useritems.category }}</div>
                                         <div class="col-md-2"> <img src="{{ useritems.item_image.url }}" alt="*" class="img img-thumbnails" width="20" height="30"></div>
@@ -177,15 +177,15 @@
                                     var left = (screen.width/2)-(w/2);
                                     var top = (screen.height/2)-(h/2);
                                     return window.open(url, title, 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width='+w+', height='+h+', top='+top+', left='+left);
-                                    } 
-                                </script>{% if heading != "All"%} 
+                                    }
+                                </script>{% if heading != "All"%}
                                 <div class="row">
                                         <!--<div class="col-md-2 info"><a onclick="popupCenter('{% url 'additems' %}', 'myPop1',750,750);" href="javascript:void(0);" title="add iteams"><i class="fa fa-plus-circle"></i></a> </div>-->
                                         <div class="col-md-2 info"><a href="{% url 'additems' %}" title="add iteams"><i class="fa fa-plus-circle"></i></a> </div>
                                         <!--<div class="col-md-2 info">Edit item</div>-->
                                         <!--<div class="col-md-2 info">Delete item</div>-->
                                         <div class="col-md-2 "><a href="" title="give away"><i class="fa fa-refresh"></i></a></div>
-                                        
+
                             </div>{%endif%}
 
                             </div>
@@ -689,7 +689,7 @@ header {
     width: 100%;
 }
 .sales .dropdown-menu > a:hover{
-    color: #5584FF;   
+    color: #5584FF;
 }
 .shield-buttons {
     display: none;
@@ -746,10 +746,10 @@ header {
     font-weight: 600;
     padding: 10px 30px;
     position: relative;
-    
+
 }
 .modal{
-    top: 20%; 
+    top: 20%;
 }
 .modal-header .close {
     margin-top: 2px;
@@ -855,7 +855,7 @@ header {
     .user-dashboard .sales button {
         font-size: 11px;
         padding-right: 23px;
-}  
+}
     .user-dashboard .sales h2 {
     font-size: 12px;
 }
@@ -886,7 +886,7 @@ header {
 }
     .user-dashboard .header-rightside .header-top img {
         max-width: 41px !important;
-} 
+}
     .user-dashboard .sales button {
     font-size: 10px;
 }

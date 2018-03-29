@@ -37,6 +37,7 @@ urlpatterns = [
 
     url(r'dashboard/',dashboard),
     url(r'additems/',catviews.additems , name='additems'),
+    url(r'view_item/(?P<item_id>\d+)/$',catviews.view_item , name='view_item'),
 
 ]
 
