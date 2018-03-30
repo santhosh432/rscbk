@@ -37,7 +37,7 @@
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 <li>
-                    <a class="faa-parent animated-hover">
+                    <a href="/myuserdashboard/" class="faa-parent animated-hover">
                        <i class="fa fa-fw fa-lg fa-home faa-tada faa-fast"></i>Home
                     </a>
                 </li>
@@ -90,11 +90,7 @@
                            <i class="fa fa-fw fa-lg fab fa-github faa-tada faa-fast"></i>Github
                     </a>
                 </li>
-                <li>
-                    <a class="faa-parent animated-hover" href="#">
-                           <i class="fa fa-fw fa-lg fab fa-search faa-tada faa-fast"></i><input type=text size="100" placeholder="enter search item here">
-                    </a>
-                </li>
+
                 <li>
                     <a href="#"><i class="fa fa-fw fa-lg fab fa-user faa-tada faa-fast"></i> Login by: <b>{{request.user}}</b>
                     </a>
@@ -140,7 +136,7 @@
                                                 </div>
                                 </div>
                                 <hr>
-
+                                {% if not items_cat %}
                                 <ul class="nav nav-pills">
                                 {% for category in allcat %}
                                         <li style="padding: 1px;" class="catli">
@@ -150,13 +146,13 @@
                                                 </div>
                                         </li>
                                 {% endfor %}
+                                {% endif %}
 
 
-                                </ul>
+                                </ul>{% if items_cat %}
                              <div style="background-color: lightgrey;" class="row">
                                       <h4>  <div class="col-md-2 st"> Item code</div>
                                         <div class="col-md-2 st">Short Desc</div>
-                                        <div class="col-md-2 st">Categories</div>
                                         <div class="col-md-2 st"><i class="fa fa-picture-o"></i></div>
                                         <div class="col-md-2 st">Exchange worth</div>
                                         <div class="col-md-2 st"><i class="fa fa-map-marker"></i></div>
@@ -166,16 +162,22 @@
                                   {% for useritems in items_cat %}
 
                                 <div style=" background-color: lightblue;" class="row">
-                                        <div class="col-md-2">{{ useritems.id }}</div>
+                                        <div class="col-md-2">
+                                            <a onclick="popupCenter('{% url 'view_item' useritems.id %}', 'myPop2',750,750);" href="javascript:void(0);">{{ useritems.id }}</a>
+                                            </div>
                                         <div class="col-md-2">{{ useritems.item_name }}</div>
-                                        <div class="col-md-2">{{ useritems.category }}</div>
                                         <div class="col-md-2"> <img src="{{ useritems.item_image.url }}" alt="*" class="img img-thumbnails" width="20" height="30"></div>
                                         <div class="col-md-2"><i class="fa fa-rupee"></i>{{ useritems.price }}</div>
                                         <div class="col-md-2">{{ useritems.location }}</div>
                                         <!--<div class="col-md-2"><i class="fa fa-delete"></i></div>-->
                                 </div>
                                    {% endfor %}
+                                   {% for useritems in items_cat %}    {% if forloop.first %}
 
+                                   <h3>The selected catagory is {{ useritems.category }}</h3>    {%endif%}
+
+                                   {% endfor %}
+                                  {% endif %}
                            </div>
                         </div>
                         <div class="col-md-7 col-sm-7 col-xs-12 gutter">
@@ -210,7 +212,8 @@
                                   {% for useritems in items %}
 
                                 <div style=" background-color: lightblue;" class="row">
-                                        <div class="col-md-2"><a onclick="popupCenter('{% url 'view_item' useritems.id %}', 'myPop2',750,750);" href="javascript:void(0);">{{ useritems.id }}</a></div>
+                                        <div class="col-md-2">
+                                            <a onclick="popupCenter('{% url 'view_item' useritems.id %}', 'myPop2',750,750);" href="javascript:void(0);">{{ useritems.id }}</a></div>
                                         <div class="col-md-2">{{ useritems.item_name }}</div>
                                         <div class="col-md-2">{{ useritems.category }}</div>
                                         <div class="col-md-2"> <img src="{{ useritems.item_image.url }}" alt="*" class="img img-thumbnails" width="20" height="30"></div>
