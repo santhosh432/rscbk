@@ -162,7 +162,7 @@
                                 </div>
                                   {% for useritems in items_cat %}
 
-                                <div style=" background-color: lightblue;" class="row">
+                                <div style=" background-color: lightblue; border-style: solid; border-width:thin; border-color: #FFFFFF;" class="row">
                                         <div class="col-md-2">
                                             <a onclick="popupCenter('{% url 'view_item' useritems.id %}', 'myPop2',750,750);" href="javascript:void(0);">{{ useritems.id }}</a>
                                             </div>
@@ -173,6 +173,34 @@
                                         <!--<div class="col-md-2"><i class="fa fa-delete"></i></div>-->
                                 </div>
                                    {% endfor %}
+                                   {% if items_cat.has_other_pages %}
+  <ul class="pagination">
+    {% if items_cat.has_previous %}
+      <li><a href="?page={{ items_cat.previous_page_number }}">&laquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&laquo;</span></li>
+    {% endif %}
+    {% for i in items_cat.paginator.page_range %}
+      {% if items_cat.number == i %}
+        <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+      {% else %}
+        <li><a href="?page={{ i }}">{{ i }}</a></li>
+      {% endif %}
+    {% endfor %}
+    {% if items_cat.has_next %}
+      <li><a href="?page={{ items_cat.next_page_number }}">&raquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&raquo;</span></li>
+    {% endif %}
+  </ul>
+{% endif %}
+
+
+
+
+
+
+
                                    {% for useritems in items_cat %}    {% if forloop.first %}
 
                                    <h3>The selected catagory is {{ useritems.category }}</h3>    {%endif%}
@@ -213,7 +241,7 @@
                                 </div>
                                   {% for useritems in items %}
 
-                                <div style=" background-color: lightblue;" class="row">
+                                <div style=" background-color: lightblue; border-style: solid; border-width:thin; border-color: #FFFFFF;" class="row">
                                         <div class="col-md-2">
                                             <a onclick="popupCenter('{% url 'view_item' useritems.id %}', 'myPop2',750,750);" href="javascript:void(0);">{{ useritems.id }}</a></div>
                                         <div class="col-md-2">{{ useritems.item_name }}</div>
@@ -232,11 +260,8 @@
                                     }
                                 </script>
                                 <div class="row">
-                                        <!--<div class="col-md-2 info"><a onclick="popupCenter('{% url 'additems' %}', 'myPop1',750,750);" href="javascript:void(0);" title="add iteams"><i class="fa fa-plus-circle"></i></a> </div>-->
-                                        <div class="col-md-2 info"><a href="{% url 'additems' %}" title="add iteams"><i class="fa fa-plus-circle"></i></a> </div>
-                                        <!--<div class="col-md-2 info">Edit item</div>-->
-                                        <!--<div class="col-md-2 info">Delete item</div>-->
-                                        <div class="col-md-2 "><a href="" title="give away"><i class="fa fa-refresh"></i></a></div>
+                                        <div class="col-md-2 info"><a href="{% url 'additems' %}" title="add iteams"><i class="fa fa-plus-circle"></i> Add Items</a> </div>
+                                        <div class="col-md-2 "><a href="" title="give away"><i class="fa fa-refresh"></i> Exchange Items</a></div>
 
                             </div>
                      </div>

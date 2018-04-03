@@ -24,15 +24,21 @@ def myuserdashboard(request):
     totcount = sum([tot.price for tot in items])
     heading = "My"
     return render(request, 'userdashboard.html',{'allcat':cat,'items':items,'useritemscount':useritemscount,'totcount':totcount,'heading':heading})
+from django.core.paginator import Paginator
 
 @login_required
 def myuserdashboard_with_cat(request,cat_id=None):
     cat = Category.objects.all()
     items_cat = Items.objects.filter(category__id=cat_id)
+    useritemscount_cat = items_cat.count()
+
+    paginator = Paginator(items_cat, 10)
+    page = request.GET.get('page', 1)
+    items_cat = paginator.page(page)
+
     items = Items.objects.filter(itemuser=request.user)
     useritemscount = items.count()
     totcount = sum([tot.price for tot in items])
-    useritemscount_cat = items_cat.count()
     totcount_cat = sum([tot.price for tot in items_cat])
 
     heading = "All"

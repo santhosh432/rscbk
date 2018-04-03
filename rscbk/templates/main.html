@@ -50,12 +50,12 @@
                     <a class="faa-parent animated-hover">
 	                   <i class="fa fa-fw fa-lg fa-map-marker faa-tada faa-fast"></i>Contact Us
                     </a>
-                </li>
+                </li>{% if request.user.is_superuser %}
                 <li>
                     <a class="faa-parent animated-hover" href="https://github.com/rscbarterkings/rscbk">
                            <i class="fa fa-fw fa-lg fab fa-github faa-tada faa-fast"></i>Github
                     </a>
-                </li>
+                </li>{% endif %}
 
             </ul>
             <ul class="nav navbar-nav navbar-right">
