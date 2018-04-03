@@ -19,7 +19,7 @@
                 <i class="fa fa-chevron-down faa-vertical animated"></i>
             </a>
             <a tabindex="0" class="navbar-brand faa-pulse faa-slow animated" data-toggle="popover" data-trigger="focus" data-html="true" data-placement="bottom" data-title="Brand Quote..." data-content="<img class='img-responsive' height='140' width='140' src='data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=='/<p>Your Brand Image</p>">
-                <i class="fa fa-balance-scale"></i>
+
                 <i class="fa fa-lg">B</i>
                 <i class="fa fa-lg">a</i>
                 <i class="fa fa-lg">r</i>
@@ -45,7 +45,7 @@
                     <a class="faa-parent animated-hover">
     	               <i class="fa fa-fw fa-lg fa-quote-left faa-tada faa-fast"></i>About Us
                     </a>
-                </li>
+                </li><!--
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle faa-parent animated-hover" data-toggle="dropdown">
     	               <i class="fa fa-fw fa-lg fa-th faa-tada faa-fast"></i>Products
@@ -79,19 +79,20 @@
     		              </a>
     	               </li>
                     </ul>
-                </li>
+                </li>-->
                 <li>
                     <a class="faa-parent animated-hover">
 	                   <i class="fa fa-fw fa-lg fa-map-marker faa-tada faa-fast"></i>Contact Us
                     </a>
-                </li>
+                </li><!--
                 <li>
                     <a class="faa-parent animated-hover" href="https://github.com/rscbarterkings/rscbk">
                            <i class="fa fa-fw fa-lg fab fa-github faa-tada faa-fast"></i>Github
                     </a>
-                </li>
-
-                <li>
+                </li>-->
+</ul>
+<ul align="right">
+                   <li >
                     <a href="#"><i class="fa fa-fw fa-lg fab fa-user faa-tada faa-fast"></i> Login by: <b>{{request.user}}</b>
                     </a>
                 </li>
@@ -120,10 +121,10 @@
                         <div class="col-md-5 col-sm-5 col-xs-12 gutter">
 
                             <div class="sales">
-
-                                <div  class="row">
+                                <div  style=" background-color: red;"  class="row"><h4><b><center>Global items available</center></b></h4></div>
+                                <div  style=" background-color: orange;"  class="row">
                                                 <div class="col-md-6">
-                                                        <div class="countst">
+                                                        <div  class="countst">
                                                               <font size=3> <b>Total Items</b> :{%if useritemscount_cat%} {{useritemscount_cat}}{%else%}9949494{%endif%}</font>
                                                         </div>
                                                 </div>
@@ -135,13 +136,13 @@
 
                                                 </div>
                                 </div>
-                                <hr>
+
                                 {% if not items_cat %}
                                 <ul class="nav nav-pills">
                                 {% for category in allcat %}
                                         <li style="padding: 1px;" class="catli">
                                                 <div class="well">
-                                                        <a href="{% url 'myuserdashboard_withargument' category.id %}"><img class="img img-thumbnails" width="20" height="30" src="{{ category.image.url }}" title="{{ category.category_name }}"></a>
+                                                        <a href="{% url 'myuserdashboard_withargument' category.id %}"><img class="img img-thumbnails" width="80" height="80" src="{{ category.image.url }}" title="{{ category.category_name }}"></a>
 
                                                 </div>
                                         </li>
@@ -151,13 +152,13 @@
 
                                 </ul>{% if items_cat %}
                              <div style="background-color: lightgrey;" class="row">
-                                      <h4>  <div class="col-md-2 st"> Item code</div>
+                                     <div class="col-md-2"> Item code</div>
                                         <div class="col-md-2 st">Short Desc</div>
                                         <div class="col-md-2 st"><i class="fa fa-picture-o"></i></div>
                                         <div class="col-md-2 st">Exchange worth</div>
                                         <div class="col-md-2 st"><i class="fa fa-map-marker"></i></div>
                                         <!--<div class="col-md-1 st"><i class="fa fa-remove"></i></div>-->
-                                        </h4>
+
                                 </div>
                                   {% for useritems in items_cat %}
 
@@ -183,8 +184,9 @@
                         <div class="col-md-7 col-sm-7 col-xs-12 gutter">
 
                             <div class="sales report">
+                                <div  style=" background-color: red;"  class="row"><h4><b><center>{{request.user}} items available</center></b></h4></div>
 
-                                <div  class="row">
+                                <div style=" background-color: grey;" class="row">
                                                 <div class="col-md-6">
                                                         <div class="countst">
                                                                <font size=3><b>Total Items</b> : {{ useritemscount }}</font>
@@ -197,9 +199,9 @@
                                                         </div>
 
                                                 </div>
-                                </div><hr>
+                                </div>
                                 <div style="background-color: lightgrey;" class="row">
-                                      <h4>
+
                                         <div class="col-md-2 st"> Item code</div>
                                         <div class="col-md-2 st">Short Desc</div>
                                         <div class="col-md-2 st">Categories</div>
@@ -207,7 +209,7 @@
                                         <div class="col-md-2 st">Exchange worth</div>
                                         <div class="col-md-2 st"><i class="fa fa-map-marker"></i></div>
                                         <!--<div class="col-md-1 st"><i class="fa fa-remove"></i></div>-->
-                                        </h4>
+
                                 </div>
                                   {% for useritems in items %}
 
@@ -237,17 +239,23 @@
                                         <div class="col-md-2 "><a href="" title="give away"><i class="fa fa-refresh"></i></a></div>
 
                             </div>
-
-                            </div>
+                     </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
     </div>
 
+<div style="border: 2px solid black" class="user-dashboard gutter" >
 
+     <p>  This is a platform where you can Exchange your New or used items for Money or other Items we explain how this exchange will happen. Let’s start with navigation items on the top right. They take the visitor to a specific section where they will be educated.
+</p> <p>
+So what's you are waiting for just Sigup and post your stuff by categories and check with the other's stuff to exchange, We will be having the total flexability to exchange the items in favor of Money or Items or both.
+</p> <p>
+The ‘back-to-top’ button on the right bottom of the screen takes the visitor back to the navigation menu. This button uses a fixed positioning with 20px right and bottom coordinates that ‘pin’ it into position.
+</p>
+</div>
 
 
 </body>
@@ -963,5 +971,20 @@ $(document).ready(function(){
 
 
 </script>
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
 
+<div class="container">
+  <div class="row">
 
+  <hr>
+<center>        <a href="#">Terms of Service</a> | <a href="#">Privacy</a>
+     <br>      <p >© 2018 - Designed by redsuncube. All rights reserved (Ravi Gandham)</p>
+     </center>
+
+      </div>
+    </div>
+  </div>
+</div>
