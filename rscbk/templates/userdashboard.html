@@ -118,7 +118,7 @@
 <body class="home">
    <div class="user-dashboard">
                     <div class="row">
-                        <div class="col-md-5 col-sm-5 col-xs-12 gutter">
+                        <div class="col-md-6 col-sm-6 col-xs-12 gutter">
 
                             <div class="sales">
                                 <div  style=" background-color: red;"  class="row"><h4><b><center>Global items available</center></b></h4></div>
@@ -154,10 +154,9 @@
                              <div style="background-color: lightgrey;" class="row">
                                      <div class="col-md-2"> Item code</div>
                                         <div class="col-md-2 st">Short Desc</div>
-                                        <div class="col-md-2 st"><i class="fa fa-picture-o"></i></div>
-                                        <div class="col-md-2 st">Exchange worth</div>
-                                        <div class="col-md-2 st"><i class="fa fa-map-marker"></i></div>
-                                        <!--<div class="col-md-1 st"><i class="fa fa-remove"></i></div>-->
+                                        <div class="col-md-1 st"><i class="fa fa-picture-o"></i></div>
+                                        <div class="col-md-3 st">Exchange worth</div>
+                                        <div class="col-md-1 st"><i class="fa fa-map-marker"></i></div>
 
                                 </div>
                                   {% for useritems in items_cat %}
@@ -167,10 +166,9 @@
                                             <a onclick="popupCenter('{% url 'view_item' useritems.id %}', 'myPop2',750,750);" href="javascript:void(0);">{{ useritems.id }}</a>
                                             </div>
                                         <div class="col-md-2">{{ useritems.item_name }}</div>
-                                        <div class="col-md-2"> <img src="{{ useritems.item_image.url }}" alt="*" class="img img-thumbnails" width="20" height="30"></div>
-                                        <div class="col-md-2"><i class="fa fa-rupee"></i>{{ useritems.price }}</div>
-                                        <div class="col-md-2">{{ useritems.location }}</div>
-                                        <!--<div class="col-md-2"><i class="fa fa-delete"></i></div>-->
+                                        <div class="col-md-1"> <img src="{{ useritems.item_image.url }}" alt="*" class="img img-thumbnails" width="20" height="30"></div>
+                                        <div class="col-md-3"><i class="fa fa-rupee"></i>{{ useritems.price }}</div>
+                                        <div class="col-md-1">{{ useritems.location }}</div>
                                 </div>
                                    {% endfor %}
                                    {% if items_cat.has_other_pages %}
@@ -203,13 +201,25 @@
 
                                    {% for useritems in items_cat %}    {% if forloop.first %}
 
-                                   <h3>The selected catagory is {{ useritems.category }}</h3>    {%endif%}
+                                   <h4>The selected catagory is
+
+
+                                   <select name="cat" onchange="window.location.href=this.value;">
+
+                                       {% for category in allcat %}
+                                       {% if useritems.category == category %}
+                                       <option selected value="{{category.id}}">{{category}}</option>
+                                       {%else%}
+                                       <option value="{% url 'myuserdashboard_withargument' category.id %}">{{category}}</option>
+                                        {%endif%}
+                                       {% endfor %}
+                                   </select></h4>    {%endif%}
 
                                    {% endfor %}
                                   {% endif %}
                            </div>
                         </div>
-                        <div class="col-md-7 col-sm-7 col-xs-12 gutter">
+                        <div class="col-md-6 col-sm-6 col-xs-12 gutter">
 
                             <div class="sales report">
                                 <div  style=" background-color: red;"  class="row"><h4><b><center>{{request.user}} items available</center></b></h4></div>
@@ -233,9 +243,9 @@
                                         <div class="col-md-2 st"> Item code</div>
                                         <div class="col-md-2 st">Short Desc</div>
                                         <div class="col-md-2 st">Categories</div>
-                                        <div class="col-md-2 st"><i class="fa fa-picture-o"></i></div>
-                                        <div class="col-md-2 st">Exchange worth</div>
-                                        <div class="col-md-2 st"><i class="fa fa-map-marker"></i></div>
+                                        <div class="col-md-1 st"><i class="fa fa-picture-o"></i></div>
+                                        <div class="col-md-3 st">Exchange worth</div>
+                                        <div class="col-md-1 st"><i class="fa fa-map-marker"></i></div>
                                         <!--<div class="col-md-1 st"><i class="fa fa-remove"></i></div>-->
 
                                 </div>
@@ -246,12 +256,38 @@
                                             <a onclick="popupCenter('{% url 'view_item' useritems.id %}', 'myPop2',750,750);" href="javascript:void(0);">{{ useritems.id }}</a></div>
                                         <div class="col-md-2">{{ useritems.item_name }}</div>
                                         <div class="col-md-2">{{ useritems.category }}</div>
-                                        <div class="col-md-2"> <img src="{{ useritems.item_image.url }}" alt="*" class="img img-thumbnails" width="20" height="30"></div>
-                                        <div class="col-md-2"><i class="fa fa-rupee"></i>{{ useritems.price }}</div>
-                                        <div class="col-md-2">{{ useritems.location }}</div>
+                                        <div class="col-md-1"> <img src="{{ useritems.item_image.url }}" alt="*" class="img img-thumbnails" width="20" height="30"></div>
+                                        <div class="col-md-3"><i class="fa fa-rupee"></i>{{ useritems.price }}</div>
+                                        <div class="col-md-1">{{ useritems.location }}</div>
                                         <!--<div class="col-md-2"><i class="fa fa-delete"></i></div>-->
                                 </div>
-                                        {% endfor %}<hr>
+
+
+                                        {% endfor %}
+
+{% if items.has_other_pages %}
+  <ul class="pagination">
+    {% if items.has_previous %}
+      <li><a href="?page={{ items.previous_page_number }}">&laquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&laquo;</span></li>
+    {% endif %}
+    {% for i in items.paginator.page_range %}
+      {% if items.number == i %}
+        <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+      {% else %}
+        <li><a href="?page={{ i }}">{{ i }}</a></li>
+      {% endif %}
+    {% endfor %}
+    {% if items.has_next %}
+      <li><a href="?page={{ items.next_page_number }}">&raquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&raquo;</span></li>
+    {% endif %}
+  </ul>
+{% endif %}
+
+
                                 <script>
                                     function popupCenter(url, title, w, h) {
                                     var left = (screen.width/2)-(w/2);

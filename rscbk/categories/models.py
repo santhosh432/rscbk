@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 
 # all categories...
 class Category(models.Model):
+    DEFAULT_PK=1
     category_name = models.CharField(max_length=15, help_text='Category name')
     status = models.BooleanField(default=False)
     image = models.ImageField(upload_to='images')
@@ -23,6 +24,7 @@ itemstatus_choice = (
 
 class Items(models.Model):
     category = models.ForeignKey(Category)
+    exchange_category = models.ForeignKey(Category, related_name="exchange_category",default=Category.DEFAULT_PK)
     item_name = models.CharField(max_length=25, help_text='item short description')
     item_full_desc = models.CharField(max_length=200, help_text='item full description')
     price = models.PositiveIntegerField(help_text='Item price')
