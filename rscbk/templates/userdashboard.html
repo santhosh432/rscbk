@@ -115,22 +115,22 @@
 <!------ Include the above in your HEAD tag ---------->
 
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
-<body class="home">
-   <div class="user-dashboard">
-                    <div class="row">
-                        <div class="col-md-6 col-sm-6 col-xs-12 gutter">
+<body style=" background-color: E4FFBF;" class="home">
+   <div style=" background-color: E4FFBF;" class="user-dashboard">
+                    <div style=" background-color: E4FFBF;" class="row">
+                        <div style=" background-color: E4FFBF;" class="col-md-6 col-sm-6 col-xs-12 gutter">
 
-                            <div class="sales">
-                                <div  style=" background-color: red;"  class="row"><h4><b><center>Global items available</center></b></h4></div>
-                                <div  style=" background-color: orange;"  class="row">
+                            <div style=" background-color: E4FFBF;" class="sales">
+                                <div  style=" background-color: #A6FF57;"  class="row"><h4><b><center>Global items available</center></b></h4></div>
+                                <div  style=" background-color: E4FFBF;"  class="row">
                                                 <div class="col-md-6">
                                                         <div  class="countst">
-                                                              <font size=3> <b>Total Items</b> :{%if useritemscount_cat%} {{useritemscount_cat}}{%else%}9949494{%endif%}</font>
+                                                              <font size=3> <b>Total Items</b> :{%if useritemscount_cat%} {{useritemscount_cat}}{%else%}{{global_items_count}}{%endif%}</font>
                                                         </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                         <div class="countst">
-                                                                <font size=3><b>Total Value</b> : Rs: {%if totcount_cat%} {{totcount_cat}}{%else%}9949494{%endif%}</font>
+                                                                <font size=3><b>Total Value</b> : Rs: {%if totcount_cat%} {{totcount_cat}}{%else%}{{global_items_price}}{%endif%}</font>
 
                                                         </div>
 
@@ -152,23 +152,26 @@
 
                                 </ul>{% if items_cat %}
                              <div style="background-color: lightgrey;" class="row">
-                                     <div class="col-md-2"> Item code</div>
+                                        <b>
+                                        <div style="width: 80px; " class="col-md-2"> Item Code </div>
                                         <div class="col-md-2 st">Short Desc</div>
                                         <div class="col-md-1 st"><i class="fa fa-picture-o"></i></div>
-                                        <div class="col-md-3 st">Exchange worth</div>
-                                        <div class="col-md-1 st"><i class="fa fa-map-marker"></i></div>
-
+                                        <div style="width: 100px;" class="col-md-3 st">Item Worth</div>
+                                        <div class="col-md-2 st">Exchangable With</div>
+                                        <div style="width: 80px;" class="col-md-1 st">Location <i class="fa fa-map-marker"></i></div>
+                                        </b>
                                 </div>
                                   {% for useritems in items_cat %}
 
-                                <div style=" background-color: lightblue; border-style: solid; border-width:thin; border-color: #FFFFFF;" class="row">
-                                        <div class="col-md-2">
+                                <div style=" background-color: lightblue; border-style: solid; border-width:thin; border-color: #FFFFFF;" class="row" >
+                                        <div style="width: 80px; height:30;" class="col-md-2">
                                             <a onclick="popupCenter('{% url 'view_item' useritems.id %}', 'myPop2',750,750);" href="javascript:void(0);">{{ useritems.id }}</a>
                                             </div>
                                         <div class="col-md-2">{{ useritems.item_name }}</div>
                                         <div class="col-md-1"> <img src="{{ useritems.item_image.url }}" alt="*" class="img img-thumbnails" width="20" height="30"></div>
-                                        <div class="col-md-3"><i class="fa fa-rupee"></i>{{ useritems.price }}</div>
-                                        <div class="col-md-1">{{ useritems.location }}</div>
+                                        <div style="width: 100px;" class="col-md-3"><i class="fa fa-rupee"></i>{{ useritems.price }}</div>
+                                        <div class="col-md-2"><i class="fa fa-rupee"></i>{{ useritems.exchange_category }}</div>
+                                        <div style="width: 80px;" class="col-md-1">{{ useritems.location }}</div>
                                 </div>
                                    {% endfor %}
                                    {% if items_cat.has_other_pages %}
@@ -219,12 +222,12 @@
                                   {% endif %}
                            </div>
                         </div>
-                        <div class="col-md-6 col-sm-6 col-xs-12 gutter">
+                        <div style=" background-color: E4FFBF;" class="col-md-6 col-sm-6 col-xs-12 gutter">
 
-                            <div class="sales report">
-                                <div  style=" background-color: red;"  class="row"><h4><b><center>{{request.user}} items available</center></b></h4></div>
+                            <div style=" background-color: E4FFBF;" class="sales report">
+                                <div  style=" background-color: #A6FF57;"  class="row"><h4><b><center>{{request.user}}  - Items available</center></b></h4></div>
 
-                                <div style=" background-color: grey;" class="row">
+                                <div style=" background-color: E4FFBF;" class="row">
                                                 <div class="col-md-6">
                                                         <div class="countst">
                                                                <font size=3><b>Total Items</b> : {{ useritemscount }}</font>
@@ -239,26 +242,28 @@
                                                 </div>
                                 </div>
                                 <div style="background-color: lightgrey;" class="row">
-
-                                        <div class="col-md-2 st"> Item code</div>
+                                        <b>
+                                        <div style="width: 80px;" class="col-md-2 st"> Item code</div>
                                         <div class="col-md-2 st">Short Desc</div>
                                         <div class="col-md-2 st">Categories</div>
-                                        <div class="col-md-1 st"><i class="fa fa-picture-o"></i></div>
-                                        <div class="col-md-3 st">Exchange worth</div>
-                                        <div class="col-md-1 st"><i class="fa fa-map-marker"></i></div>
+                                        <!--<div class="col-md-1 st"><i class="fa fa-picture-o"></i></div>-->
+                                        <div style="width: 100px;" class="col-md-3 st">Item worth</div>
+                                        <div class="col-md-2 st">Exchangable With</div>
+                                        <div style="width: 80px;" class="col-md-1 st">Location <i class="fa fa-map-marker"></i></div>
                                         <!--<div class="col-md-1 st"><i class="fa fa-remove"></i></div>-->
-
+                                        </b>
                                 </div>
                                   {% for useritems in items %}
 
                                 <div style=" background-color: lightblue; border-style: solid; border-width:thin; border-color: #FFFFFF;" class="row">
-                                        <div class="col-md-2">
+                                        <div style="width: 80px; height: 30px;" class="col-md-2">
                                             <a onclick="popupCenter('{% url 'view_item' useritems.id %}', 'myPop2',750,750);" href="javascript:void(0);">{{ useritems.id }}</a></div>
                                         <div class="col-md-2">{{ useritems.item_name }}</div>
                                         <div class="col-md-2">{{ useritems.category }}</div>
-                                        <div class="col-md-1"> <img src="{{ useritems.item_image.url }}" alt="*" class="img img-thumbnails" width="20" height="30"></div>
-                                        <div class="col-md-3"><i class="fa fa-rupee"></i>{{ useritems.price }}</div>
-                                        <div class="col-md-1">{{ useritems.location }}</div>
+                                        <!--<div class="col-md-1"> <img src="{{ useritems.item_image.url }}" alt="*" class="img img-thumbnails" width="20" height="30"></div>-->
+                                        <div style="width: 100px;" class="col-md-3"><i class="fa fa-rupee"></i>{{ useritems.price }}</div>
+                                        <div class="col-md-2"><i class="fa fa-rupee"></i>{{ useritems.exchange_category }}</div>
+                                        <div style="width: 80px;" class="col-md-1">{{ useritems.location }}</div>
                                         <!--<div class="col-md-2"><i class="fa fa-delete"></i></div>-->
                                 </div>
 

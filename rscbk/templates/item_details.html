@@ -13,50 +13,49 @@
     </style>
 </head>
 <body>
-    <table>
+    <div align="center"><b><font size="5"><span style="font-weight: bold; font-style: normal; text-decoration: none; font-size: 14pt; color: #000000;">Complete Item Description</span></font></b></div>
+    <table width="100%" border="1" cellpadding="1" cellspacing="0" style="border-color: #0000ff; border-style: solid; background-color: #ccffff;">
         <tr>
             <td><b> Category </b></td>
             <td> {{ obj.category }} </td>
-        </tr>
-        <tr>
+
             <td><b> Item Name </b></td>
             <td> {{ obj.item_name }} </td>
         </tr>
-        <tr>
-            <td><b> Item Description </b></td>
-            <td> {{ obj.item_full_desc }} </td>
-        </tr>
+
         <tr>
             <td><b> Price </b></td>
             <td> {{ obj.price }} </td>
-        </tr>
-        <tr>
+
             <td><b> Location </b></td>
             <td> {{ obj.location }} </td>
         </tr>
         <tr>
             <td><b> Months Used</b></td>
             <td> {{ obj.months_used }}</td>
-        </tr>
-        <tr>
+
             <td><b> Years Used </b></td>
             <td> {{ obj.years_used }} </td>
         </tr>
         <tr>
-            <td><b> Item User</b></td>
+            <td><b> Exchangable with</b></td>
             <td> {{ obj.item_user }} </td>
-        </tr>
-        <tr>
+
             <td><b> Item Status </b></td>
             <td> {{ obj.item_status }}</td>
         </tr>
         <tr>
             <td><b> Item Image </b></td>
             <td><img src="/media/{{ obj.item_image }}"/></td>
-        </tr>
-        <tr>
+
             <td><b> Item Image2 </b></td>
             <td><img src="/media/{{ obj.item_image }}"/></td>
+        </tr>
+    </table>
+    <table width="100%" border="1" cellpadding="1" cellspacing="0" style="border-color: #0000ff; border-style: solid; background-color: #ccffff;">
+        <tr>
+            <td><b> Item Description </b></td>
+            <td> {{ obj.item_full_desc }} </td>
         </tr>
     </table>
 </body>

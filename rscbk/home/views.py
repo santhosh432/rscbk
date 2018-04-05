@@ -22,11 +22,14 @@ def myuserdashboard(request):
     items = Items.objects.filter(itemuser=request.user)
     useritemscount = items.count()
     totcount = sum([tot.price for tot in items])
+    global_items = Items.objects.all()
+    global_items_count = global_items.count()
+    global_items_price = sum([tot.price for tot in global_items])
     heading = "My"
     paginator1 = Paginator(items, 10)
     page1 = request.GET.get('page', 1)
     items = paginator1.page(page1)
-    return render(request, 'userdashboard.html',{'allcat':cat,'items':items,'useritemscount':useritemscount,'totcount':totcount,'heading':heading})
+    return render(request, 'userdashboard.html',{'allcat':cat,'items':items,'useritemscount':useritemscount,'totcount':totcount,'heading':heading,'global_items_count':global_items_count,'global_items_price':global_items_price})
 from django.core.paginator import Paginator
 
 @login_required
