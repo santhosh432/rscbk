@@ -36,6 +36,10 @@ from django.core.paginator import Paginator
 def myuserdashboard_with_cat(request,cat_id=None):
     cat = Category.objects.all()
     items_cat = Items.objects.filter(category__id=cat_id).exclude(itemuser=request.user)
+    brand_dict = {}
+    for i in items_cat:
+        brand_dict[i.bnd.id] = i.bnd.brand_name
+
     useritemscount_cat = items_cat.count()
 
     paginator = Paginator(items_cat, 10)
@@ -51,7 +55,41 @@ def myuserdashboard_with_cat(request,cat_id=None):
     paginator1 = Paginator(items, 10)
     page1 = request.GET.get('page', 1)
     items = paginator1.page(page1)
-    return render(request, 'userdashboard.html',{'allcat':cat,'items':items,'useritemscount':useritemscount,'totcount':totcount,'useritemscount_cat':useritemscount_cat,'totcount_cat':totcount_cat,'heading':heading,'items_cat':items_cat})
+    select_value = 0
+    return render(request, 'userdashboard.html',{'brand_dict_all':brand_dict,'select_value':select_value,'brand_dict':brand_dict,'allcat':cat,'items':items,'useritemscount':useritemscount,'totcount':totcount,'useritemscount_cat':useritemscount_cat,'totcount_cat':totcount_cat,'heading':heading,'items_cat':items_cat})
+
+
+@login_required
+def myuserdashboard_with_cat_bnd(request,cat_id=None,bnd_id=None):
+    cat = Category.objects.all()
+    items_cat_all = Items.objects.filter(category__id=cat_id).exclude(itemuser=request.user)
+    items_cat = Items.objects.filter(category__id=cat_id,bnd__id=bnd_id).exclude(itemuser=request.user)
+    brand_dict_all = {}
+    brand_dict = {}
+    for i in items_cat_all:
+        brand_dict_all[i.bnd.id] = i.bnd.brand_name
+    for i in items_cat:
+        brand_dict[i.bnd.id] = i.bnd.brand_name
+
+    useritemscount_cat = items_cat.count()
+
+    paginator = Paginator(items_cat, 10)
+    page = request.GET.get('pagee', 1)
+    items_cat = paginator.page(page)
+
+    items = Items.objects.filter(itemuser=request.user)
+    useritemscount = items.count()
+    totcount = sum([tot.price for tot in items])
+    totcount_cat = sum([tot.price for tot in items_cat])
+
+    heading = "All"
+    paginator1 = Paginator(items, 10)
+    page1 = request.GET.get('page', 1)
+    items = paginator1.page(page1)
+
+    select_value = bnd_id
+    return render(request, 'userdashboard.html',{'select_value':select_value,'brand_dict':brand_dict,'brand_dict_all':brand_dict_all,'allcat':cat,'items':items,'useritemscount':useritemscount,'totcount':totcount,'useritemscount_cat':useritemscount_cat,'totcount_cat':totcount_cat,'heading':heading,'items_cat':items_cat})
+
 
 
 def dashboard(request):

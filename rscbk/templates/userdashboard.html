@@ -817,6 +817,15 @@ header {
         $("#myTable").tablesorter();
 
         $("#myTable_own").tablesorter();
+
+        var code = {};
+$("select[name='bnd'] > option").each(function () {
+    if(code[this.text]) {
+        $(this).remove();
+    } else {
+        code[this.text] = this.value;
+    }
+});
     }
 );
 </script>
@@ -869,7 +878,8 @@ header {
   </ul>
 {% endif %}
 
-                                   {% for useritems in items_cat %}    {% if forloop.first %}
+                                   {% for useritems in items_cat %}
+                                   {% if forloop.first %}
 
                                    <h4>The selected catagory is
 
@@ -883,10 +893,58 @@ header {
                                        <option value="{% url 'myuserdashboard_withargument' category.id %}">{{category}}</option>
                                         {%endif%}
                                        {% endfor %}
-                                   </select></h4>    {%endif%}
+                                   </select> Sub category :
+
+
+
+                                    <select  class='on' name="bnd" onchange="window.location.href=this.value;">
+
+                                    {% for category in allcat %}
+
+                                           {% if useritems.category == category %}
+
+                                                {% if select_value == 0 %}
+                                                        <option selected >-- select any --</option>
+                                                        {% for k,v in brand_dict.items%}
+                                                        <option value="{% url 'myuserdashboard_with_cat_bnd' category.id k %}">{{v}}</option>
+                                                        {%endfor%}
+                                                         {% for k,v in brand_dict_all.items%}
+
+                                                       <option value="{% url 'myuserdashboard_with_cat_bnd' category.id k %}">{{v}}</option>
+                                                       {%endfor%}
+                                                {% else %}
+                                                      {% for k,v in brand_dict.items%}
+
+                                                           {% if select_value == k %}
+
+                                                           <option selected value="{% url 'myuserdashboard_with_cat_bnd' category.id k %}">{{v}}</option>
+                                                           {%else%}
+                                                           <option value="{% url 'myuserdashboard_with_cat_bnd' category.id k %}">{{v}}</option>
+                                                           {%endif%}
+
+                                                      {%endfor%}
+                                                       {% for k,v in brand_dict_all.items%}
+
+
+                                                       <option value="{% url 'myuserdashboard_with_cat_bnd' category.id k %}">{{v}}</option>
+                                                   {%endfor%}
+                                                {% endif %}
+
+
+                                        {% endif %}
+
+                                    {% endfor %}
+                                   </select>
+
+                                   </h4>
+
+
+                                   {%endif%}
 
                                    {% endfor %}
-                                  {% endif %}</center>
+                                  {% endif %}
+
+                                  </center>
                            </div>
                         </div>
                         <div style=" background-color: E4FFBF;" class="col-md-6 col-sm-6 col-xs-12 gutter">

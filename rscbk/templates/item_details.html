@@ -51,13 +51,24 @@
             <td><b> Item Image2 </b></td>
             <td><img src="/media/{{ obj.item_image }}"/></td>
         </tr>
+        <tr>
+            <td><b> Owner Name</b></td>
+            <td> {{ obj.item_user }} </td>
+
+            <td><b> Owner Contact </b></td>
+            <td> {{ obj.item_user }} </td>
+        </tr>
     </table>
     <table width="100%" border="1" cellpadding="1" cellspacing="0" style="border-color: #0000ff; border-style: solid; background-color: #ccffff;">
         <tr>
             <td><b> Item Description </b></td>
             <td> {{ obj.item_full_desc }} </td>
         </tr>
+        <tr>
+            <td><b> Other Information </b></td>
+            <td> {{ obj.item_user }} </td>
+        </tr>
     </table>
-    <b> Contact Item Owner</b>
+
 </body>
 </html>
