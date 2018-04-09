@@ -35,11 +35,11 @@ from django.core.paginator import Paginator
 @login_required
 def myuserdashboard_with_cat(request,cat_id=None):
     cat = Category.objects.all()
-    items_cat = Items.objects.filter(category__id=cat_id)
+    items_cat = Items.objects.filter(category__id=cat_id).exclude(itemuser=request.user)
     useritemscount_cat = items_cat.count()
 
     paginator = Paginator(items_cat, 10)
-    page = request.GET.get('page', 1)
+    page = request.GET.get('pagee', 1)
     items_cat = paginator.page(page)
 
     items = Items.objects.filter(itemuser=request.user)
