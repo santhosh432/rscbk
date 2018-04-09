@@ -23,9 +23,15 @@ itemstatus_choice = (
 )
 
 
+#class CategoryBrand(models.Model):
+#    DEFAULT_PK=1
+#    cat_brand_name = models.CharField(max_length=15, help_text='brand name')
+
+
 class Items(models.Model):
     category = models.ForeignKey(Category)
     bnd = models.ForeignKey(Brand, default=Brand.DEFAULT_PK)
+    #cat_bnd = models.ForeignKey(CategoryBrand, default=CategoryBrand.DEFAULT_PK)
     exchange_category = models.ForeignKey(Category, related_name="exchange_category",default=Category.DEFAULT_PK)
     item_name = models.CharField(max_length=25, help_text='item short description')
     item_full_desc = models.CharField(max_length=200, help_text='item full description')
