@@ -4,8 +4,7 @@
 </head>
 
 {% load staticfiles %}
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 
@@ -150,13 +149,15 @@ th, td {
 
 tr:nth-child(even) {background-color: #f2f2f2;}
 </style>
+
+
 <H4>Add Items</H4>
     <form class="form" action="{% url 'additems' %}" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="div_form">
                 <table border=4 width=50%>
                     {%for i in addform%}
-                        <tr> <td>{%if i.label == 'Bnd'%}Brand/Type/Author{{i.brand_name}}{%else%}{{i.label}}{%endif%} </td><td> {{i}}</td></tr>
+                        <tr> <td>{%if i.label == 'Bnd'%}Brand/Type/Author{{i.brand_name}}{%else%}{{i.label}}{%endif%} </td><td> {{i}}{%if i.label == 'Bnd'%}<a href="/addbrand/"> Add </a>{%endif%}</td></tr>
                     {%endfor%}</table>
                     <input type="submit" name="submit" value="Submit">
                     </ul>

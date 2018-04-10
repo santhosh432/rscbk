@@ -930,6 +930,7 @@ $("select[name='bnd'] > option").each(function () {
                                                    {%endfor%}
                                                 {% endif %}
 
+                                                <option value="{% url 'myuserdashboard_withargument' category.id %}">-- All --</option>
 
                                         {% endif %}
 
@@ -1035,11 +1036,12 @@ $("select[name='bnd'] > option").each(function () {
 <div style=" text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 0px 0px;"><table width="100%" border="2" cellpadding="2" cellspacing="2" style="border-color: #3366ff; border-style: solid; background-color: E4FFBF;">
 <tr valign="top">
 <td style="border-color : #3366ff #3366ff #3366ff #3366ff; border-style: solid;"><p style=" text-align: left; text-indent: 0px; padding: 0px 0px 0px 0px; margin: 0px 0px 0px 0px;"><span style=" font-size: 10pt; font-family: 'Arial', 'Helvetica', sans-serif; font-style: normal; font-weight: normal; color: #000000; background-color: transparent; text-decoration: none;">
-<span style="font-family: Vrinda; font-weight: normal; font-style: italic; text-decoration: none; font-size: 14pt;">This Page facilitates the user to Add their Items which he / she want to exchange with other interested items in our portal which consists of other users' products/items. <br>
+<!-- <span style="font-family: Times New Roman; font-weight: normal; font-style: Normal; text-decoration: none; font-size: 12pt;"> &nbsp   &nbsp &nbsp &nbsp &nbsp &nbsp This Page facilitates the user to Add their Items which he / she want to exchange with other interested items in our portal which consists of other users' products/items. <br> <br> -->
+<H5 align ="center" font-weight: "bold" > This Page facilitates the user to Add their Items which he / she want to exchange with other interested items in our portal which consists of other users' products/items. </H5>
 <font color="#0000FF">Step 1.</font> Click on the Add Item button and provide your complete item details and click on the save button, once it is uploaded this will be visible to the global users and facilitates to exchange the Items by having the one to one conversation calls with the Item owners.<br>
 <font color="#0000FF">Step 2.</font> Click on the Category with which you want to exchange your Item.<br>
-<font color="#0000FF">Step 3.</font> Select your Item / Product from our global list of Items(this portal facilitate to help </span> <br>
-
+<font color="#0000FF">Step 3.</font> Select your Item / Product from our global list of Items This portal facilitate to help you in selecting your exchangeable Item by providing the relevant information. <br>
+<font color="#0000FF">Step 4.</font> Contact the Owner, the details will be provided in the Item Description window reach him/her by phone and negotiate the exchange. </span> <br>
 </span></p>
 </td>
 </tr>

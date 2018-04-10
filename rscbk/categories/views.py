@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
-from .forms import AdditemForm
+from .forms import AdditemForm, AddbrandForm
 from categories.models import *
 
 @login_required
@@ -17,6 +17,21 @@ def additems(request):
             return redirect('myuserdashboard')
 
     return render(request, 'additems.html', {'addform':addform})
+
+
+@login_required
+def addbrand(request):
+    addform = AddbrandForm()
+    if request.method == 'POST':
+        addform = AddbrandForm(request.POST,request.FILES)
+        if addform.is_valid():
+            form = addform.save(commit=False)
+            #form.itemuser = request.user
+            form.save()
+            return redirect('additems')
+
+    return render(request, 'addbrand.html', {'addform':addform})
+
 
 @login_required
 def view_item(request, item_id):

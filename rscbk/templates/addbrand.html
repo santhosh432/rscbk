@@ -1,0 +1,16 @@
+
+<H4>Add Items</H4>
+    <form class="form" action="{% url 'addbrand' %}" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="div_form">
+                <table border=4 width=50%>
+                    {%for i in addform%}
+                        <tr> <td>{{i.label}} </td><td> {{i}}</td></tr>
+                    {%endfor%}</table>
+                    <input type="submit" name="submit" value="Submit"  >
+                    </ul>
+                    </div>
+
+
+
+    </form>
