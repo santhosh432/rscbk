@@ -35,6 +35,8 @@ urlpatterns = [
     url(r'myuserdashboard/', myuserdashboard ,name='myuserdashboard'),
     url(r'myuserdashboard_with_cat/(?P<cat_id>\d+)/$', myuserdashboard_with_cat ,name='myuserdashboard_withargument'),
     url(r'myuserdashboard_with_cat_bnd/(?P<cat_id>\d+)/(?P<bnd_id>\d+)/$', myuserdashboard_with_cat_bnd ,name='myuserdashboard_with_cat_bnd'),
+     url(r'myuserdashboard_with_cat_bnd/(?P<cat_id>\d+)/(?P<bnd_id>\d+)/(?P<min_id>\d+)/(?P<max_id>\d+)/$', myuserdashboard_with_cat_bnd_min_max ,name='myuserdashboard_with_cat_bnd_min_max'),
+
 
 
     url(r'dashboard/',dashboard),

@@ -939,6 +939,73 @@ $("select[name='bnd'] > option").each(function () {
                                    </select>
 
                                    </h5>
+<!-- SLIDE-->
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<script>
+    $( function() {
+    $( "#slider-range" ).slider({
+      range: true,
+      min: 0,
+      max: {{items_cat_max.price}},
+      values: [ 0, {{items_cat_max.price}}],
+
+      slide: function( event, ui ) {
+        if(ui.values[ 0 ] +19 >= ui.values[ 1 ]){
+          return false;
+        }
+        $( "#amount" ).val( "Rs." + ui.values[ 0 ] + " - Rs." + ui.values[ 1 ] );
+        $("#min").val( ui.values[ 0 ]);
+      $("#max").val( ui.values[ 1 ]);
+      }
+    });
+    $( "#amount" ).val( "Rs." + $( "#slider-range" ).slider( "values", 0 ) +
+      " - Rs." + $( "#slider-range" ).slider( "values", 1 ) );
+
+
+  } );
+
+</script>
+<script>
+    $(document).ready(function(){
+
+     $("#link").click(function() {
+        var href = $('#link').attr('href');
+        var min = $('#min').val();
+        var max = $('#max').val();
+        //alert(min);
+        //alert(max);
+        //alert(href);
+        //alert("i am ihere");//Do stuff when clicked
+        final_link = href + min+"/"+max
+        //alert(final_link);
+        $("#link").attr('href', final_link)
+    });
+});
+</script>
+
+<p id="price_list">
+  <label for="amount">Price range:</label>
+  <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
+  <input type=hidden id=min value=0>
+  <input type=hidden id=max value={{items_cat_max.price}}><br>
+   {% for category in allcat %}
+
+                                           {% if useritems.category == category %}
+
+                                           {% for k,v in brand_dict.items%}
+                                            <a id ="link" href="{% url 'myuserdashboard_with_cat_bnd' category.id k %}" title"show the range for {{v}}"><button style="background-color: #4CAF50; border:2; color:#f6931f; font-weight:bold;"><b>{{v}}</b></button> </a>
+                                           {% endfor %}
+
+                                           {% endif %}
+    {% endfor %}
+
+</p>
+
+<div id="slider-range"></div>
+<!-- END SLIDE -->
+
 
 
                                    {%endif%}
