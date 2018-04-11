@@ -1,8 +1,24 @@
 <html>
 <head>
 <title>Barterkings</title>
+
+<!--
+<style>
+h2 { background-color: green; }
+div { background-color: blue; }
+p { background-color: yellow; }
+a { background-color: red; }
+span { background-color: blue; }
+nav { background-color: green; }
+
+</style>
+-->
+
 </head>
+
 <body>
+
+
 {% load staticfiles %}
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
@@ -18,6 +34,9 @@
             <a class="navbar-toggle collapsed" data-target="#navbar" data-toggle="collapse">
                 <i class="fa fa-chevron-down faa-vertical animated"></i>
             </a>
+
+
+
             <a tabindex="0" class="navbar-brand faa-pulse faa-slow animated" data-toggle="popover" data-trigger="focus" data-html="true" data-placement="bottom" data-title="Brand Quote..." data-content="<img class='img-responsive' height='140' width='140' src='data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=='/<p>Your Brand Image</p>">
 
                 <i class="fa fa-lg">B</i>
@@ -34,6 +53,8 @@
 
             </a>
         </div>
+
+
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 <li>
@@ -57,15 +78,15 @@
                     </a>
                 </li>{% endif %}
 
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
+                </ul>
+             <ul class="nav navbar-nav navbar-right">
                 <li>
                     <a href="/login" class="faa-parent animated-hover">
 	                   <i class="fa fa-fw fa-lg fa-sign-in faa-tada faa-fast"></i>LogIn
                     </a>
                 </li>
             </ul>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
             <ul class="nav navbar-nav navbar-right">
                 <li>
                     <a href="/signup" class="faa-parent animated-hover">
@@ -77,10 +98,14 @@
         </div>
     </div>
 </nav>
+
+
+
+
 <div class="container">
     <div class="col-xs-12 hl-left">
         <h2 class="text-center"><img  height="100" width="150" src="{% static 'admin/img/logo.png' %}"><br> BarterKings</h2>
-        <div class="progress active" style="height:5px;">
+        <div class="progress active" style="height:5px; ">
             <div class="progress-bar progress-bar-striped progress-devider progress-bar-success"></div>
             <div class="progress-bar progress-bar-striped progress-devider progress-bar-primary"></div>
             <div class="progress-bar progress-bar-striped progress-devider progress-bar-danger"></div>
@@ -91,7 +116,7 @@
             <div class="progress-bar progress-bar-striped progress-devider progress-bar-primary"></div>
             <div class="progress-bar progress-bar-striped progress-devider progress-bar-success"></div>
         </div>
-<span style="font-family: Vrinda; font-weight: bold; font-style: italic; text-decoration: none; font-size: 14pt;"><div align="justify">BarterKings Portal gives us the platform to exchange our unused or Idle products/Items to exchange with the products with likeminded users.<br>
+<span style="font-family: Vrinda; font-weight: bold; font-style: italic; text-decoration: none; font-size: 14pt; "><div align="justify">BarterKings Portal gives us the platform to exchange our unused or Idle products/Items to exchange with the products with likeminded users.<br>
 The concept of BarterKings portal came into real existences by the group of IT software architects who have some valued items which are not in used by them anymore also they can't able to throw it away as they valued. Here the Idea has born to exchange their products with the similar mindset people who wants to exchange their products.<br>
 BarterKings portal facilitates the user to Add their Products into the portal with relevant product details and facilitates them in searching their interested products from the global products which was added by the global users.<br>
 This Portal is built on the concept of serving its users with no expectation of gaining any profits out of their exchange of products and portal will not be involving in any financial dealings.<br>
