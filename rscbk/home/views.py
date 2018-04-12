@@ -147,9 +147,13 @@ def sign_up(request):
                 password = request.POST.get('s_pass')
                 passwordr = request.POST.get('s_passr')
                 email = request.POST.get('email')
+                first_name = request.POST.get('fullname')
                 if password == passwordr:
                     try:
-                        User.objects.create_user(username, email, password)
+                        u = User.objects.create_user(username, email, password)
+                        u.first_name = first_name
+                        u.save()
+
                         return HttpResponseRedirect(reverse('/login'))
                     except:
                         pass #
