@@ -2,7 +2,7 @@
 <head>
 <title>Dashboard</title>
 </head>
-
+<body style=" background-color: E4FFBF;">
 {% load staticfiles %}
 
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
@@ -157,11 +157,26 @@ tr:nth-child(even) {background-color: #f2f2f2;}
             <div class="div_form">
                 <table border=4 width=50% >
                     {%for i in addform%}
-                        <tr> <td>{%if i.label == 'Bnd'%}Brand/Type/Author{{i.brand_name}}{%else%}{{i.label}}{%endif%} </td><td> {{i}}{%if i.label == 'Bnd'%}<a href="/addbrand/"> Add </a>{%endif%}</td></tr>
-                    {%endfor%}</table>
-                    <input type="submit" name="submit" value="Submit">
-                    </ul>
-                    </div>
+                        <tr>
+                            <td bgcolor="#A6FF57">
+                                {%if i.label == 'Bnd'%}
+                                    Brand/Type/Author{{i.brand_name}}
+                                {%else%}
+                                    {{i.label}}
+                                {%endif%}
+                            </td>
+                            <td>
+                                {{i}}
+                                {%if i.label == 'Bnd'%}
+                                    <a href="/addbrand/"> Add </a>
+                                {%endif%}
+                            </td>
+                        </tr>
+                    {%endfor%}
+                </table>
+                <input type="submit" name="submit" value="Submit">
+
+            </div>
 
 
 
@@ -897,3 +912,5 @@ $(document).ready(function(){
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 
+</body>
+</html>
