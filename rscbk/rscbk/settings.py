@@ -91,32 +91,32 @@ WSGI_APPLICATION = 'rscbk.wsgi.application'
 
 
 
-# # Uncomment to use MySQL:
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'barterkings$rscbkings',
-#         'USER': 'barterkings',
-#         'PASSWORD': 'rscbkings432',
-#         'HOST': 'barterkings.mysql.pythonanywhere-services.com'
-#
-#     }
-# }
-#
-
-
 # Uncomment to use MySQL:
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'rscnewdb',
-        'USER': 'root',
-        'PASSWORD': 'yskroot',
-        'HOST': 'localhost',
-        'PORT': '3032',
+        'NAME': 'barterkings$rscbkings',
+        'USER': 'barterkings',
+        'PASSWORD': 'rscbkings432',
+        'HOST': 'barterkings.mysql.pythonanywhere-services.com'
 
     }
 }
+
+
+#
+# # Uncomment to use MySQL:
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'rscnewdb',
+#         'USER': 'root',
+#         'PASSWORD': 'yskroot',
+#         'HOST': 'localhost',
+#         'PORT': '3032',
+#
+#     }
+# }
 
 # DATABASES = {
 #     'default': {

@@ -6,7 +6,7 @@ from django.shortcuts import render
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
-
+from home.models import UserFullProfile
 def home(request):
     context = {}
     return render(request,'main.html',context)
@@ -29,7 +29,15 @@ def myuserdashboard(request):
     paginator1 = Paginator(items, 10)
     page1 = request.GET.get('page', 1)
     items = paginator1.page(page1)
-    return render(request, 'userdashboard.html',{'allcat':cat,'items':items,'useritemscount':useritemscount,'totcount':totcount,'heading':heading,'global_items_count':global_items_count,'global_items_price':global_items_price})
+    try:
+        up = UserFullProfile.objects.get(user=request.user)
+    except:
+        up = ''
+        pass
+    p = UserFullProfile.objects.get(user=request.user)
+    print(p)
+
+    return render(request, 'userdashboard.html',{'up':up,'allcat':cat,'items':items,'useritemscount':useritemscount,'totcount':totcount,'heading':heading,'global_items_count':global_items_count,'global_items_price':global_items_price})
 from django.core.paginator import Paginator
 
 @login_required
@@ -148,12 +156,17 @@ def sign_up(request):
                 passwordr = request.POST.get('s_passr')
                 email = request.POST.get('email')
                 first_name = request.POST.get('fullname')
+                mobile = request.POST.get('s_mobile')
                 if password == passwordr:
                     try:
                         u = User.objects.create_user(username, email, password)
                         u.first_name = first_name
+                        up = UserFullProfile(user=u, mobile=mobile)
+                        up.save()
                         u.save()
 
+                        print('userprofile.............')
+                        print(up.mobile)
                         return HttpResponseRedirect(reverse('/login'))
                     except:
                         pass #
