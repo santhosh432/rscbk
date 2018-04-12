@@ -39,6 +39,8 @@ def myuserdashboard_with_cat(request,cat_id=None):
 
 
     items_cat_max = Items.objects.filter(category__id=cat_id).exclude(itemuser=request.user).order_by('-price').first()
+    items_cat_min = Items.objects.filter(category__id=cat_id).exclude(itemuser=request.user).order_by('-price').last()
+
     brand_dict = {}
     for i in items_cat:
         brand_dict[i.bnd.id] = i.bnd.brand_name
@@ -59,7 +61,7 @@ def myuserdashboard_with_cat(request,cat_id=None):
     page1 = request.GET.get('page', 1)
     items = paginator1.page(page1)
     select_value = 0
-    return render(request, 'userdashboard.html',{'items_cat_max':items_cat_max,'brand_dict_all':brand_dict,'select_value':select_value,'brand_dict':brand_dict,'allcat':cat,'items':items,'useritemscount':useritemscount,'totcount':totcount,'useritemscount_cat':useritemscount_cat,'totcount_cat':totcount_cat,'heading':heading,'items_cat':items_cat})
+    return render(request, 'userdashboard.html',{'items_cat_min':items_cat_min,'items_cat_max':items_cat_max,'brand_dict_all':brand_dict,'select_value':select_value,'brand_dict':brand_dict,'allcat':cat,'items':items,'useritemscount':useritemscount,'totcount':totcount,'useritemscount_cat':useritemscount_cat,'totcount_cat':totcount_cat,'heading':heading,'items_cat':items_cat})
 
 
 @login_required
@@ -68,6 +70,7 @@ def myuserdashboard_with_cat_bnd(request,cat_id=None,bnd_id=None):
     items_cat_all = Items.objects.filter(category__id=cat_id).exclude(itemuser=request.user)
     items_cat = Items.objects.filter(category__id=cat_id,bnd__id=bnd_id).exclude(itemuser=request.user)
     items_cat_max = Items.objects.filter(category__id=cat_id,bnd__id=bnd_id).exclude(itemuser=request.user).order_by('-price').first()
+    items_cat_min = Items.objects.filter(category__id=cat_id,bnd__id=bnd_id).exclude(itemuser=request.user).order_by('-price').last()
 
     brand_dict_all = {}
     brand_dict = {}
@@ -93,7 +96,7 @@ def myuserdashboard_with_cat_bnd(request,cat_id=None,bnd_id=None):
     items = paginator1.page(page1)
 
     select_value = bnd_id
-    return render(request, 'userdashboard.html',{'items_cat_max':items_cat_max,'select_value':select_value,'brand_dict':brand_dict,'brand_dict_all':brand_dict_all,'allcat':cat,'items':items,'useritemscount':useritemscount,'totcount':totcount,'useritemscount_cat':useritemscount_cat,'totcount_cat':totcount_cat,'heading':heading,'items_cat':items_cat})
+    return render(request, 'userdashboard.html',{'items_cat_min':items_cat_min,'items_cat_max':items_cat_max,'select_value':select_value,'brand_dict':brand_dict,'brand_dict_all':brand_dict_all,'allcat':cat,'items':items,'useritemscount':useritemscount,'totcount':totcount,'useritemscount_cat':useritemscount_cat,'totcount_cat':totcount_cat,'heading':heading,'items_cat':items_cat})
 
 
 @login_required
@@ -102,6 +105,7 @@ def myuserdashboard_with_cat_bnd_min_max(request,cat_id=None,bnd_id=None,min_id=
     items_cat_all = Items.objects.filter(category__id=cat_id).exclude(itemuser=request.user)
     items_cat = Items.objects.filter(category__id=cat_id,bnd__id=bnd_id,price__range=(min_id, max_id)).exclude(itemuser=request.user)
     items_cat_max = Items.objects.filter(category__id=cat_id,bnd__id=bnd_id,price__range=(min_id, max_id)).exclude(itemuser=request.user).order_by('-price').first()
+    items_cat_min = Items.objects.filter(category__id=cat_id,bnd__id=bnd_id,price__range=(min_id, max_id)).exclude(itemuser=request.user).order_by('-price').last()
 
     brand_dict_all = {}
     brand_dict = {}
@@ -127,7 +131,7 @@ def myuserdashboard_with_cat_bnd_min_max(request,cat_id=None,bnd_id=None,min_id=
     items = paginator1.page(page1)
 
     select_value = bnd_id
-    return render(request, 'userdashboard.html',{'items_cat_max':items_cat_max,'select_value':select_value,'brand_dict':brand_dict,'brand_dict_all':brand_dict_all,'allcat':cat,'items':items,'useritemscount':useritemscount,'totcount':totcount,'useritemscount_cat':useritemscount_cat,'totcount_cat':totcount_cat,'heading':heading,'items_cat':items_cat})
+    return render(request, 'userdashboard.html',{'items_cat_min':items_cat_min,'items_cat_max':items_cat_max,'select_value':select_value,'brand_dict':brand_dict,'brand_dict_all':brand_dict_all,'allcat':cat,'items':items,'useritemscount':useritemscount,'totcount':totcount,'useritemscount_cat':useritemscount_cat,'totcount_cat':totcount_cat,'heading':heading,'items_cat':items_cat})
 
 
 
