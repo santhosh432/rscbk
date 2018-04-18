@@ -22,7 +22,13 @@
             <td><b> Item Name </b></td>
             <td> {{ obj.item_name }} </td>
         </tr>
+        <tr>
+            <td><b> Brand </b></td>
+            <td> {{ obj.bnd }} </td>
 
+            <td><b> Extra _ to use </b></td>
+            <td> {{ obj.item_name }} </td>
+        </tr>
         <tr>
             <td><b> Price </b></td>
             <td> {{ obj.price }} </td>
@@ -39,7 +45,7 @@
         </tr>
         <tr>
             <td><b> Exchangable with</b></td>
-            <td> {{ obj.item_user }} </td>
+            <td> {{ obj.exchange_category  }} </td>
 
             <td><b> Item Status </b></td>
             <td> {{ obj.item_status }}</td>
@@ -53,10 +59,10 @@
         </tr>
         <tr>
             <td><b> Owner Name</b></td>
-            <td> {{ obj.item_user }} </td>
+            <td> {{ obj.itemuser }} </td>
 
             <td><b> Owner Contact </b></td>
-            <td> {{ obj.item_user }} </td>
+            <td> {{ obj.mobile }} </td>
         </tr>
     </table>
     <table width="100%" border="1" cellpadding="1" cellspacing="0" style="border-color: #0000ff; border-style: solid; background-color: #ccffff;">

@@ -7,6 +7,17 @@ from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from home.models import UserFullProfile
+
+# Create your views here.
+def terms(request):
+    context = {}
+    return render(request,'terms.html',context)
+
+# Create your views here.
+def privacy(request):
+    context = {}
+    return render(request,'privacy.html',context)
+
 def home(request):
     context = {}
     return render(request,'main.html',context)
@@ -34,8 +45,7 @@ def myuserdashboard(request):
     except:
         up = ''
         pass
-    p = UserFullProfile.objects.get(user=request.user)
-    print(p)
+
 
     return render(request, 'userdashboard.html',{'up':up,'allcat':cat,'items':items,'useritemscount':useritemscount,'totcount':totcount,'heading':heading,'global_items_count':global_items_count,'global_items_price':global_items_price})
 from django.core.paginator import Paginator

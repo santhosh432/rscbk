@@ -28,6 +28,8 @@ from django.conf.urls.static import static
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$',home),
+    url(r'^terms/$', terms),
+    url(r'^privacy/$', privacy),
     url(r'^signup/$', sign_up),
     url(r'^login', auth_views.login, {'template_name': 'home.html'} ,name='login'),
     url(r'^logout/$', auth_views.logout, {'next_page': '/login/'}, name="logout"),
