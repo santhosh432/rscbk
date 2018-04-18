@@ -7,6 +7,7 @@ from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from home.models import UserFullProfile
+from ipware.ip import get_ip
 
 # Create your views here.
 def terms(request):
@@ -19,7 +20,9 @@ def privacy(request):
     return render(request,'privacy.html',context)
 
 def home(request):
-    context = {}
+    localip = get_ip(request)
+
+    context = {'localip':localip}
     return render(request,'main.html',context)
 
 # Create your views here.

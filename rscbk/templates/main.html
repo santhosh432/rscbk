@@ -72,7 +72,11 @@ nav { background-color: green; }
                     <a class="faa-parent animated-hover">
 	                   <i class="fa fa-fw fa-lg fa-map-marker faa-tada faa-fast"></i>Contact Us
                     </a>
-                </li>{% if request.user.is_superuser %}
+                </li>
+
+
+
+                {% if request.user.is_superuser %}
                 <li>
                     <a class="faa-parent animated-hover" href="https://github.com/rscbarterkings/rscbk">
                            <i class="fa fa-fw fa-lg fab fa-github faa-tada faa-fast"></i>Github
@@ -532,7 +536,11 @@ $(function(){$('[data-toggle="popover"]').popover()});
 
   <hr>
 <center>        <a href="/terms">Terms of Service</a> | <a href="/privacy">Privacy</a>
-     <br>      <p >© 2018 - Designed by redsuncube. All rights reserved (Ravi Gandham)</p>
+     <br>      <p >© 2018 - Designed by redsuncube. All rights reserved (Ravi Gandham)</p><br>
+
+                    <a class="faa-parent animated-hover">
+    	              Your IP Address: <i class="fa fa-fw fa-lg fa-map-marker faa-tada faa-fast"></i>{{ localip }}
+                    </a>
      </center>
 
       </div>
