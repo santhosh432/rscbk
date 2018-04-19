@@ -10,6 +10,15 @@ from home.models import UserFullProfile
 from ipware.ip import get_ip
 
 # Create your views here.
+def aboutus(request):
+    context = {}
+    return render(request,'aboutus.html',context)
+
+# Create your views here.
+def contactus(request):
+    context = {}
+    return render(request,'contactus.html',context)
+# Create your views here.
 def terms(request):
     context = {}
     return render(request,'terms.html',context)
