@@ -14,7 +14,7 @@
 </head>
 <body>
     <div align="center"><b><font size="5"><span style="font-weight: bold; font-style: normal; text-decoration: none; font-size: 14pt; color: #000000;">Complete Item Description</span></font></b></div>
-    <table width="100%" border="1" cellpadding="1" cellspacing="0" style="border-color: #0000ff; border-style: solid; background-color: #ccffff;">
+    <table width="100%" border="1" cellpadding="1" cellspacing="0" style="border-color: red; border-style: solid; background-color: #5fcf80;">
         <tr>
             <td><b> Category </b></td>
             <td> {{ obj.category }} </td>
@@ -48,21 +48,21 @@
             <td> {{ obj.exchange_category  }} </td>
 
             <td><b> Item Status </b></td>
-            <td> {{ obj.item_status }}</td>
+            <td> {{ obj.get_item_status_display }}</td>
         </tr>
         <tr>
             <td><b> Item Image </b></td>
             <td><img src="/media/{{ obj.item_image }}"/></td>
 
             <td><b> Item Image2 </b></td>
-            <td><img src="/media/{{ obj.item_image }}"/></td>
+            <td><img src="/media/{{ obj.item_image2 }}"/></td>
         </tr>
         <tr>
             <td><b> Owner Name</b></td>
-            <td> {{ obj.itemuser }} </td>
+            <td>  {{ userpro.user.first_name }} </td>
 
             <td><b> Owner Contact </b></td>
-            <td> {{ obj.mobile }} </td>
+            <td> {{ mob }} </td>
         </tr>
     </table>
     <table width="100%" border="1" cellpadding="1" cellspacing="0" style="border-color: #0000ff; border-style: solid; background-color: #ccffff;">
@@ -72,7 +72,7 @@
         </tr>
         <tr>
             <td><b> Other Information </b></td>
-            <td> {{ obj.item_user }} </td>
+            <td> {{ obj.other_info }} </td>
         </tr>
     </table>
 

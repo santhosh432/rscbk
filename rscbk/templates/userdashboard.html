@@ -901,7 +901,7 @@ $("select[name='bnd'] > option").each(function () {
 <!-- code-->
 
 <div align=right>
-    hi, {{request.user}} || <a href="#"> <a class="faa-parent animated-hover" href="{% url 'logout' %}"><i class="fa fa-sign-out"></i> Logout</a>
+    Hi, {{request.user}} &nbsp || &nbsp <a href="#"> <a class="faa-parent animated-hover" href="{% url 'logout' %}"><i class="fa fa-sign-out"></i> Logout</a>
 </div>
 <div style=" background-color: E4FFBF;" class="row">
     <div style=" background-color: E4FFBF;" class="col-md-6 col-sm-6 col-xs-12 gutter">
@@ -981,7 +981,7 @@ $("select[name='bnd'] > option").each(function () {
                 </ul>
                 {% endif %} {% for useritems in items_cat %} {% if forloop.first %}
 
-                <h5>Selected catagory
+                <h5>Selected catagory:
 
                                    <select name="cat" onchange="window.location.href=this.value;">
 
@@ -1033,20 +1033,20 @@ $("select[name='bnd'] > option").each(function () {
                                     {% endfor %}
                                    </select>
 
-                                   </h5>
+
 
                 <p id="price_list">
 
-<label for="amount">Price range:</label>
-                    Min<input type=text id=min value=0>
-                    Max<input type=text id=max value={{items_cat_max.price}}>
+<label for="amount"> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Price range - &nbsp </label>
+                    Minimum :<input type=text id=min size="7" value=0> &nbsp &nbsp &nbsp
+                    Maximum :<input type=text id=max size="8" value={{items_cat_max.price}}>  &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
                     <br> {% for category in allcat %} {% if useritems.category == category %} {% for k,v in brand_dict.items%}
                     <a id="link" href="{% url 'myuserdashboard_with_cat_bnd' category.id k %}" title "show the range for {{v}}">
                         <button style="background-color: #4CAF50; border:2; color:#f6931f; font-weight:bold;"><b>{{v}}</b></button>
                     </a>
                     {% endfor %} {% endif %} {% endfor %}
 
-                </p>
+                </p> </h5>
                 <input type="hidden" id="amount" readonly  style="border:0; color:#f6931f; font-weight:bold;">
                 <div id="slider-range" class="slider"></div>
                 <!-- END SLIDE -->
@@ -1149,8 +1149,8 @@ $("select[name='bnd'] > option").each(function () {
     <table width="100%" border="2" cellpadding="2" cellspacing="2" style="border-color: #8080FF">
         <tr valign="top">
             <td style="border-width : 0px;">
-                <h4><b>This page facilitates the user to add their items which he/she want to exchange with other interested items in our portal which consists of other users products/items.</div></b></h4>
-                <ol>
+                <h6><b>This page facilitates the user to add their items which he/she want to exchange with other interested items in our portal which consists of other users products/items.</div></b></h6>
+               <h5> <ol>
                     <li>  Click on the Add Items button and provide your complete item details and click on the save button.
                     </li>
                     <li>  Once it is uploaded this will be visible to the global users and facilitates to exchange the Items by having the one to one conversations with the item owners.</li>
@@ -1160,7 +1160,7 @@ $("select[name='bnd'] > option").each(function () {
                     </li>
                     <li>  Contact the product/item owner, the details will be provided in the item description window, reach him/her by phone and negotiate.
                     </li>
-                </ol>
+                </ol>  </h5>
             </td>
         </tr>
     </table>

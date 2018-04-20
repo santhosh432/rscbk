@@ -27,3 +27,4 @@ class UserProfile(models.Model):
 class UserFullProfile(models.Model):
     user = models.OneToOneField(User)
     mobile = models.CharField(max_length=10, help_text='10 digit mobile number')
+

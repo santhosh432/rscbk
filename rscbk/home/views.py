@@ -11,21 +11,31 @@ from ipware.ip import get_ip
 
 # Create your views here.
 def aboutus(request):
-    context = {}
+    localip = get_ip(request)
+
+    context = {'localip':localip}
+
     return render(request,'aboutus.html',context)
 
 # Create your views here.
 def contactus(request):
-    context = {}
+    localip = get_ip(request)
+
+    context = {'localip':localip}
+
     return render(request,'contactus.html',context)
 # Create your views here.
 def terms(request):
-    context = {}
+    localip = get_ip(request)
+
+    context = {'localip':localip}
     return render(request,'terms.html',context)
 
 # Create your views here.
 def privacy(request):
-    context = {}
+    localip = get_ip(request)
+
+    context = {'localip':localip}
     return render(request,'privacy.html',context)
 
 def home(request):
@@ -35,12 +45,23 @@ def home(request):
     return render(request,'main.html',context)
 
 # Create your views here.
+def base(request):
+    localip = get_ip(request)
+
+    context = {'localip':localip}
+    return render(request,'base.html',context)
+
 def homepage(request):
-    context = {}
+    localip = get_ip(request)
+
+    context = {'localip':localip}
     return render(request,'home.html',context)
 
 @login_required
 def myuserdashboard(request):
+    localip = get_ip(request)
+
+
     cat = Category.objects.all()
     items = Items.objects.filter(itemuser=request.user)
     useritemscount = items.count()
@@ -59,11 +80,12 @@ def myuserdashboard(request):
         pass
 
 
-    return render(request, 'userdashboard.html',{'up':up,'allcat':cat,'items':items,'useritemscount':useritemscount,'totcount':totcount,'heading':heading,'global_items_count':global_items_count,'global_items_price':global_items_price})
+    return render(request, 'userdashboard.html',{'localip':localip,'up':up,'allcat':cat,'items':items,'useritemscount':useritemscount,'totcount':totcount,'heading':heading,'global_items_count':global_items_count,'global_items_price':global_items_price})
 from django.core.paginator import Paginator
 
 @login_required
 def myuserdashboard_with_cat(request,cat_id=None):
+    localip = get_ip(request)
     cat = Category.objects.all()
     items_cat = Items.objects.filter(category__id=cat_id).exclude(itemuser=request.user)
 
@@ -91,11 +113,12 @@ def myuserdashboard_with_cat(request,cat_id=None):
     page1 = request.GET.get('page', 1)
     items = paginator1.page(page1)
     select_value = 0
-    return render(request, 'userdashboard.html',{'items_cat_min':items_cat_min,'items_cat_max':items_cat_max,'brand_dict_all':brand_dict,'select_value':select_value,'brand_dict':brand_dict,'allcat':cat,'items':items,'useritemscount':useritemscount,'totcount':totcount,'useritemscount_cat':useritemscount_cat,'totcount_cat':totcount_cat,'heading':heading,'items_cat':items_cat})
+    return render(request, 'userdashboard.html',{'localip':localip,'items_cat_min':items_cat_min,'items_cat_max':items_cat_max,'brand_dict_all':brand_dict,'select_value':select_value,'brand_dict':brand_dict,'allcat':cat,'items':items,'useritemscount':useritemscount,'totcount':totcount,'useritemscount_cat':useritemscount_cat,'totcount_cat':totcount_cat,'heading':heading,'items_cat':items_cat})
 
 
 @login_required
 def myuserdashboard_with_cat_bnd(request,cat_id=None,bnd_id=None):
+    localip = get_ip(request)
     cat = Category.objects.all()
     items_cat_all = Items.objects.filter(category__id=cat_id).exclude(itemuser=request.user)
     items_cat = Items.objects.filter(category__id=cat_id,bnd__id=bnd_id).exclude(itemuser=request.user)
@@ -126,11 +149,12 @@ def myuserdashboard_with_cat_bnd(request,cat_id=None,bnd_id=None):
     items = paginator1.page(page1)
 
     select_value = bnd_id
-    return render(request, 'userdashboard.html',{'items_cat_min':items_cat_min,'items_cat_max':items_cat_max,'select_value':select_value,'brand_dict':brand_dict,'brand_dict_all':brand_dict_all,'allcat':cat,'items':items,'useritemscount':useritemscount,'totcount':totcount,'useritemscount_cat':useritemscount_cat,'totcount_cat':totcount_cat,'heading':heading,'items_cat':items_cat})
+    return render(request, 'userdashboard.html',{'localip':localip,'items_cat_min':items_cat_min,'items_cat_max':items_cat_max,'select_value':select_value,'brand_dict':brand_dict,'brand_dict_all':brand_dict_all,'allcat':cat,'items':items,'useritemscount':useritemscount,'totcount':totcount,'useritemscount_cat':useritemscount_cat,'totcount_cat':totcount_cat,'heading':heading,'items_cat':items_cat})
 
 
 @login_required
 def myuserdashboard_with_cat_bnd_min_max(request,cat_id=None,bnd_id=None,min_id=None, max_id=None):
+    localip = get_ip(request)
     cat = Category.objects.all()
     items_cat_all = Items.objects.filter(category__id=cat_id).exclude(itemuser=request.user)
     items_cat = Items.objects.filter(category__id=cat_id,bnd__id=bnd_id,price__range=(min_id, max_id)).exclude(itemuser=request.user)
@@ -161,7 +185,7 @@ def myuserdashboard_with_cat_bnd_min_max(request,cat_id=None,bnd_id=None,min_id=
     items = paginator1.page(page1)
 
     select_value = bnd_id
-    return render(request, 'userdashboard.html',{'items_cat_min':items_cat_min,'items_cat_max':items_cat_max,'select_value':select_value,'brand_dict':brand_dict,'brand_dict_all':brand_dict_all,'allcat':cat,'items':items,'useritemscount':useritemscount,'totcount':totcount,'useritemscount_cat':useritemscount_cat,'totcount_cat':totcount_cat,'heading':heading,'items_cat':items_cat})
+    return render(request, 'userdashboard.html',{'localip':localip,'items_cat_min':items_cat_min,'items_cat_max':items_cat_max,'select_value':select_value,'brand_dict':brand_dict,'brand_dict_all':brand_dict_all,'allcat':cat,'items':items,'useritemscount':useritemscount,'totcount':totcount,'useritemscount_cat':useritemscount_cat,'totcount_cat':totcount_cat,'heading':heading,'items_cat':items_cat})
 
 
 
@@ -170,14 +194,15 @@ def dashboard(request):
     return render(request,'dashboard.html')
 
 def sign_up(request):
-        context={}
+        localip = get_ip(request)
+        context={'localip':localip}
         if request.method == 'POST':
             if "s_username" in request.POST and 's_pass' in request.POST and 's_passr' in request.POST and 'email' in request.POST:
                 username = request.POST.get('s_username')
                 password = request.POST.get('s_pass')
                 passwordr = request.POST.get('s_passr')
                 email = request.POST.get('email')
-                first_name = request.POST.get('fullname')
+                first_name = request.POST.get('s_fullname')
                 mobile = request.POST.get('s_mobile')
                 if password == passwordr:
                     try:
