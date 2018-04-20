@@ -45,15 +45,30 @@ visibility: hidden;
 function login(showhide){
 if(showhide == "show"){
     document.getElementById('popupbox').style.visibility="visible";
+    document.getElementById('popupbox1').style.visibility="hidden";
 }else if(showhide == "hide"){
     document.getElementById('popupbox').style.visibility="hidden";
+    document.getElementById('popupbox1').style.visibility="visible";
 }
 }
+
+function cls(showhide1){
+
+
+    document.getElementById('popupbox').style.visibility="hidden";
+
+    document.getElementById('popupbox1').style.visibility="hidden";
+
+
+}
+
 function signup(showhide1){
 if(showhide1 == "show"){
     document.getElementById('popupbox1').style.visibility="visible";
+    document.getElementById('popupbox').style.visibility="hidden";
 }else if(showhide1 == "hide"){
     document.getElementById('popupbox1').style.visibility="hidden";
+    document.getElementById('popupbox').style.visibility="visible";
 }
 }
 </script>
@@ -80,10 +95,11 @@ if(showhide1 == "show"){
 
 
 
+
+
 <div id="popupbox">
 
 {% load staticfiles %}
-
  <form  method="post">
                                {% csrf_token %}
 <div class="container">
@@ -121,6 +137,8 @@ if(showhide1 == "show"){
 	</div>
 </div>
 </form>
+<a align="right" href="javascript:cls('show');"> <button>close</button></a>
+
 </div>
 
 
@@ -128,6 +146,7 @@ if(showhide1 == "show"){
 <div id="popupbox1">
 
 {% load staticfiles %}
+
 
 <form style="display:inline;" action="/signup/" method="post" id="f_register">
 {% csrf_token %}
@@ -159,19 +178,23 @@ if(showhide1 == "show"){
         </div>
     </div>
 </div>
+
+<a  href="javascript:cls('show');"> <button >close</button></a>
 </div>
 <!-- over signup-->
 
 
 
-<hr>
+
 
 
 
  <div align="center" style="background-color: #E4FFBF;">
 
+<h2><img src="{% static 'admin/img/logo.jpg' %}" width="190" height="135" alt="" title="" /><br>BarterKings
 
-
+</h2>
+<hr>
         <table width="100%" border="0" cellpadding="0" cellspacing="0" style="border-color: #E4FFBF; border-style: solid; background-color: #E4FFBF;">
             <tr valign="top">
                 <td style="border-color : #E4FFBF ">
@@ -201,11 +224,10 @@ if(showhide1 == "show"){
 
 
 
+
 <div style="background-color: #A6FF57;" align="center">
 
-    <b>  <a href="/privacy" target="_blank">Terms of Service </a> <br><a class="faa-parent animated-hover">
-    	              Your IP Address: <i class="fa fa-fw fa-lg fa-map-marker faa-tada faa-fast"></i>{{ localip }}
-                    </a>|| vistor count:
+    <b>  <a href="/privacy" target="_blank">Terms of Service </a> <br> vistor count:
                     <!-- hitwebcounter Code START -->
 
 <img src='https://www.counter12.com/img-x0Z5z8xDDZZcwDzz-36.gif' border='0' alt='counter'>
