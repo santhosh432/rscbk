@@ -28,6 +28,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$',home),
+    url(r'^home/$',home),
     url(r'^terms/$', terms),
     url(r'^privacy/$', privacy),
     url(r'^aboutus/$', aboutus),
