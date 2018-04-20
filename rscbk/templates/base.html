@@ -1,36 +1,48 @@
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
 
-<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+<head>
 
-<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-      <div class="container">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="#">Barter<b>Kings</b></a>
-    </div>
-
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <title></title>
 
 
-      <ul class="nav navbar-nav navbar-right">
-          <li class="active"><a href="#">Home</a></li>
-        <li><a href="#">About Us</a></li>
-        <li><a href="#">Contact Us</a></li>
-        <li><a href="/login">Login</a></li>
-        <li><a href="/signup">Signup</a></li>
+</head>
 
-</ul>
-    </div><!-- /.navbar-collapse -->
-      </div><!-- /.container-collapse -->
-  </nav>
+<body bgcolor="#A6FF57">
+    <b> <font size="6">BarterKings</font> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+		  <font size="4"> <img  src="{% static 'admin/img/home.jpg' %}" width="25" height="20" alt="" title="" /><a href="www.google.com" target="_blank">Home</a> &nbsp &nbsp &nbsp &nbsp
+		  <img   src="{% static 'admin/img/About.jpg' %}"" width="25" height="20" alt="" title="" /><a href="/aboutus" target="_blank">About Us</a> &nbsp &nbsp &nbsp &nbsp
+		  <img   src="{% static 'admin/img/contact.jpg' %}" width="25" height="20" alt="" title="" /> <a href="/contactus" target="_blank">Contact Us</a> &nbsp &nbsp &nbsp &nbsp
+		  <img src="{% static 'admin/img/git.jpg' %}" width="25" height="20" alt="" title="" /> <a href="www.google.com" target="_blank">Github</a> &nbsp &nbsp &nbsp &nbsp&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp&nbsp &nbsp &nbsp &nbsp
+		  <img   src="{% static 'admin/img/login.jpg' %}" width="25" height="20" alt="" title="" /> <a href="/login" >LogIn</a>&nbsp &nbsp &nbsp &nbsp
+		  <img  src="{% static 'admin/img/signup.jpg' %}" width="25" height="20" alt="" title="" /> <a href="/signup" >Signup</a></font></b>
 
+    <div align="center" style="background-color: #E4FFBF;">
+        <h2><img src="{% static 'admin/img/logo.jpg' %}" width="170" height="115" alt="" title="" /><br>BarterKings</h2>
+
+
+
+<hr>
+{% block content %}
+{% endblock %}
+
+
+
+
+
+<div style="background-color: #A6FF57;" align="center">
+
+    <b>  <a href="/privacy" target="_blank">Terms of Service </a> <br><a class="faa-parent animated-hover">
+    	              Your IP Address: <i class="fa fa-fw fa-lg fa-map-marker faa-tada faa-fast"></i>{{ localip }}
+                    </a>|| vistor count:
+                    <!-- hitwebcounter Code START -->
+
+<img src='https://www.counter12.com/img-x0Z5z8xDDZZcwDzz-36.gif' border='0' alt='counter'>
+
+                    <br>
+© 2018 - Designed by redsuncube. All rights reserved (Ravi Gandham)</div></b>
+
+</body>
+
+</html>

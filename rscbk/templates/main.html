@@ -1,29 +1,6 @@
-{% load staticfiles %}
-<!DOCTYPE html>
-<html lang="en">
+{% extends "base.html" %}
+{% block content %}
 
-<head>
-
-    <title></title>
-
-
-</head>
-
-<body bgcolor="#A6FF57">
-    <b> <font size="6">BarterKings</font> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
-		  <font size="4"> <img  src="{% static 'admin/img/home.jpg' %}" width="25" height="20" alt="" title="" /><a href="www.google.com" target="_blank">Home</a> &nbsp &nbsp &nbsp &nbsp
-		  <img   src="{% static 'admin/img/About.jpg' %}"" width="25" height="20" alt="" title="" /><a href="/aboutus" target="_blank">About Us</a> &nbsp &nbsp &nbsp &nbsp
-		  <img   src="{% static 'admin/img/contact.jpg' %}" width="25" height="20" alt="" title="" /> <a href="/contactus" target="_blank">Contact Us</a> &nbsp &nbsp &nbsp &nbsp
-		  <img src="{% static 'admin/img/git.jpg' %}" width="25" height="20" alt="" title="" /> <a href="www.google.com" target="_blank">Github</a> &nbsp &nbsp &nbsp &nbsp&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp&nbsp &nbsp &nbsp &nbsp
-		  <img   src="{% static 'admin/img/login.jpg' %}" width="25" height="20" alt="" title="" /> <a href="/login" >LogIn</a>&nbsp &nbsp &nbsp &nbsp
-		  <img  src="{% static 'admin/img/signup.jpg' %}" width="25" height="20" alt="" title="" /> <a href="/signup" >Signup</a></font></b>
-
-    <div align="center" style="background-color: #E4FFBF;">
-        <h2><img src="{% static 'admin/img/logo.jpg' %}" width="170" height="115" alt="" title="" /><br>BarterKings</h2>
-
-
-
-<hr>
 
         <table width="100%" border="0" cellpadding="0" cellspacing="0" style="border-color: #E4FFBF; border-style: solid; background-color: #E4FFBF;">
             <tr valign="top">
@@ -34,37 +11,21 @@
 
     <span style="font-family: Vrinda; font-weight: bold; font-style: italic; text-decoration: none; font-size: 16pt; ">
 				   		 <div align="justify">
-						       BarterKings Portal gives us the platform to exchange our unused or Idle products/Items to exchange with the products with likeminded users.<br>
-						 	   The concept of BarterKings portal came into real existences by the group of IT software architects who have some valued items which are not
-							   in used by them anymore also they can't able to throw it away as they valued. Here the Idea has born to exchange their products with the
+						       BarterKings.in Portal provides the platform to exchange our unused or Idle products/Items with the products with likeminded users.<br>
+						 	   The concept of BarterKings portal came into existences by the group of IT software architects who have some valued items which are not
+							   in use by them anymore and also they can't able to throw away as they are valued. Here the Idea has born to exchange their products with the
 							   similar mindset people who wants to exchange their products.<br>
-							   BarterKings portal facilitates the user to Add their Products into the portal with relevant product details and facilitates them in searching
-							   their interested products from the global products which was added by the global users.<br>
-			 				   This Portal is built on the concept of serving its users with no expectation of gaining any profits out of their exchange of products and portal
-							   will not be involving in any financial dealings.<br>
+							   BarterKings.in portal facilitates the user to Add their items/products in the portal with relevant product information and facilitates them in searching
+							   their interested products from the products which was added by the global users.<br>
+			 				   Barterkings.in portal is built on the concept of serving its users with no expectation of profits out of the exchange of items/products and the portal will not be
+							   involving in any financial dealings.<br>
 							   <br>
 							   <br>
-							   <br>
-							   <br>
-							   <br>
+
 
 						 </div>
 				   </span>
     </td>
     </tr>
     </table>
-<div style="background-color: #A6FF57;" align="center">
-
-    <b>  <a href="/privacy" target="_blank">Terms of Service </a> <br><a class="faa-parent animated-hover">
-    	              Your IP Address: <i class="fa fa-fw fa-lg fa-map-marker faa-tada faa-fast"></i>{{ localip }}
-                    </a>|| vistor count:
-                    <!-- hitwebcounter Code START -->
-
-<img src="http://hitwebcounter.com/counter/counter.php?page=6933488&style=0008&nbdigits=5&type=page&initCount=0" title="URL Counter" Alt="URL Counter"   border="0" >
-
-                    <br>
-© 2018 - Designed by redsuncube. All rights reserved (Ravi Gandham)</div></b>
-
-</body>
-
-</html>
+{% endblock %}
