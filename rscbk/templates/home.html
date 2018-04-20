@@ -1,5 +1,87 @@
-{% extends "base1.html" %}
-{% block content %}
+
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <title></title>
+
+
+
+<style type="text/css">
+#popupbox{
+margin: 0;
+margin-left: 70%;
+margin-right: 30%;
+margin-top: 10px;
+padding-top: 10px;
+width: 20%;
+height: 150px;
+position: absolute;
+background: #FBFBF0;
+border: solid #000000 2px;
+z-index: 9;
+font-family: arial;
+visibility: hidden;
+}
+#popupbox1{
+margin: 0;
+margin-left: 70%;
+margin-right: 30%;
+margin-top: 10px;
+padding-top: 10px;
+width: 20%;
+height: 150px;
+position: absolute;
+background: #FBFBF0;
+border: solid #000000 2px;
+z-index: 9;
+font-family: arial;
+visibility: hidden;
+}
+</style>
+<script language="JavaScript" type="text/javascript">
+function login(showhide){
+if(showhide == "show"){
+    document.getElementById('popupbox').style.visibility="visible";
+}else if(showhide == "hide"){
+    document.getElementById('popupbox').style.visibility="hidden";
+}
+}
+function signup(showhide1){
+if(showhide1 == "show"){
+    document.getElementById('popupbox1').style.visibility="visible";
+}else if(showhide1 == "hide"){
+    document.getElementById('popupbox1').style.visibility="hidden";
+}
+}
+</script>
+
+
+
+
+
+
+</head>
+
+<body bgcolor="#A6FF57">
+    <b> <font size="6">BarterKings</font> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+		  <font size="4"> <img  src="{% static 'admin/img/home.jpg' %}" width="25" height="20" alt="" title="" /><a href="#" >Home</a> &nbsp &nbsp &nbsp
+		  <img   src="{% static 'admin/img/About.jpg' %}"" width="25" height="20" alt="" title="" /><a href="/aboutus">About Us</a> &nbsp &nbsp &nbsp
+		  <img   src="{% static 'admin/img/contact.jpg' %}" width="25" height="20" alt="" title="" /> <a href="/contactus">Contact Us</a> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+
+		  <img  src="{% static 'admin/img/signup.jpg' %}" width="25" height="20" alt="" title="" /> <a href="javascript:signup('show');">signup</a></font></b>
+
+
+    <img  src="{% static 'admin/img/login.jpg' %}" width="25" height="20" alt="" title="" /> <a href="javascript:login('show');">login</a></font></b>
+
+
+
+
+
+<div id="popupbox">
+
 {% load staticfiles %}
 
  <form  method="post">
@@ -14,10 +96,6 @@
   			<div id="bottomBlurBg"></div>
   			<!-- Login Form -->
   			<div class="loginForm">
-  			       	<div class="title">
-                    <img  height="100" width="150" src="{% static 'admin/img/logo.png' %}">
-             		<p>Barter<br><span>Kings</span></p>
-  			     	</div>
 
 
   					<div class="col-3">
@@ -43,5 +121,116 @@
 	</div>
 </div>
 </form>
+</div>
 
-{% endblock %}
+
+<!-- singup-->
+<div id="popupbox1">
+
+{% load staticfiles %}
+
+<form style="display:inline;" action="/signup/" method="post" id="f_register">
+{% csrf_token %}
+<div class="container">
+	<div class="row">
+		<div class="col-md-6 col-sm-6 col-xs-6 col-md-offset-3">
+  			<div id="iosBlurBg">
+  				<div id="whiteBg"></div>
+  			</div>
+  			<div id="bottomEnter"></div>
+  			<div id="bottomBlurBg"></div>
+  			<!-- Login Form -->
+  			<div class="loginForm">
+
+				<div class="col-3">
+		        	<input type="text" name="s_username" class="effect-2 form-control" placeholder="username"/>
+		        	<input type="text" name="s_fullname" class="effect-2 form-control" placeholder="Fullname"/>
+                    <input type="text" name="email"class="effect-2 form-control" placeholder="e-mail" />
+                    <input type="text" name="s_mobile" class="effect-2 form-control" placeholder="mobile" />
+		            <input type="password" name="s_pass" class="effect-2 form-control" placeholder="password"/>
+		            <input type="password" name="s_passr"class="effect-2 form-control" placeholder="confirm pwd"/>
+		        </div>
+			    <div class="enterButton">
+			        <br>
+			        <input type="submit" value="Sign up" class="btn btn-default button2 "/>
+  		    	</div>
+  				</form>
+  			</div>
+        </div>
+    </div>
+</div>
+</div>
+<!-- over signup-->
+
+
+
+<hr>
+
+
+
+ <div align="center" style="background-color: #E4FFBF;">
+
+
+
+        <table width="100%" border="0" cellpadding="0" cellspacing="0" style="border-color: #E4FFBF; border-style: solid; background-color: #E4FFBF;">
+            <tr valign="top">
+                <td style="border-color : #E4FFBF ">
+                    <br />
+
+    </div>
+
+    <span style="font-family: Vrinda; font-weight: bold; font-style: italic; text-decoration: none; font-size: 16pt; ">
+				   		 <div align="justify">
+						       BarterKings.in Portal provides the platform to exchange our unused or Idle products/Items with the products with likeminded users.<br>
+						 	   The concept of BarterKings portal came into existences by the group of IT software architects who have some valued items which are not
+							   in use by them anymore and also they can't able to throw away as they are valued. Here the Idea has born to exchange their products with the
+							   similar mindset people who wants to exchange their products.<br>
+							   BarterKings.in portal facilitates the user to Add their items/products in the portal with relevant product information and facilitates them in searching
+							   their interested products from the products which was added by the global users.<br>
+			 				   Barterkings.in portal is built on the concept of serving its users with no expectation of profits out of the exchange of items/products and the portal will not be
+							   involving in any financial dealings.<br>
+							   <br>
+							   <br>
+
+
+						 </div>
+				   </span>
+    </td>
+    </tr>
+    </table>
+
+
+
+<div style="background-color: #A6FF57;" align="center">
+
+    <b>  <a href="/privacy" target="_blank">Terms of Service </a> <br><a class="faa-parent animated-hover">
+    	              Your IP Address: <i class="fa fa-fw fa-lg fa-map-marker faa-tada faa-fast"></i>{{ localip }}
+                    </a>|| vistor count:
+                    <!-- hitwebcounter Code START -->
+
+<img src='https://www.counter12.com/img-x0Z5z8xDDZZcwDzz-36.gif' border='0' alt='counter'>
+
+                    <br>
+© 2018 - Designed by redsuncube. All rights reserved (Ravi Gandham)</div></b>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>
+

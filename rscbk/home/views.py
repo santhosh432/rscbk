@@ -217,7 +217,7 @@ def sign_up(request):
                         return HttpResponseRedirect(reverse('/login'))
                     except:
                         pass #
-            return render(request, 'main.html', context)
+            return render(request, 'sucess.html', context)
         else:
             return render(request, 'signup.html', context)
 

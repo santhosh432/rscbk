@@ -7,18 +7,105 @@
     <title></title>
 
 
+
+<style type="text/css">
+#popupbox{
+margin: 0;
+margin-left: 70%;
+margin-right: 30%;
+margin-top: 10px;
+padding-top: 10px;
+width: 20%;
+height: 150px;
+position: absolute;
+background: #FBFBF0;
+border: solid #000000 2px;
+z-index: 9;
+font-family: arial;
+visibility: hidden;
+}
+</style>
+<script language="JavaScript" type="text/javascript">
+function login(showhide){
+if(showhide == "show"){
+    document.getElementById('popupbox').style.visibility="visible";
+}else if(showhide == "hide"){
+    document.getElementById('popupbox').style.visibility="hidden";
+}
+}
+</script>
+
+
+
+
+
+
 </head>
 
 <body bgcolor="#A6FF57">
     <b> <font size="6">BarterKings</font> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
 		  <font size="4"> <img  src="{% static 'admin/img/home.jpg' %}" width="25" height="20" alt="" title="" /><a href="#" >Home</a> &nbsp &nbsp &nbsp
 		  <img   src="{% static 'admin/img/About.jpg' %}"" width="25" height="20" alt="" title="" /><a href="/aboutus">About Us</a> &nbsp &nbsp &nbsp
-		  <img   src="{% static 'admin/img/contact.jpg' %}" width="25" height="20" alt="" title="" /> <a href="/contactus">Contact Us</a> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+		  <img   src="{% static 'admin/img/contact.jpg' %}" width="25" height="20" alt="" title="" /> <a href="/contactus">Contact Us</a> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
 		  <img   src="{% static 'admin/img/login.jpg' %}" width="25" height="20" alt="" title="" /> <a href="/login" >LogIn</a> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
 		  <img  src="{% static 'admin/img/signup.jpg' %}" width="25" height="20" alt="" title="" /> <a href="/signup" >Signup</a></font></b>
 
+
+    <img  src="{% static 'admin/img/login.jpg' %}" width="25" height="20" alt="" title="" /> <a href="javascript:login('show');">Rlogin</a></font></b>
+
+
     <div align="center" style="background-color: #E4FFBF;">
-        <h2><img src="{% static 'admin/img/logo.jpg' %}" width="190" height="135" alt="" title="" /><br>BarterKings</h2>
+
+
+
+
+
+<div id="popupbox">
+<form name="login" action="" method="post">
+ {% csrf_token %}
+
+
+
+
+                    <div class="col-3">
+			        	RUsername :<input required name="username" class="effect-2" type="text" placeholder="Login...">
+			            <span class="focus-border"></span>
+
+			            RPassword :<input required name="password" class="effect-2" type="password" placeholder="Password...">
+			            <span class="focus-border"></span>
+			        </div>
+
+  				    <div class="enterButton">
+  				        <br>
+	  			        <button class="button2" type=submit>	<i class="fa fa-lock fa-2x text-white">Login</i></button><br>
+	  		    	</div>
+
+
+<!--
+<center>Username:</center>
+<center><input name="username" size="14" /></center>
+<center>Password:</center>
+<center><input name="password" type="password" size="14" /></center>
+<center><input type="submit" name="submit" value="login" /></center>
+-->
+
+
+</form>
+<br />
+<center><a href="javascript:login('hide');">close</a></center>
+</div>
+
+
+
+
+
+<h2><img src="{% static 'admin/img/logo.jpg' %}" width="190" height="135" alt="" title="" /><br>BarterKings
+
+</h2>
+
+
+
+
         {% block content %}
 {% endblock %}
 
@@ -43,6 +130,23 @@
 
                     <br>
 © 2018 - Designed by redsuncube. All rights reserved (Ravi Gandham)</div></b>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 </body>
 
