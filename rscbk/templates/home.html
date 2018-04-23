@@ -1,277 +1,559 @@
-
 {% load staticfiles %}
-<!DOCTYPE html>
-<html lang="en">
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<style>
+    body {background:#e8edfc;}
+.panel {border-radius:0px;}
+a:hover {text-decoration:none;color:#f7a01d;}
+/************ Margin ************/
+.margin-t-20 {margin-top:20px;}
+.margin-t-30 {margin-top:30px;}
+.margin-t-40 {margin-top:40px;}
+.margin-t-50 {margin-top:50px;}
+.margin-t-60 {margin-top:60px;}
+.margin-t-70 {margin-top:70px;}
+.margin-t-80 {margin-top:80px;}
+.margin-t-90 {margin-top:90px;}
+.margin-b-0{margin-bottom: 0px!important;}
+/************** Background ***************/
+.bg-blue {background:#0e1651;color:#fff!important;}
+/************* Icon ***********/
+i {padding-right:15px;}
+/************** Sidebar ***************/
 
-<head>
-
-    <title></title>
 
 
 
-<style type="text/css">
-#loginid{
+
+
+
+
+.card {background:#ffffff;border:1px solid #e2e2e2; shadow:2px 2px 2px #e2e2e2;margin-bottom:20px;}
+.card-body {padding:15px;}
+
+
+
+
+
+/************** NAVIGATION ***************/
+/*--------------------------------------
+ Sets the actionable area for the gaadiexp
+ including a label for usability
+--------------------------------------*/
+.gaadiexp,
+.gaadiexp:after,
+.gaadiexp *,
+.gaadiexp *:before,
+.gaadiexp *:after,
+.header-nav *,
+.header-nav *:before,
+.header-nav *:after {
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+.gaadiexp {
+    cursor: pointer;
+    height: 60px;
+    margin-bottom: 0;
+    width: 60px;
+    z-index: 9001;
+    left: 0;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    background: #f7a01d;
+	box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.075);
+}
+
+.gaadiexp:after {
+    bottom: 7px;
+    color: #FFFFFF;
+    content: 'Menu';
+    font-size: 13px;
+    font-weight: 300;
+    left: 0;
+    position: absolute;
     text-align: center;
-    padding: 5px;
-    color: #24b74b;
+    width: 100%;
+}
+
+
+/*--------------------------------------
+ Creates the look of the gaadiexp icon
+ using the inner span and pseudo-elements
+--------------------------------------*/
+
+.gaadiexp span,
+.gaadiexp span:before,
+.gaadiexp span:after {
+    background: #FFFFFF;
+    border-radius: 0px;
+    height: 4px;
+    left: 10px;
+    position: absolute;
+    top: 22px;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+    width: 40px;
+}
+
+
+/* Reset the left and create the pseudo-element */
+
+.gaadiexp span:before,
+.gaadiexp span:after {
+    content: '';
+    left: 0;
+}
+
+
+/* Top bar position */
+
+.gaadiexp span:before {
+    top: -8px;
+}
+
+
+/* Bottom bar position */
+
+.gaadiexp span:after {
+    top: 8px;
+}
+
+
+/* Get rid of more on action (IE9 or higher) */
+
+.gaadiexp-check:checked + .gaadiexp:after {
+    content: '';
+}
+
+
+/* Get rid of the middle bar on action (IE9 or higher) */
+
+.gaadiexp-check:checked + .gaadiexp span {
+    height: 0;
+    width: 0;
+}
+
+
+/* Moves the top and bottom bars to the middle on action (IE9 or higher) */
+
+.gaadiexp-check:checked + .gaadiexp span:before,
+.gaadiexp-check:checked + .gaadiexp span:after {
+    top: 6px;
+}
+
+
+/* Rotates the top bar on action with full browser support (IE9 or higher) */
+
+.gaadiexp-check:checked + .gaadiexp span:before {
+    -webkit-transform: rotate(225deg);
+    -ms-transform: rotate(225deg);
+    transform: rotate(225deg);
+}
+
+
+/* Rotates the bottom bar on action with full browser support (IE9 or higher) */
+
+.gaadiexp-check:checked + .gaadiexp span:after {
+    -webkit-transform: rotate(-225deg);
+    -ms-transform: rotate(225deg);
+    transform: rotate(-225deg);
+}
+
+#mobile-nav:focus + .gaadiexp,
+.gaadiexp:focus,
+.gaadiexp:hover {
+    background: #f7a01d;
+}
+
+.gaadiexp-check:checked + .gaadiexp {
+    width: 200px;
+}
+
+.gaadiexp-check:checked + .gaadiexp:after {
+    bottom: 18px;
+    content: 'Close Menu';
     font-size: 20px;
-    font-weight: bold;
-    background-color: #3c3e69;
-    border-radius: 5px;
-    box-shadow: 0 0 16px 7px black;
+    padding-left: 30px;
 }
 
-#popupbox{
-margin: 0;
-margin-left: 70%;
-margin-right: 30%;
-margin-top: 25px;
-padding-top: 10px;
-width: 20%;
-height: 150px;
-position: absolute;
-background: #E4FFBF;
-border: solid #000000 2px;
-z-index: 9;
-font-family: arial;
-visibility: hidden;
+#mobile-nav {
+    left: -9999px;
+    position: fixed;
+    top: 0;
 }
-#popupbox1{
-margin: 0;
-margin-left: 70%;
-margin-right: 30%;
-margin-top: 25px;
-padding-top: 10px;
-width: 22%;
-height: 165px;
-position: absolute;
-background: #E4FFBF;
-border: solid #000000 2px;
-z-index: 9;
-font-family: arial;
-visibility: hidden;
+
+.header-nav ul li a:active,
+.header-nav ul li a:focus,
+.header-nav ul li a:hover,
+#mobile-nav:focus + .gaadiexp,
+.gaadiexp:focus,
+.gaadiexp:hover {
+    background: #e2e2e2;
+    outline: none;
+
 }
+
+.fixed-nav {
+    background: #f7a01d;
+    height: 60px;
+    position: fixed;
+    width: 100%;
+    z-index: 9000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+.fixed-nav a {color:#fff;}
+
+.header-nav {
+    float: left;
+    height: 60px;
+    position: relative;
+    width: 100%;
+
+}
+
+.header-nav ul {
+    background: #fff;
+
+    height: calc(100vh - 60px);
+    list-style: none;
+    margin: 0;
+    overflow-y: auto;
+    padding: 10px 0 0 0;
+    position: absolute;
+    -webkit-transform: translateX(-110%);
+    transform: translateX(-110%);
+    -webkit-transition-timing-function: cubic-bezier(0.250, 0.460, 0.450, 0.940);
+    -moz-transition-timing-function: cubic-bezier(0.250, 0.460, 0.450, 0.940);
+    -o-transition-timing-function: cubic-bezier(0.250, 0.460, 0.450, 0.940);
+    transition-timing-function: cubic-bezier(0.250, 0.460, 0.450, 0.940);
+    width: 200px;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.075);
+    top: 100%;
+    z-index: 1;
+}
+
+.gaadiexp-check:checked ~ .header-nav ul {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+}
+
+.header-nav ul li {
+    float: left;
+    position: relative;
+    width: 100%;
+}
+
+.header-nav ul li a {
+    color: rgba(0, 0, 0, 0.79);
+    display: block;
+    float: left;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 0.75px;
+    line-height: 24px;
+    margin-left: 0;
+    overflow: hidden;
+    /*padding: 12px 60px 12px 12px;*/
+    position: relative;
+    text-decoration: none;
+    width: 100%;
+}
+.list-group-item:last-child {
+
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+}
+.list-group-item {
+    background-color: #ffffff;
+    border: 1px solid #efefef;
+}
+
 </style>
-<script language="JavaScript" type="text/javascript">
-function login(showhide){
-if(showhide == "show"){
-    document.getElementById('popupbox').style.visibility="visible";
-    document.getElementById('popupbox1').style.visibility="hidden";
-}else if(showhide == "hide"){
-    document.getElementById('popupbox').style.visibility="hidden";
-    document.getElementById('popupbox1').style.visibility="visible";
-}
-}
-
-function cls(showhide1){
-
-
-    document.getElementById('popupbox').style.visibility="hidden";
-
-    document.getElementById('popupbox1').style.visibility="hidden";
-
-
-}
-
-function signup(showhide1){
-if(showhide1 == "show"){
-    document.getElementById('popupbox1').style.visibility="visible";
-    document.getElementById('popupbox').style.visibility="hidden";
-}else if(showhide1 == "hide"){
-    document.getElementById('popupbox1').style.visibility="hidden";
-    document.getElementById('popupbox').style.visibility="visible";
-}
-}
-</script>
 
 
 
 
+<input type="checkbox" name="mobile-nav" id="mobile-nav" class="gaadiexp-check" onchange="this.blur()">
+<label for="mobile-nav" class="gaadiexp white" tabindex="0"><span></span></label>
+<nav role="navigation" class="header-nav">
+    <div class="fixed-nav">
+	<a class="navbar-brand " style="margin-left:60px" href="#"><font size=5>Barterkings</font></a>
+        <div class="menu">
+            <ul>
+                <li class="page_item page-item-2">
+                    <a href="dashboard.html" class="list-group-item">About Us</a>
+                </li>
+                <li class="page_item page-item-2">
+                    <a href="profile.html" class="list-group-item ">Contact Us</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
 
+<div class="container-fluid top-heading bg-blue">
+    <div class="container ">
+         <div class="margin-t-60"></div>
+	    <div class="row">
 
-</head>
-
-<body bgcolor="#5BFF92">
-    <b>
-    <font size="6">BarterKings</font> &nbsp
-	<font size="4"> <img  src="{% static 'admin/img/home.jpg' %}" width="25" height="20" alt="" title="" />
-	    <a href="#" >Home</a> &nbsp
-	<img src="{% static 'admin/img/About.jpg' %}" width="25" height="20" alt="" title="" />
-		<a href="/aboutus">About Us</a> &nbsp
-
-		<img src="{% static 'admin/img/contact.jpg' %}" width="25" height="20" alt="" title="" />
-		<a href="/contactus">Contact Us</a> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
-
-		  <img src="{% static 'admin/img/signup.jpg' %}" width="25" height="20" alt="" title="" /> <a href="javascript:signup('show');">signup </a>
-
-
-    <img  src="{% static 'admin/img/login.jpg' %}" width="25" height="20" alt="" title="" /> <a href="javascript:login('show');">login </a>
-    </font></b>
-    </b>
-
-
-
-
-
-
-
-<div id="popupbox">
-
-{% load staticfiles %}
- <form  method="post">
-                               {% csrf_token %}
-<div class="container">
-	<div class="row">
-		<div class="col-md-6 col-sm-6 col-xs-6 col-md-offset-3">
-  			<div id="iosBlurBg">
-  				<div id="whiteBg"></div>
-  			</div>
-  			<div id="bottomEnter">Login</div>
-  			<div id="bottomBlurBg"></div>
-  			<!-- Login Form -->
-  			<div class="loginForm">
-
-
-  					<div class="col-3">
-			        	Username :<input required name="username" class="effect-2" type="text" placeholder="Login...">
-			            <span class="focus-border"></span>
-
-			            Password :<input required name="password" class="effect-2" type="password" placeholder="Password...">
-			            <span class="focus-border"></span>
-			        </div>
-
-  				    <div class="enterButton">
-  				        <br>
-	  			        <button class="button2" type=submit>	<i class="fa fa-lock fa-2x text-white">Login</i></button><br>
-	  		    	</div>
-
-  			</div>
-  			<style>
-  .button2 {background-color: ;} /* Blue */</style>
-<!-- .button2 {background-color: #008CBA;} /* Blue */</style> -->
-            <div class="forget">
-		        <button class="btn btn-default btn-sm">Forgot Password ?</button>
-			</div>
-		</div>
+	    </div>
 	</div>
 </div>
-</form>
-<a align="right" href="javascript:cls('show');"> <button>close</button></a>
-
-</div>
 
 
-<!-- singup-->
-<div id="popupbox1">
-
-{% load staticfiles %}
-
-
-<form style="display:inline;" action="/signup/" method="post" id="f_register">
-{% csrf_token %}
-<div class="container">
+<div class="container-fluid column-starter">
+	<!------------ Panel Class ------------->
+    <div class="margin-t-20"></div>
 	<div class="row">
-		<div class="col-md-6 col-sm-6 col-xs-6 col-md-offset-3">
-  			<div id="iosBlurBg">
-  				<div id="whiteBg"></div>
-  			</div>
-  			<div id="bottomEnter"></div>
-  			<div id="bottomBlurBg"></div>
-  			<!-- Login Form -->
-  			<div class="loginForm">
+	    <div class="col-md-3 sidebar">
+	        <div class="panel">
+    	       <div class="panel-body ">
+                <div class="sidebar-nav">
+                 <div class="sidebar panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                          <a data-toggle="collapse" href="#sidemenu1" class="" aria-expanded="true">Login <i class="fa fa-angle-down pull-right"></i></a>
+                        </h4>
+                      </div>
+                     <div id="sidemenu1" class="panel-collapse collapse in" aria-expanded="true" style="">
+                         <div class="list-group">
+                               <form  method="post">
+                               {% csrf_token %}
+                               Username :<input required name="username" class="effect-2" type="text" placeholder="Login..."><br>
+                               Password :<input required name="password" class="effect-2" type="password" placeholder="Password...">
+                               <br>
+	  			               <button class="button2" type=submit>	<i class="fa fa-lock fa-2x text-white">Login</i></button><br>
+                               </form>
+                            </div>
 
-				<div class="col-3">
-		        	User_Name &nbsp :<input type="text" name="s_username" class="effect-2 form-control" placeholder="username"/>
-		        	Full_Name &nbsp  &nbsp :<input type="text" name="s_fullname" class="effect-2 form-control" placeholder="Fullname"/>
-                    Email_ID  &nbsp  &nbsp  &nbsp :<input type="text" name="email"class="effect-2 form-control" placeholder="e-mail" />
-                    Mobile_No  &nbsp &nbsp :<input type="text" name="s_mobile" class="effect-2 form-control" placeholder="mobile" />
-		            Password  &nbsp  &nbsp : <input type="password" name="s_pass" class="effect-2 form-control" placeholder="password"/>
-		            Confirm Pwd :<input type="password" name="s_passr"class="effect-2 form-control" placeholder="confirm pwd"/>
-		        </div>
-			    <div class="enterButton">
-			        <br>
-			        <input type="submit" value="Sign up" class="btn btn-default button2 "/> <a  href="javascript:cls('show');"> <button >close</button></a>
-  		    	</div>
-  				</form>
-  			</div>
+                    </div>
+                 </div>
+                 <div class="sidebar panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                          <a data-toggle="collapse" href="#sidemenu2" id="preview" class="" aria-expanded="true">Signup <i class="fa fa-angle-down pull-right"></i></a>
+                        </h4>
+                      </div>
+                     <div id="div2">
+                     <div id="sidemenu2 div2" class="panel-collapse collapse in" aria-expanded="true" style="">
+                         <div class="list-group">
+                            <form style="display:inline;" action="/signup/" method="post" id="f_register">
+                                {% csrf_token %}
+                                Username :<input type="text" name="s_username" class="effect-2 form-control" placeholder="username"/>
+            		        	Full Name :<input type="text" name="s_fullname" class="effect-2 form-control" placeholder="Fullname"/>
+                                Email :<input type="text" name="email"class="effect-2 form-control" placeholder="e-mail" />
+                                Mobile :<input type="text" name="s_mobile" class="effect-2 form-control" placeholder="mobile" />
+            		            Password :<input type="password" name="s_pass" class="effect-2 form-control" placeholder="password"/>
+            		            Confirm Password :<input type="password" name="s_passr"class="effect-2 form-control" placeholder="confirm pwd"/>
+            		            <input type="submit" value="Sign up" class="btn btn-default button2 "/>
+                            </form>
+                            </div>
+
+                    </div>
+                    </div>
+                 </div>
+
+                </div>
+
+
+    	        </div>
+
+	        </div>
+	    </div>
+	    <div class="col-md-9">
+	        <div class="panel">
+	       <div class="panel-body">
+	           {% load staticfiles %}
+	            <img src="{% static 'admin/img/logo.jpg' %}" width="190" height="135" alt="" title="" />
+	            <legend></legend>
+	            Barter is a system of exchange where goods or services are directly exchanged for other goods or services without using a medium of exchange, such as money, but our Portal is little hybreed where we can negotiate the exchange with money too.<br>
+				BarterKings.in Portal provides the platform to exchange our unused or Idle products/Items with the products with likeminded users.<br>
+				The concept of BarterKings portal came into existences by the group of IT gurus who have some valued items which are not
+				in use by them anymore and also they can't able to throw away as they are valued. Here the Idea has born to exchange their products with the
+				similar mindset people who wants to exchange their products.<br>
+				BarterKings.in portal facilitates the user to Add their items/products in the portal with relevant product information and also facilitates them in searching
+				their interested products from the global products which has added by the global users.<br>
+			 	Barterkings.in portal is built on the concept of serving the users with no expectation of profits out of the items/products exchange and the portal will not be
+				involving in any financial dealings with the users.<br>
+	        </div>
+
+	        </div>
+
+	    </div>
+
+	</div>
+</div>
+<!-- comment-->
+ <div class="sidemenu panel-default">
+                  <div class="panel-heading">
+                    <h4 class="panel-title">
+                      <a data-toggle="collapse" href="#collapse1"><center>Comments & Feed backs</center></a>
+                    </h4>
+                  </div>
+                     <div id="collapse1" class="panel-collapse collapse in">
+                     <div class="list-group">
+          <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="container">
+    <div class="row">
+        <div class="panel panel-default widget">
+            <div class="panel-heading">
+                <span class="glyphicon glyphicon-comment"></span>
+                <h3 class="panel-title">
+                    Recent Comments</h3>
+                <span class="label label-info">
+                    78</span>
+            </div>
+            <div class="panel-body">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-xs-2 col-md-1">
+                                <img src="http://placehold.it/80" class="img-circle img-responsive" alt="" /></div>
+                            <div class="col-xs-10 col-md-11">
+                                <div>
+                                    <a href="http://www.jquery2dotnet.com/2013/10/google-style-login-page-desing-usign.html">
+                                        Google Style Login Page Design Using Bootstrap</a>
+                                    <div class="mic-info">
+                                        By: <a href="#">Bhaumik Patel</a> on 2 Aug 2013
+                                    </div>
+                                </div>
+                                <div class="comment-text">
+                                    Awesome design
+                                </div>
+                                <div class="action">
+                                    <button type="button" class="btn btn-primary btn-xs" title="Edit">
+                                        <span class="glyphicon glyphicon-pencil"></span>
+                                    </button>
+                                    <button type="button" class="btn btn-success btn-xs" title="Approved">
+                                        <span class="glyphicon glyphicon-ok"></span>
+                                    </button>
+                                    <button type="button" class="btn btn-danger btn-xs" title="Delete">
+                                        <span class="glyphicon glyphicon-trash"></span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-xs-2 col-md-1">
+                                <img src="http://placehold.it/80" class="img-circle img-responsive" alt="" /></div>
+                            <div class="col-xs-10 col-md-11">
+                                <div>
+                                    <a href="http://bootsnipp.com/BhaumikPatel/snippets/Obgj">Admin Panel Quick Shortcuts</a>
+                                    <div class="mic-info">
+                                        By: <a href="#">Bhaumik Patel</a> on 11 Nov 2013
+                                    </div>
+                                </div>
+                                <div class="comment-text">
+                                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh
+                                    euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim
+                                </div>
+                                <div class="action">
+                                    <button type="button" class="btn btn-primary btn-xs" title="Edit">
+                                        <span class="glyphicon glyphicon-pencil"></span>
+                                    </button>
+                                    <button type="button" class="btn btn-success btn-xs" title="Approved">
+                                        <span class="glyphicon glyphicon-ok"></span>
+                                    </button>
+                                    <button type="button" class="btn btn-danger btn-xs" title="Delete">
+                                        <span class="glyphicon glyphicon-trash"></span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-xs-2 col-md-1">
+                                <img src="http://placehold.it/80" class="img-circle img-responsive" alt="" /></div>
+                            <div class="col-xs-10 col-md-11">
+                                <div>
+                                    <a href="http://bootsnipp.com/BhaumikPatel/snippets/4ldn">Cool Sign Up</a>
+                                    <div class="mic-info">
+                                        By: <a href="#">Bhaumik Patel</a> on 11 Nov 2013
+                                    </div>
+                                </div>
+                                <div class="comment-text">
+                                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh
+                                    euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim
+                                </div>
+                                <div class="action">
+                                    <button type="button" class="btn btn-primary btn-xs" title="Edit">
+                                        <span class="glyphicon glyphicon-pencil"></span>
+                                    </button>
+                                    <button type="button" class="btn btn-success btn-xs" title="Approved">
+                                        <span class="glyphicon glyphicon-ok"></span>
+                                    </button>
+                                    <button type="button" class="btn btn-danger btn-xs" title="Delete">
+                                        <span class="glyphicon glyphicon-trash"></span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <a href="#" class="btn btn-primary btn-sm btn-block" role="button"><span class="glyphicon glyphicon-refresh"></span> More</a>
+            </div>
         </div>
     </div>
 </div>
+<script>
+    // Short-form of `document.ready`
+$(function(){
+    $("#div2").hide();
+    $("#preview").on("click", function(){
+        $("#div2").toggle();
+    });
 
+});
+</script>
+<style>
 
-</div>
-<!-- over signup-->
+.widget .panel-body { padding:0px; }
+.widget .list-group { margin-bottom: 0; }
+.widget .panel-title { display:inline }
+.widget .label-info { float: right; }
+.widget li.list-group-item {border-radius: 0;border: 0;border-top: 1px solid #ddd;}
+.widget li.list-group-item:hover { background-color: rgba(86,61,124,.1); }
+.widget .mic-info { color: #666666;font-size: 11px; }
+.widget .action { margin-top:5px; }
+.widget .comment-text { font-size: 12px; }
+.widget .btn-block { border-top-left-radius:0px;border-top-right-radius:0px; }
+</style>
 
+        </div>
 
-
-
-
-
-
- <div align="center" style="background-color: #E4FFBF;">
-
-<h2><img src="{% static 'admin/img/logo.jpg' %}" width="190" height="135" alt="" title="" /><br>BarterKings
-
-</h2>
-<hr>
-        <table width="100%" border="0" cellpadding="0" cellspacing="0" style="border-color: #E4FFBF; border-style: solid; background-color: #E4FFBF;">
-            <tr valign="top">
-                <td style="border-color : #E4FFBF ">
-                    <br />
-
+      </div>
     </div>
 
-    <span style="font-family: Vrinda; font-weight: bold; font-style: italic; text-decoration: none; font-size: 15pt; ">
-				   		 <div align="justify">
-						       Barter is a system of exchange where goods or services are directly exchanged for other goods or services without using a medium of exchange, such as money, but our Portal is little hybreed where we can negotiate the exchange with money too.<br>
-						       BarterKings.in Portal provides the platform to exchange our unused or Idle products/Items with the products with likeminded users.<br>
-						 	   The concept of BarterKings portal came into existences by the group of IT gurus who have some valued items which are not
-							   in use by them anymore and also they can't able to throw away as they are valued. Here the Idea has born to exchange their products with the
-							   similar mindset people who wants to exchange their products.<br>
-							   BarterKings.in portal facilitates the user to Add their items/products in the portal with relevant product information and also facilitates them in searching
-							   their interested products from the global products which has added by the global users.<br>
-			 				   Barterkings.in portal is built on the concept of serving the users with no expectation of profits out of the items/products exchange and the portal will not be
-							   involving in any financial dealings with the users.<br>
+<!-- comments close-->
+<!-- footer -->
 
+<div class="container-fluid top-heading bg-blue">
+    <div class="container ">
 
-
-						 </div>
-				   </span>
-    </td>
-    </tr>
-    </table>
-
-
-
-
-<div style="background-color: #5BFF92;" align="center">
-
+	    <div class="row">
+	        <div class="col-md-12 ">
+	          <center>
+	            <h4>
     <b>  <a href="/privacy" target="_blank">Terms of Service </a> <br> vistor count:
                     <!-- hitwebcounter Code START -->
 
 <img src='https://www.counter12.com/img-x0Z5z8xDDZZcwDzz-36.gif' border='0' alt='counter'>
 
                     <br>
-© 2018 - Designed by redsuncube. All rights reserved (Ravi Gandham)</div></b>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</body>
-
-</html>
-
+© 2018 - Designed by redsuncube. All rights reserved (Ravi Gandham)</h4>
+	          </center>
+	        </div>
+	    </div>
+	</div>
+</div>
