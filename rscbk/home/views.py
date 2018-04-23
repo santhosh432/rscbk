@@ -24,6 +24,14 @@ def contactus(request):
     context = {'localip':localip}
 
     return render(request,'contactus.html',context)
+
+def feedback(request):
+    localip = get_ip(request)
+
+    context = {'localip':localip}
+
+    return render(request,'feedback.html',context)
+
 # Create your views here.
 def terms(request):
     localip = get_ip(request)

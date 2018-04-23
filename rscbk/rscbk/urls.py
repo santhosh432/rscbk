@@ -33,6 +33,7 @@ urlpatterns = [
     url(r'^privacy/$', privacy),
     url(r'^aboutus/$', aboutus),
     url(r'^contactus/$', contactus),
+    url(r'^feedback/$', feedback),
     url(r'^signup/$', sign_up),
     url(r'^login', auth_views.login, {'template_name': 'home.html'} ,name='login'),
     url(r'^logout/$', auth_views.logout, {'next_page': '/login/'}, name="logout"),
