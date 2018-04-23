@@ -1,2 +1,5 @@
 __pycache__/
 *.pyc
+rscmedia/myitems/
+home/__pycache__/
+categories/__pycache__/

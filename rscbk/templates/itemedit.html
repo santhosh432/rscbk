@@ -1,0 +1,113 @@
+
+{% extends "base1.html" %}
+{% block content %}
+{% load staticfiles %}
+{% load static %}
+<body>
+
+
+<head>
+    <style>
+        table{
+            margin:auto;
+            font-size:14px;
+            font-family:ubuntu;
+        }
+        th, td {
+            padding:5px;
+        }
+        th {
+            background-color:#CCFFA4;
+        }
+        td{
+            background-color:#CCFFA4;
+
+        }
+    </style>
+</head>
+
+
+<div class="container">
+
+   <!-- <p>Edit</p>-->
+   <!-- <form method="post" action="">-->
+
+   <!--     <table class="table">-->
+   <!--         {% csrf_token %}-->
+   <!--         {{ form.as_table }}-->
+   <!--     </table>-->
+
+   <!-- <input type="submit" value="Submit" />-->
+   <!--</form>-->
+<hr>
+    <form method="post" action="">
+     {% csrf_token %}
+    <table width="90%" border="1" cellpadding="1" cellspacing="0" style="border-color: #e0ede0; border-style: solid;">
+        <tr>
+            <th><b> Category </b></th>
+            <td> {{ form.category }} </td>
+
+            <th><b> Item Name </b></th>
+            <td> {{ form.item_name }} </td>
+        </tr>
+        <tr>
+            <th><b> Brand </b></th>
+            <td> {{ form.bnd }} {{ form.bnd.errors }}  </td>
+
+            <th><b> Extra _ to use </b></th>
+            <td> {{ form.item_name }} {{ form.item_name.errors }} </td>
+        </tr>
+        <tr>
+            <th><b> Price </b></th>
+            <td> {{ form.price }} {{ form.price.errors }} </td>
+
+            <th><b> Location </b></th>
+            <td> {{ form.location }} {{ form.location.errors }}</td>
+        </tr>
+        <tr>
+            <th><b> Months Used</b></th>
+            <td> {{ form.months_used }} {{ form.months_used.errors }}</td>
+
+            <th><b> Years Used </b></th>
+            <td> {{ form.years_used }} {{ form.years_used.errors }} </td>
+        </tr>
+        <tr>
+            <th><b> Exchangable with</b></th>
+            <td> {{ form.exchange_category  }} {{ form.exchange_category.errors  }} </td>
+
+            <th><b> Item Status </b></th>
+            <td> {{ form.item_status }} {{ form.item_status.errors }}</td>
+        </tr>
+        <tr>
+            <th><b> Item Image </b></th>
+            <td>{{ form.item_image }} {{ form.item_image.errors }}</td>
+
+            <th><b> Item Image2 </b></th>
+            <td>{{ form.item_image2 }} {{ form.item_image2.errors }}</td>
+        </tr>
+        <!--<tr>-->
+        <!--    <th><b> Owner Name</b></th>-->
+        <!--    <td>  {{ userpro.user.first_name }} {{ userpro.user.first_name.errors }} </td>-->
+
+        <!--    <th><b> Owner Contact </b></th>-->
+        <!--    <td> {{ mob }} </td>-->
+        <!--</tr>-->
+        <tr>
+            <th><b> Item Description </b></th>
+            <td colspan='3'> {{ form.item_full_desc }}{{ form.item_full_desc.errors }} </td>
+        </tr>
+        <tr>
+            <th><b> Other Information </b></th>
+            <td colspan='3'> {{ form.other_info }} {{ form.other_info.errors }} </td>
+        </tr>
+    </table>
+
+    <input type="submit" value="Submit" />
+</form>
+
+
+</div>
+
+</body>
+
+{% endblock %}

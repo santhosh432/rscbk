@@ -1,80 +1,90 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "base1.html" %}
+{% block content %}
+{% load staticfiles %}
 {% load static %}
+
 <head>
     <style>
         table{
             margin:auto;
-            font-size:18px;
+            font-size:14px;
+            font-family:ubuntu;
         }
         th, td {
             padding:5px;
         }
+        th {
+            background-color:#CCFFA4;
+        }
+        td{
+            background-color:#CCFFA4;
+
+        }
     </style>
 </head>
 <body>
-    <div align="center"><b><font size="5"><span style="font-weight: bold; font-style: normal; text-decoration: none; font-size: 14pt; color: #000000;">Complete Item Description</span></font></b></div>
-    <table width="100%" border="1" cellpadding="1" cellspacing="0" style="border-color: blue; border-style: solid; background-color: #5BFF92;">
+    <div align="center"><b><font size="5"><span style="font-weight: bold; font-style: ubuntu; text-decoration: none; font-size: 14pt; color: #000000;">Complete Item Description</span></font></b></div>
+    <table border="1" cellpadding="1" cellspacing="0" style="border-color: #e0ede0; border-style: solid;" width="95%">
         <tr>
-            <td><b> Category </b></td>
+            <th><b> Category </b></th>
             <td> {{ obj.category }} </td>
 
-            <td><b> Item Name </b></td>
+            <th><b> Item Name </b></th>
             <td> {{ obj.item_name }} </td>
         </tr>
         <tr>
-            <td><b> Brand </b></td>
+            <th><b> Brand </b></th>
             <td> {{ obj.bnd }} </td>
 
-            <td><b> Extra _ to use </b></td>
+            <th><b> Extra _ to use </b></th>
             <td> {{ obj.item_name }} </td>
         </tr>
         <tr>
-            <td><b> Price </b></td>
+            <th><b> Price </b></th>
             <td> {{ obj.price }} </td>
 
-            <td><b> Location </b></td>
+            <th><b> Location </b></th>
             <td> {{ obj.location }} </td>
         </tr>
         <tr>
-            <td><b> Months Used</b></td>
+            <th><b> Months Used</b></th>
             <td> {{ obj.months_used }}</td>
 
-            <td><b> Years Used </b></td>
+            <th><b> Years Used </b></th>
             <td> {{ obj.years_used }} </td>
         </tr>
         <tr>
-            <td><b> Exchangable with</b></td>
+            <th><b> Exchangable with</b></th>
             <td> {{ obj.exchange_category  }} </td>
 
-            <td><b> Item Status </b></td>
+            <th><b> Item Status </b></th>
             <td> {{ obj.get_item_status_display }}</td>
         </tr>
         <tr>
-            <td><b> Item Image </b></td>
+            <th><b> Item Image </b></th>
             <td><img src="/media/{{ obj.item_image }}"/></td>
 
-            <td><b> Item Image2 </b></td>
+            <th><b> Item Image2 </b></th>
             <td><img src="/media/{{ obj.item_image2 }}"/></td>
         </tr>
         <tr>
-            <td><b> Owner Name</b></td>
+            <th><b> Owner Name</b></th>
             <td>  {{ userpro.user.first_name }} </td>
 
-            <td><b> Owner Contact </b></td>
+            <th><b> Owner Contact </b></th>
             <td> {{ mob }} </td>
         </tr>
-    </table>
-    <table width="100%" border="1" cellpadding="1" cellspacing="0" style="border-color: blue; border-style: solid; background-color: #5BFF92;">
         <tr>
-            <td><b> Item Description </b></td>
-            <td> {{ obj.item_full_desc }} </td>
+            <th><b> Item Description </b></th>
+            <td colspan='3'> {{ obj.item_full_desc }} </td>
         </tr>
         <tr>
-            <td><b> Other Information </b></td>
-            <td> {{ obj.other_info }} </td>
+            <th><b> Other Information </b></th>
+            <td colspan='3'> {{ obj.other_info }} </td>
         </tr>
     </table>
 
-</body>
-</html>
+<div style="text-align:center;"></div><a href="{% url 'edit_item' obj.id %}" class="btn"><button>Edit</button></a></div>
+
+</body
+{% endblock %}

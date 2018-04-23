@@ -46,3 +46,7 @@ class Items(models.Model):
     other_info = models.CharField(max_length=150, help_text="Item other information", default="null")
     def __str__(self):
         return '{0}'.format(self.category, self.item_name)
+
+    def get_absolute_url(self):
+        return reverse('edititem', kwargs={'pk': self.pk})
+

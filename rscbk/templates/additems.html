@@ -1,9 +1,15 @@
-<html>
-<head>
-<title>Dashboard</title>
-</head>
-<body style=" background-color: E4FFBF;">
+{% extends "base1.html" %}
+{% block content %}
 {% load staticfiles %}
+{% load static %}
+
+
+ <body style=" background-color: E4FFBF;">
+
+
+
+
+
 
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
@@ -11,63 +17,6 @@
 <!--FONT AWESOME CDN LINK FOR FONT-AWESOME FONT -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
-<nav class="navbar navbar-default">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-toggle collapsed" data-target="#navbar" data-toggle="collapse">
-                <i class="fa fa-chevron-down faa-vertical animated"></i>
-            </a>
-            <a tabindex="0" class="navbar-brand faa-pulse faa-slow animated" data-toggle="popover" data-trigger="focus" data-html="true" data-placement="bottom" data-title="Brand Quote..." data-content="<img class='img-responsive' height='140' width='140' src='data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=='/<p>Your Brand Image</p>">
-
-                <i class="fa fa-lg">B</i>
-                <i class="fa fa-lg">a</i>
-                <i class="fa fa-lg">r</i>
-                <i class="fa fa-lg">t</i>
-                <i class="fa fa-lg">e</i>
-                <i class="fa fa-lg">r</i>
-                <i class="fa fa-lg">K</i>
-                <i class="fa fa-lg">i</i>
-                <i class="fa fa-lg">n</i>
-                <i class="fa fa-lg">g</i>
-                <i class="fa fa-lg">s</i>
-
-            </a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                <li>
-                    <a href="/myuserdashboard/" class="faa-parent animated-hover">
-                       <i class="fa fa-fw fa-lg fa-home faa-tada faa-fast"></i>Home
-                    </a>
-                </li>
-                <li>
-                    <a class="faa-parent animated-hover">
-    	               <i class="fa fa-fw fa-lg fa-quote-left faa-tada faa-fast"></i>About Us
-                    </a>
-                </li>
-                <li>
-                    <a class="faa-parent animated-hover">
-	                   <i class="fa fa-fw fa-lg fa-map-marker faa-tada faa-fast"></i>Contact Us
-                    </a>
-                </li>
-</ul>
-<ul align="right">
-                   <li >
-                    <a href="#"><i class="fa fa-fw fa-lg fab fa-user faa-tada faa-fast"></i> Login by: <b>{{request.user}}</b>
-                    </a>
-                </li>
-                <li>
-                    <a class="faa-parent animated-hover" href="{% url 'logout' %}"><i class="fa fa-sign-out"></i> Logout
-                    </a>
-                </li>
-
-
-                                </ul>
-
-
-        </div>
-    </div>
-</nav>
 {% load static %}
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
@@ -150,49 +99,122 @@ th, td {
 tr:nth-child(even) {background-color: #f2f2f2;}
 </style>
 
+    <style>
+        table{
+            margin:auto;
+            font-size:14px;
+            font-family:ubuntu;
+        }
+        th, td {
+            padding:5px;
+        }
+        th {
+            background-color:#CCFFA4;
+        }
+        td{
+            background-color:#CCFFA4;
+
+        }
+    </style>
 
 <H4>Add Items/Products</H4>
-    <form class="form" action="{% url 'additems' %}" method="POST" enctype="multipart/form-data">
+    <!--<form class="form" action="{% url 'additems' %}" method="POST" enctype="multipart/form-data">-->
+    <!--        {% csrf_token %}-->
+    <!--        <div class="div_form">-->
+    <!--            <table border=4 width=50% >-->
+    <!--                {%for i in addform%}-->
+    <!--                    <tr>-->
+    <!--                        <td bgcolor="#A6FF57">-->
+    <!--                            {%if i.label == 'Bnd'%}-->
+    <!--                                Brand/Type/Author{{i.brand_name}}-->
+    <!--                            {%else%}-->
+    <!--                                {{i.label}}-->
+    <!--                            {%endif%}-->
+    <!--                        </td>-->
+    <!--                        <td>-->
+    <!--                            {{i}}-->
+    <!--                            {%if i.label == 'Bnd'%}-->
+    <!--                                <a href="/addbrand/"> Add </a>-->
+    <!--                            {%endif%}-->
+    <!--                        </td>-->
+    <!--                    </tr>-->
+    <!--                {%endfor%}-->
+    <!--            </table>-->
+    <!--            <input type="submit" name="submit" value="Submit">-->
+
+    <!--        </div>-->
+
+
+
+    <!--</form>-->
+
+<hr>
+<form class="form" action="{% url 'additems' %}" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
-            <div class="div_form">
-                <table border=4 width=50% >
-                    {%for i in addform%}
-                        <tr>
-                            <td bgcolor="#A6FF57">
-                                {%if i.label == 'Bnd'%}
-                                    Brand/Type/Author{{i.brand_name}}
-                                {%else%}
-                                    {{i.label}}
-                                {%endif%}
-                            </td>
-                            <td>
-                                {{i}}
-                                {%if i.label == 'Bnd'%}
-                                    <a href="/addbrand/"> Add </a>
-                                {%endif%}
-                            </td>
-                        </tr>
-                    {%endfor%}
-                </table>
+    <table  border="1" cellpadding="1" cellspacing="0"  border-style: solid;">
+        <tr>
+            <th><b> Category </b></th>
+            <td> {{ addform.category }} </td>
+
+            <th><b> Item Name </b></th>
+            <td> {{ addform.item_name }} </td>
+        </tr>
+        <tr>
+            <th><b> Brand </b></th>
+            <td> {{ addform.bnd }}  <a href="/addbrand/"> Add </a> {{ addform.bnd.errors }}  </td>
+
+            <th><b> Extra _ to use </b></th>
+            <td> {{ addform.item_name }} {{ addform.item_name.errors }} </td>
+        </tr>
+        <tr>
+            <th><b> Price </b></th>
+            <td> {{ addform.price }} {{ addform.price.errors }} </td>
+
+            <th><b> Location </b></th>
+            <td> {{ addform.location }} {{ addform.location.errors }}</td>
+        </tr>
+        <tr>
+            <th><b> Months Used</b></th>
+            <td> {{ addform.months_used }} {{ addform.months_used.errors }}</td>
+
+            <th><b> Years Used </b></th>
+            <td> {{ addform.years_used }} {{ addform.years_used.errors }} </td>
+        </tr>
+        <tr>
+            <th><b> Exchangable with</b></th>
+            <td> {{ addform.exchange_category  }} {{ addform.exchange_category.errors  }} </td>
+
+            <th><b> Item Status </b></th>
+            <td> {{ addform.item_status }} {{ addform.item_status.errors }}</td>
+        </tr>
+        <tr>
+            <th><b> Item Image </b></th>
+            <td>{{ addform.item_image }} {{ addform.item_image.errors }}</td>
+
+            <th><b> Item Image2 </b></th>
+            <td>{{ addform.item_image2 }} {{ addform.item_image2.errors }}</td>
+        </tr>
+        <!--<tr>-->
+        <!--    <th><b> Owner Name</b></th>-->
+        <!--    <td>  {{ userpro.user.first_name }} {{ userpro.user.first_name.errors }} </td>-->
+
+        <!--    <th><b> Owner Contact </b></th>-->
+        <!--    <td> {{ mob }} </td>-->
+        <!--</tr>-->
+        <tr>
+            <th><b> Item Description </b></th>
+            <td colspan='3'> {{ addform.item_full_desc }}{{ addform.item_full_desc.errors }} </td>
+        </tr>
+        <tr>
+            <th><b> Other Information </b></th>
+            <td colspan='3'> {{ addform.other_info }} {{ addform.other_info.errors }} </td>
+        </tr>
+    </table>
                 <input type="submit" name="submit" value="Submit">
 
-            </div>
+</form>
 
-
-
-    </form>
-
-
-<hr><div class="container">
-  <div class="row">
-
-  <hr>
-<center>        <a href="#">Terms of Service</a> | <a href="#">Privacy</a>
-     <br>      <p >© 2018 - Designed by redsuncube. All rights reserved (Ravi Gandham)</p>
-     </center>
-
-      </div>
-    </div>
+<hr>
 
 <style>
 /*Main CSS*/
@@ -912,5 +934,4 @@ $(document).ready(function(){
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 
-</body>
-</html>
+{% endblock %}

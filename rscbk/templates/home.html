@@ -10,16 +10,27 @@
 
 
 <style type="text/css">
+#loginid{
+    text-align: center;
+    padding: 5px;
+    color: #24b74b;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: #3c3e69;
+    border-radius: 5px;
+    box-shadow: 0 0 16px 7px black;
+}
+
 #popupbox{
 margin: 0;
 margin-left: 70%;
 margin-right: 30%;
-margin-top: 10px;
+margin-top: 25px;
 padding-top: 10px;
 width: 20%;
 height: 150px;
 position: absolute;
-background: #FBFBF0;
+background: #E4FFBF;
 border: solid #000000 2px;
 z-index: 9;
 font-family: arial;
@@ -29,12 +40,12 @@ visibility: hidden;
 margin: 0;
 margin-left: 70%;
 margin-right: 30%;
-margin-top: 10px;
+margin-top: 25px;
 padding-top: 10px;
-width: 20%;
-height: 150px;
+width: 22%;
+height: 165px;
 position: absolute;
-background: #FBFBF0;
+background: #E4FFBF;
 border: solid #000000 2px;
 z-index: 9;
 font-family: arial;
@@ -80,16 +91,23 @@ if(showhide1 == "show"){
 
 </head>
 
-<body bgcolor="#A6FF57">
-    <b> <font size="6">BarterKings</font> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
-		  <font size="4"> <img  src="{% static 'admin/img/home.jpg' %}" width="25" height="20" alt="" title="" /><a href="#" >Home</a> &nbsp &nbsp &nbsp
-		  <img   src="{% static 'admin/img/About.jpg' %}"" width="25" height="20" alt="" title="" /><a href="/aboutus">About Us</a> &nbsp &nbsp &nbsp
-		  <img   src="{% static 'admin/img/contact.jpg' %}" width="25" height="20" alt="" title="" /> <a href="/contactus">Contact Us</a> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+<body bgcolor="#5BFF92">
+    <b>
+    <font size="6">BarterKings</font> &nbsp
+	<font size="4"> <img  src="{% static 'admin/img/home.jpg' %}" width="25" height="20" alt="" title="" />
+	    <a href="#" >Home</a> &nbsp
+	<img src="{% static 'admin/img/About.jpg' %}" width="25" height="20" alt="" title="" />
+		<a href="/aboutus">About Us</a> &nbsp
 
-		  <img  src="{% static 'admin/img/signup.jpg' %}" width="25" height="20" alt="" title="" /> <a href="javascript:signup('show');">signup</a></font></b>
+		<img src="{% static 'admin/img/contact.jpg' %}" width="25" height="20" alt="" title="" />
+		<a href="/contactus">Contact Us</a> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+
+		  <img src="{% static 'admin/img/signup.jpg' %}" width="25" height="20" alt="" title="" /> <a href="javascript:signup('show');">signup </a>
 
 
-    <img  src="{% static 'admin/img/login.jpg' %}" width="25" height="20" alt="" title="" /> <a href="javascript:login('show');">login</a></font></b>
+    <img  src="{% static 'admin/img/login.jpg' %}" width="25" height="20" alt="" title="" /> <a href="javascript:login('show');">login </a>
+    </font></b>
+    </b>
 
 
 
@@ -129,10 +147,11 @@ if(showhide1 == "show"){
 
   			</div>
   			<style>
-.button2 {background-color: #008CBA;} /* Blue */</style>
-            <!--div class="forget">
-		        <button class="btn btn-default btn-sm">FORGOT PASSWORD?</button>
-			</div-->
+  .button2 {background-color: ;} /* Blue */</style>
+<!-- .button2 {background-color: #008CBA;} /* Blue */</style> -->
+            <div class="forget">
+		        <button class="btn btn-default btn-sm">Forgot Password ?</button>
+			</div>
 		</div>
 	</div>
 </div>
@@ -162,16 +181,16 @@ if(showhide1 == "show"){
   			<div class="loginForm">
 
 				<div class="col-3">
-		        	<input type="text" name="s_username" class="effect-2 form-control" placeholder="username"/>
-		        	<input type="text" name="s_fullname" class="effect-2 form-control" placeholder="Fullname"/>
-                    <input type="text" name="email"class="effect-2 form-control" placeholder="e-mail" />
-                    <input type="text" name="s_mobile" class="effect-2 form-control" placeholder="mobile" />
-		            <input type="password" name="s_pass" class="effect-2 form-control" placeholder="password"/>
-		            <input type="password" name="s_passr"class="effect-2 form-control" placeholder="confirm pwd"/>
+		        	User_Name &nbsp :<input type="text" name="s_username" class="effect-2 form-control" placeholder="username"/>
+		        	Full_Name &nbsp  &nbsp :<input type="text" name="s_fullname" class="effect-2 form-control" placeholder="Fullname"/>
+                    Email_ID  &nbsp  &nbsp  &nbsp :<input type="text" name="email"class="effect-2 form-control" placeholder="e-mail" />
+                    Mobile_No  &nbsp &nbsp :<input type="text" name="s_mobile" class="effect-2 form-control" placeholder="mobile" />
+		            Password  &nbsp  &nbsp : <input type="password" name="s_pass" class="effect-2 form-control" placeholder="password"/>
+		            Confirm Pwd :<input type="password" name="s_passr"class="effect-2 form-control" placeholder="confirm pwd"/>
 		        </div>
 			    <div class="enterButton">
 			        <br>
-			        <input type="submit" value="Sign up" class="btn btn-default button2 "/>
+			        <input type="submit" value="Sign up" class="btn btn-default button2 "/> <a  href="javascript:cls('show');"> <button >close</button></a>
   		    	</div>
   				</form>
   			</div>
@@ -179,7 +198,7 @@ if(showhide1 == "show"){
     </div>
 </div>
 
-<a  href="javascript:cls('show');"> <button >close</button></a>
+
 </div>
 <!-- over signup-->
 
@@ -202,18 +221,18 @@ if(showhide1 == "show"){
 
     </div>
 
-    <span style="font-family: Vrinda; font-weight: bold; font-style: italic; text-decoration: none; font-size: 16pt; ">
+    <span style="font-family: Vrinda; font-weight: bold; font-style: italic; text-decoration: none; font-size: 15pt; ">
 				   		 <div align="justify">
+						       Barter is a system of exchange where goods or services are directly exchanged for other goods or services without using a medium of exchange, such as money, but our Portal is little hybreed where we can negotiate the exchange with money too.<br>
 						       BarterKings.in Portal provides the platform to exchange our unused or Idle products/Items with the products with likeminded users.<br>
-						 	   The concept of BarterKings portal came into existences by the group of IT software architects who have some valued items which are not
+						 	   The concept of BarterKings portal came into existences by the group of IT gurus who have some valued items which are not
 							   in use by them anymore and also they can't able to throw away as they are valued. Here the Idea has born to exchange their products with the
 							   similar mindset people who wants to exchange their products.<br>
-							   BarterKings.in portal facilitates the user to Add their items/products in the portal with relevant product information and facilitates them in searching
-							   their interested products from the products which was added by the global users.<br>
-			 				   Barterkings.in portal is built on the concept of serving its users with no expectation of profits out of the exchange of items/products and the portal will not be
-							   involving in any financial dealings.<br>
-							   <br>
-							   <br>
+							   BarterKings.in portal facilitates the user to Add their items/products in the portal with relevant product information and also facilitates them in searching
+							   their interested products from the global products which has added by the global users.<br>
+			 				   Barterkings.in portal is built on the concept of serving the users with no expectation of profits out of the items/products exchange and the portal will not be
+							   involving in any financial dealings with the users.<br>
+
 
 
 						 </div>
@@ -225,7 +244,7 @@ if(showhide1 == "show"){
 
 
 
-<div style="background-color: #A6FF57;" align="center">
+<div style="background-color: #5BFF92;" align="center">
 
     <b>  <a href="/privacy" target="_blank">Terms of Service </a> <br> vistor count:
                     <!-- hitwebcounter Code START -->

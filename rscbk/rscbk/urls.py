@@ -49,7 +49,7 @@ urlpatterns = [
     url(r'addbrand/',catviews.addbrand , name='addbrand'),
 
     url(r'view_item/(?P<item_id>\d+)/$',catviews.view_item , name='view_item'),
-
+    url(r'^edititem/(?P<pk>\d+)$', catviews.edit_item, name="edit_item"),
 
 ]
 

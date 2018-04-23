@@ -11,7 +11,7 @@ from .models import Category,Items#,CategoryBrand
 
 @admin.register(Items)
 class ItemAdmin(admin.ModelAdmin):
-    list_display = ['category','item_name', 'price', 'location',]
+   list_display = ['category','item_name', 'price', 'location',]
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):

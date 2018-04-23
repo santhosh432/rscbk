@@ -9,25 +9,25 @@
 
 </head>
 
-<body bgcolor="#A6FF57">
-    <b> <font size="6">BarterKings</font> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
-		  <font size="4"> <img  src="{% static 'admin/img/home.jpg' %}" width="25" height="20" alt="" title="" /><a href="/home">Home</a> &nbsp &nbsp &nbsp &nbsp
-		  <img   src="{% static 'admin/img/About.jpg' %}"" width="25" height="20" alt="" title="" /><a href="/aboutus">About Us</a> &nbsp &nbsp &nbsp &nbsp
-		  <img   src="{% static 'admin/img/contact.jpg' %}" width="25" height="20" alt="" title="" /> <a href="/contactus">Contact Us</a> &nbsp &nbsp &nbsp &nbsp
-
-    <div style="background-color: #E4FFBF;">
 
 
+<body bgcolor="#5BFF92">
+    <b> <font size="5">BarterKings</font> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+		  <font size="4"> <i class="fa fa-home"></i><a href="/myuserdashboard">Home</a> &nbsp &nbsp &nbsp &nbsp
+		  <i class="fa fa-id-badge"></i><a href="/aboutus">About Us</a> &nbsp &nbsp &nbsp &nbsp
+		 <i class="fa fa-map-marker"></i><a href="/contactus">Contact Us</a> </b>
 
-<hr>
+
+
+            <div style="background-color: #E4FFBF;">
+
 {% block content %}
 {% endblock %}
 
 
 
-
-
-<div style="background-color: #A6FF57;" align="center">
+<br>
+<div style="background-color: #5BFF92;" align="center">
 
     <b>  <a href="/privacy" target="_blank">Terms of Service </a> <br><a class="faa-parent animated-hover">
     	              Your IP Address: <i class="fa fa-fw fa-lg fa-map-marker faa-tada faa-fast"></i>{{ localip }}

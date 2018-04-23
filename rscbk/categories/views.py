@@ -47,3 +47,23 @@ def view_item(request, item_id):
 
     context = {'obj':itm_obj, 'mob':mob, 'userpro':t,'fname':fname}
     return render(request, 'item_details.html', context)
+
+from django import forms
+class ItemForm(forms.ModelForm):
+    class Meta:
+        model = Items
+        exclude = ('itemuser',)
+
+@login_required
+def edit_item(request, pk):
+    subject = Items.objects.get(pk=pk)
+    template = 'itemedit.html'
+    form = ItemForm(request.POST or None, instance=subject)
+    context= { 'form':form }
+    if request.method == 'POST':
+        if form.is_valid():
+
+            form.save()
+            return redirect('myuserdashboard')
+    return render(request,template,context)
+
