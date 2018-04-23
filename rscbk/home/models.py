@@ -28,3 +28,12 @@ class UserFullProfile(models.Model):
     user = models.OneToOneField(User)
     mobile = models.CharField(max_length=10, help_text='10 digit mobile number')
 
+
+class Feedback(models.Model):
+    customer_name = models.CharField(max_length=120)
+    comment = models.TextField()
+    date = models.DateField(auto_now_add=True)
+
+    def __str__(self):
+        return self.customer_name
+

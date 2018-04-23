@@ -1,6 +1,5 @@
 
 
-
 {% load staticfiles %}
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -316,54 +315,8 @@ i {padding-right:15px;}
 	    <div class="col-md-9">
 	        <div class="panel">
 	       <div class="panel-body">
-
-	           <!-- feed back form-->
-	           <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
-
-<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.2/css/bootstrapValidator.min.css"/>
-<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.2/js/bootstrapValidator.min.js"></script>
-<div class="container">
-	<div class="row">
-		<form action="/feedback/" method="POST" role="form" id="contact-form" class="contact-form">
-                      {% csrf_token %}
-                  	<div class="row">
-                  		<div class="col-md-12">
-                  		<div class="form-group">
-                            {{ form.as_p }}<br>
-                            <button type="submit" class="btn main-btn ">Send a message</button>
-                  		</div>
-                  	</div>
-                    </div>
-                    <div class="row">
-                    <div class="col-md-12">
-
-                  </div>
-                  </div>
-                </form>
-	</div>
-</div>
-<style>
-    .contact-form{ margin-top:15px;}
-.contact-form .textarea{ min-height:220px; resize:none;}
-.form-control{ box-shadow:none; border-color:#eee; height:49px;}
-.form-control:focus{ box-shadow:none; border-color:#00b09c;}
-.form-control-feedback{ line-height:50px;}
-.main-btn{ background:#00b09c; border-color:#00b09c; color:#fff;}
-.main-btn:hover{ background:#00a491;color:#fff;}
-.form-control-feedback {
-line-height: 50px;
-top: 0px;
-}
-</style>
-	           <!-- feed back form end -->
-
-
-
-
-
+	         <h1>Thanks for your response.</h1>
+<p><a href="/login">Response again?</a></p>
 	        </div>
 
 	        </div>
@@ -372,86 +325,7 @@ top: 0px;
 
 	</div>
 </div>
-<!-- comment-->
- <div class="sidemenu panel-default">
-                  <div class="panel-heading">
-                    <h4 class="panel-title">
-                      <a data-toggle="collapse" href="#collapse1"><center>Comments & Feed backs</center></a>
-                    </h4>
-                  </div>
-                     <div id="collapse1" class="panel-collapse collapse in">
-                     <div class="list-group">
-          <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
 
-<div class="container">
-    <div class="row">
-        <div class="panel panel-default widget">
-            <div class="panel-heading">
-                <span class="glyphicon glyphicon-comment"></span>
-                <h3 class="panel-title">
-                    Recent Comments</h3>
-                <span class="label label-info">
-                    78</span>
-            </div>
-
-            <div class="panel-body">
-                <ul class="list-group">
-                    {% for i in fback %}
-                    <li class="list-group-item">
-                        <div class="row">
-                            <div class="col-xs-10 col-md-11">
-                                <div>
-                                    <a href="">
-                                        {{i.comment}}</a>
-                                    <div class="mic-info">
-                                        By: <a href="#">{{i.customer_name}}</a> on {{i.date}}
-                                    </div>
-                                </div>
-
-
-                            </div>
-                        </div>
-                    </li>{% endfor %}
-
-                </ul>
-
-            </div>
-        </div>
-    </div>
-</div>
-<script>
-    // Short-form of `document.ready`
-$(function(){
-    $("#div2").hide();
-    $("#preview").on("click", function(){
-        $("#div2").toggle();
-    });
-
-});
-</script>
-<style>
-
-.widget .panel-body { padding:0px; }
-.widget .list-group { margin-bottom: 0; }
-.widget .panel-title { display:inline }
-.widget .label-info { float: right; }
-.widget li.list-group-item {border-radius: 0;border: 0;border-top: 1px solid #ddd;}
-.widget li.list-group-item:hover { background-color: rgba(86,61,124,.1); }
-.widget .mic-info { color: #666666;font-size: 11px; }
-.widget .action { margin-top:5px; }
-.widget .comment-text { font-size: 12px; }
-.widget .btn-block { border-top-left-radius:0px;border-top-right-radius:0px; }
-</style>
-
-        </div>
-
-      </div>
-    </div>
-
-<!-- comments close-->
 <!-- footer -->
 
 <div class="container-fluid top-heading bg-blue">

@@ -8,6 +8,9 @@ from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from home.models import UserFullProfile
 from ipware.ip import get_ip
+from .forms import *
+from home.models import Feedback
+
 
 # Create your views here.
 def aboutus(request):
@@ -25,12 +28,18 @@ def contactus(request):
 
     return render(request,'contactus.html',context)
 
+
 def feedback(request):
-    localip = get_ip(request)
+    fback = Feedback.objects.all().order_by('-id')[:5]
+    if request.method == 'POST':
+        form = FeedbackForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return render(request, 'thanks.html')
+    else:
+        form = FeedbackForm()
+    return render(request, 'feedback.html', {'form': form,'fback':fback})
 
-    context = {'localip':localip}
-
-    return render(request,'feedback.html',context)
 
 # Create your views here.
 def terms(request):
@@ -51,18 +60,19 @@ def home(request):
 
     context = {'localip':localip}
     return render(request,'main.html',context)
-
+from home.models import Feedback
 # Create your views here.
 def base(request):
     localip = get_ip(request)
-
-    context = {'localip':localip}
+    fback = Feedback.objects.all()
+    context = {'localip':localip, 'fback':fback}
     return render(request,'base.html',context)
 
 def homepage(request):
     localip = get_ip(request)
+    fback = Feedback.objects.all()
+    context = {'localip':localip, 'fback':fback}
 
-    context = {'localip':localip}
     return render(request,'home.html',context)
 
 @login_required
