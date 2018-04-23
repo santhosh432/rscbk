@@ -11,6 +11,12 @@ from ipware.ip import get_ip
 from .forms import *
 from home.models import Feedback
 
+# Create your views here.
+def dash_help(request):
+
+    context = {}
+
+    return render(request,'dashboard_help.html',context)
 
 # Create your views here.
 def aboutus(request):
