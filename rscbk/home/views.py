@@ -217,31 +217,24 @@ def myuserdashboard_with_cat_bnd_min_max(request,cat_id=None,bnd_id=None,min_id=
 def dashboard(request):
     return render(request,'dashboard.html')
 
+
+
+from django.contrib.auth import login, authenticate
+from django.contrib.auth.forms import UserCreationForm
+from django.shortcuts import render, redirect
+from home.forms import SignUpForm
 def sign_up(request):
-        localip = get_ip(request)
-        context={'localip':localip}
-        if request.method == 'POST':
-            if "s_username" in request.POST and 's_pass' in request.POST and 's_passr' in request.POST and 'email' in request.POST:
-                username = request.POST.get('s_username')
-                password = request.POST.get('s_pass')
-                passwordr = request.POST.get('s_passr')
-                email = request.POST.get('email')
-                first_name = request.POST.get('s_fullname')
-                mobile = request.POST.get('s_mobile')
-                if password == passwordr:
-                    try:
-                        u = User.objects.create_user(username, email, password)
-                        u.first_name = first_name
-                        up = UserFullProfile(user=u, mobile=mobile)
-                        up.save()
-                        u.save()
-
-                        print('userprofile.............')
-                        print(up.mobile)
-                        return HttpResponseRedirect(reverse('/login'))
-                    except:
-                        pass #
+    context={}
+    if request.method == 'POST':
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            raw_password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=raw_password)
+            login(request, user)
             return render(request, 'sucess.html', context)
-        else:
-            return render(request, 'signup.html', context)
-
+            #return redirect('home')
+    else:
+        form = SignUpForm()
+    return render(request, 'signup.html', {'form': form})
