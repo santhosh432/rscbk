@@ -386,7 +386,11 @@
                     <!-- style-->
 
                     <!-- code-->
+                    <div align =left>
 
+                        <a href="myuserdashboard/"><i class="fa fa-arrow-circle-o-left" style="font-size:28px;color:#1b3154"></i></a>
+
+                    </div>
                     <div align=right>
 
                         <a href="/dash_help" >Help</a>
@@ -412,9 +416,9 @@
                                     {% for category in allcat %}
                                     <li style="padding: 1px;" class="catli">
                                         <div class="well">
-                                            {% for it in itemc %} {% if it.category == category.id %} {{ it.cate }} {% else %}   {% endif %}{% endfor %}
-                                            <a href="{% url 'myuserdashboard_withargument' category.id %}"><img class="img img-thumbnails" width="80" height="80" src="{{ category.image.url }}" title="{{ category.category_name }}"></a>
 
+                                            <a href="{% url 'myuserdashboard_withargument' category.id %}"><img class="img img-thumbnails" width="80" height="80" src="{{ category.image.url }}" title="{{ category.category_name }}"></a>
+                                            <br> <b>Available</b>: 0{% for it in itemc %} {% if it.category == category.id %} {{ it.cate }} {% else %}  {% endif %}{% endfor %}
                                         </div>
                                     </li>
                                     {% endfor %} {% endif %}

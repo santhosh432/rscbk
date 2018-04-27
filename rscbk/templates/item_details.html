@@ -76,8 +76,8 @@
             <td colspan='3'> {{ obj.other_info }} </td>
         </tr>
     </table>
-
+{% if request.user ==  userpro.user %}
 <div style="text-align:center;"></div><a href="{% url 'edit_item' obj.id %}" class="btn"><button>Edit</button></a></div>
-
+{% endif %}
 </body
 
