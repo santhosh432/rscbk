@@ -36,11 +36,12 @@ from home.models import *
 @login_required
 def view_item(request, item_id):
     itm_obj = Items.objects.get(id=item_id)
+    useritem  = itm_obj.itemuser
     mob = 'need to update'
-    fname = User.objects.get(username=request.user)
+    fname = User.objects.get(username=useritem)
     t = {}
     try:
-      t = UserFullProfile.objects.get(user=request.user.id)
+      t = UserFullProfile.objects.get(user=fname.id)
       mob = t.mobile
     except:
       pass
@@ -52,7 +53,7 @@ from django import forms
 class ItemForm(forms.ModelForm):
     class Meta:
         model = Items
-        exclude = ('itemuser',)
+        exclude = ('itemuser','years_used',)
 
 @login_required
 def edit_item(request, pk):

@@ -18,5 +18,5 @@ class AdditemForm(forms.ModelForm):
 
     class Meta:
         model = Items
-        exclude = ('itemuser',)
+        exclude = ('itemuser','years_used',)
 

@@ -412,6 +412,7 @@
                                     {% for category in allcat %}
                                     <li style="padding: 1px;" class="catli">
                                         <div class="well">
+                                            {% for it in itemc %} {% if it.category == category.id %} {{ it.cate }} {% else %}   {% endif %}{% endfor %}
                                             <a href="{% url 'myuserdashboard_withargument' category.id %}"><img class="img img-thumbnails" width="80" height="80" src="{{ category.image.url }}" title="{{ category.category_name }}"></a>
 
                                         </div>
@@ -424,29 +425,29 @@
                                     <table border=1 id="myTable" class="tablesorter" width="85%">
                                         <thead>
                                             <tr height=4 0px; font-weight: bold;>
-                                                <!-- <th style=height=50px; bgcolor="#5BFF92" > <span style=" font-size: 10pt">R</span></th> -->
-                                                <th bgcolor="#5BFF92"> <span style=" font-size: 10pt">Item<br>Code<font color=red><i class="fa fa-fw fa-sort"></i></font></span></th>
-                                                <th bgcolor="#5BFF92"><span style=" font-size: 10pt;  ">Description</span></th>
-                                                <th bgcolor="#5BFF92"><span style=" font-size: 10pt;">Categories</span></th>
-                                                <th bgcolor="#5BFF92"><span style=" font-size: 10pt;">Brand</span></th>
-                                                <th bgcolor="#5BFF92"><span style=" font-size: 10pt;"><i class="fa fa-picture-o"></i></span></th>
-                                                <th bgcolor="#5BFF92"><span style=" font-size: 10pt;">Item<br>Worth<font color=red><i class="fa fa-fw fa-sort"></i></font></span></th>
-                                                <th bgcolor="#5BFF92"><span style=" font-size: 10pt;">Exchange<br>With</span></th>
-                                                <th bgcolor="#5BFF92"><span style=" font-size: 10pt;">Location<i class="fa fa-map-marker"></i></span></th>
+                                                <!-- <th style=height=50px; bgcolor="#f7a01d" > <span style=" font-size: 10pt">R</span></th> -->
+                                                <th bgcolor="#f7a01d"> <span style=" font-size: 10pt">Item<br>Code<font color=red><i class="fa fa-fw fa-sort"></i></font></span></th>
+                                                <th bgcolor="#f7a01d"><span style=" font-size: 10pt;  ">Description</span></th>
+                                                <th bgcolor="#f7a01d"><span style=" font-size: 10pt;">Categories</span></th>
+                                                <th bgcolor="#f7a01d"><span style=" font-size: 10pt;">Brand</span></th>
+                                                <th bgcolor="#f7a01d"><span style=" font-size: 10pt;"><i class="fa fa-picture-o"></i></span></th>
+                                                <th bgcolor="#f7a01d"><span style=" font-size: 10pt;">Item<br>Worth<font color=red><i class="fa fa-fw fa-sort"></i></font></span></th>
+                                                <th bgcolor="#f7a01d"><span style=" font-size: 10pt;">Exchange<br>With</span></th>
+                                                <th bgcolor="#f7a01d"><span style=" font-size: 10pt;">Location<i class="fa fa-map-marker"></i></span></th>
 
                                             </tr>
                                         </thead>
                                         <tbody>
                                             {% for useritems in items_cat %}
                                             <tr>
-                                                <td bgcolor="#CCFFA4"><span style=" font-size: 10pt; font-weight: bold;"><a onclick="popupCenter('{% url 'view_item' useritems.id %}', 'myPop2',750,750);" href="javascript:void(0);">{{ useritems.id }}</a></span></td>
-                                                <td bgcolor="#CCFFA4"><span style=" font-size: 10pt; font-weight: bold;">{{ useritems.item_name }}</span></td>
-                                                <td bgcolor="#CCFFA4"><span style=" font-size: 10pt; font-weight: bold;">{{ useritems.category }}</span></td>
-                                                <td bgcolor="#CCFFA4"><span style=" font-size: 10pt; font-weight: bold;">{{ useritems.bnd.brand_name }}</span></td>
-                                                <td bgcolor="#CCFFA4"><span style=" font-size: 10pt; font-weight: bold;"><img src="{{ useritems.item_image.url }}" alt="*" class="img img-thumbnails" width="20" height="30"></span></td>
-                                                <td bgcolor="#CCFFA4"><span style=" font-size: 10pt; font-weight: bold;"><i class="fa fa-rupee"></i>{{ useritems.price }}</span></td>
-                                                <td bgcolor="#CCFFA4"><span style=" font-size: 10pt; font-weight: bold;">{{ useritems.exchange_category }}</span></td>
-                                                <td bgcolor="#CCFFA4"><span style=" font-size: 10pt; font-weight: bold;">{{ useritems.location }}</span></td>
+                                                <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;"><a onclick="popupCenter('{% url 'view_item' useritems.id %}', 'myPop2',750,750);" href="javascript:void(0);">{{ useritems.id }}</a></span></td>
+                                                <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;">{{ useritems.item_name }}</span></td>
+                                                <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;">{{ useritems.category }}</span></td>
+                                                <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;">{{ useritems.bnd.brand_name }}</span></td>
+                                                <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;"><img src="{{ useritems.item_image.url }}" alt="*" class="img img-thumbnails" width="20" height="30"></span></td>
+                                                <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;"><i class="fa fa-rupee"></i>{{ useritems.price }}</span></td>
+                                                <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;">{{ useritems.exchange_category }}</span></td>
+                                                <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;">{{ useritems.location }}</span></td>
 
                                             </tr>
                                             {% endfor %}</tbody>
@@ -571,14 +572,14 @@
                                         <thead>
                                             <tr height=4 0px; font-weight: bold;>
 
-                                                <th bgcolor="#5BFF92"><span style=" font-size: 10pt; ">Item<br>Code<font color=red><i class="fa fa-fw fa-sort"></i></font></span></th>
-                                                <th bgcolor="#5BFF92"><span style=" font-size: 10pt;  font-weight: bold;">Description</span></th>
-                                                <th bgcolor="#5BFF92"><span style=" font-size: 10pt; ">Categories</span></th>
-                                                <th bgcolor="#5BFF92"><span style=" font-size: 10pt; ">Brand</span></th>
-                                                <th bgcolor="#5BFF92"><span style=" font-size: 10pt; "><i class="fa fa-picture-o"></i></span></th>
-                                                <th bgcolor="#5BFF92"><span style=" font-size: 10pt; ">Item<br>Worth<font color=red><i class="fa fa-fw fa-sort"></i></font></span></th>
-                                                <th bgcolor="#5BFF92"><span style=" font-size: 10pt; ">Exchange<br>With</span></th>
-                                                <th bgcolor="#5BFF92"><span style=" font-size: 10pt; ">Location <i class="fa fa-map-marker"></i></span></th>
+                                                <th bgcolor="#f7a01d"><span style=" font-size: 10pt; ">Item<br>Code<font color=red><i class="fa fa-fw fa-sort"></i></font></span></th>
+                                                <th bgcolor="#f7a01d"><span style=" font-size: 10pt;  font-weight: bold;">Description</span></th>
+                                                <th bgcolor="#f7a01d"><span style=" font-size: 10pt; ">Categories</span></th>
+                                                <th bgcolor="#f7a01d"><span style=" font-size: 10pt; ">Brand</span></th>
+                                                <th bgcolor="#f7a01d"><span style=" font-size: 10pt; "><i class="fa fa-picture-o"></i></span></th>
+                                                <th bgcolor="#f7a01d"><span style=" font-size: 10pt; ">Item<br>Worth<font color=red><i class="fa fa-fw fa-sort"></i></font></span></th>
+                                                <th bgcolor="#f7a01d"><span style=" font-size: 10pt; ">Exchange<br>With</span></th>
+                                                <th bgcolor="#f7a01d"><span style=" font-size: 10pt; ">Location <i class="fa fa-map-marker"></i></span></th>
 
                                             </tr>
                                         </thead>
@@ -586,14 +587,15 @@
                                             {% for useritems in items %}
 
                                             <tr>
-                                                <td bgcolor="#CCFFA4"><span style=" font-size: 10pt; font-weight: bold;"><a onclick="popupCenter('{% url 'view_item' useritems.id %}', 'myPop2',750,750);" href="javascript:void(0);">{{ useritems.id }}</a></span></td>
-                                                <td bgcolor="#CCFFA4"><span style=" font-size: 10pt; font-weight: bold;"><a href="{% url 'edit_item' useritems.id %}">{{ useritems.item_name }}</a></span></td>
-                                                <td bgcolor="#CCFFA4"><span style=" font-size: 10pt; font-weight: bold;">{{ useritems.category }}</span></td>
-                                                <td bgcolor="#CCFFA4"><span style=" font-size: 10pt; font-weight: bold;">{{ useritems.bnd.brand_name }}</span></td>
-                                                <td bgcolor="#CCFFA4"><span style=" font-size: 10pt; font-weight: bold;"><img src="{{ useritems.item_image.url }}" alt="*" class="img img-thumbnails" width="20" height="30"></span></td>
-                                                <td bgcolor="#CCFFA4"><span style=" font-size: 10pt; font-weight: bold;"><i class="fa fa-rupee"></i>{{ useritems.price }}</span></td>
-                                                <td bgcolor="#CCFFA4"><span style=" font-size: 10pt; font-weight: bold;">{{ useritems.exchange_category }}</span></td>
-                                                <td bgcolor="#CCFFA4"><span style=" font-size: 10pt; font-weight: bold;">{{ useritems.location }}</span></td>
+                                                <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;"><a onclick="popupCenter('{% url 'view_item' useritems.id %}', 'myPop2',750,750);" href="javascript:void(0);">{{ useritems.id }}</a></span></td>
+                                                <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;">{{ useritems.item_name }}
+                                                   <!-- <a href="{% url 'edit_item' useritems.id %}">{{ useritems.item_name }}</a> --></span></td>
+                                                <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;">{{ useritems.category }}</span></td>
+                                                <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;">{{ useritems.bnd.brand_name }}</span></td>
+                                                <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;"><img src="{{ useritems.item_image.url }}" alt="*" class="img img-thumbnails" width="20" height="30"></span></td>
+                                                <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;"><i class="fa fa-rupee"></i>{{ useritems.price }}</span></td>
+                                                <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;">{{ useritems.exchange_category }}</span></td>
+                                                <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;">{{ useritems.location }}</span></td>
                                             </tr>
 
                                             {% endfor %}</tbody>

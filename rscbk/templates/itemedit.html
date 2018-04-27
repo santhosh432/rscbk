@@ -17,10 +17,10 @@
             padding:5px;
         }
         th {
-            background-color:#CCFFA4;
+            background-color:#FFF2A2;
         }
         td{
-            background-color:#CCFFA4;
+            background-color:#FFF2A2;
 
         }
     </style>
@@ -54,8 +54,8 @@
             <th><b> Brand </b></th>
             <td> {{ form.bnd }} {{ form.bnd.errors }}  </td>
 
-            <th><b> Extra _ to use </b></th>
-            <td> {{ form.item_name }} {{ form.item_name.errors }} </td>
+            <th><b> Months Used </b></th>
+            <td> {{ form.months_used }} {{ form.months_used.errors }}</td>
         </tr>
         <tr>
             <th><b> Price </b></th>
@@ -64,13 +64,13 @@
             <th><b> Location </b></th>
             <td> {{ form.location }} {{ form.location.errors }}</td>
         </tr>
-        <tr>
+     <!--   <tr>
             <th><b> Months Used</b></th>
             <td> {{ form.months_used }} {{ form.months_used.errors }}</td>
 
             <th><b> Years Used </b></th>
             <td> {{ form.years_used }} {{ form.years_used.errors }} </td>
-        </tr>
+        </tr> -->
         <tr>
             <th><b> Exchangable with</b></th>
             <td> {{ form.exchange_category  }} {{ form.exchange_category.errors  }} </td>

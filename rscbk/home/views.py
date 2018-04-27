@@ -80,12 +80,13 @@ def homepage(request):
     context = {'localip':localip, 'fback':fback}
 
     return render(request,'home.html',context)
+from django.db.models import Count
 
 @login_required
 def myuserdashboard(request):
     localip = get_ip(request)
 
-
+    itemcount = Items.objects.values('category').annotate(cate=Count('category'))
     cat = Category.objects.all()
     items = Items.objects.filter(itemuser=request.user)
     useritemscount = items.count()
@@ -102,9 +103,9 @@ def myuserdashboard(request):
     except:
         up = ''
         pass
+    ctx = {'itemc':itemcount,'localip':localip,'up':up,'allcat':cat,'items':items,'useritemscount':useritemscount,'totcount':totcount,'heading':heading,'global_items_count':global_items_count,'global_items_price':global_items_price}
 
-
-    return render(request, 'userdashboard.html',{'localip':localip,'up':up,'allcat':cat,'items':items,'useritemscount':useritemscount,'totcount':totcount,'heading':heading,'global_items_count':global_items_count,'global_items_price':global_items_price})
+    return render(request, 'userdashboard.html',ctx)
 from django.core.paginator import Paginator
 
 @login_required

@@ -301,9 +301,18 @@
     }
 
     .list-group-item {
-        background-color: #ffffff;
+        background-color: #FFF2A2;
         border: 1px solid #efefef;
     }
+
+    th {
+            background-color:#FFF2A2;
+        }
+    td{
+            background-color:#FFF2A2;
+
+        }
+
 </style>
 
 <input type="checkbox" name="mobile-nav" id="mobile-nav" class="gaadiexp-check" onchange="this.blur()">
@@ -348,10 +357,10 @@
         <div class="col-md-12">
             <div class="panel">
                 <div class="panel-body">
-
+<h3><b >Enter Item details</b></h3>
 <form class="form" action="{% url 'additems' %}" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
-    <table  border="1" cellpadding="1" cellspacing="0"  border-style: solid;">
+    <table  border="1" cellpadding="1" cellspacing="0"  style="border-style: solid;">
         <tr>
             <th><b> Category </b></th>
             <td> {{ addform.category }} </td>
@@ -363,8 +372,8 @@
             <th><b> Brand </b></th>
             <td> {{ addform.bnd }}  <a href="/addbrand/"> Add </a> {{ addform.bnd.errors }}  </td>
 
-            <th><b> Extra _ to use </b></th>
-            <td> {{ addform.item_name }} {{ addform.item_name.errors }} </td>
+            <th><b> Months Used </b></th>
+            <td> {{ addform.months_used }} {{ addform.months_used.errors }} </td>
         </tr>
         <tr>
             <th><b> Price </b></th>
@@ -373,13 +382,13 @@
             <th><b> Location </b></th>
             <td> {{ addform.location }} {{ addform.location.errors }}</td>
         </tr>
-        <tr>
+       <!-- <tr>
             <th><b> Months Used</b></th>
             <td> {{ addform.months_used }} {{ addform.months_used.errors }}</td>
 
             <th><b> Years Used </b></th>
             <td> {{ addform.years_used }} {{ addform.years_used.errors }} </td>
-        </tr>
+        </tr> -->
         <tr>
             <th><b> Exchangable with</b></th>
             <td> {{ addform.exchange_category  }} {{ addform.exchange_category.errors  }} </td>
