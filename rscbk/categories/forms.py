@@ -1,7 +1,8 @@
 #from django.forms import ModelForm
 from django import forms
-from .models import Items
+from .models import Items, CatBrand
 from home.models import Brand
+
 
 class AddbrandForm(forms.ModelForm):
     #model = Brand
@@ -9,6 +10,14 @@ class AddbrandForm(forms.ModelForm):
     class Meta:
         model = Brand
         fields = ('brand_name',)
+    #    #exclude = ('itemuser',)
+
+class AddcatbrandForm(forms.ModelForm):
+    #model = Brand
+
+    class Meta:
+        model = CatBrand
+        fields = ('cat_nam','bnd_name')
     #    #exclude = ('itemuser',)
 
 

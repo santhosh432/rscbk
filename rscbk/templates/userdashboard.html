@@ -386,15 +386,7 @@
                     <!-- style-->
 
                     <!-- code-->
-                    <div align =left>
 
-                        <a href="myuserdashboard/"><i class="fa fa-arrow-circle-o-left" style="font-size:28px;color:#1b3154"></i></a>
-
-                    </div>
-                    <div align=right>
-
-                        <a href="/dash_help" >Help</a>
-                    </div>
                     <div style=" background-color: #fff;" class="row">
                         <div style=" background-color: #1b3154;" class="col-md-6 col-sm-6 col-xs-12 gutter">
 
@@ -418,7 +410,7 @@
                                         <div class="well">
 
                                             <a href="{% url 'myuserdashboard_withargument' category.id %}"><img class="img img-thumbnails" width="80" height="80" src="{{ category.image.url }}" title="{{ category.category_name }}"></a>
-                                            <br> <b>Available</b>: 0{% for it in itemc %} {% if it.category == category.id %} {{ it.cate }} {% else %}  {% endif %}{% endfor %}
+                                            <br>  <b> ( </b> {% for it in itemc %} {% if it.category == category.id %} {{ it.cate }} {% else %}  {% endif %}{% endfor %} <b> &nbsp Items) </b>
                                         </div>
                                     </li>
                                     {% endfor %} {% endif %}
@@ -430,7 +422,7 @@
                                         <thead>
                                             <tr height=4 0px; font-weight: bold;>
                                                 <!-- <th style=height=50px; bgcolor="#f7a01d" > <span style=" font-size: 10pt">R</span></th> -->
-                                                <th bgcolor="#f7a01d"> <span style=" font-size: 10pt">Item<br>Code<font color=red><i class="fa fa-fw fa-sort"></i></font></span></th>
+                                                <th bgcolor="#f7a01d"> <span style=" font-size: 10pt">R Item<br>Code<font color=red><i class="fa fa-fw fa-sort"></i></font></span></th>
                                                 <th bgcolor="#f7a01d"><span style=" font-size: 10pt;  ">Description</span></th>
                                                 <th bgcolor="#f7a01d"><span style=" font-size: 10pt;">Categories</span></th>
                                                 <th bgcolor="#f7a01d"><span style=" font-size: 10pt;">Brand</span></th>
@@ -444,7 +436,7 @@
                                         <tbody>
                                             {% for useritems in items_cat %}
                                             <tr>
-                                                <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;"><a onclick="popupCenter('{% url 'view_item' useritems.id %}', 'myPop2',750,750);" href="javascript:void(0);">{{ useritems.id }}</a></span></td>
+                                                <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;"><a href="{% url 'view_item_global' useritems.id %}">{{ useritems.id }}</a></span></td>
                                                 <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;">{{ useritems.item_name }}</span></td>
                                                 <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;">{{ useritems.category }}</span></td>
                                                 <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;">{{ useritems.bnd.brand_name }}</span></td>
@@ -591,7 +583,7 @@
                                             {% for useritems in items %}
 
                                             <tr>
-                                                <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;"><a onclick="popupCenter('{% url 'view_item' useritems.id %}', 'myPop2',750,750);" href="javascript:void(0);">{{ useritems.id }}</a></span></td>
+                                                <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;"><a href = "{% url 'view_item' useritems.id %}">{{ useritems.id }}</a></span></td>
                                                 <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;">{{ useritems.item_name }}
                                                    <!-- <a href="{% url 'edit_item' useritems.id %}">{{ useritems.item_name }}</a> --></span></td>
                                                 <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;">{{ useritems.category }}</span></td>

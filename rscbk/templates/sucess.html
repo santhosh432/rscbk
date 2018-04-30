@@ -281,7 +281,7 @@ i {padding-right:15px;}
 <label for="mobile-nav" class="gaadiexp white" tabindex="0"><span></span></label>
 <nav role="navigation" class="header-nav">
     <div class="fixed-nav">
-	<a class="navbar-brand " style="margin-left:60px" href="/login"><font size=5>Barterkings</font></a>
+	<a class="navbar-brand " style="margin-left:60px" href="#"><font size=6>Barterkings</font></a>
         <div class="menu">
             <ul>
                 <li class="page_item page-item-2">
@@ -289,6 +289,12 @@ i {padding-right:15px;}
                 </li>
                 <li class="page_item page-item-2">
                     <a href="/contactus" class="list-group-item ">Contact Us</a>
+                </li>
+                <li class="page_item page-item-2">
+                    <a href="/feedback" class="list-group-item ">Feed Backs</a>
+                </li>
+                <li class="page_item page-item-2">
+                    <a href="/privacy" class="list-group-item ">Terms of Services</a>
                 </li>
             </ul>
         </div>
@@ -309,13 +315,43 @@ i {padding-right:15px;}
 	<!------------ Panel Class ------------->
     <div class="margin-t-20"></div>
 	<div class="row">
+	    <div class="col-md-3 sidebar">
+	        <div class="panel">
+    	       <div class="panel-body ">
+                <div class="sidebar-nav">
+                 <div class="sidebar panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                          <a data-toggle="collapse" href="/login" class="" aria-expanded="true">Login <i class="fa fa-angle-down pull-right"></i></a>
+                        </h4>
+                      </div>
 
+                 </div>
+                 <div class="sidebar panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                          <a href="/signup" data-toggle="collapse" href="#sidemenu2" id="preview" class="" aria-expanded="true">Signup <i class="fa fa-angle-down pull-right"></i></a>
+                        </h4>
+                      </div>
+
+                 </div>
+
+                </div>
+
+
+    	        </div>
+
+	        </div>
+	    </div>
 	    <div class="col-md-9">
 	        <div class="panel">
 	       <div class="panel-body">
-	          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHTZCDniLmFKR1O-axWvnNyFdiVbEDJV9brWthxqHc-6l63-ii"><h2> Signup is done successfully </h2><br>
-	           <a href="/login">Login</a>
-	        </div>
+	           {% load staticfiles %}
+
+	          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHTZCDniLmFKR1O-axWvnNyFdiVbEDJV9brWthxqHc-6l63-ii"><h2> Signup is done successfully, click Login. </h2><br>
+
+
+	           	        </div>
 
 	        </div>
 
@@ -323,125 +359,12 @@ i {padding-right:15px;}
 
 	</div>
 </div>
-<!-- comment-->
- <div class="sidemenu panel-default">
-                  <div class="panel-heading">
-                    <h4 class="panel-title">
-                      <a data-toggle="collapse" href="#collapse1"><center>Comments & Feed backs</center></a>
-                    </h4>
-                  </div>
-                     <div id="collapse1" class="panel-collapse collapse in">
-                     <div class="list-group">
-          <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
 
-<div class="container">
-    <div class="row">
-        <div class="panel panel-default widget">
-            <div class="panel-heading">
-                <span class="glyphicon glyphicon-comment"></span>
-                <h3 class="panel-title">
-                    Recent Comments</h3>
-                <span class="label label-info">
-                    78</span>
-            </div>
-            <div class="panel-body">
-                <ul class="list-group">
-                    <li class="list-group-item">
-                        <div class="row">
-                            <div class="col-xs-2 col-md-1">
-                                <img src="http://placehold.it/80" class="img-circle img-responsive" alt="" /></div>
-                            <div class="col-xs-10 col-md-11">
-                                <div>
-                                    <a href="http://www.jquery2dotnet.com/2013/10/google-style-login-page-desing-usign.html">
-                                        Google Style Login Page Design Using Bootstrap</a>
-                                    <div class="mic-info">
-                                        By: <a href="#">Bhaumik Patel</a> on 2 Aug 2013
-                                    </div>
-                                </div>
-                                <div class="comment-text">
-                                    Awesome design
-                                </div>
-                                <div class="action">
-                                    <button type="button" class="btn btn-primary btn-xs" title="Edit">
-                                        <span class="glyphicon glyphicon-pencil"></span>
-                                    </button>
-                                    <button type="button" class="btn btn-success btn-xs" title="Approved">
-                                        <span class="glyphicon glyphicon-ok"></span>
-                                    </button>
-                                    <button type="button" class="btn btn-danger btn-xs" title="Delete">
-                                        <span class="glyphicon glyphicon-trash"></span>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="list-group-item">
-                        <div class="row">
-                            <div class="col-xs-2 col-md-1">
-                                <img src="http://placehold.it/80" class="img-circle img-responsive" alt="" /></div>
-                            <div class="col-xs-10 col-md-11">
-                                <div>
-                                    <a href="http://bootsnipp.com/BhaumikPatel/snippets/Obgj">Admin Panel Quick Shortcuts</a>
-                                    <div class="mic-info">
-                                        By: <a href="#">Bhaumik Patel</a> on 11 Nov 2013
-                                    </div>
-                                </div>
-                                <div class="comment-text">
-                                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh
-                                    euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim
-                                </div>
-                                <div class="action">
-                                    <button type="button" class="btn btn-primary btn-xs" title="Edit">
-                                        <span class="glyphicon glyphicon-pencil"></span>
-                                    </button>
-                                    <button type="button" class="btn btn-success btn-xs" title="Approved">
-                                        <span class="glyphicon glyphicon-ok"></span>
-                                    </button>
-                                    <button type="button" class="btn btn-danger btn-xs" title="Delete">
-                                        <span class="glyphicon glyphicon-trash"></span>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="list-group-item">
-                        <div class="row">
-                            <div class="col-xs-2 col-md-1">
-                                <img src="http://placehold.it/80" class="img-circle img-responsive" alt="" /></div>
-                            <div class="col-xs-10 col-md-11">
-                                <div>
-                                    <a href="http://bootsnipp.com/BhaumikPatel/snippets/4ldn">Cool Sign Up</a>
-                                    <div class="mic-info">
-                                        By: <a href="#">Bhaumik Patel</a> on 11 Nov 2013
-                                    </div>
-                                </div>
-                                <div class="comment-text">
-                                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh
-                                    euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim
-                                </div>
-                                <div class="action">
-                                    <button type="button" class="btn btn-primary btn-xs" title="Edit">
-                                        <span class="glyphicon glyphicon-pencil"></span>
-                                    </button>
-                                    <button type="button" class="btn btn-success btn-xs" title="Approved">
-                                        <span class="glyphicon glyphicon-ok"></span>
-                                    </button>
-                                    <button type="button" class="btn btn-danger btn-xs" title="Delete">
-                                        <span class="glyphicon glyphicon-trash"></span>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-                <a href="#" class="btn btn-primary btn-sm btn-block" role="button"><span class="glyphicon glyphicon-refresh"></span> More</a>
-            </div>
-        </div>
-    </div>
-</div>
+
+
+
+
+
 <script>
     // Short-form of `document.ready`
 $(function(){
@@ -481,13 +404,13 @@ $(function(){
 	        <div class="col-md-12 ">
 	          <center>
 	            <h4>
-    <b>  <a href="/privacy" target="_blank">Terms of Service </a> <br> vistor count:
+     vistor count:
                     <!-- hitwebcounter Code START -->
 
 <img src='https://www.counter12.com/img-x0Z5z8xDDZZcwDzz-36.gif' border='0' alt='counter'>
 
                     <br>
-© 2018 - Designed by redsuncube. All rights reserved (Ravi Gandham)</h4>
+© 2018 - Designed by <a href="www.redsuncube.com">redsuncube</a>. All rights reserved (Ravi Gandham)</h4>
 	          </center>
 	        </div>
 	    </div>

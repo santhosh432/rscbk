@@ -13,7 +13,12 @@ class Category(models.Model):
     def __str__(self):
         return '{0}'.format(self.category_name)
 
+class CatBrand(models.Model):
+    cat_nam = models.ForeignKey(Category, related_name="cat_name",default=Category.DEFAULT_PK)
+    bnd_name = models.ForeignKey(Brand, default=Brand.DEFAULT_PK)
 
+    #def __str__(self):
+    #    return '{0}'.format(self.brand_name)
 
 # all items
 itemstatus_choice = (

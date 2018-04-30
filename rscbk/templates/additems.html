@@ -301,18 +301,9 @@
     }
 
     .list-group-item {
-        background-color: #FFF2A2;
+        background-color: #ffffff;
         border: 1px solid #efefef;
     }
-
-    th {
-            background-color:#FFF2A2;
-        }
-    td{
-            background-color:#FFF2A2;
-
-        }
-
 </style>
 
 <input type="checkbox" name="mobile-nav" id="mobile-nav" class="gaadiexp-check" onchange="this.blur()">
@@ -357,10 +348,230 @@
         <div class="col-md-12">
             <div class="panel">
                 <div class="panel-body">
+
+                    <script>
+                        $(document).ready(function() {
+                            $("#myTable").tablesorter();
+
+                            $("#myTable_own").tablesorter();
+
+                            var code = {};
+                            $("select[name='bnd'] > option").each(function() {
+                                if (code[this.text]) {
+                                    $(this).remove();
+                                } else {
+                                    code[this.text] = this.value;
+                                }
+                            });
+                        });
+                    </script>
+
+                    <script>
+                        $(document).ready(function() {
+
+                            $("#link").click(function() {
+                                var href = $('#link').attr('href');
+                                var min = $('#min').val();
+                                var max = $('#max').val();
+                                //alert(min);
+                                //alert(max);
+                                //alert(href);
+                                //alert("i am ihere");//Do stuff when clicked
+                                final_link = href + min + "/" + max
+                                    //alert(final_link);
+                                $("#link").attr('href', final_link)
+                            });
+                        });
+                    </script>
+                    <!-- style-->
+
+                    <!-- code-->
+                    <div align =left>
+
+                        <a href="myuserdashboard/"><i class="fa fa-arrow-circle-o-left" style="font-size:28px;color:#1b3154"></i></a>
+
+                    </div>
+                    <div align=right>
+
+                        <a href="/dash_help" >Help</a>
+                    </div>
+                    <div style=" background-color: #fff;" class="row">
+                        <div style=" background-color: #1b3154;" class="col-md-6 col-sm-6 col-xs-12 gutter">
+
+                            <div style=" background-color: #ffff;" class="sales">
+                                <div style=" background-color: #1b3154;" class="row">
+
+                                    <h4><b><center><font color="white">Global items</font></center></b></h4></div>
+                                <table align="center" width="85%">
+                                    <tr>
+                                        <th colspan=3> <font size=2> <b>Total Itemsss</b> :{%if useritemscount_cat%} {{useritemscount_cat}}{%else%}{{global_items_count}}{%endif%}</font></th>
+
+                                        <th colspan=3><font size=2><b> &nbsp &nbsp &nbsp &nbsp &nbspTotal Value</b> : Rs: {%if totcount_cat%} {{totcount_cat}}{%else%}{{global_items_price}}{%endif%}</font></th>
+
+                                    </tr>
+                                </table>
+
+                                {% if not items_cat %}
+                                <ul class="nav nav-pills">
+                                    {% for category in allcat %}
+                                    <li style="padding: 1px;" class="catli">
+                                        <div class="well">
+
+                                            <a href="{% url 'myuserdashboard_withargument' category.id %}"><img class="img img-thumbnails" width="80" height="80" src="{{ category.image.url }}" title="{{ category.category_name }}"></a>
+                                            <br>  <b> ( </b> {% for it in itemc %} {% if it.category == category.id %} {{ it.cate }} {% else %}  {% endif %}{% endfor %} <b> &nbsp Items) </b>
+                                        </div>
+                                    </li>
+                                    {% endfor %} {% endif %}
+
+                                </ul>{% if items_cat %}
+<br>
+                                <center>
+                                    <table border=1 id="myTable" class="tablesorter" width="85%">
+                                        <thead>
+                                            <tr height=4 0px; font-weight: bold;>
+                                                <!-- <th style=height=50px; bgcolor="#f7a01d" > <span style=" font-size: 10pt">R</span></th> -->
+                                                <th bgcolor="#f7a01d"> <span style=" font-size: 10pt">Item<br>Code<font color=red><i class="fa fa-fw fa-sort"></i></font></span></th>
+                                                <th bgcolor="#f7a01d"><span style=" font-size: 10pt;  ">Description</span></th>
+                                                <th bgcolor="#f7a01d"><span style=" font-size: 10pt;">Categories</span></th>
+                                                <th bgcolor="#f7a01d"><span style=" font-size: 10pt;">Brand</span></th>
+                                                <th bgcolor="#f7a01d"><span style=" font-size: 10pt;"><i class="fa fa-picture-o"></i></span></th>
+                                                <th bgcolor="#f7a01d"><span style=" font-size: 10pt;">Item<br>Worth<font color=red><i class="fa fa-fw fa-sort"></i></font></span></th>
+                                                <th bgcolor="#f7a01d"><span style=" font-size: 10pt;">Exchange<br>With</span></th>
+                                                <th bgcolor="#f7a01d"><span style=" font-size: 10pt;">Location<i class="fa fa-map-marker"></i></span></th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for useritems in items_cat %}
+                                            <tr>
+                                                <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;"><a onclick="popupCenter('{% url 'view_item' useritems.id %}', 'myPop2',750,750);" href="javascript:void(0);">{{ useritems.id }}</a></span></td>
+                                                <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;">{{ useritems.item_name }}</span></td>
+                                                <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;">{{ useritems.category }}</span></td>
+                                                <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;">{{ useritems.bnd.brand_name }}</span></td>
+                                                <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;"><img src="{{ useritems.item_image.url }}" alt="*" class="img img-thumbnails" width="20" height="30"></span></td>
+                                                <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;"><i class="fa fa-rupee"></i>{{ useritems.price }}</span></td>
+                                                <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;">{{ useritems.exchange_category }}</span></td>
+                                                <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;">{{ useritems.location }}</span></td>
+
+                                            </tr>
+                                            {% endfor %}</tbody>
+                                    </table>
+                                    {% if items_cat.has_other_pages %}
+                                    <h6>
+                <ul class="pagination">
+                    {% if items_cat.has_previous %}
+                    <li><a href="?pagee={{ items_cat.previous_page_number }}">&laquo;</a></li>
+                    {% else %}
+                    <li class="disabled"><span>&laquo;</span></li>
+                    {% endif %} {% for i in items_cat.paginator.page_range %} {% if items_cat.number == i %}
+                    <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span>
+                    </li>
+                    {% else %}
+                    <li><a href="?pagee={{ i }}">{{ i }}</a></li>
+                    {% endif %} {% endfor %} {% if items_cat.has_next %}
+                    <li><a href="?pagee={{ items_cat.next_page_number }}">&raquo;</a></li>
+                    {% else %}
+                    <li class="disabled"><span>&raquo;</span></li>
+                    {% endif %}
+                </ul></h6> {% endif %} {% for useritems in items_cat %} {% if forloop.first %}
+
+                                    <h5>Selected catagory:
+
+                                   <select name="cat" onchange="window.location.href=this.value;">
+
+                                       {% for category in allcat %}
+                                       {% if useritems.category == category %}
+                                       <option selected value="{{category.id}}">{{category}}</option>
+                                       {%else%}
+                                       <option value="{% url 'myuserdashboard_withargument' category.id %}">{{category}}</option>
+                                        {%endif%}
+                                       {% endfor %}
+                                   </select> Sub category :
+
+                                    <select  class='on' name="bnd" onchange="window.location.href=this.value;">
+
+                                    {% for category in allcat %}
+
+                                           {% if useritems.category == category %}
+
+                                                {% if select_value == 0 %}
+                                                        <option selected >-- select any --</option>
+                                                        {% for k,v in brand_dict.items%}
+                                                        <option value="{% url 'myuserdashboard_with_cat_bnd' category.id k %}">{{v}}</option>
+                                                        {%endfor%}
+                                                         {% for k,v in brand_dict_all.items%}
+
+                                                       <option value="{% url 'myuserdashboard_with_cat_bnd' category.id k %}">{{v}}</option>
+                                                       {%endfor%}
+                                                {% else %}
+                                                      {% for k,v in brand_dict.items%}
+
+                                                           {% if select_value == k %}
+
+                                                           <option selected value="{% url 'myuserdashboard_with_cat_bnd' category.id k %}">{{v}}</option>
+                                                           {%else%}
+                                                           <option value="{% url 'myuserdashboard_with_cat_bnd' category.id k %}">{{v}}</option>
+                                                           {%endif%}
+
+                                                      {%endfor%}
+                                                       {% for k,v in brand_dict_all.items%}
+
+                                                       <option value="{% url 'myuserdashboard_with_cat_bnd' category.id k %}">{{v}}</option>
+                                                   {%endfor%}
+                                                {% endif %}
+
+                                                <option value="{% url 'myuserdashboard_withargument' category.id %}">-- All --</option>
+
+                                        {% endif %}
+
+                                    {% endfor %}
+                                   </select>
+
+                <p id="price_list">
+
+<label for="amount"> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Price range - &nbsp </label>
+                    Minimum :<input type=text id=min size="7" value=0> &nbsp &nbsp &nbsp
+                    Maximum :<input type=text id=max size="8" value={{items_cat_max.price}}>  &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <br> {% for category in allcat %} {% if useritems.category == category %} {% for k,v in brand_dict.items%}
+                    <a id="link" href="{% url 'myuserdashboard_with_cat_bnd' category.id k %}" title "show the range for {{v}}">
+                        <button style="background-color: #4CAF50; border:2; color:#f6931f; font-weight:bold;"><b>{{v}}</b></button>
+                    </a>
+                    {% endfor %} {% endif %} {% endfor %}
+
+                </p> </h5>
+
+                                    <input type="hidden" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
+                                    <div id="slider-range" class="slider"></div>
+
+                                    <!-- END SLIDE -->
+
+                                    {%endif%} {% endfor %} {% endif %}
+
+                                </center><br><hr>
+                            </div>
+                        </div>
+
+
+
+                             <div style=" background-color: #fff;" class="row">
+
+                        <div style=" background-color: #1b3154;" class="col-md-6 col-sm-6 col-xs-12 gutter">
+                            <div style=" background-color: #fff;" class="sales report">
+                                <div style=" background-color: #1b3154;" class="row">
+
+                                    <h4><font color="white"><b><center>{{request.user}}  - Your items</center></b></font></h4></div>
+                                <center>
+
+
+
+
+
+
 <h3><b >Enter Item details</b></h3>
 <form class="form" action="{% url 'additems' %}" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
-    <table  border="1" cellpadding="1" cellspacing="0"  style="border-style: solid;">
+<font face="Times New Roman" size="5">
+    <table   cellpadding="1" cellspacing="0" border="0" >
         <tr>
             <th><b> Category </b></th>
             <td> {{ addform.category }} </td>
@@ -370,7 +581,35 @@
         </tr>
         <tr>
             <th><b> Brand </b></th>
-            <td> {{ addform.bnd }}  <a href="/addbrand/"> Add </a> {{ addform.bnd.errors }}  </td>
+            <td>
+<script>
+    $(document).ready(function(){
+
+  $('#id_category').on('change', function() {
+       $("#id_bnd option").remove();
+
+
+  {% for i in cat_brd%}
+
+if({{i.cat_nam.id}} == this.value){
+
+$("#id_bnd").append('<option value="{{i.bnd_name.id}}">{{i.bnd_name}}</option>');
+
+
+}
+
+
+            {%endfor%}
+})
+
+
+});
+</script>
+
+            <select name="bnd" id="id_bnd">
+
+            </select>
+              <a href="/addcatbrand/"> Add </a>  </td>
 
             <th><b> Months Used </b></th>
             <td> {{ addform.months_used }} {{ addform.months_used.errors }} </td>
@@ -417,11 +656,42 @@
         <tr>
             <th><b> Other Information </b></th>
             <td colspan='3'> {{ addform.other_info }} {{ addform.other_info.errors }} </td>
-        </tr>
+        </tr> </font>
     </table>
                 <input type="submit" name="submit" value="Submit">
 
 </form>
+
+
+        </div>
+
+    </div>
+
+</div>
+
+</div>
+</div>
+    <script>
+                                    function popupCenter(url, title, w, h) {
+                                        var left = (screen.width / 2) - (w / 2);
+                                        var top = (screen.height / 2) - (h / 2);
+                                        return window.open(url, title, 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=' + w + ', height=' + h + ', top=' + top + ', left=' + left);
+                                    }
+                                </script>
+
+<br>
+
+
+                        </div>
+
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--   </div> -->
 
 
         </div>
@@ -454,3 +724,7 @@
         </div>
     </div>
 </div>
+
+
+
+

@@ -565,13 +565,14 @@
 
 
 
-<H4>Add Items</H4>
-    <form class="form" action="{% url 'addbrand' %}" method="POST" enctype="multipart/form-data">
+<H4>Add brand with category</H4>
+
+    <form class="form" action="{% url 'addcatbrand' %}" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="div_form">
                 <table border=4 width=50%>
                     {%for i in addform%}
-                        <tr> <td>{{i.label}} </td><td> {{i}}</td></tr>
+                        <tr> <td>{{i.label}} </td><td> {{i}}{% if i.label == "Bnd name" %}<a href="/addbrand/"> Add  brand</a>{%endif%}</td></tr>
                     {%endfor%}</table>
                     <input type="submit" name="submit" value="Submit"  >
                     </ul>
@@ -581,13 +582,7 @@
 
     </form>
 
-
-
-
-
-                                </center>
-
-                                <script>
+                              <script>
                                     function popupCenter(url, title, w, h) {
                                         var left = (screen.width / 2) - (w / 2);
                                         var top = (screen.height / 2) - (h / 2);
@@ -595,8 +590,8 @@
                                     }
                                 </script>
 
-<br>
-<hr>
+<br><hr>
+
 
                         </div>
 

@@ -49,8 +49,11 @@ urlpatterns = [
     url(r'dashboard/',dashboard),
     url(r'additems/',catviews.additems , name='additems'),
     url(r'addbrand/',catviews.addbrand , name='addbrand'),
+    url(r'addcatbrand/',catviews.addcatbrand , name='addcatbrand'),
 
     url(r'view_item/(?P<item_id>\d+)/$',catviews.view_item , name='view_item'),
+    url(r'view_item_global/(?P<item_id>\d+)/$',catviews.view_item_global , name='view_item_global'),
+
     url(r'^edititem/(?P<pk>\d+)$', catviews.edit_item, name="edit_item"),
 
 ]

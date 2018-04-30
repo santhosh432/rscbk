@@ -1,29 +1,568 @@
+{% load staticfiles %} {% load static %}
 
-{% load staticfiles %}
-{% load static %}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
-<head>
-    <style>
-        table{
-            margin:auto;
-            font-size:14px;
-            font-family:ubuntu;
-        }
-        th, td {
-            padding:5px;
-        }
-        th {
-            background-color:#FFF2A2;
-        }
-        td{
-            background-color:#FFF2A2;
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
-        }
-    </style>
-</head>
-<body>
-    <div align="center"><b><font size="5"><span style="font-weight: bold; font-style: ubuntu; text-decoration: none; font-size: 14pt; color: #000000;">Complete Item Description</span></font></b></div>
-    <table border="1" cellpadding="1" cellspacing="0" style="border-color: #e0ede0; border-style: solid;" width="95%">
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js "></script>
+<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.9.1/jquery.tablesorter.min.js"></script>
+<link rel="stylesheet" type="text/css" href="{% static 'admin/css/slider.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'admin/css/dash_boot.css' %}" />
+<!------ Include the above in your HEAD tag ---------->
+<style>
+    body {
+        background: #e8edfc;
+    }
+
+    .panel {
+        border-radius: 0px;
+    }
+
+    a:hover {
+        text-decoration: none;
+        color: #f7a01d;
+    }
+    /************ Margin ************/
+
+    .margin-t-20 {
+        margin-top: 20px;
+    }
+
+    .margin-t-30 {
+        margin-top: 30px;
+    }
+
+    .margin-t-40 {
+        margin-top: 40px;
+    }
+
+    .margin-t-50 {
+        margin-top: 50px;
+    }
+
+    .margin-t-60 {
+        margin-top: 60px;
+    }
+
+    .margin-t-70 {
+        margin-top: 70px;
+    }
+
+    .margin-t-80 {
+        margin-top: 80px;
+    }
+
+    .margin-t-90 {
+        margin-top: 90px;
+    }
+
+    .margin-b-0 {
+        margin-bottom: 0px!important;
+    }
+    /************** Background ***************/
+
+    .bg-blue {
+        background: #0e1651;
+        color: #fff!important;
+    }
+    /************* Icon ***********/
+
+    i {
+        padding-right: 15px;
+    }
+    /************** Sidebar ***************/
+
+    .card {
+        background: #ffffff;
+        border: 1px solid #e2e2e2;
+        shadow: 2px 2px 2px #e2e2e2;
+        margin-bottom: 20px;
+    }
+
+    .card-body {
+        padding: 15px;
+    }
+    /************** NAVIGATION ***************/
+    /*--------------------------------------
+ Sets the actionable area for the gaadiexp
+ including a label for usability
+--------------------------------------*/
+
+    .gaadiexp,
+    .gaadiexp:after,
+    .gaadiexp *,
+    .gaadiexp *:before,
+    .gaadiexp *:after,
+    .header-nav *,
+    .header-nav *:before,
+    .header-nav *:after {
+        -webkit-transition: all 0.3s;
+        transition: all 0.3s;
+    }
+
+    .gaadiexp {
+        cursor: pointer;
+        height: 60px;
+        margin-bottom: 0;
+        width: 60px;
+        z-index: 9001;
+        left: 0;
+        overflow: hidden;
+        position: fixed;
+        top: 0;
+        background: #f7a01d;
+        box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.075);
+    }
+
+    .gaadiexp:after {
+        bottom: 7px;
+        color: #FFFFFF;
+        content: 'Menu';
+        font-size: 13px;
+        font-weight: 300;
+        left: 0;
+        position: absolute;
+        text-align: center;
+        width: 100%;
+    }
+    /*--------------------------------------
+ Creates the look of the gaadiexp icon
+ using the inner span and pseudo-elements
+--------------------------------------*/
+
+    .gaadiexp span,
+    .gaadiexp span:before,
+    .gaadiexp span:after {
+        background: #FFFFFF;
+        border-radius: 0px;
+        height: 4px;
+        left: 10px;
+        position: absolute;
+        top: 22px;
+        -webkit-transition: all 0.3s;
+        transition: all 0.3s;
+        width: 40px;
+    }
+    /* Reset the left and create the pseudo-element */
+
+    .gaadiexp span:before,
+    .gaadiexp span:after {
+        content: '';
+        left: 0;
+    }
+    /* Top bar position */
+
+    .gaadiexp span:before {
+        top: -8px;
+    }
+    /* Bottom bar position */
+
+    .gaadiexp span:after {
+        top: 8px;
+    }
+    /* Get rid of more on action (IE9 or higher) */
+
+    .gaadiexp-check:checked + .gaadiexp:after {
+        content: '';
+    }
+    /* Get rid of the middle bar on action (IE9 or higher) */
+
+    .gaadiexp-check:checked + .gaadiexp span {
+        height: 0;
+        width: 0;
+    }
+    /* Moves the top and bottom bars to the middle on action (IE9 or higher) */
+
+    .gaadiexp-check:checked + .gaadiexp span:before,
+    .gaadiexp-check:checked + .gaadiexp span:after {
+        top: 6px;
+    }
+    /* Rotates the top bar on action with full browser support (IE9 or higher) */
+
+    .gaadiexp-check:checked + .gaadiexp span:before {
+        -webkit-transform: rotate(225deg);
+        -ms-transform: rotate(225deg);
+        transform: rotate(225deg);
+    }
+    /* Rotates the bottom bar on action with full browser support (IE9 or higher) */
+
+    .gaadiexp-check:checked + .gaadiexp span:after {
+        -webkit-transform: rotate(-225deg);
+        -ms-transform: rotate(225deg);
+        transform: rotate(-225deg);
+    }
+
+    #mobile-nav:focus + .gaadiexp,
+    .gaadiexp:focus,
+    .gaadiexp:hover {
+        background: #f7a01d;
+    }
+
+    .gaadiexp-check:checked + .gaadiexp {
+        width: 200px;
+    }
+
+    .gaadiexp-check:checked + .gaadiexp:after {
+        bottom: 18px;
+        content: 'Close Menu';
+        font-size: 20px;
+        padding-left: 30px;
+    }
+
+    #mobile-nav {
+        left: -9999px;
+        position: fixed;
+        top: 0;
+    }
+
+    .header-nav ul li a:active,
+    .header-nav ul li a:focus,
+    .header-nav ul li a:hover,
+    #mobile-nav:focus + .gaadiexp,
+    .gaadiexp:focus,
+    .gaadiexp:hover {
+        background: #e2e2e2;
+        outline: none;
+    }
+
+    .fixed-nav {
+        background: #f7a01d;
+        height: 60px;
+        position: fixed;
+        width: 100%;
+        z-index: 9000;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    }
+
+    .fixed-nav a {
+        color: #fff;
+    }
+
+    .header-nav {
+        float: left;
+        height: 60px;
+        position: relative;
+        width: 100%;
+    }
+
+    .header-nav ul {
+        background: #fff;
+        height: calc(100vh - 60px);
+        list-style: none;
+        margin: 0;
+        overflow-y: auto;
+        padding: 10px 0 0 0;
+        position: absolute;
+        -webkit-transform: translateX(-110%);
+        transform: translateX(-110%);
+        -webkit-transition-timing-function: cubic-bezier(0.250, 0.460, 0.450, 0.940);
+        -moz-transition-timing-function: cubic-bezier(0.250, 0.460, 0.450, 0.940);
+        -o-transition-timing-function: cubic-bezier(0.250, 0.460, 0.450, 0.940);
+        transition-timing-function: cubic-bezier(0.250, 0.460, 0.450, 0.940);
+        width: 200px;
+        box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.075);
+        top: 100%;
+        z-index: 1;
+    }
+
+    .gaadiexp-check:checked ~ .header-nav ul {
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+    }
+
+    .header-nav ul li {
+        float: left;
+        position: relative;
+        width: 100%;
+    }
+
+    .header-nav ul li a {
+        color: rgba(0, 0, 0, 0.79);
+        display: block;
+        float: left;
+        font-size: 14px;
+        font-weight: 400;
+        letter-spacing: 0.75px;
+        line-height: 24px;
+        margin-left: 0;
+        overflow: hidden;
+        /*padding: 12px 60px 12px 12px;*/
+        position: relative;
+        text-decoration: none;
+        width: 100%;
+    }
+
+    .list-group-item:last-child {
+        border-bottom-right-radius: 0px;
+        border-bottom-left-radius: 0px;
+    }
+
+    .list-group-item {
+        background-color: #ffffff;
+        border: 1px solid #efefef;
+    }
+</style>
+
+<input type="checkbox" name="mobile-nav" id="mobile-nav" class="gaadiexp-check" onchange="this.blur()">
+<label for="mobile-nav" class="gaadiexp white" tabindex="0"><span></span></label>
+<nav role="navigation" class="header-nav">
+    <div class="fixed-nav">
+        <a class="navbar-brand " style="margin-left:60px" href="/login"><font size=5>Barterkings</font></a>
+        <div class="menu">
+            <ul>
+                <li class="page_item page-item-2">
+                    <a href="/dash_help" class="list-group-item">Help</a>
+                </li>
+                <li class="page_item page-item-2">
+                    <a href="#" class="list-group-item">Profile</a>
+                </li>
+                <li class="page_item page-item-2">
+                    <a href="#" class="list-group-item ">Change password</a>
+                </li>
+                <li class="page_item page-item-2">
+                    <a href="/logout" class="list-group-item ">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div class="container-fluid top-heading bg-blue">
+    <div class="container ">
+        <div class="margin-t-60"></div>
+        <div class="row">
+
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid column-starter">
+    <!------------ Panel Class ------------->
+    <div class="margin-t-20"></div>
+    <div class="row">
+
+        <div class="col-md-12">
+            <div class="panel">
+                <div class="panel-body">
+
+                    <script>
+                        $(document).ready(function() {
+                            $("#myTable").tablesorter();
+
+                            $("#myTable_own").tablesorter();
+
+                            var code = {};
+                            $("select[name='bnd'] > option").each(function() {
+                                if (code[this.text]) {
+                                    $(this).remove();
+                                } else {
+                                    code[this.text] = this.value;
+                                }
+                            });
+                        });
+                    </script>
+
+                    <script>
+                        $(document).ready(function() {
+
+                            $("#link").click(function() {
+                                var href = $('#link').attr('href');
+                                var min = $('#min').val();
+                                var max = $('#max').val();
+                                //alert(min);
+                                //alert(max);
+                                //alert(href);
+                                //alert("i am ihere");//Do stuff when clicked
+                                final_link = href + min + "/" + max
+                                    //alert(final_link);
+                                $("#link").attr('href', final_link)
+                            });
+                        });
+                    </script>
+                    <!-- style-->
+
+                    <!-- code-->
+
+                    <div style=" background-color: #fff;" class="row">
+                        <div style=" background-color: #1b3154;" class="col-md-6 col-sm-6 col-xs-12 gutter">
+
+                            <div style=" background-color: #ffff;" class="sales">
+                                <div style=" background-color: #1b3154;" class="row">
+
+                                    <h4><b><center><font color="white">Global items</font></center></b></h4></div>
+                                <table align="center" width="85%">
+                                    <tr>
+                                        <th colspan=3> <font size=2> <b>Total Itemsss</b> :{%if useritemscount_cat%} {{useritemscount_cat}}{%else%}{{global_items_count}}{%endif%}</font></th>
+
+                                        <th colspan=3><font size=2><b> &nbsp &nbsp &nbsp &nbsp &nbspTotal Value</b> : Rs: {%if totcount_cat%} {{totcount_cat}}{%else%}{{global_items_price}}{%endif%}</font></th>
+
+                                    </tr>
+                                </table>
+
+                                {% if not items_cat %}
+                                <ul class="nav nav-pills">
+                                    {% for category in allcat %}
+                                    <li style="padding: 1px;" class="catli">
+                                        <div class="well">
+
+                                            <a href="{% url 'myuserdashboard_withargument' category.id %}"><img class="img img-thumbnails" width="80" height="80" src="{{ category.image.url }}" title="{{ category.category_name }}"></a>
+                                            <br>  <b> ( </b> {% for it in itemc %} {% if it.category == category.id %} {{ it.cate }} {% else %}  {% endif %}{% endfor %} <b> &nbsp Items) </b>
+                                        </div>
+                                    </li>
+                                    {% endfor %} {% endif %}
+
+                                </ul>{% if items_cat %}
+<br>
+                                <center>
+                                    <table border=1 id="myTable" class="tablesorter" width="85%">
+                                        <thead>
+                                            <tr height=4 0px; font-weight: bold;>
+                                                <!-- <th style=height=50px; bgcolor="#f7a01d" > <span style=" font-size: 10pt">R</span></th> -->
+                                                <th bgcolor="#f7a01d"> <span style=" font-size: 10pt">Item<br>Code<font color=red><i class="fa fa-fw fa-sort"></i></font></span></th>
+                                                <th bgcolor="#f7a01d"><span style=" font-size: 10pt;  ">Description</span></th>
+                                                <th bgcolor="#f7a01d"><span style=" font-size: 10pt;">Categories</span></th>
+                                                <th bgcolor="#f7a01d"><span style=" font-size: 10pt;">Brand</span></th>
+                                                <th bgcolor="#f7a01d"><span style=" font-size: 10pt;"><i class="fa fa-picture-o"></i></span></th>
+                                                <th bgcolor="#f7a01d"><span style=" font-size: 10pt;">Item<br>Worth<font color=red><i class="fa fa-fw fa-sort"></i></font></span></th>
+                                                <th bgcolor="#f7a01d"><span style=" font-size: 10pt;">Exchange<br>With</span></th>
+                                                <th bgcolor="#f7a01d"><span style=" font-size: 10pt;">Location<i class="fa fa-map-marker"></i></span></th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for useritems in items_cat %}
+                                            <tr>
+                                                <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;"><a onclick="popupCenter('{% url 'view_item' useritems.id %}', 'myPop2',750,750);" href="javascript:void(0);">{{ useritems.id }}</a></span></td>
+                                                <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;">{{ useritems.item_name }}</span></td>
+                                                <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;">{{ useritems.category }}</span></td>
+                                                <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;">{{ useritems.bnd.brand_name }}</span></td>
+                                                <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;"><img src="{{ useritems.item_image.url }}" alt="*" class="img img-thumbnails" width="20" height="30"></span></td>
+                                                <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;"><i class="fa fa-rupee"></i>{{ useritems.price }}</span></td>
+                                                <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;">{{ useritems.exchange_category }}</span></td>
+                                                <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;">{{ useritems.location }}</span></td>
+
+                                            </tr>
+                                            {% endfor %}</tbody>
+                                    </table>
+                                    {% if items_cat.has_other_pages %}
+                                    <h6>
+                <ul class="pagination">
+                    {% if items_cat.has_previous %}
+                    <li><a href="?pagee={{ items_cat.previous_page_number }}">&laquo;</a></li>
+                    {% else %}
+                    <li class="disabled"><span>&laquo;</span></li>
+                    {% endif %} {% for i in items_cat.paginator.page_range %} {% if items_cat.number == i %}
+                    <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span>
+                    </li>
+                    {% else %}
+                    <li><a href="?pagee={{ i }}">{{ i }}</a></li>
+                    {% endif %} {% endfor %} {% if items_cat.has_next %}
+                    <li><a href="?pagee={{ items_cat.next_page_number }}">&raquo;</a></li>
+                    {% else %}
+                    <li class="disabled"><span>&raquo;</span></li>
+                    {% endif %}
+                </ul></h6> {% endif %} {% for useritems in items_cat %} {% if forloop.first %}
+
+                                    <h5>Selected catagory:
+
+                                   <select name="cat" onchange="window.location.href=this.value;">
+
+                                       {% for category in allcat %}
+                                       {% if useritems.category == category %}
+                                       <option selected value="{{category.id}}">{{category}}</option>
+                                       {%else%}
+                                       <option value="{% url 'myuserdashboard_withargument' category.id %}">{{category}}</option>
+                                        {%endif%}
+                                       {% endfor %}
+                                   </select> Sub category :
+
+                                    <select  class='on' name="bnd" onchange="window.location.href=this.value;">
+
+                                    {% for category in allcat %}
+
+                                           {% if useritems.category == category %}
+
+                                                {% if select_value == 0 %}
+                                                        <option selected >-- select any --</option>
+                                                        {% for k,v in brand_dict.items%}
+                                                        <option value="{% url 'myuserdashboard_with_cat_bnd' category.id k %}">{{v}}</option>
+                                                        {%endfor%}
+                                                         {% for k,v in brand_dict_all.items%}
+
+                                                       <option value="{% url 'myuserdashboard_with_cat_bnd' category.id k %}">{{v}}</option>
+                                                       {%endfor%}
+                                                {% else %}
+                                                      {% for k,v in brand_dict.items%}
+
+                                                           {% if select_value == k %}
+
+                                                           <option selected value="{% url 'myuserdashboard_with_cat_bnd' category.id k %}">{{v}}</option>
+                                                           {%else%}
+                                                           <option value="{% url 'myuserdashboard_with_cat_bnd' category.id k %}">{{v}}</option>
+                                                           {%endif%}
+
+                                                      {%endfor%}
+                                                       {% for k,v in brand_dict_all.items%}
+
+                                                       <option value="{% url 'myuserdashboard_with_cat_bnd' category.id k %}">{{v}}</option>
+                                                   {%endfor%}
+                                                {% endif %}
+
+                                                <option value="{% url 'myuserdashboard_withargument' category.id %}">-- All --</option>
+
+                                        {% endif %}
+
+                                    {% endfor %}
+                                   </select>
+
+                <p id="price_list">
+
+<label for="amount"> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Price range - &nbsp </label>
+                    Minimum :<input type=text id=min size="7" value=0> &nbsp &nbsp &nbsp
+                    Maximum :<input type=text id=max size="8" value={{items_cat_max.price}}>  &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+                    <br> {% for category in allcat %} {% if useritems.category == category %} {% for k,v in brand_dict.items%}
+                    <a id="link" href="{% url 'myuserdashboard_with_cat_bnd' category.id k %}" title "show the range for {{v}}">
+                        <button style="background-color: #4CAF50; border:2; color:#f6931f; font-weight:bold;"><b>{{v}}</b></button>
+                    </a>
+                    {% endfor %} {% endif %} {% endfor %}
+
+                </p> </h5>
+
+                                    <input type="hidden" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
+                                    <div id="slider-range" class="slider"></div>
+
+                                    <!-- END SLIDE -->
+
+                                    {%endif%} {% endfor %} {% endif %}
+
+                                </center><br><hr>
+                            </div>
+                        </div>
+
+
+
+                             <div style=" background-color: #fff;" class="row">
+
+                        <div style=" background-color: #1b3154;" class="col-md-6 col-sm-6 col-xs-12 gutter">
+                            <div style=" background-color: #fff;" class="sales report">
+                                <div style=" background-color: #1b3154;" class="row">
+
+                                    <h4><font color="white"><b><center>{{request.user}}  - Your items</center></b></font></h4></div>
+                                <center>
+
+
+
+
+
+
+
+
+
+                                     <table border="1" cellpadding="1" cellspacing="0" style="border-color: #e0ede0; border-style: solid;" width="95%">
         <tr>
             <th><b> Category </b></th>
             <td> {{ obj.category }} </td>
@@ -79,5 +618,72 @@
 {% if request.user ==  userpro.user %}
 <div style="text-align:center;"></div><a href="{% url 'edit_item' obj.id %}" class="btn"><button>Edit</button></a></div>
 {% endif %}
-</body
+
+
+
+
+
+
+
+
+
+
+
+                                </center>
+
+                                <script>
+                                    function popupCenter(url, title, w, h) {
+                                        var left = (screen.width / 2) - (w / 2);
+                                        var top = (screen.height / 2) - (h / 2);
+                                        return window.open(url, title, 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=' + w + ', height=' + h + ', top=' + top + ', left=' + left);
+                                    }
+                                </script>
+
+<br>
+
+
+                        </div>
+
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--   </div> -->
+
+
+        </div>
+
+    </div>
+
+</div>
+
+</div>
+</div>
+
+<!-- footer -->
+
+<div class="container-fluid top-heading bg-blue">
+    <div class="container ">
+
+        <div class="row">
+            <div class="col-md-12 ">
+                <center>
+                    <h4>
+    <b>   <br> vistor count:
+                    <!-- hitwebcounter Code START -->
+
+<img src='https://www.counter12.com/img-x0Z5z8xDDZZcwDzz-36.gif' border='0' alt='counter'>
+
+                    <br>
+© 2018 - Designed by redsuncube. All rights reserved (Ravi Gandham)</h4>
+                </center>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 

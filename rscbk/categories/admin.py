@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Category,Items#,CategoryBrand
+from .models import Category,Items,CatBrand#,CategoryBrand
 
 
 #@admin.register(CategoryBrand)
@@ -16,3 +16,8 @@ class ItemAdmin(admin.ModelAdmin):
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ['category_name','status']
+
+@admin.register(CatBrand)
+class CatBrandAdmin(admin.ModelAdmin):
+    list_display = ['cat_nam','bnd_name']
+#CatBrand
