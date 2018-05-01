@@ -594,8 +594,14 @@
                                                 <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;">{{ useritems.location }}</span></td>
                                             </tr>
 
+
+
                                             {% endfor %}</tbody>
+
+
                                     </table>
+
+
 
                                     {% if items.has_other_pages %}
                                     <ul class="pagination">
@@ -624,7 +630,7 @@
                                         return window.open(url, title, 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=' + w + ', height=' + h + ', top=' + top + ', left=' + left);
                                     }
                                 </script>
-                                <div align="center">
+                                <div align="left">
                                     <a href="{% url 'additems' %}" title="add iteams"><i class="fa fa-plus-circle"></i> Add Items</a>
                                     <br>
 
