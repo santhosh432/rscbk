@@ -599,13 +599,13 @@
             <th><b> Item Image2 </b></th>
             <td><img src="/media/{{ obj.item_image2 }}"/></td>
         </tr>
-        <tr>
+        <!-- <tr>
             <th><b> Owner Name</b></th>
             <td>  {{ userpro.user.first_name }} </td>
 
             <th><b> Owner Contact </b></th>
             <td> {{ mob }} </td>
-        </tr>
+        </tr> -->
         <tr>
             <th><b> Item Description </b></th>
             <td colspan='3'> {{ obj.item_full_desc }} </td>
@@ -616,8 +616,14 @@
         </tr>
     </table>
 {% if request.user ==  userpro.user %}
-<div style="text-align:center;"></div><a href="{% url 'edit_item' obj.id %}" class="btn"><button>Edit</button></a></div>
+<div style="text-align:center;"></div><a href="{% url 'edit_item' obj.id %}" class="btn"><button>Edit</button></a> <br>
+<div style="text-align:left;">
+<align = "left">
+<b> &nbsp * If you want to edit/Update any details please click on Edit button</b> <br>
+<b> &nbsp * If your Item has been exchanged please update its status</b></align>
+</div></div>
 {% endif %}
+
 
 
 
