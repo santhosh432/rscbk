@@ -42,7 +42,7 @@ urlpatterns = [
     url(r'myuserdashboard/', myuserdashboard ,name='myuserdashboard'),
     url(r'myuserdashboard_with_cat/(?P<cat_id>\d+)/$', myuserdashboard_with_cat ,name='myuserdashboard_withargument'),
     url(r'myuserdashboard_with_cat_bnd/(?P<cat_id>\d+)/(?P<bnd_id>\d+)/$', myuserdashboard_with_cat_bnd ,name='myuserdashboard_with_cat_bnd'),
-     url(r'myuserdashboard_with_cat_bnd/(?P<cat_id>\d+)/(?P<bnd_id>\d+)/(?P<min_id>\d+)/(?P<max_id>\d+)/$', myuserdashboard_with_cat_bnd_min_max ,name='myuserdashboard_with_cat_bnd_min_max'),
+    url(r'myuserdashboard_with_cat_bnd/(?P<cat_id>\d+)/(?P<bnd_id>\d+)/(?P<min_id>\d+)/(?P<max_id>\d+)/$', myuserdashboard_with_cat_bnd_min_max ,name='myuserdashboard_with_cat_bnd_min_max'),
 
 
 
@@ -56,6 +56,6 @@ urlpatterns = [
 
     url(r'^edititem/(?P<pk>\d+)$', catviews.edit_item, name="edit_item"),
 
-]
+    url(r'^delete_item/(?P<item_id>\d+)/$',catviews.delete_item, name='delete_item'),]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

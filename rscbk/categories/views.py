@@ -108,10 +108,13 @@ def addbrand(request):
 
 
 
-
-
-
-
+from django.http import HttpResponseRedirect
+from django.core.urlresolvers import reverse
+@login_required
+def delete_item(request, item_id):
+    item_to_delete = Items.objects.get(id=item_id)
+    item_to_delete.delete()
+    return HttpResponseRedirect(reverse('myuserdashboard'))
 
 
 from home.models import *
@@ -144,8 +147,9 @@ def view_item(request, item_id):
     fname = User.objects.get(username=useritem)
     t = {}
     try:
-      t = UserFullProfile.objects.get(user=fname.id)
-      mob = t.mobile
+      #tu = UserFullProfile.objects.get(pk=fname.id)
+      t = User.objects.get(username=request.user)
+      mob = ''
     except:
       pass
 
@@ -172,6 +176,7 @@ def view_item_global(request, item_id):
     items = paginator1.page(page1)
     try:
         up = UserFullProfile.objects.get(user=request.user)
+        #up = User.objects.get(username=request.user)
     except:
         up = ''
         pass
@@ -180,13 +185,17 @@ def view_item_global(request, item_id):
     mob = 'need to update'
     fname = User.objects.get(username=useritem)
     t = {}
+    t = User.objects.get(username=useritem)
     try:
-      t = UserFullProfile.objects.get(user=fname.id)
-      mob = t.mobile
+        nt = UserFullProfile.objects.get(user__username=t.username)
     except:
-      pass
+        nt=''
+        pass
 
-    context = {'obj':itm_obj, 'mob':mob, 'userpro':t,'fname':fname,'itemc':itemcount,'localip':localip,'up':up,'allcat':cat,'items':items,'useritemscount':useritemscount,'totcount':totcount,'heading':heading,'global_items_count':global_items_count,'global_items_price':global_items_price}
+    mob = ''
+
+
+    context = {'obj':itm_obj, 'mob':nt, 'userpro':t,'fname':fname,'itemc':itemcount,'localip':localip,'up':up,'allcat':cat,'items':items,'useritemscount':useritemscount,'totcount':totcount,'heading':heading,'global_items_count':global_items_count,'global_items_price':global_items_price}
     return render(request, 'item_details_global.html', context)
 
 
@@ -221,7 +230,7 @@ def edit_item(request, pk):
 
     subject = Items.objects.get(pk=pk)
     template = 'itemedit.html'
-    form = ItemForm(request.POST or None, instance=subject)
+    form = ItemForm(request.POST or None,request.FILES or None, instance=subject)
     context= { 'form':form ,'itemc':itemcount,'localip':localip,'up':up,'allcat':cat,'items':items,'useritemscount':useritemscount,'totcount':totcount,'heading':heading,'global_items_count':global_items_count,'global_items_price':global_items_price}
 
     if request.method == 'POST':

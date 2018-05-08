@@ -9,7 +9,8 @@ from .models import Brand,UserFullProfile,Feedback
 
 @admin.register(UserFullProfile)
 class UserFullProfileAdmin(admin.ModelAdmin):
-   pass
+    list_display = ['mobile','user']
+
 
 @admin.register(Brand)
 class BrandAdmin(admin.ModelAdmin):

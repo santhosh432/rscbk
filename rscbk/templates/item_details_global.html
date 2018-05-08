@@ -426,19 +426,23 @@
             <th><b> Item Status </b></th>
             <td> {{ obj.get_item_status_display }}</td>
         </tr>
-        <tr>
+
+ <tr>
             <th><b> Item Image </b></th>
-            <td><img src="/media/{{ obj.item_image }}"/></td>
+            <td><img src="/media/{{ obj.item_image }}" height="200" width="150" ></td>
 
             <th><b> Item Image2 </b></th>
-            <td><img src="/media/{{ obj.item_image2 }}"/></td>
+            <td><img src="/media/{{ obj.item_image2 }}" height="200" width="150" ></td>
+
         </tr>
+
+
         <tr>
             <th><b> Owner Name</b></th>
-            <td>  {{ userpro.user.first_name }} </td>
+            <td>  {{ userpro.first_name|default:"Owner name not entered" }}  </td>
 
             <th><b> Owner Contact </b></th>
-            <td> {{ mob }} </td>
+            <td> {{ mob.mobile|default:"Mobile number not Entered" }} </td>
         </tr>
         <tr>
             <th><b> Item Description </b></th>

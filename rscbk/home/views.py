@@ -230,6 +230,10 @@ def sign_up(request):
         form = SignUpForm(request.POST)
         if form.is_valid():
             form.save()
+            nuser = User.objects.get(username=form.cleaned_data.get('username'))
+            ufp = UserFullProfile(user=nuser,mobile=form.cleaned_data.get('mobile'))
+            ufp.save()
+
             username = form.cleaned_data.get('username')
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=raw_password)
