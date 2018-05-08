@@ -87,6 +87,14 @@ def myuserdashboard(request):
     localip = get_ip(request)
 
     itemcount = Items.objects.values('category').annotate(cate=Count('category'))
+    zero_value_items = Items.objects.filter(price=0)
+    import collections
+    li = []
+    for i in zero_value_items:
+        li.append(i.category.category_name)
+    counter=collections.Counter(li)
+
+
     cat = Category.objects.all()
     items = Items.objects.filter(itemuser=request.user)
     useritemscount = items.count()
@@ -103,7 +111,7 @@ def myuserdashboard(request):
     except:
         up = ''
         pass
-    ctx = {'itemc':itemcount,'localip':localip,'up':up,'allcat':cat,'items':items,'useritemscount':useritemscount,'totcount':totcount,'heading':heading,'global_items_count':global_items_count,'global_items_price':global_items_price}
+    ctx = {'free_items':sorted(counter.items()),'itemc':itemcount,'localip':localip,'up':up,'allcat':cat,'items':items,'useritemscount':useritemscount,'totcount':totcount,'heading':heading,'global_items_count':global_items_count,'global_items_price':global_items_price}
 
     return render(request, 'userdashboard.html',ctx)
 from django.core.paginator import Paginator
@@ -139,6 +147,40 @@ def myuserdashboard_with_cat(request,cat_id=None):
     items = paginator1.page(page1)
     select_value = 0
     return render(request, 'userdashboard.html',{'localip':localip,'items_cat_min':items_cat_min,'items_cat_max':items_cat_max,'brand_dict_all':brand_dict,'select_value':select_value,'brand_dict':brand_dict,'allcat':cat,'items':items,'useritemscount':useritemscount,'totcount':totcount,'useritemscount_cat':useritemscount_cat,'totcount_cat':totcount_cat,'heading':heading,'items_cat':items_cat})
+
+
+@login_required
+def myuserdashboard_with_cat_freelist(request,cat_id=None):
+    localip = get_ip(request)
+    cat = Category.objects.all()
+    items_cat = Items.objects.filter(category__id=cat_id,price=0).exclude(itemuser=request.user)
+
+
+    items_cat_max = Items.objects.filter(category__id=cat_id).exclude(itemuser=request.user).order_by('-price').first()
+    items_cat_min = Items.objects.filter(category__id=cat_id).exclude(itemuser=request.user).order_by('-price').last()
+
+    brand_dict = {}
+    for i in items_cat:
+        brand_dict[i.bnd.id] = i.bnd.brand_name
+
+    useritemscount_cat = items_cat.count()
+
+    paginator = Paginator(items_cat, 10)
+    page = request.GET.get('pagee', 1)
+    items_cat = paginator.page(page)
+
+    items = Items.objects.filter(itemuser=request.user)
+    useritemscount = items.count()
+    totcount = sum([tot.price for tot in items])
+    totcount_cat = sum([tot.price for tot in items_cat])
+
+    heading = "All"
+    paginator1 = Paginator(items, 10)
+    page1 = request.GET.get('page', 1)
+    items = paginator1.page(page1)
+    select_value = 0
+    return render(request, 'userdashboard.html',{'localip':localip,'items_cat_min':items_cat_min,'items_cat_max':items_cat_max,'brand_dict_all':brand_dict,'select_value':select_value,'brand_dict':brand_dict,'allcat':cat,'items':items,'useritemscount':useritemscount,'totcount':totcount,'useritemscount_cat':useritemscount_cat,'totcount_cat':totcount_cat,'heading':heading,'items_cat':items_cat})
+
 
 
 @login_required
