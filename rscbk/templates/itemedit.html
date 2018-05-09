@@ -411,6 +411,10 @@
 
                                             <a href="{% url 'myuserdashboard_withargument' category.id %}"><img class="img img-thumbnails" width="80" height="80" src="{{ category.image.url }}" title="{{ category.category_name }}"></a>
                                             <br>  <b> ( </b> {% for it in itemc %} {% if it.category == category.id %} {{ it.cate }} {% else %}  {% endif %}{% endfor %} <b> &nbsp Items) </b>
+
+
+                                            <br><a href = "{% url 'myuserdashboard_with_cat_freelist' category.id %}">Free items : {% for key, values in free_items %}{% if category.category_name == key %}{{values}}{% endif %}{% endfor%}</a>
+
                                         </div>
                                     </li>
                                     {% endfor %} {% endif %}

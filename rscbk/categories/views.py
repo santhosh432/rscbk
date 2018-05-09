@@ -124,6 +124,13 @@ def view_item(request, item_id):
 
     localip = get_ip(request)
 
+    zero_value_items = Items.objects.filter(price=0)
+    import collections
+    li = []
+    for i in zero_value_items:
+        li.append(i.category.category_name)
+    counter=collections.Counter(li)
+
     itemcount = Items.objects.values('category').annotate(cate=Count('category'))
     cat = Category.objects.all()
     items = Items.objects.filter(itemuser=request.user)
@@ -153,7 +160,7 @@ def view_item(request, item_id):
     except:
       pass
 
-    context = {'obj':itm_obj, 'mob':mob, 'userpro':t,'fname':fname,'itemc':itemcount,'localip':localip,'up':up,'allcat':cat,'items':items,'useritemscount':useritemscount,'totcount':totcount,'heading':heading,'global_items_count':global_items_count,'global_items_price':global_items_price}
+    context = {'free_items':sorted(counter.items()),'obj':itm_obj, 'mob':mob, 'userpro':t,'fname':fname,'itemc':itemcount,'localip':localip,'up':up,'allcat':cat,'items':items,'useritemscount':useritemscount,'totcount':totcount,'heading':heading,'global_items_count':global_items_count,'global_items_price':global_items_price}
     return render(request, 'item_details.html', context)
 
 
@@ -209,7 +216,12 @@ class ItemForm(forms.ModelForm):
 def edit_item(request, pk):
 
     localip = get_ip(request)
-
+    zero_value_items = Items.objects.filter(price=0)
+    import collections
+    li = []
+    for i in zero_value_items:
+        li.append(i.category.category_name)
+    counter=collections.Counter(li)
     itemcount = Items.objects.values('category').annotate(cate=Count('category'))
     cat = Category.objects.all()
     items = Items.objects.filter(itemuser=request.user)
@@ -231,7 +243,7 @@ def edit_item(request, pk):
     subject = Items.objects.get(pk=pk)
     template = 'itemedit.html'
     form = ItemForm(request.POST or None,request.FILES or None, instance=subject)
-    context= { 'form':form ,'itemc':itemcount,'localip':localip,'up':up,'allcat':cat,'items':items,'useritemscount':useritemscount,'totcount':totcount,'heading':heading,'global_items_count':global_items_count,'global_items_price':global_items_price}
+    context= { 'free_items':sorted(counter.items()), 'form':form ,'itemc':itemcount,'localip':localip,'up':up,'allcat':cat,'items':items,'useritemscount':useritemscount,'totcount':totcount,'heading':heading,'global_items_count':global_items_count,'global_items_price':global_items_price}
 
     if request.method == 'POST':
         if form.is_valid():
