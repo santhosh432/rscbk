@@ -7,6 +7,35 @@ from categories.models import *
 from ipware.ip import get_ip
 from django.db.models import Count
 from django.core.paginator import Paginator
+from django.core.mail import send_mail
+from django.contrib.auth.models import User
+
+def forget_password_reset(request):
+    if request.method == 'POST':
+        user_id = request.POST.get('user_id')
+        password = request.POST.get('pass')
+        users=User.objects.get(id=user_id)
+        users.set_password(password)
+        users.save()
+        return render(request, 'forget_password_done.html', {})
+
+
+def forget_password(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        import random
+
+        otp = "{}".format(random.randint(1000,9000))
+        try:
+            user = User.objects.get(username=name)
+            if user:
+                send_mail('Password reset verification code ', otp,
+                'just2deepu@gmail.com', [user.email],fail_silently=False)
+            return render(request, 'forget_password_success.html', {'otp':otp,'user_id':user.id})
+        except Exception as e:
+            return render(request, 'forget_password.html', {'error':e})
+    return render(request, 'forget_password.html', {})
+
 
 @login_required
 def additems(request):

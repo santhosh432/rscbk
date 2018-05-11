@@ -50,6 +50,8 @@ urlpatterns = [
     url(r'additems/',catviews.additems , name='additems'),
     url(r'addbrand/',catviews.addbrand , name='addbrand'),
     url(r'addcatbrand/',catviews.addcatbrand , name='addcatbrand'),
+    url(r'forget_password/',catviews.forget_password , name='forget_password'),
+    url(r'forget_password_reset/',catviews.forget_password_reset , name='forget_password_reset'),
 
     url(r'view_item/(?P<item_id>\d+)/$',catviews.view_item , name='view_item'),
     url(r'view_item_global/(?P<item_id>\d+)/$',catviews.view_item_global , name='view_item_global'),
