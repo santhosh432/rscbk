@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'home',
     'categories',
+    'import_export', # excel export import
 ]
 
 MIDDLEWARE = [
@@ -188,3 +189,9 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = 'mutahar'
 EMAIL_HOST_PASSWORD = 'forsend123'
 EMAIL_USE_TLS = True
+
+
+# for import export lib
+IMPORT_EXPORT_USE_TRANSACTIONS = True
+
+IMPORT_EXPORT_SKIP_ADMIN_LOG = False
