@@ -186,8 +186,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'rscmedia')
 
 EMAIL_HOST = 'smtp.sendgrid.net'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'mutahar'
-EMAIL_HOST_PASSWORD = 'forsend123'
+EMAIL_HOST_USER = 'deepakkumar.py'#'mutahar'
+EMAIL_HOST_PASSWORD = 'jaisreeram@123'
 EMAIL_USE_TLS = True
 
 

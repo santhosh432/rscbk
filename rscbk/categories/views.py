@@ -30,7 +30,7 @@ def forget_password(request):
             user = User.objects.get(username=name)
             if user:
                 send_mail('Password reset verification code ', otp,
-                'just2deepu@gmail.com', [user.email],fail_silently=False)
+                'support@redsuncube.com', [user.email],fail_silently=False)
             return render(request, 'forget_password_success.html', {'otp':otp,'user_id':user.id})
         except Exception as e:
             return render(request, 'forget_password.html', {'error':e})
