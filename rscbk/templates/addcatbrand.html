@@ -370,6 +370,7 @@
                         $(document).ready(function() {
 
                            $("#id_cat_nam option[value='{{cat_id}}']").attr('selected','selected');
+                            $("#id_cat_nam").hide();
                             $("#link").click(function() {
                                 var href = $('#link').attr('href');
                                 var min = $('#min').val();

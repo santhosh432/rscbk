@@ -347,6 +347,12 @@ input {
                           <a  data-toggle="collapse" href="#sidemenu2" id="preview" class="" aria-expanded="true">Signup <i class="fa fa-angle-down pull-right"></i></a>
                         </h4>
                       </div>
+                      <script>
+                          $(document).ready(function()
+                            {
+                                $("#id_mobile").attr('maxlength','10');
+                            });
+                      </script>
 
                      <div id="sidemenu2 div2" class="panel-collapse collapse in" aria-expanded="true" style="">
                          <div class="list-group">
@@ -354,8 +360,8 @@ input {
                                 {% csrf_token %}
                                 <table cellpadding="10">
                                 {% for field in form %}
-                                  <tr><th>{{ field.label}}{% if field.label == 'First name' or field.label == 'Last name'%}{%else%}<font color=red>*</font>{%endif%}</th><th>{{ field }}</th></tr>
-
+                                  <tr><th><br>{{ field.label}}{% if field.label == 'First name' or field.label == 'Last name'%}{%else%}<font color=red>*</font>{%endif%}</th><th>{{ field }}</th></tr>
+                                {% if field.errors %}<tr><th colspan=2><small><font color=red>{{field.errors}}</font></small></th></tr>{% endif %}
                                 {% endfor %}
                                 </table><br>
                                     <button type="submit">Sign up</button>
