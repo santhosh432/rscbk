@@ -260,6 +260,9 @@ def view_item_global(request, item_id):
 
 from django import forms
 class ItemForm(forms.ModelForm):
+    item_image = forms.ImageField(label='Image 1',required=False, widget=forms.FileInput)
+    item_image2 = forms.ImageField(label='Image 1',required=False, widget=forms.FileInput)
+
     class Meta:
         model = Items
         exclude = ('itemuser','years_used',)
