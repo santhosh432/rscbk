@@ -24,11 +24,13 @@
     body {
         background: #e8edfc;
     }
-
+    input, button, select, textarea{ width:110px;}
+   img {max-height:130px;}
     .panel {
         border-radius: 0px;
     }
-
+    #id_item_full_desc, #id_other_info{width:330px;}
+input[type=file]{display:none;}
     a:hover {
         text-decoration: none;
         color: #f7a01d;
@@ -655,10 +657,12 @@ $("#id_bnd").append('<option value="{{i.bnd_name.id}}">{{i.bnd_name}}</option>')
             <td>
 
 <div class="fileinput fileinput-new" data-provides="fileinput">
-  <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 190px; height: 140px;"></div>
+  <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 110px; height: 120px;"></div>
   <div>
-    <span class="btn btn-default btn-file"><span class="fileinput-new">Select image</span><span class="fileinput-exists">Change</span><input type="file" name="item_image"></span>
-    <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+   <span class="btn btn-default btn-file" style="width: 110px;"><span class="fileinput-new" style="width: 110px; height: 120px;">Select image</span>
+ <span class="fileinput-exists">Change</span>
+ <input type="file" name="item_image" value="S"></span>
+ <!-- <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>-->
   </div>
 </div>
 
@@ -676,11 +680,11 @@ $("#id_bnd").append('<option value="{{i.bnd_name.id}}">{{i.bnd_name}}</option>')
     <td>
 
 <div class="fileinput fileinput-new" data-provides="fileinput">
-  <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 190px; height: 140px;"></div>
+  <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 110px; height: 120px;"></div>
   <div>
-    <span class="btn btn-default btn-file">
-        <span class="fileinput-new">Select image</span><span class="fileinput-exists">Change</span><input type="file" name="item_image2"></span>
-    <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+     <span class="btn btn-default btn-file" style="width: 110px;">
+       <span class="fileinput-new" style="width: 110px; height: 120px;">Select image</span><span class="fileinput-exists">Change</span><input type="file" name="item_image2"></span>
+<!--<a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>  -->
   </div>
 </div>
 

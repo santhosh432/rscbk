@@ -17,10 +17,26 @@
     body {
         background: #e8edfc;
     }
+input, button, select, textarea, td { width:110px;}
+   img {max-height:130px;}
 
     .panel {
         border-radius: 0px;
     }
+
+    #editimg{
+
+border: 2px solid #c0bfa4;
+padding: 5px;
+width: 110px;
+min-height: 158px;
+border-radius: 5px;
+background-color: #f7f9f9;
+margin: auto;
+display: inline;
+    }
+
+ #id_item_full_desc, #id_other_info{width:330px;}
 
     a:hover {
         text-decoration: none;
@@ -597,10 +613,10 @@
         </tr>
         <tr>
             <th><b> Item Image </b></th>
-            <td>{{ form.item_image }} {{ form.item_image.errors }}</td>
+            <td><img class="img img-thumbnails" id="editimg" src="{{ form.instance.item_image.url }}"> <br>  {{ form.item_image }}  {{ form.item_image.errors }}  </td>
 
             <th><b> Item Image2 </b></th>
-            <td>{{ form.item_image2 }} {{ form.item_image2.errors }}</td>
+            <td><img class="img img-thumbnails" id="editimg" src="{{ form.instance.item_image2.url }}"> <br>  {{ form.item_image2 }}  {{ form.item_image2.errors }}  </td>
         </tr>
         <!--<tr>-->
         <!--    <th><b> Owner Name</b></th>-->

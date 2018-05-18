@@ -13,7 +13,7 @@ from .models import Category,Items,CatBrand#,CategoryBrand
 
 @admin.register(Items)
 class ItemAdmin(admin.ModelAdmin):
-   list_display = ['id','category','item_name', 'price', 'location',]
+   list_display = ['itemuser','id','category','item_name', 'price', 'location',]
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):

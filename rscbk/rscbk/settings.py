@@ -183,12 +183,22 @@ LOGIN_REDIRECT_URL= '/myuserdashboard/'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'rscmedia')
 
-
+'''
 EMAIL_HOST = 'smtp.sendgrid.net'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = '**********'
 EMAIL_HOST_PASSWORD = '************'
 EMAIL_USE_TLS = True
+'''
+# new code forgmail added
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'barterkingsindia@gmail.com'
+EMAIL_HOST_PASSWORD = 'Gravi1973'
+EMAIL_PORT = 587
+
+EMAIL_USE_TLS = True
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 
 # for import export lib
