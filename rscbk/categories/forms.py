@@ -17,7 +17,7 @@ class AddcatbrandForm(forms.ModelForm):
 
     class Meta:
         model = CatBrand
-        fields = ('cat_nam','bnd_name')
+        fields = ('cat_nam',)
     #    #exclude = ('itemuser',)
 
 

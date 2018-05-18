@@ -603,18 +603,13 @@ input[type=file]{display:none;}
   $('#id_category').on('change', function() {
        $("#id_bnd option").remove();
 
-
-  {% for i in cat_brd%}
-
-if({{i.cat_nam.id}} == this.value){
-
-$("#id_bnd").append('<option value="{{i.bnd_name.id}}">{{i.bnd_name}}</option>');
-
-
-}
-
-
-            {%endfor%}
+        var href_link = '/addcatbrandlink/'+this.value+'/';
+        $("#link").attr('href',href_link);
+        {% for i in cat_brd%}
+            if({{i.cat_nam.id}} == this.value){
+                $("#id_bnd").append('<option value="{{i.bnd_name.id}}">{{i.bnd_name}}</option>');
+                }
+        {%endfor%}
 })
 
 
@@ -624,7 +619,7 @@ $("#id_bnd").append('<option value="{{i.bnd_name.id}}">{{i.bnd_name}}</option>')
             <select name="bnd" id="id_bnd">
 
             </select>
-              <a href="/addcatbrand/"> Add </a>  </td>
+              <a id="link" href="addcatbrandlink/1"> Add </a>  </td>
 
             <th><b> Months Used </b></th>
             <td> {{ addform.months_used }} {{ addform.months_used.errors }} </td>

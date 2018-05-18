@@ -78,10 +78,10 @@ def additems(request):
             return redirect('myuserdashboard')
 
     return render(request, 'additems.html', {'addform':addform,'cat_brd':cat_brd,'itemc':itemcount,'localip':localip,'up':up,'allcat':cat,'items':items,'useritemscount':useritemscount,'totcount':totcount,'heading':heading,'global_items_count':global_items_count,'global_items_price':global_items_price})
-
+from home.models import *
 
 @login_required
-def addcatbrand(request):
+def addcatbrand(request,cat_id):
     localip = get_ip(request)
 
     itemcount = Items.objects.values('category').annotate(cate=Count('category'))
@@ -103,14 +103,24 @@ def addcatbrand(request):
         pass
     addform = AddcatbrandForm()
     if request.method == 'POST':
-        addform = AddcatbrandForm(request.POST,request.FILES)
-        if addform.is_valid():
-            form = addform.save(commit=False)
-            #form.itemuser = request.user
-            form.save()
-            return redirect('additems')
+        bd_name = request.POST.get('bnd_name')
+        ct = request.POST.get('cat_nam')
+        c_obj = Category.objects.get(id=ct)
 
-    return render(request, 'addcatbrand.html', {'addform':addform, 'itemc':itemcount,'localip':localip,'up':up,'allcat':cat,'items':items,'useritemscount':useritemscount,'totcount':totcount,'heading':heading,'global_items_count':global_items_count,'global_items_price':global_items_price})
+        n = Brand.objects.create(brand_name=bd_name)
+        n.save()
+        m = CatBrand.objects.create(cat_nam=c_obj,bnd_name=n)
+        m.save()
+
+        return redirect('additems')
+
+    return render(request, 'addcatbrand.html', {'cat_id':cat_id,'addform':addform, 'itemc':itemcount,'localip':localip,'up':up,'allcat':cat,'items':items,'useritemscount':useritemscount,'totcount':totcount,'heading':heading,'global_items_count':global_items_count,'global_items_price':global_items_price})
+
+
+
+
+
+
 
 @login_required
 def addbrand(request):
@@ -134,12 +144,16 @@ def addbrand(request):
         up = ''
         pass
     addform = AddbrandForm()
+
     if request.method == 'POST':
+
         addform = AddbrandForm(request.POST,request.FILES)
         if addform.is_valid():
             form = addform.save(commit=False)
             #form.itemuser = request.user
             form.save()
+
+
             return redirect('addcatbrand')
 
     return render(request, 'addbrand.html', {'addform':addform,'itemc':itemcount,'localip':localip,'up':up,'allcat':cat,'items':items,'useritemscount':useritemscount,'totcount':totcount,'heading':heading,'global_items_count':global_items_count,'global_items_price':global_items_price})
