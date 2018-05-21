@@ -40,6 +40,7 @@ def feedback(request):
     if request.method == 'POST':
         form = FeedbackForm(request.POST)
         if form.is_valid():
+            form.customer_name = request.user
             form.save()
             return render(request, 'thanks.html')
     else:
@@ -63,6 +64,7 @@ def privacy(request):
 
 def home(request):
     localip = get_ip(request)
+    localip = '67564543'
 
     context = {'localip':localip}
     return render(request,'main.html',context)
@@ -77,6 +79,8 @@ def base(request):
 def homepage(request):
     localip = get_ip(request)
     fback = Feedback.objects.all()
+    localip = '67564543'
+
     context = {'localip':localip, 'fback':fback}
 
     return render(request,'home.html',context)
@@ -111,7 +115,9 @@ def myuserdashboard(request):
     except:
         up = ''
         pass
-    ctx = {'free_items':sorted(counter.items()),'itemc':itemcount,'localip':localip,'up':up,'allcat':cat,'items':items,'useritemscount':useritemscount,'totcount':totcount,'heading':heading,'global_items_count':global_items_count,'global_items_price':global_items_price}
+    ctx = {'free_items':sorted(counter.items()),'itemc':itemcount,'localip':localip,'up':up,'allcat':cat,'items':items,'useritemscount':useritemscount,
+           'totcount':totcount,'heading':heading,'global_items_count':global_items_count,
+           'global_items_price':global_items_price,'localip':localip}
 
     return render(request, 'userdashboard.html',ctx)
 from django.core.paginator import Paginator

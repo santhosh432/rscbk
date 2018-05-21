@@ -284,7 +284,9 @@ input {
 <label for="mobile-nav" class="gaadiexp white" tabindex="0"><span></span></label>
 <nav role="navigation" class="header-nav">
     <div class="fixed-nav">
-	<a class="navbar-brand " style="margin-left:60px" href="#"><font size=6>Barterkings</font></a>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+        <a class="navbar-brand "style="margin-left:60px" href="/login"><font size=5>Barterkings</font>&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-home"></i> </a>
+
         <div class="menu">
             <ul>
                 <li class="page_item page-item-2">
@@ -363,8 +365,11 @@ input {
                                   <tr><th><br>{{ field.label}}{% if field.label == 'First name' or field.label == 'Last name'%}{%else%}<font color=red>*</font>{%endif%}</th><th>{{ field }}</th></tr>
                                 {% if field.errors %}<tr><th colspan=2><small><font color=red>{{field.errors}}</font></small></th></tr>{% endif %}
                                 {% endfor %}
-                                </table><br>
+                                </table> <br>
                                     <button type="submit">Sign up</button>
+                                    <br>
+
+                                <a class="navbar-brand "style="margin-left:6px" href="/privacy"><font size=2> I'm accepting the Terms of Services </font> </a>
                                   </form>
 
 
@@ -435,6 +440,7 @@ $(function(){
         </div>
 
       </div>
+
     </div>
 
 <!-- comments close-->

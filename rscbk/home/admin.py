@@ -18,4 +18,4 @@ class BrandAdmin(admin.ModelAdmin):
 
 @admin.register(Feedback)
 class FeedbackAdmin(admin.ModelAdmin):
-    pass
+    list_display =['customer_name', 'comment']
