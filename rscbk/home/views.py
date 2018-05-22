@@ -90,7 +90,7 @@ from django.db.models import Count
 def myuserdashboard(request):
     localip = get_ip(request)
 
-    itemcount = Items.objects.values('category').annotate(cate=Count('category'))
+    itemcount = Items.objects.values('category').annotate(cate=Count('category')).exclude(itemuser=request.user)
     zero_value_items = Items.objects.filter(price=0)
     import collections
     li = []
@@ -103,7 +103,7 @@ def myuserdashboard(request):
     items = Items.objects.filter(itemuser=request.user)
     useritemscount = items.count()
     totcount = sum([tot.price for tot in items])
-    global_items = Items.objects.all()
+    global_items = Items.objects.all().exclude(itemuser=request.user)
     global_items_count = global_items.count()
     global_items_price = sum([tot.price for tot in global_items])
     heading = "My"
