@@ -1,16 +1,24 @@
-{% load staticfiles %} {% load static %}
+<!-- django load files -->
+{% load staticfiles %}
+{% load static %}
 
+<!-- link file -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
-
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-
-<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js "></script>
-<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.9.1/jquery.tablesorter.min.js"></script>
 <link rel="stylesheet" type="text/css" href="{% static 'admin/css/slider.css' %}" />
 <link rel="stylesheet" type="text/css" href="{% static 'admin/css/dash_boot.css' %}" />
+
+<!-- script file -->
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js "></script>
+<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.9.1/jquery.tablesorter.min.js"></script>
+
+
+
+
+
+
 <!------ Include the above in your HEAD tag ---------->
 <style>
     body {
@@ -311,7 +319,7 @@
 <nav role="navigation" class="header-nav">
     <div class="fixed-nav">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
-        <a class="navbar-brand "style="margin-left:60px" href="/myuserdashboard"><font size=5>Barterkings</font>&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-home"></i>  </a>
+        <a class="navbar-brand " style="margin-left:60px" href="/myuserdashboard"><font size=5>Barterkings</font>&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-home"></i>  </a>
 
         <div class="menu">
             <ul>
@@ -344,7 +352,6 @@
         </div>
     </div>
 </nav>
-
 
 <div class="container-fluid top-heading bg-blue">
     <div class="container ">
@@ -401,7 +408,7 @@
                     <!-- style-->
 
                     <!-- code-->
-   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+                    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
                     <div style=" background-color: #fff;" class="row">
                         <div style=" background-color: #1b3154;" class="col-md-6 col-sm-6 col-xs-12 gutter">
 
@@ -425,14 +432,14 @@
                                         <div class="well">
 
                                             <a href="{% url 'myuserdashboard_withargument' category.id %}"><img class="img img-thumbnails" width="80" height="80" src="{{ category.image.url }}" title="{{ category.category_name }}"></a>
-                                            <br>  <b> ( </b> {% for it in itemc %} {% if it.category == category.id %} {{ it.cate }} {% else %}  {% endif %}{% endfor %} <b> &nbsp Items) </b>
-                                            <br><a href = "{% url 'myuserdashboard_with_cat_freelist' category.id %}">Free items : {% for key, values in free_items %}{% if category.category_name == key %}{{values}}{% endif %}{% endfor%}</a>
+                                            <br> <b> ( </b> {% for it in itemc %} {% if it.category == category.id %} {{ it.cate }} {% else %} {% endif %}{% endfor %} <b> &nbsp Items) </b>
+                                            <br><a href="{% url 'myuserdashboard_with_cat_freelist' category.id %}">Free items : {% for key, values in free_items %}{% if category.category_name == key %}{{values}}{% endif %}{% endfor%}</a>
                                         </div>
                                     </li>
                                     {% endfor %} {% endif %}
 
                                 </ul>{% if items_cat %}
-<br>
+                                <br>
                                 <center>
                                     <table border=1 id="myTable" class="tablesorter" width="85%">
                                         <thead>
@@ -558,158 +565,165 @@
 
                                     {%endif%} {% endfor %} {% endif %}
 
-                                </center><br><hr>
+                                </center>
+                                <br>
+                                <hr>
                             </div>
                         </div>
 
+                        <div style=" background-color: #fff;" class="row">
 
+                            <div style=" background-color: #1b3154;" class="col-md-6 col-sm-6 col-xs-12 gutter">
+                                <div style=" background-color: #fff; min-height:641px;" class="sales report">
+                                    <div style=" background-color: #1b3154;" class="row">
 
-                             <div style=" background-color: #fff;" class="row">
+                                        <h4><font color="white"><b><center>{{request.user}}  - Your items</center></b></font></h4></div>
+                                    <center>
+                                        <table width="85%">
+                                            <tr>
+                                                <th colspan=3> <font size=2><b>Total Items</b> : {{ useritemscount }}</font>
+                                                </th>
+                                                <th colspan=3>
+                                                    <font size=2><b>Total Value</b> : Rs: {{ totcount }}</font>
 
-                        <div style=" background-color: #1b3154;" class="col-md-6 col-sm-6 col-xs-12 gutter">
-                            <div style=" background-color: #fff; min-height:641px;" class="sales report" >
-                                <div style=" background-color: #1b3154;" class="row">
+                                                </th>
+                                            </tr>
+                                        </table>
 
-                                    <h4><font color="white"><b><center>{{request.user}}  - Your items</center></b></font></h4></div>
-                                <center>
-                                    <table width="85%">
-                                        <tr>
-                                            <th colspan=3> <font size=2><b>Total Items</b> : {{ useritemscount }}</font>
-                                            </th>
-                                            <th colspan=3>
-                                                <font size=2><b>Total Value</b> : Rs: {{ totcount }}</font>
+                                        <table width="99%" border=1 id="myTable_own" class="tablesorter">
+                                            <thead>
+                                                <tr height=4 0px; font-weight: bold;>
 
-                                            </th>
-                                        </tr>
-                                    </table>
-
-                                    <table width="99%" border=1 id="myTable_own" class="tablesorter">
-                                        <thead>
-                                            <tr height=4 0px; font-weight: bold;>
-
-                                                <th bgcolor="#f7a01d"><span style=" font-size: 10pt; ">Item<br>Code<font color=red><i class="fa fa-fw fa-sort"></i></font></span></th>
-                                                <th bgcolor="#f7a01d"><span style=" font-size: 10pt;  font-weight: bold;">Description</span></th>
-                                                <th bgcolor="#f7a01d"><span style=" font-size: 10pt; ">Categories</span></th>
-                                                <th bgcolor="#f7a01d"><span style=" font-size: 10pt; ">Brand</span></th>
-                                                <th bgcolor="#f7a01d"><span style=" font-size: 10pt; "><i class="fa fa-picture-o"></i></span></th>
-                                                <th bgcolor="#f7a01d"><span style=" font-size: 10pt; ">Item<br>Worth<font color=red><i class="fa fa-fw fa-sort"></i></font></span></th>
-                                                <th bgcolor="#f7a01d"><span style=" font-size: 10pt; ">Exchange<br>With</span></th>
-                                                <!--
+                                                    <th bgcolor="#f7a01d"><span style=" font-size: 10pt; ">Item<br>Code<font color=red><i class="fa fa-fw fa-sort"></i></font></span></th>
+                                                    <th bgcolor="#f7a01d"><span style=" font-size: 10pt;  font-weight: bold;">Description</span></th>
+                                                    <th bgcolor="#f7a01d"><span style=" font-size: 10pt; ">Categories</span></th>
+                                                    <th bgcolor="#f7a01d"><span style=" font-size: 10pt; ">Brand</span></th>
+                                                    <th bgcolor="#f7a01d"><span style=" font-size: 10pt; "><i class="fa fa-picture-o"></i></span></th>
+                                                    <th bgcolor="#f7a01d"><span style=" font-size: 10pt; ">Item<br>Worth<font color=red><i class="fa fa-fw fa-sort"></i></font></span></th>
+                                                    <th bgcolor="#f7a01d"><span style=" font-size: 10pt; ">Exchange<br>With</span></th>
+                                                    <!--
                                                 <th bgcolor="#f7a01d"><span style=" font-size: 10pt; ">Location <i class="fa fa-map-marker"></i></span></th>
                                                 -->
-                                                <th bgcolor="#f7a01d"><span style=" font-size: 10pt; ">#</span></th>
+                                                    <th bgcolor="#f7a01d"><span style=" font-size: 10pt; ">#</span></th>
 
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            {% for useritems in items %}
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {% for useritems in items %}
 
-                                            <tr>
-                                                <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;"><a href = "{% url 'view_item' useritems.id %}">{{ useritems.id }}</a></span></td>
-                                                <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;">{{ useritems.item_name }}
+                                                <tr>
+                                                    <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;"><a href = "{% url 'view_item' useritems.id %}">{{ useritems.id }}</a></span></td>
+                                                    <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;">{{ useritems.item_name }}
                                                    <!-- <a href="{% url 'edit_item' useritems.id %}">{{ useritems.item_name }}</a> --></span></td>
-                                                <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;">{{ useritems.category }}</span></td>
-                                                <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;">{{ useritems.bnd.brand_name }}</span></td>
-                                                <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;"><img title="click me to view" id="{{ useritems.id }}" src="{{ useritems.item_image.url }}" alt="*" class="img img-thumbnails" width="20" height="30"></span></td>
-                                                <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;"><i class="fa fa-rupee"></i>{{ useritems.price }}</span></td>
-                                                <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;">{{ useritems.exchange_category }}</span></td>
-                                                <!--
+                                                    <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;">{{ useritems.category }}</span></td>
+                                                    <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;">{{ useritems.bnd.brand_name }}</span></td>
+                                                    <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;"><img title="click me to view" id="{{ useritems.id }}" src="{{ useritems.item_image.url }}" alt="*" class="img img-thumbnails" width="20" height="30"></span></td>
+                                                    <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;"><i class="fa fa-rupee"></i>{{ useritems.price }}</span></td>
+                                                    <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;">{{ useritems.exchange_category }}</span></td>
+                                                    <!--
                                                 <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;">{{ useritems.location }}</span></td>
-                                                -->  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-                                                <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;"> <a title="click to delete" href = "{% url 'delete_item' useritems.id %}"> <span class="glyphicon glyphicon-trash"></span></a></span></td>
-                                            </tr>
+                                                -->
+                                                    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+                                                    <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;"> <a title="click to delete" href = "{% url 'delete_item' useritems.id %}"> <span class="glyphicon glyphicon-trash"></span></a>
+                                                        </span>
+                                                    </td>
+                                                </tr>
 
+                                                {% endfor %}</tbody>
 
+                                        </table>
 
-                                            {% endfor %}</tbody>
-
-
-                                    </table>
-
-
-
-                                    {% if items.has_other_pages %}
-                                    <ul class="pagination">
-                                        {% if items.has_previous %}
-                                        <li><a href="?page={{ items.previous_page_number }}">&laquo;</a></li>
-                                        {% else %}
-                                        <li class="disabled"><span>&laquo;</span></li>
-                                        {% endif %} {% for i in items.paginator.page_range %} {% if items.number == i %}
-                                        <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span>
-                                        </li>
-                                        {% else %}
-                                        <li><a href="?page={{ i }}">{{ i }}</a></li>
-                                        {% endif %} {% endfor %} {% if items.has_next %}
-                                        <li><a href="?page={{ items.next_page_number }}">&raquo;</a></li>
-                                        {% else %}
-                                        <li class="disabled"><span>&raquo;</span></li>
+                                        {% if items.has_other_pages %}
+                                        <ul class="pagination">
+                                            {% if items.has_previous %}
+                                            <li><a href="?page={{ items.previous_page_number }}">&laquo;</a></li>
+                                            {% else %}
+                                            <li class="disabled"><span>&laquo;</span></li>
+                                            {% endif %} {% for i in items.paginator.page_range %} {% if items.number == i %}
+                                            <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span>
+                                            </li>
+                                            {% else %}
+                                            <li><a href="?page={{ i }}">{{ i }}</a></li>
+                                            {% endif %} {% endfor %} {% if items.has_next %}
+                                            <li><a href="?page={{ items.next_page_number }}">&raquo;</a></li>
+                                            {% else %}
+                                            <li class="disabled"><span>&raquo;</span></li>
+                                            {% endif %}
+                                        </ul>
                                         {% endif %}
-                                    </ul>
-                                    {% endif %}
-                                </center>
+                                    </center>
 
-                                <script>
-                                    function popupCenter(url, title, w, h) {
-                                        var left = (screen.width / 2) - (w / 2);
-                                        var top = (screen.height / 2) - (h / 2);
-                                        return window.open(url, title, 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=' + w + ', height=' + h + ', top=' + top + ', left=' + left);
-                                    }
-                                </script>
-                                <div align="center">
-                                   <h4> <a href="{% url 'additems' %}" title="add iteams"><i class="fa fa-plus-circle"><b> Add Items </b></i></a></h4>
+                                    <script>
+                                        function popupCenter(url, title, w, h) {
+                                            var left = (screen.width / 2) - (w / 2);
+                                            var top = (screen.height / 2) - (h / 2);
+                                            return window.open(url, title, 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=' + w + ', height=' + h + ', top=' + top + ', left=' + left);
+                                        }
+                                    </script>
+                                    <div align="center">
+                                        <h4> <a href="{% url 'additems' %}" title="add iteams"><i class="fa fa-plus-circle"><b> Add Items </b></i></a></h4>
 
- <b> Click above "Add Items" link to add your Items / Products into our global database. <br> Click on the Item code/number to edit/update or view the complete item details. </b>
+                                        <b> Click above "Add Items" link to add your Items / Products into our global database. <br> Click on the Item code/number to edit/update or view the complete item details. </b>
+                                    </div>
+                                    <br>
+
                                 </div>
-<br>
 
-
+                                . </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-  .                          </div>
-                           </div>
-                       </div>
-                  </div>
-               </div>
-          </div>
+        <!--   </div> -->
 
-            <!--   </div> -->
-
-
-       </div>
-
-   </div>
+    </div>
 
 </div>
 
- </div>
+</div>
+
+</div>
 </div>
 <!-- global view -->
-{% if items_cat %}
-    {% for useritems in items_cat %}
+{% if items_cat %} {% for useritems in items_cat %}
 <style>
-
-
-#{{ useritems.id }} {
+#{{ useritems.id }
+}
+{
     border-radius: 5px;
     cursor: pointer;
     transition: 0.3s;
 }
-
-#{{ useritems.id }}:hover {opacity: 0.7;}
+#{{ useritems.id }
+}
+:hover {
+    opacity: 0.7;
+}
 
 /* The Modal (background) */
 .modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    padding-top: 100px; /* Location of the box */
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    padding-top: 100px;
+    /* Location of the box */
     left: 0;
     top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.9);
+    /* Black w/ opacity */
 }
 
 /* Modal Content (image) */
@@ -733,21 +747,28 @@
 }
 
 /* Add Animation */
-.modal-content, #caption {
+.modal-content,
+#caption {
     -webkit-animation-name: zoom;
     -webkit-animation-duration: 0.6s;
     animation-name: zoom;
     animation-duration: 0.6s;
 }
-
 @-webkit-keyframes zoom {
-    from {-webkit-transform:scale(0)}
-    to {-webkit-transform:scale(1)}
+    from {
+        -webkit-transform: scale(0)
+    }
+    to {
+        -webkit-transform: scale(1)
+    }
 }
-
 @keyframes zoom {
-    from {transform:scale(0)}
-    to {transform:scale(1)}
+    from {
+        transform: scale(0)
+    }
+    to {
+        transform: scale(1)
+    }
 }
 
 /* The Close Button */
@@ -760,7 +781,6 @@
     font-weight: bold;
     transition: 0.3s;
 }
-
 .close:hover,
 .close:focus {
     color: #bbb;
@@ -769,84 +789,89 @@
 }
 
 /* 100% Image Width on Smaller Screens */
-@media only screen and (max-width: 700px){
+@media only screen and (max-width: 700px) {
     .modal-content {
         width: 100%;
     }
 }
 </style>
 
-
 {% endfor %}
-
-
 
 <!-- The Modal -->
 <div id="myModal" class="modal">
-<span class="close">Close X</span>
-  <img class="modal-content" id="img01">
-  <div id="caption"></div>
-
+    <span class="close">Close X</span>
+    <img class="modal-content" id="img01">
+    <div id="caption"></div>
 
 </div>
 
 {% for useritems in items_cat %}
 <script>
-// Get the modal
-var modal = document.getElementById('myModal');
+    // Get the modal
+    var modal = document.getElementById('myModal');
 
-// Get the image and insert it inside the modal - use its "alt" text as a caption
-var img = document.getElementById('{{ useritems.id }}');
-var modalImg = document.getElementById("img01");
-var captionText = document.getElementById("caption");
-img.onclick = function(){
-    modal.style.display = "block";
-    modalImg.src = this.src;
-    captionText.innerHTML = this.alt;
-}
+    // Get the image and insert it inside the modal - use its "alt" text as a caption
+    var img = document.getElementById('{{ useritems.id }}');
+    var modalImg = document.getElementById("img01");
+    var captionText = document.getElementById("caption");
+    img.onclick = function() {
+        modal.style.display = "block";
+        modalImg.src = this.src;
+        captionText.innerHTML = this.alt;
+    }
 
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
 
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-    modal.style.display = "none";
-}
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
 </script>
 
-{% endfor %}
-{% endif %}
+{% endfor %} {% endif %}
 
 <!-- end code -->
 <!-- code -->
 
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-    {% for useritems in items %}
+{% for useritems in items %}
 <style>
-
-
-#{{ useritems.id }} {
+#{{ useritems.id }
+}
+{
     border-radius: 5px;
     cursor: pointer;
     transition: 0.3s;
 }
-
-#{{ useritems.id }}:hover {opacity: 0.7;}
+#{{ useritems.id }
+}
+:hover {
+    opacity: 0.7;
+}
 
 /* The Modal (background) */
 .modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    padding-top: 100px; /* Location of the box */
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    padding-top: 100px;
+    /* Location of the box */
     left: 0;
     top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.9);
+    /* Black w/ opacity */
 }
 
 /* Modal Content (image) */
@@ -870,21 +895,28 @@ span.onclick = function() {
 }
 
 /* Add Animation */
-.modal-content, #caption {
+.modal-content,
+#caption {
     -webkit-animation-name: zoom;
     -webkit-animation-duration: 0.6s;
     animation-name: zoom;
     animation-duration: 0.6s;
 }
-
 @-webkit-keyframes zoom {
-    from {-webkit-transform:scale(0)}
-    to {-webkit-transform:scale(1)}
+    from {
+        -webkit-transform: scale(0)
+    }
+    to {
+        -webkit-transform: scale(1)
+    }
 }
-
 @keyframes zoom {
-    from {transform:scale(0)}
-    to {transform:scale(1)}
+    from {
+        transform: scale(0)
+    }
+    to {
+        transform: scale(1)
+    }
 }
 
 /* The Close Button */
@@ -897,7 +929,6 @@ span.onclick = function() {
     font-weight: bold;
     transition: 0.3s;
 }
-
 .close:hover,
 .close:focus {
     color: #bbb;
@@ -906,59 +937,52 @@ span.onclick = function() {
 }
 
 /* 100% Image Width on Smaller Screens */
-@media only screen and (max-width: 700px){
+@media only screen and (max-width: 700px) {
     .modal-content {
         width: 100%;
     }
 }
 </style>
 
-
 {% endfor %}
-
-
 
 <!-- The Modal -->
 <div id="myModal" class="modal">
-<span class="close">Close X</span>
-  <img class="modal-content" id="img01">
-  <div id="caption"></div>
-
+    <span class="close">Close X</span>
+    <img class="modal-content" id="img01">
+    <div id="caption"></div>
 
 </div>
 
 {% for useritems in items %}
 <script>
-// Get the modal
-var modal = document.getElementById('myModal');
+    // Get the modal
+    var modal = document.getElementById('myModal');
 
-// Get the image and insert it inside the modal - use its "alt" text as a caption
-var img = document.getElementById('{{ useritems.id }}');
-var modalImg = document.getElementById("img01");
-var captionText = document.getElementById("caption");
-img.onclick = function(){
-    modal.style.display = "block";
-    modalImg.src = this.src;
-    captionText.innerHTML = this.alt;
-}
+    // Get the image and insert it inside the modal - use its "alt" text as a caption
+    var img = document.getElementById('{{ useritems.id }}');
+    var modalImg = document.getElementById("img01");
+    var captionText = document.getElementById("caption");
+    img.onclick = function() {
+        modal.style.display = "block";
+        modalImg.src = this.src;
+        captionText.innerHTML = this.alt;
+    }
 
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
 
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-    modal.style.display = "none";
-}
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
 </script>
 
 {% endfor %}
 
 <!-- end code -->
 
-
 <!-- footer -->
-
-
 
 <div class="container-fluid top-heading bg-blue">
     <div class="container ">
