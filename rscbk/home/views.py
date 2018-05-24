@@ -89,7 +89,8 @@ from django.db.models import Count
 @login_required
 def myuserdashboard(request):
     localip = get_ip(request)
-
+    usercount = User.objects.all().count()
+    freeitemc = Items.objects.filter(price=0).count()
     itemcount = Items.objects.values('category').annotate(cate=Count('category')).exclude(itemuser=request.user)
     zero_value_items = Items.objects.filter(price=0)
     import collections
@@ -117,7 +118,7 @@ def myuserdashboard(request):
         pass
     ctx = {'free_items':sorted(counter.items()),'itemc':itemcount,'localip':localip,'up':up,'allcat':cat,'items':items,'useritemscount':useritemscount,
            'totcount':totcount,'heading':heading,'global_items_count':global_items_count,
-           'global_items_price':global_items_price,'localip':localip}
+           'global_items_price':global_items_price,'localip':localip,'u':usercount,'fc':freeitemc}
 
     return render(request, 'userdashboard.html',ctx)
 from django.core.paginator import Paginator
