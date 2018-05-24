@@ -1,6 +1,7 @@
 {% extends 'base1.html' %}
 {% block content %}
-
+<script src="{% static 'admin/js/jquery-1.8.3.min.js' %}"> </script>
+<script src="{% static 'admin/js/jquery.elevateZoom-3.0.8.min.js' %}"> </script>
 
 <div class="container-fluid column-starter">
     <!------------ Panel Class ------------->
@@ -58,7 +59,7 @@
                                     <h4><b><center><font color="white">Global items</font></center></b></h4></div>
 
 
-                                     <table border="1" cellpadding="1" cellspacing="0" style="border-color: #e0ede0; border-style: solid;" width="95%">
+                                     <table border="1" cellpadding="1" cellspacing="0" style="border-color: #e0ede0; border-style: solid;" width="95%" class="table">
         <tr>
             <th><b> Category </b></th>
             <td> {{ obj.category }} </td>
@@ -83,7 +84,7 @@
 
         <tr>
             <th><b> Exchangable with</b></th>
-             <td> {% if obj.price == 0 %}-- Free -- {% else %}{{ obj.exchange_category  }}{% endif %} </td>
+             <td> {% if obj.price == 0 %}-- Free -- {% else %}{{ obj.exchange_category  }}{% endif %} / Cash</td>
 
             <th><b> Item Status </b></th>
             <td> {{ obj.get_item_status_display }}</td>
@@ -91,10 +92,10 @@
 
  <tr>
             <th><b> Item Image </b></th>
-            <td><img src="/media/{{ obj.item_image }}" height="200" width="150" ></td>
+            <td><img src="/media/{{ obj.item_image }}" height="200" width="150" class='zoom_07'  class="img-thumbnail"  ></td>
 
             <th><b> Item Image2 </b></th>
-            <td><img src="/media/{{ obj.item_image2 }}" height="200" width="150" ></td>
+            <td><img src="/media/{{ obj.item_image2 }}" height="200" width="150"class='zoom_07'  class="img-thumbnail"  ></td>
 
         </tr>
 
@@ -168,7 +169,7 @@
                                                    <!-- <a href="{% url 'edit_item' useritems.id %}">{{ useritems.item_name }}</a> --></span></td>
                                                 <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;">{{ useritems.category }}</span></td>
                                                 <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;">{{ useritems.bnd.brand_name }}</span></td>
-                                                <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;"><img src="{{ useritems.item_image.url }}" alt="*" class="img img-thumbnails" width="20" height="30"></span></td>
+                                                <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;"><img src="{{ useritems.item_image.url }}" alt="*" class="img img-thumbnails" width="20" height="30" class='zoom_07'  class="img-thumbnail" ></span></td>
                                                 <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;"><i class="fa fa-rupee"></i>{{ useritems.price }}</span></td>
                                                 <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;">{{ useritems.exchange_category }}</span></td>
                                                 <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;">{{ useritems.location }}</span></td>
