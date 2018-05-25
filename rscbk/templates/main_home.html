@@ -48,18 +48,18 @@
 
 <div class="container">
 
-
-<h3>Latest Products</h3><hr>
-
+<center>
+<h3>Latest Products</h3>
+</center>
 <div class="row">
  {% for useritems in items_obj %}
 <div class="col-md-4">
 	<figure class="card card-product">
-	    <center><font color="#0099cc"><b>{{useritems.item_name|upper}}</b></font></center><hr>
+	    <div style="background-color:  #0099cc;"><center><font color="white"><b>{{useritems.item_name|upper}}</b></font></center></div><br>
 		<div class="img-wrap"><img src="{{ useritems.item_image.url }}"></div>
 		<figcaption class="info-wrap"><center>
 		      <font color="darkgrey"><b>PRICE : </b></font> Rs.{{ useritems.price }}<br><br>
-		      <a href="/login" class="btn btn-sm btn-primary float-right">Exchange Now</a> </center>
+		      <a href="/login" class="btn btn-sm btn-primary ">Exchange Now</a> </center>
 		</figcaption>
 
 	</figure>
