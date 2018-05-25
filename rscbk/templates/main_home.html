@@ -1,0 +1,125 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container-fluid column-starter">
+	<!------------ Panel Class ------------->
+    <div class="margin-t-20"></div>
+	<div class="row">
+	    <div class="col-md-3 sidebar">
+	        <div class="panel">
+    	       <div class="panel-body ">
+                <div class="sidebar-nav">
+                 <div class="sidebar panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                          <a data-toggle="collapse" href="/login" class="" aria-expanded="true">Login <i class="fa fa-angle-up pull-right"></i></a>
+                        </h4>
+                      </div>
+                     <div id="sidemenu1" class="panel-collapse collapse in" aria-expanded="true" style="">
+                         <div class="list-group">
+
+                            </div>
+
+                    </div>
+                 </div>
+                 <div class="sidebar panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                          <a href="/signup" data-toggle="collapse" href="#sidemenu2" id="preview" class="" aria-expanded="true">Signup <i class="fa fa-angle-down pull-right"></i></a>
+                        </h4>
+                      </div>
+
+                 </div>
+
+                </div>
+
+
+    	        </div>
+
+	        </div>
+	    </div>
+	    <div class="col-md-9">
+	        <div class="panel">
+	       <div class="panel-body">
+
+				<!-- new code add -->
+
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="container">
+
+
+<h3>Latest Products</h3><hr>
+
+<div class="row">
+ {% for useritems in items_obj %}
+<div class="col-md-4">
+	<figure class="card card-product">
+	    <center><font color="#0099cc"><b>{{useritems.item_name|upper}}</b></font></center><hr>
+		<div class="img-wrap"><img src="{{ useritems.item_image.url }}"></div>
+		<figcaption class="info-wrap"><center>
+		      <font color="darkgrey"><b>PRICE : </b></font> Rs.{{ useritems.price }}<br><br>
+		      <a href="/login" class="btn btn-sm btn-primary float-right">Exchange Now</a> </center>
+		</figcaption>
+
+	</figure>
+</div> <!-- col // -->
+{% endfor %}
+</div> <!-- row.// -->
+
+
+
+</div>
+<!--container.//-->
+
+<style>
+    .card-product .img-wrap {
+    border-radius: 3px 3px 0 0;
+    overflow: hidden;
+    position: relative;
+    height: 150px;
+    text-align: center;
+}
+.card-product .img-wrap img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: cover;
+}
+.card-product .info-wrap {
+    overflow: hidden;
+    padding: 15px;
+    border-top: 1px solid #eee;
+}
+.card-product .bottom-wrap {
+    padding: 15px;
+    border-top: 1px solid #eee;
+}
+
+.label-rating { margin-right:10px;
+    color: #333;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.card-product .price-old {
+    color: #999;
+}
+</style>
+				<!-- end code -->
+
+
+
+
+	        </div>
+
+	        </div>
+
+	    </div>
+
+	</div>
+</div>
+
+
+{% endblock %}
+
+

@@ -10,6 +10,13 @@ from home.models import UserFullProfile
 from ipware.ip import get_ip
 from .forms import *
 from home.models import Feedback
+# Create your views here.
+def main_home(request):
+    localip = get_ip(request)
+    items_obj = Items.objects.all().order_by('-id')[:3]
+    context = {'items_obj':items_obj, 'localip':localip}
+
+    return render(request,'main_home.html',context)
 
 # Create your views here.
 def dash_help(request):
