@@ -14,6 +14,14 @@
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js "></script>
 <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.9.1/jquery.tablesorter.min.js"></script>
 
+<!-- image preview option -->
+<script type="text/javascript" src="{% static 'admin/js/fileinput.js' %}"></script>
+<link rel="stylesheet" type="text/css" href="{% static 'admin/css/_fileinput.scss' %}" />
+
+
+
+<style>
+</style>
 
 
 
@@ -21,6 +29,19 @@
 
 <!------ Include the above in your HEAD tag ---------->
 <style>
+
+
+
+
+
+
+    input, button, select, textarea{ width:110px;}
+   img {max-height:130px;}
+    .panel {
+        border-radius: 0px;
+    }
+    #id_item_full_desc, #id_other_info{width:330px;}
+
     body {
         background: #e8edfc;
     }
@@ -325,7 +346,7 @@
 
         <a class="navbar-brand " style="margin-left:60px" href="#"><i class="fas fa-bell"> Notifications</i></a>
 
-        <br> <br> <br> <a> <marquee><font size=3 color =black >Users and Items are Adding at a good pace [ Total users: {{ u }} Total Items : {% if global_items_count %}{{global_items_count}}{%else%}{{useritemscount_cat}}{%endif%} and Total Free Items : {{ fc }} ] </marquee></font> </a>
+        <br>  <a> <marquee><font size=3 color =black >Users and Items are Adding at a good pace [ Total users: {{ u }} Total Items : {% if global_items_count %}{{global_items_count}}{%else%}{{useritemscount_cat}}{%endif%} and Total Free Items : {{ fc }} ] </marquee></font> </a>
 
 
 

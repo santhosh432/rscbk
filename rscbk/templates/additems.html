@@ -1,4 +1,13 @@
 {% extends 'base1.html' %}
+{% load staticfiles %} {% load static %}
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+
+<!-- image preview option -->
+<script type="text/javascript" src="{% static 'admin/js/fileinput.js' %}"></script>
+<link rel="stylesheet" type="text/css" href="{% static 'admin/css/_fileinput.scss' %}" />
+
+
 {% block content %}
 <div class="container-fluid column-starter">
     <!------------ Panel Class ------------->

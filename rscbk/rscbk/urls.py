@@ -27,7 +27,8 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$',main_home),
+    # url(r'^$',main_home),
+    url(r'^$',auth_views.login, {'template_name': 'home.html'} ,name='login'),
     url(r'^home/$',auth_views.login, {'template_name': 'home.html'} ,name='login'),
     url(r'^terms/$', terms),
     url(r'^privacy/$', privacy),
