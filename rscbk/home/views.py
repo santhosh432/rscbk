@@ -393,7 +393,7 @@ def login(request):
                 counter=collections.Counter(li)
 
 
-                cat = Category.objects.all().exclude(status=false)
+                cat = Category.objects.all().exclude(status=False)
                 items = Items.objects.filter(itemuser=request.user)
                 useritemscount = items.count()
                 totcount = sum([tot.price for tot in items])
