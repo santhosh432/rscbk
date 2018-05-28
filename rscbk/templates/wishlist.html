@@ -1,164 +1,481 @@
-{% extends 'base.html' %}
+{% extends 'base1.html' %}
 {% block content %}
+
+
 <div class="container-fluid column-starter">
-	<!------------ Panel Class ------------->
-{% load staticfiles %}
-<h1>wishlist</h1>
-<!-- code add -->
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
+    <!------------ Panel Class ------------->
+    <div class="margin-t-20"></div>
+    <div class="row">
 
-jsdlfksklfjsdlkfjsdklf
-<form action="" method="POST">
-    <input type=text>
+        <div class="col-md-12">
+            <div class="panel">
+                <div class="panel-body">
 
-</form>
+                    <script>
+                        $(document).ready(function() {
+                            $("#myTable").tablesorter();
 
+                            $("#myTable_own").tablesorter();
+
+                            var code = {};
+                            $("select[name='bnd'] > option").each(function() {
+                                if (code[this.text]) {
+                                    $(this).remove();
+                                } else {
+                                    code[this.text] = this.value;
+                                }
+                            });
+                        });
+                    </script>
+
+                    <script>
+                        $(document).ready(function() {
+
+                            $("#link").click(function() {
+                                var href = $('#link').attr('href');
+                                var min = $('#min').val();
+                                var max = $('#max').val();
+                                //alert(min);
+                                //alert(max);
+                                //alert(href);
+                                //alert("i am ihere");//Do stuff when clicked
+                                final_link = href + min + "/" + max
+                                    //alert(final_link);
+                                $("#link").attr('href', final_link)
+                            });
+                        });
+                    </script>
+                    <!-- style-->
+
+                    <!-- code-->
+                    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+                    <div style=" background-color: #fff;" class="row">
+                        <div style=" background-color: #1b3154;" class="col-md-6 col-sm-6 col-xs-12 gutter">
+
+                            <div style=" background-color: #ffff; min-height:641px;" class="sales">
+                                <div style=" background-color: #1b3154;" class="row">
+
+                                    <h4><b><center><font color="white">Global wish list items</font></center></b></h4></div>
+
+
+                                <center>
+                                    <table border=1 id="myTable" class="tablesorter" width="100%">
+                                        <thead>
+                                            <tr height=4 0px; font-weight: bold;>
+
+                                                    <th bgcolor="#f7a01d"><span style=" font-size: 10pt; ">Wish list <br>Code<font color=red><i class="fa fa-fw fa-sort"></i></font></span></th>
+
+                                                    <th bgcolor="#f7a01d"><span style=" font-size: 10pt; ">Categories</span></th>
+                                                    <th bgcolor="#f7a01d"><span style=" font-size: 10pt; ">Name</span></th>
+
+                                                    <th bgcolor="#f7a01d"><span style=" font-size: 10pt; ">full descript</th>
+                                                    <th bgcolor="#f7a01d"><span style=" font-size: 10pt; ">user</th>
+                                                         <th bgcolor="#f7a01d"><span style=" font-size: 10pt; ">other</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for useritems in user_wishlist %}
+
+                                                <tr>
+                                                    <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;"><a href = "{% url 'view_item' useritems.id %}">{{ useritems.id }}</a></span></td>
+                                                    <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;">{{ useritems.wishlist_category }}
+
+                                                    <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;">{{ useritems.wishlist_name }}</span></td>
+                                                    <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;">{{ useritems.wishlist_full_desc }}</span></td>
+                                                   <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;"><i class="fa fa-rupee"></i>{{ useritems.wishlist_user }}</span></td>
+                                                    <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;">{{ useritems.wishlist_other_info }}</span></td>
+
+                                                    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+                                                    <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;"> <a title="click to delete" href = "#"> <span class="glyphicon glyphicon-trash"></span></a>
+                                                        </span>
+                                                    </td>
+                                                </tr>
+
+                                                {% endfor %}</tbody>
+                                    </table>
+
+                                </center>
+                                <br>
+                                <hr>
+                            </div>
+                        </div>
+
+                        <div style=" background-color: #fff;" class="row">
+
+                            <div style=" background-color: #1b3154;" class="col-md-6 col-sm-6 col-xs-12 gutter">
+                                <div style=" background-color: #fff; min-height:641px;" class="sales report">
+                                    <div style=" background-color: #1b3154;" class="row">
+
+                                        <h4><font color="white"><b><center>{{request.user}}  - Your wish list items</center></b></font></h4></div>
+                                    <center>
+
+                                        <table width="99%" border=1 id="myTable_own" class="tablesorter">
+                                            <thead>
+                                                <tr height=4 0px; font-weight: bold;>
+
+                                                    <th bgcolor="#f7a01d"><span style=" font-size: 10pt; ">Wish list <br>Code<font color=red><i class="fa fa-fw fa-sort"></i></font></span></th>
+
+                                                    <th bgcolor="#f7a01d"><span style=" font-size: 10pt; ">Categories</span></th>
+                                                    <th bgcolor="#f7a01d"><span style=" font-size: 10pt; ">Name</span></th>
+
+                                                    <th bgcolor="#f7a01d"><span style=" font-size: 10pt; ">full descript</th>
+                                                    <th bgcolor="#f7a01d"><span style=" font-size: 10pt; ">user</th>
+                                                         <th bgcolor="#f7a01d"><span style=" font-size: 10pt; ">other</th>
+
+                                                    <th bgcolor="#f7a01d"><span style=" font-size: 10pt; ">#</span></th>
+
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {% for useritems in user_wishlist %}
+
+                                                <tr>
+                                                    <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;"><a href = "{% url 'view_item' useritems.id %}">{{ useritems.id }}</a></span></td>
+                                                    <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;">{{ useritems.wishlist_category }}
+
+                                                    <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;">{{ useritems.wishlist_name }}</span></td>
+                                                    <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;">{{ useritems.wishlist_full_desc }}</span></td>
+                                                   <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;"><i class="fa fa-rupee"></i>{{ useritems.wishlist_user }}</span></td>
+                                                    <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;">{{ useritems.wishlist_other_info }}</span></td>
+
+                                                    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+                                                    <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;"> <a title="click to delete" href = "#"> <span class="glyphicon glyphicon-trash"></span></a>
+                                                        </span>
+                                                    </td>
+                                                </tr>
+
+                                                {% endfor %}</tbody>
+
+                                        </table>
+
+                                    </center>
+
+                                    <script>
+                                        function popupCenter(url, title, w, h) {
+                                            var left = (screen.width / 2) - (w / 2);
+                                            var top = (screen.height / 2) - (h / 2);
+                                            return window.open(url, title, 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=' + w + ', height=' + h + ', top=' + top + ', left=' + left);
+                                        }
+                                    </script>
+                                    <div align="center">
+                                        <h4> <a href="/addwishlist" title="add iteams"><i class="fa fa-plus-circle"><b> Add Wish List </b></i></a></h4>
+
+
+                                    </div>
+                                    <br>
+
+                                </div>
+
+                                . </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--   </div> -->
+
+    </div>
+
+</div>
+
+</div>
+
+</div>
+</div>
+<!-- global view -->
+{% if items_cat %} {% for useritems in items_cat %}
 <style>
-/* FontAwesome for working BootSnippet :> */
-
-@import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
-#team {
-    background: #eee !important;
+#{{ useritems.id }
+}
+{
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+#{{ useritems.id }
+}
+:hover {
+    opacity: 0.7;
 }
 
-.btn-primary:hover,
-.btn-primary:focus {
-    background-color: #108d6f;
-    border-color: #108d6f;
-    box-shadow: none;
-    outline: none;
-}
-
-.btn-primary {
-    color: #fff;
-    background-color: #007b5e;
-    border-color: #007b5e;
-}
-
-section {
-    padding: 60px 0;
-}
-
-section .section-title {
-    text-align: center;
-    color: #007b5e;
-    margin-bottom: 50px;
-    text-transform: uppercase;
-}
-
-#team .card {
-    border: none;
-    background: #ffffff;
-}
-
-.image-flip:hover .backside,
-.image-flip.hover .backside {
-    -webkit-transform: rotateY(0deg);
-    -moz-transform: rotateY(0deg);
-    -o-transform: rotateY(0deg);
-    -ms-transform: rotateY(0deg);
-    transform: rotateY(0deg);
-    border-radius: .25rem;
-}
-
-.image-flip:hover .frontside,
-.image-flip.hover .frontside {
-    -webkit-transform: rotateY(180deg);
-    -moz-transform: rotateY(180deg);
-    -o-transform: rotateY(180deg);
-    transform: rotateY(180deg);
-}
-
-.mainflip {
-    -webkit-transition: 1s;
-    -webkit-transform-style: preserve-3d;
-    -ms-transition: 1s;
-    -moz-transition: 1s;
-    -moz-transform: perspective(1000px);
-    -moz-transform-style: preserve-3d;
-    -ms-transform-style: preserve-3d;
-    transition: 1s;
-    transform-style: preserve-3d;
-    position: relative;
-}
-
-.frontside {
-    position: relative;
-    -webkit-transform: rotateY(0deg);
-    -ms-transform: rotateY(0deg);
-    z-index: 2;
-    margin-bottom: 30px;
-}
-
-.backside {
-    position: absolute;
-    top: 0;
+/* The Modal (background) */
+.modal {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    padding-top: 100px;
+    /* Location of the box */
     left: 0;
-    background: white;
-    -webkit-transform: rotateY(-180deg);
-    -moz-transform: rotateY(-180deg);
-    -o-transform: rotateY(-180deg);
-    -ms-transform: rotateY(-180deg);
-    transform: rotateY(-180deg);
-    -webkit-box-shadow: 5px 7px 9px -4px rgb(158, 158, 158);
-    -moz-box-shadow: 5px 7px 9px -4px rgb(158, 158, 158);
-    box-shadow: 5px 7px 9px -4px rgb(158, 158, 158);
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.9);
+    /* Black w/ opacity */
 }
 
-.frontside,
-.backside {
-    -webkit-backface-visibility: hidden;
-    -moz-backface-visibility: hidden;
-    -ms-backface-visibility: hidden;
-    backface-visibility: hidden;
-    -webkit-transition: 1s;
-    -webkit-transform-style: preserve-3d;
-    -moz-transition: 1s;
-    -moz-transform-style: preserve-3d;
-    -o-transition: 1s;
-    -o-transform-style: preserve-3d;
-    -ms-transition: 1s;
-    -ms-transform-style: preserve-3d;
-    transition: 1s;
-    transform-style: preserve-3d;
+/* Modal Content (image) */
+.modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
 }
 
-.frontside .card,
-.backside .card {
-    min-height: 312px;
+/* Caption of Modal Image */
+#caption {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    color: #ccc;
+    padding: 10px 0;
+    height: 150px;
 }
 
-.backside .card a {
-    font-size: 18px;
-    color: #007b5e !important;
+/* Add Animation */
+.modal-content,
+#caption {
+    -webkit-animation-name: zoom;
+    -webkit-animation-duration: 0.6s;
+    animation-name: zoom;
+    animation-duration: 0.6s;
+}
+@-webkit-keyframes zoom {
+    from {
+        -webkit-transform: scale(0)
+    }
+    to {
+        -webkit-transform: scale(1)
+    }
+}
+@keyframes zoom {
+    from {
+        transform: scale(0)
+    }
+    to {
+        transform: scale(1)
+    }
 }
 
-.frontside .card .card-title,
-.backside .card .card-title {
-    color: #007b5e !important;
+/* The Close Button */
+.close {
+    position: absolute;
+    top: 125px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+.close:hover,
+.close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
 }
 
-.frontside .card .card-body img {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 700px) {
+    .modal-content {
+        width: 100%;
+    }
 }
 </style>
-<!-- code end -->
 
+{% endfor %}
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+    <span class="close"><font color="white">X</font></span>
+    <img class="modal-content" id="img01">
+    <div id="caption"></div>
 
 </div>
 
+{% for useritems in items_cat %}
+<script>
+    // Get the modal
+    var modal = document.getElementById('myModal');
 
+    // Get the image and insert it inside the modal - use its "alt" text as a caption
+    var img = document.getElementById('{{ useritems.id }}');
+    var modalImg = document.getElementById("img01");
+    var captionText = document.getElementById("caption");
+    img.onclick = function() {
+        modal.style.display = "block";
+        modalImg.src = this.src;
+        captionText.innerHTML = this.alt;
+    }
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+</script>
+
+{% endfor %} {% endif %}
+
+<!-- end code -->
+<!-- code -->
+
+{% for useritems in items %}
+<style>
+#{{ useritems.id }
+}
+{
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+#{{ useritems.id }
+}
+:hover {
+    opacity: 0.7;
+}
+
+/* The Modal (background) */
+.modal {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    padding-top: 100px;
+    /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.9);
+    /* Black w/ opacity */
+}
+
+/* Modal Content (image) */
+.modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+}
+
+/* Caption of Modal Image */
+#caption {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    color: #ccc;
+    padding: 10px 0;
+    height: 150px;
+}
+
+/* Add Animation */
+.modal-content,
+#caption {
+    -webkit-animation-name: zoom;
+    -webkit-animation-duration: 0.6s;
+    animation-name: zoom;
+    animation-duration: 0.6s;
+}
+@-webkit-keyframes zoom {
+    from {
+        -webkit-transform: scale(0)
+    }
+    to {
+        -webkit-transform: scale(1)
+    }
+}
+@keyframes zoom {
+    from {
+        transform: scale(0)
+    }
+    to {
+        transform: scale(1)
+    }
+}
+
+/* The Close Button */
+.close {
+    position: absolute;
+    top: 125px;
+    right: 35px;
+
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+.close:hover,
+.close:focus {
+
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 700px) {
+    .modal-content {
+        width: 100%;
+    }
+}
+</style>
+
+{% endfor %}
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+    <span class="close"><font color="white">X</font></span>
+    <img class="modal-content" id="img01">
+    <div id="caption"></div>
 
 </div>
 
+{% for useritems in items %}
+<script>
+    // Get the modal
+    var modal = document.getElementById('myModal');
 
+    // Get the image and insert it inside the modal - use its "alt" text as a caption
+    var img = document.getElementById('{{ useritems.id }}');
+    var modalImg = document.getElementById("img01");
+    var captionText = document.getElementById("caption");
+    img.onclick = function() {
+        modal.style.display = "block";
+        modalImg.src = this.src;
+        captionText.innerHTML = this.alt;
+    }
 
-        </div>
-    </div>
-</div>
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+</script>
+
+{% endfor %}
+
+<!-- end code -->
 {% endblock %}

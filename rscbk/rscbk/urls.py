@@ -40,6 +40,7 @@ urlpatterns = [
     url(r'^contactus/$', contactus),
     url(r'^feedback/$', feedback),
     url(r'^dash_help/$', dash_help),
+    url(r'^change_password/$', change_password),
     url(r'^signup/$', sign_up),
     #url(r'^login', auth_views.login, {'template_name': 'home.html'} ,name='login'),
     url(r'^logout/$', auth_views.logout, {'next_page': '/login/'}, name="logout"),
@@ -58,6 +59,7 @@ urlpatterns = [
 
     url(r'dashboard/',dashboard),
     url(r'additems/',catviews.additems , name='additems'),
+    url(r'addwishlist/',catviews.addwishlist , name='addwishlist'),
     url(r'addbrand/',catviews.addbrand , name='addbrand'),
     url(r'addcatbrand/',catviews.addcatbrand , name='addcatbrand'),
     url(r'forget_password/',catviews.forget_password , name='forget_password'),

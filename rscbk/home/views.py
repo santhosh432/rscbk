@@ -13,9 +13,10 @@ from home.models import Feedback
 
 # Create your views here.
 def wishlist(request):
+    user_wishlist = Wishlist.objects.all()
     localip = get_ip(request)
     items_obj = Items.objects.all().order_by('-id')[:9]
-    context = {'items_obj':items_obj, 'localip':localip}
+    context = {'items_obj':items_obj, 'localip':localip,'user_wishlist':user_wishlist}
 
     return render(request,'wishlist.html',context)
 
@@ -63,6 +64,14 @@ def feedback(request):
     else:
         form = FeedbackForm()
     return render(request, 'feedback.html', {'form': form,'fback':fback})
+
+
+@login_required
+def change_password(request):
+
+    context = {}
+
+    return render(request,'change_password.html',context)
 
 
 # Create your views here.
@@ -384,7 +393,7 @@ def login(request):
                 counter=collections.Counter(li)
 
 
-                cat = Category.objects.all()
+                cat = Category.objects.all().exclude(status=false)
                 items = Items.objects.filter(itemuser=request.user)
                 useritemscount = items.count()
                 totcount = sum([tot.price for tot in items])
