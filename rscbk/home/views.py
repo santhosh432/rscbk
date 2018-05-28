@@ -361,8 +361,10 @@ from django.core.urlresolvers import reverse
 def login(request):
     localip = get_ip(request)
     _message = 'Please sign in'
-
-    context = {'message': _message,'localip':localip,}
+    img_obj1 = Items.objects.all().order_by('-id')[:6]
+    img_obj2 = Items.objects.all().order_by('-id')[7:12]
+    img_obj3 = Items.objects.all().order_by('-id')[13:18]
+    context = {'message': _message,'localip':localip,'img_obj1':img_obj1,'img_obj2':img_obj2,'img_obj3':img_obj3,}
     if request.method == 'POST':
         _username = request.POST['username']
         _password = request.POST['password']

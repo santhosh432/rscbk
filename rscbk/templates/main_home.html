@@ -19,7 +19,7 @@
                          <div class="list-group">
                                <form action="{% url 'login' %}"method="post">
                                {% csrf_token %}
-                               <table><tr><th>ccUsername</th><td><input required name="username" class="effect-2" type="text" placeholder="Login..."></td></tr>
+                               <table><tr><th>Username</th><td><input required name="username" class="effect-2" type="text" placeholder="Login..."></td></tr>
                                <tr><th>Password</th><td><input required name="password" class="effect-2" type="password" placeholder="Password..."></td></tr>
                                <tr><th></th><th><br>
                                    <button class="button2" type=submit><i class="fas fa-sign-in-alt"> Login</i></button>
@@ -42,7 +42,7 @@
                  <div class="sidebar panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title">
-                          <a href="/signup" data-toggle="collapse" href="#sidemenu2" id="preview" class="" aria-expanded="true">Signup <i class="fa fa-angle-down pull-right"></i></a>
+                          <a href="/signup">Signup <i class="fa fa-angle-down pull-right"></i></a>
                         </h4>
                       </div>
 
@@ -74,7 +74,130 @@
 				* click on the link provided under the each category once you are logged in.</p></b>
 	        </div>
 <!-- code add-->
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
 
+<div class="container">
+  <div class="row">
+    <h3>Latest Products</h3>
+  </div>
+  <div class='row'>
+    <div class='col-md-10'>
+      <div class="carousel slide media-carousel" id="recommendations">
+        <div class="carousel-inner">
+          <div class="item  active">
+            <div class="row">
+             {% for useritems in img_obj1 %}
+              <div class="col-md-2">
+                <a class="thumbnail" href="#"><img alt="" src="{{ useritems.item_image.url }}"></a>
+              </div>
+             {% endfor %}
+            </div>
+          </div>
+
+          <div class="item">
+            <div class="row">
+              {% for useritems in img_obj2 %}
+              <div class="col-md-2">
+                <a class="thumbnail" href="#"><img alt="" src="{{ useritems.item_image.url }}"></a>
+              </div>
+              {% endfor %}
+
+
+            </div>
+          </div>
+          <div class="item">
+            <div class="row">
+              {% for useritems in img_obj3 %}
+              <div class="col-md-2">
+                <a class="thumbnail" href="#"><img alt="" src="{{ useritems.item_image.url }}"></a>
+              </div>
+              {% endfor %}
+
+
+            </div>
+          </div>
+        </div>
+        <a data-slide="prev" href="#recommendations" class="left carousel-control btn btn-default btn-primary"><span class="glyphicon glyphicon-chevron-left"></span></a><br>
+        <a data-slide="next" href="#recommendations" class="right carousel-control btn btn-default btn-primary"><span class="glyphicon glyphicon-chevron-right"></span></a>
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+    /* carousel */
+.media-carousel
+{
+  margin-bottom: 0;
+  padding: 0 40px 30px 40px;
+  margin-top: 30px;
+  width: 100%;
+}
+body .container
+{
+    width: 100%;
+    margin: auto;
+}
+/* Previous button  */
+.media-carousel .carousel-control.left
+{
+  left: -28px;
+  background-image: none;
+  background: none repeat scroll 0 0 #222222;
+  border: 1px solid #FFFFFF;
+  border-radius: 20px;
+  height: 191px;
+  width : 60px;
+  margin-top: 30px
+  margin-left:15px;
+}
+/* Next button  */
+.media-carousel .carousel-control.right
+{
+  right: -8px !important;
+  background-image: none;
+  background: none repeat scroll 0 0 #222222;
+  border: 1px solid #FFFFFF;
+  border-radius: 20px;
+  height: 191px;
+  width : 60px;
+  margin-top: -2px;
+  margin-right: -15px;
+}
+/* Changes the position of the indicators */
+.media-carousel .carousel-indicators
+{
+  right: 50%;
+  top: auto;
+  bottom: 0px;
+  margin-right: -19px;
+}
+/* Changes the colour of the indicators */
+.media-carousel .carousel-indicators li
+{
+  background: #c0c0c0;
+}
+.media-carousel .carousel-indicators .active
+{
+  background: #333333;
+}
+.media-carousel img
+{
+  width: 100%;
+  height: 180px;
+}
+/* End carousel */
+</style>
+<script>
+    $(document).ready(function() {
+  $('#recommendations').carousel({
+    pause: true,
+    interval: false,
+  });
+});
+</script>
 <!--code end -->
 
 	        </div>
