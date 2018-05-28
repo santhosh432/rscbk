@@ -126,7 +126,7 @@ def myuserdashboard(request):
     counter=collections.Counter(li)
 
 
-    cat = Category.objects.all()
+    cat = Category.objects.all().exclude(status=False)
     items = Items.objects.filter(itemuser=request.user)
     useritemscount = items.count()
     totcount = sum([tot.price for tot in items])
@@ -193,7 +193,7 @@ from django.core.paginator import Paginator
 @login_required
 def myuserdashboard_with_cat(request,cat_id=None):
     localip = get_ip(request)
-    cat = Category.objects.all()
+    cat = Category.objects.all().exclude(status=False)
     items_cat = Items.objects.filter(category__id=cat_id).exclude(itemuser=request.user)
 
 
@@ -226,7 +226,7 @@ def myuserdashboard_with_cat(request,cat_id=None):
 @login_required
 def myuserdashboard_with_cat_freelist(request,cat_id=None):
     localip = get_ip(request)
-    cat = Category.objects.all()
+    cat = Category.objects.all().exclude(status=False)
     items_cat = Items.objects.filter(category__id=cat_id,price=0).exclude(itemuser=request.user)
 
 
@@ -260,7 +260,7 @@ def myuserdashboard_with_cat_freelist(request,cat_id=None):
 @login_required
 def myuserdashboard_with_cat_bnd(request,cat_id=None,bnd_id=None):
     localip = get_ip(request)
-    cat = Category.objects.all()
+    cat = Category.objects.all().exclude(status=False)
     items_cat_all = Items.objects.filter(category__id=cat_id).exclude(itemuser=request.user)
     items_cat = Items.objects.filter(category__id=cat_id,bnd__id=bnd_id).exclude(itemuser=request.user)
     items_cat_max = Items.objects.filter(category__id=cat_id,bnd__id=bnd_id).exclude(itemuser=request.user).order_by('-price').first()
@@ -296,7 +296,7 @@ def myuserdashboard_with_cat_bnd(request,cat_id=None,bnd_id=None):
 @login_required
 def myuserdashboard_with_cat_bnd_min_max(request,cat_id=None,bnd_id=None,min_id=None, max_id=None):
     localip = get_ip(request)
-    cat = Category.objects.all()
+    cat = Category.objects.all().exclude(status=False)
     items_cat_all = Items.objects.filter(category__id=cat_id).exclude(itemuser=request.user)
     items_cat = Items.objects.filter(category__id=cat_id,bnd__id=bnd_id,price__range=(min_id, max_id)).exclude(itemuser=request.user)
     items_cat_max = Items.objects.filter(category__id=cat_id,bnd__id=bnd_id,price__range=(min_id, max_id)).exclude(itemuser=request.user).order_by('-price').first()
