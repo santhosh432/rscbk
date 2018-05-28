@@ -55,3 +55,14 @@ class Items(models.Model):
     def get_absolute_url(self):
         return reverse('edititem', kwargs={'pk': self.pk})
 
+
+
+
+class Wishlist(models.Model):
+    wishlist_category = models.ForeignKey(Category)
+    wishlist_name = models.CharField(max_length=25, help_text='item short description')
+    wishlist_full_desc = models.CharField(max_length=200, help_text='item full description')
+    wishlist_user = models.ForeignKey(User, null=True, blank=True)
+    wishlist_other_info = models.CharField(max_length=150, help_text="Item other information", default="null")
+
+

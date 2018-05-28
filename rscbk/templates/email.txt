@@ -1,0 +1,12 @@
+Hi {{ user }},
+
+We have observed that you have not uploaded or uploaded very few items in the Barterkings.in Portal.
+
+Please share/upload your Items which you want to exchange or sell in the portal so that it can be visible to all the users and they can negotiate with you for exchange or sale of items.
+
+
+Thanks and Regards,
+Barterkings Admin.
+
+
+* This is an Auto Generated Message Please donot reply to this mail.

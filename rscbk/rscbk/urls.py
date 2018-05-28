@@ -27,20 +27,26 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^$', login, name='login'),
+    url(r'^home/$', login, name='login'),
+    url(r'^login/$', login, name='login'),
     # url(r'^$',main_home),
-    url(r'^$',auth_views.login, {'template_name': 'home.html'} ,name='login'),
-    url(r'^home/$',auth_views.login, {'template_name': 'home.html'} ,name='login'),
+    #url(r'^$',auth_views.login, {'template_name': 'home.html'} ,name='login'),
+    #url(r'^home/$',auth_views.login, {'template_name': 'home.html'} ,name='login'),
     url(r'^terms/$', terms),
     url(r'^privacy/$', privacy),
+    url(r'^wishlist/$', wishlist),
     url(r'^aboutus/$', aboutus),
     url(r'^contactus/$', contactus),
     url(r'^feedback/$', feedback),
     url(r'^dash_help/$', dash_help),
     url(r'^signup/$', sign_up),
-    url(r'^login', auth_views.login, {'template_name': 'home.html'} ,name='login'),
+    #url(r'^login', auth_views.login, {'template_name': 'home.html'} ,name='login'),
     url(r'^logout/$', auth_views.logout, {'next_page': '/login/'}, name="logout"),
 
     url(r'myuserdashboard/', myuserdashboard ,name='myuserdashboard'),
+    url(r'myuserdashboardtest/', myuserdashboardtest ,name='myuserdashboardtest'),
+
 
     url(r'addcatbrandlink/(?P<cat_id>\d+)/undefined/undefined$', catviews.addcatbrand ,name='addcatbrandlink'),
 

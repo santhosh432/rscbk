@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 from django.contrib.auth.decorators import login_required
-from categories.models import Category,Items
+from categories.models import *
 from django.shortcuts import render
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
@@ -10,6 +10,16 @@ from home.models import UserFullProfile
 from ipware.ip import get_ip
 from .forms import *
 from home.models import Feedback
+
+# Create your views here.
+def wishlist(request):
+    localip = get_ip(request)
+    items_obj = Items.objects.all().order_by('-id')[:9]
+    context = {'items_obj':items_obj, 'localip':localip}
+
+    return render(request,'wishlist.html',context)
+
+
 # Create your views here.
 def main_home(request):
     localip = get_ip(request)
@@ -128,6 +138,47 @@ def myuserdashboard(request):
            'global_items_price':global_items_price,'localip':localip,'u':usercount,'fc':freeitemc}
 
     return render(request, 'userdashboard.html',ctx)
+
+
+@login_required
+def myuserdashboardtest(request):
+    localip = get_ip(request)
+    usercount = User.objects.all().count()
+    freeitemc = Items.objects.filter(price=0).count()
+    itemcount = Items.objects.values('category').annotate(cate=Count('category')).exclude(itemuser=request.user)
+    zero_value_items = Items.objects.filter(price=0)
+    import collections
+    li = []
+    for i in zero_value_items:
+        li.append(i.category.category_name)
+    counter=collections.Counter(li)
+
+
+    cat = Category.objects.all()
+    items = Items.objects.filter(itemuser=request.user)
+    useritemscount = items.count()
+    totcount = sum([tot.price for tot in items])
+    global_items = Items.objects.all().exclude(itemuser=request.user)
+    global_items_count = global_items.count()
+    global_items_price = sum([tot.price for tot in global_items])
+    heading = "My"
+    paginator1 = Paginator(items, 10)
+    page1 = request.GET.get('page', 1)
+    items = paginator1.page(page1)
+    try:
+        up = UserFullProfile.objects.get(user=request.user)
+    except:
+        up = ''
+        pass
+    ctx = {'free_items':sorted(counter.items()),'itemc':itemcount,'localip':localip,'up':up,'allcat':cat,'items':items,'useritemscount':useritemscount,
+           'totcount':totcount,'heading':heading,'global_items_count':global_items_count,
+           'global_items_price':global_items_price,'localip':localip,'u':usercount,'fc':freeitemc}
+
+    return render(request, 'userdashboardtest.html',ctx)
+
+
+
+
 from django.core.paginator import Paginator
 
 @login_required
@@ -299,3 +350,69 @@ def sign_up(request):
     else:
         form = SignUpForm()
     return render(request, 'signup.html', {'form': form})
+
+
+from django.contrib.auth import (login as auth_login,  authenticate)
+from django.shortcuts import render
+from django.http import HttpResponseRedirect
+from django.core.urlresolvers import reverse
+
+
+def login(request):
+    localip = get_ip(request)
+    _message = 'Please sign in'
+
+    context = {'message': _message,'localip':localip,}
+    if request.method == 'POST':
+        _username = request.POST['username']
+        _password = request.POST['password']
+        user = authenticate(username=_username, password=_password)
+        if user is not None:
+            if user.is_active:
+                auth_login(request, user)
+                localip = get_ip(request)
+                usercount = User.objects.all().count()
+                freeitemc = Items.objects.filter(price=0).count()
+                itemcount = Items.objects.values('category').annotate(cate=Count('category')).exclude(itemuser=request.user)
+                zero_value_items = Items.objects.filter(price=0)
+                import collections
+                li = []
+                for i in zero_value_items:
+                    li.append(i.category.category_name)
+                counter=collections.Counter(li)
+
+
+                cat = Category.objects.all()
+                items = Items.objects.filter(itemuser=request.user)
+                useritemscount = items.count()
+                totcount = sum([tot.price for tot in items])
+                global_items = Items.objects.all().exclude(itemuser=request.user)
+                global_items_count = global_items.count()
+                global_items_price = sum([tot.price for tot in global_items])
+                heading = "My"
+                paginator1 = Paginator(items, 10)
+                page1 = request.GET.get('page', 1)
+                items = paginator1.page(page1)
+                try:
+                    up = UserFullProfile.objects.get(user=request.user)
+                except:
+                    up = ''
+                    pass
+                ctx = {'free_items':sorted(counter.items()),'itemc':itemcount,'localip':localip,'up':up,'allcat':cat,'items':items,'useritemscount':useritemscount,
+                       'totcount':totcount,'heading':heading,'global_items_count':global_items_count,
+                       'global_items_price':global_items_price,'localip':localip,'u':usercount,'fc':freeitemc}
+
+                return render(request, 'userdashboard.html',ctx)
+
+
+
+
+
+
+
+            else:
+                _message = 'Your account is not activated'
+        else:
+            _message = 'Invalid login, please try again.'
+
+    return render(request, 'main_home.html', context)
