@@ -3,7 +3,7 @@ from import_export import resources # dj import -export
 from import_export.admin import ImportExportModelAdmin
 
 # Register your models here.
-from .models import Category,Items,CatBrand#,CategoryBrand
+from .models import * #,CategoryBrand
 
 
 #@admin.register(CategoryBrand)
@@ -30,4 +30,11 @@ class BrandResource(resources.ModelResource):
 @admin.register(CatBrand)
 class CatBrandAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     list_display = ['cat_nam','bnd_name']
+
+
+@admin.register(Wishlist)
+class WishlistAdmin(admin.ModelAdmin):
+    list_display = ['wishlist_category','wishlist_name','wishlist_full_desc','wishlist_user','wishlist_other_info']
+
+Wishlist
 #CatBrand

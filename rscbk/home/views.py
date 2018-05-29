@@ -12,6 +12,8 @@ from .forms import *
 from home.models import Feedback
 
 # Create your views here.
+
+@login_required
 def wishlist(request):
     user_wishlist = Wishlist.objects.all()
     localip = get_ip(request)
@@ -69,8 +71,19 @@ def feedback(request):
 @login_required
 def change_password(request):
 
-    context = {}
+    form = ChangePasswordForm(request.POST)
+    if request.method =='POST':
+        user = User.objects.get(id=request.user.id)
+        if form.is_valid():
+            old_password = form.cleaned_data['old_password']
+            new_password = form.cleaned_data['new_password']
+            confirm_password = form.cleaned_data['confirm_password']
 
+            user.set_password(new_password)
+            user.save()
+
+
+    context = {'form':form, 'user': request.user}
     return render(request,'change_password.html',context)
 
 

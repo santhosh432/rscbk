@@ -23,3 +23,13 @@ class SignUpForm(UserCreationForm):
     class Meta:
         model = User
         fields = ('username', 'first_name', 'last_name', 'email','mobile', 'password1', 'password2',)
+
+
+class ChangePasswordForm(forms.ModelForm):
+    old_password = forms.CharField(max_length=30, widget=forms.PasswordInput())
+    new_password = forms.CharField(max_length=30, widget=forms.PasswordInput())
+    confirm_password = forms.CharField(max_length=30, widget=forms.PasswordInput())
+
+    class Meta:
+        model = User
+        fields = ('old_password',)

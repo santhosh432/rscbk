@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 # Create your views here.
-from .forms import AdditemForm, AddbrandForm, AddcatbrandForm
+from .forms import AdditemForm, AddbrandForm, AddcatbrandForm, AddwishlistForm
 from categories.models import *
 from ipware.ip import get_ip
 from django.db.models import Count
@@ -44,39 +44,25 @@ def forget_password(request):
             return render(request, 'forget_password.html', {'error':e})
 
     return render(request, 'forget_password.html', {})
-
+from ipware.ip import get_ip
 @login_required
 def addwishlist(request):
+    form = AddwishlistForm
     localip = get_ip(request)
 
-    itemcount = Items.objects.values('category').annotate(cate=Count('category'))
-    cat = Category.objects.all()
-    items = Items.objects.filter(itemuser=request.user)
-    useritemscount = items.count()
-    totcount = sum([tot.price for tot in items])
-    global_items = Items.objects.all()
-    global_items_count = global_items.count()
-    global_items_price = sum([tot.price for tot in global_items])
-    heading = "My"
-    paginator1 = Paginator(items, 10)
-    page1 = request.GET.get('page', 1)
-    items = paginator1.page(page1)
-    try:
-        up = UserFullProfile.objects.get(user=request.user)
-    except:
-        up = ''
-        pass
-    addform = AdditemForm()
-    cat_brd = CatBrand.objects.all()
     if request.method == 'POST':
-        addform = AdditemForm(request.POST,request.FILES)
+        addform = AddwishlistForm(request.POST,request.FILES)
         if addform.is_valid():
             form = addform.save(commit=False)
-            form.itemuser = request.user
+            form.wishlist_user = request.user
             form.save()
-            return redirect('myuserdashboard')
+            user_wishlist = Wishlist.objects.all()
+            localip = get_ip(request)
 
-    return render(request, 'add_wishlist.html', {'addform':addform,'cat_brd':cat_brd,'itemc':itemcount,'localip':localip,'up':up,'allcat':cat,'items':items,'useritemscount':useritemscount,'totcount':totcount,'heading':heading,'global_items_count':global_items_count,'global_items_price':global_items_price})
+            context = { 'localip':localip,'user_wishlist':user_wishlist}
+            return render(request,'wishlist.html',context)
+
+    return render(request, 'add_wishlist.html', {'form':form,'localip':localip})
 
 
 

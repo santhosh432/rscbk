@@ -1,8 +1,15 @@
 #from django.forms import ModelForm
 from django import forms
-from .models import Items, CatBrand
-from home.models import Brand
+from .models import *
+from home.models import *
 
+class AddwishlistForm(forms.ModelForm):
+    #model = Brand
+
+    class Meta:
+        model = Wishlist
+        fields = ('wishlist_category','wishlist_name','wishlist_full_desc','wishlist_other_info')
+        exclude = ('wishlist_user',)
 
 class AddbrandForm(forms.ModelForm):
     #model = Brand
