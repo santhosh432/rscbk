@@ -1,9 +1,11 @@
 from django.db import models
-
+from django.db.models import Q
 # Create your models here.
 from django.contrib.auth.models import User
 from home.models import Brand
 # all categories...
+
+
 class Category(models.Model):
     DEFAULT_PK=1
     category_name = models.CharField(max_length=15, help_text='Category name')

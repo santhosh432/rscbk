@@ -36,3 +36,8 @@ class AdditemForm(forms.ModelForm):
         model = Items
         exclude = ('itemuser','years_used',)
 
+    def __init__(self, *args, **kwargs):
+        self.category = Category.objects.exclude(category_name='Cash')
+        super(AdditemForm, self).__init__(*args, **kwargs)
+        self.fields['category'].queryset = self.category
+

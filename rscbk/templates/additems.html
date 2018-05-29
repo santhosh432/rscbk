@@ -73,7 +73,7 @@
                                     <h4><b><center><font color="white">Global items</font></center></b></h4></div>
                                 <table align="center" width="85%">
                                     <tr>
-                                        <th colspan=3> <font size=2> <b>Total Itemsss</b> :{%if useritemscount_cat%} {{useritemscount_cat}}{%else%}{{global_items_count}}{%endif%}</font></th>
+                                        <th colspan=3> <font size=2> <b>Total Items</b> :{%if useritemscount_cat%} {{useritemscount_cat}}{%else%}{{global_items_count}}{%endif%}</font></th>
 
                                         <th colspan=3><font size=2><b> &nbsp &nbsp &nbsp &nbsp &nbspTotal Value</b> : Rs: {%if totcount_cat%} {{totcount_cat}}{%else%}{{global_items_price}}{%endif%}</font></th>
 
@@ -253,7 +253,7 @@
             <td>
 <script>
     $(document).ready(function(){
-$("#id_category option[value=16]").hide();
+$("#id_category option[value=0]").hide();
   $('#id_category').on('change', function() {
        $("#id_bnd option").remove();
 

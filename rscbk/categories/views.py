@@ -71,7 +71,7 @@ def additems(request):
     localip = get_ip(request)
 
     itemcount = Items.objects.values('category').annotate(cate=Count('category'))
-    cat = Category.objects.all()
+    cat = Category.objects.all().exclude(status=False)
     items = Items.objects.filter(itemuser=request.user)
     useritemscount = items.count()
     totcount = sum([tot.price for tot in items])
@@ -105,7 +105,7 @@ def addcatbrand(request,cat_id):
     localip = get_ip(request)
 
     itemcount = Items.objects.values('category').annotate(cate=Count('category'))
-    cat = Category.objects.all()
+    cat = Category.objects.all().exclude(status=False)
     items = Items.objects.filter(itemuser=request.user)
     useritemscount = items.count()
     totcount = sum([tot.price for tot in items])
@@ -147,7 +147,7 @@ def addbrand(request):
     localip = get_ip(request)
 
     itemcount = Items.objects.values('category').annotate(cate=Count('category'))
-    cat = Category.objects.all()
+    cat = Category.objects.all().exclude(status=False)
     items = Items.objects.filter(itemuser=request.user)
     useritemscount = items.count()
     totcount = sum([tot.price for tot in items])
@@ -204,7 +204,7 @@ def view_item(request, item_id):
     counter=collections.Counter(li)
 
     itemcount = Items.objects.values('category').annotate(cate=Count('category'))
-    cat = Category.objects.all()
+    cat = Category.objects.all().exclude(status=False)
     items = Items.objects.filter(itemuser=request.user)
     useritemscount = items.count()
     totcount = sum([tot.price for tot in items])
@@ -242,7 +242,7 @@ def view_item_global(request, item_id):
     localip = get_ip(request)
 
     itemcount = Items.objects.values('category').annotate(cate=Count('category'))
-    cat = Category.objects.all()
+    cat = Category.objects.all().exclude(status=False)
     items = Items.objects.filter(itemuser=request.user)
     useritemscount = items.count()
     totcount = sum([tot.price for tot in items])
@@ -287,6 +287,11 @@ class ItemForm(forms.ModelForm):
         model = Items
         exclude = ('itemuser','years_used',)
 
+    def __init__(self, *args, **kwargs):
+        self.category = Category.objects.exclude(category_name='Cash')
+        super(ItemForm, self).__init__(*args, **kwargs)
+        self.fields['category'].queryset = self.category
+
 @login_required
 def edit_item(request, pk):
 
@@ -298,7 +303,7 @@ def edit_item(request, pk):
         li.append(i.category.category_name)
     counter=collections.Counter(li)
     itemcount = Items.objects.values('category').annotate(cate=Count('category'))
-    cat = Category.objects.all()
+    cat = Category.objects.all().exclude(status=False)
     items = Items.objects.filter(itemuser=request.user)
     useritemscount = items.count()
     totcount = sum([tot.price for tot in items])

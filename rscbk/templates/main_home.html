@@ -91,7 +91,9 @@
             <div class="row">
              {% for useritems in img_obj1 %}
               <div class="col-md-2">
-                <a class="thumbnail" href="#"><img alt="" src="{{ useritems.item_image.url }}"></a>
+                <a class="thumbnail" href="#"><img alt="" src="{{ useritems.item_image.url }}"><br>
+
+                <font size=-5><u><font color=blue>Posted by</font></u><br> {{ useritems.itemuser}}</font></a>
               </div>
              {% endfor %}
             </div>
@@ -101,7 +103,9 @@
             <div class="row">
               {% for useritems in img_obj2 %}
               <div class="col-md-2">
-                <a class="thumbnail" href="#"><img alt="" src="{{ useritems.item_image.url }}"></a>
+                <a class="thumbnail" href="#"><img alt="no image" src="{{ useritems.item_image.url }}"><br>
+                <font size=-5><u><font color=blue>Posted by</font></u><br> {{ useritems.itemuser}}</font></a>
+
               </div>
               {% endfor %}
 
@@ -112,7 +116,8 @@
             <div class="row">
               {% for useritems in img_obj3 %}
               <div class="col-md-2">
-                <a class="thumbnail" href="#"><img alt="" src="{{ useritems.item_image.url }}"></a>
+                <a class="thumbnail" href="#"><img alt="no image" src="{{ useritems.item_image.url }}"><br>
+                <font size=-5><u><font color=blue>Posted by</font></u><br> {{ useritems.itemuser}}</font></a>
               </div>
               {% endfor %}
 
