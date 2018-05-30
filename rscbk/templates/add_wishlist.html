@@ -72,9 +72,24 @@
                                                     <th bgcolor="#f7a01d"><span style=" font-size: 10pt; ">user</th>
                                                          <th bgcolor="#f7a01d"><span style=" font-size: 10pt; ">other</th>
                                             </tr>
+
                                         </thead>
                                         <tbody>
-                                           }</tbody>
+                                            {% for useritems in global_wishlist %}
+
+                                                <tr>
+                                                    <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;"><a href = "{% url 'view_item' useritems.id %}">{{ useritems.id }}</a></span></td>
+                                                    <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;">{{ useritems.wishlist_category }}
+
+                                                    <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;">{{ useritems.wishlist_name }}</span></td>
+                                                    <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;">{{ useritems.wishlist_full_desc }}</span></td>
+                                                   <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;"><i class="fa fa-rupee"></i>{{ useritems.wishlist_user }}</span></td>
+                                                    <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;">{{ useritems.wishlist_other_info }}</span></td>
+
+
+                                                </tr>
+
+                                                {% endfor %}</tbody>
                                     </table>
 
                                 </center>
@@ -94,11 +109,15 @@
 
                                         <form action="" method="POST">
                                             {% csrf_token %}
+                                            <table>
+
+
                                             {% for i in form %}
-                                            {{i.label}} {{i}}<br>
+                                            <tr><th>
+                                            {{i.label}}</th><td> {{i}}</td></tr>
 
                                             {% endfor %}
-
+                                             </table>
                                             <input type=submit>
 
                                         </form>

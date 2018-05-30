@@ -74,7 +74,7 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            {% for useritems in user_wishlist %}
+                                            {% for useritems in global_wishlist %}
 
                                                 <tr>
                                                     <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;"><a href = "{% url 'view_item' useritems.id %}">{{ useritems.id }}</a></span></td>
@@ -85,10 +85,7 @@
                                                    <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;"><i class="fa fa-rupee"></i>{{ useritems.wishlist_user }}</span></td>
                                                     <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;">{{ useritems.wishlist_other_info }}</span></td>
 
-                                                    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-                                                    <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;"> <a title="click to delete" href = "#"> <span class="glyphicon glyphicon-trash"></span></a>
-                                                        </span>
-                                                    </td>
+
                                                 </tr>
 
                                                 {% endfor %}</tbody>
@@ -122,7 +119,7 @@
                                                     <th bgcolor="#f7a01d"><span style=" font-size: 10pt; ">user</th>
                                                          <th bgcolor="#f7a01d"><span style=" font-size: 10pt; ">other</th>
 
-                                                    <th bgcolor="#f7a01d"><span style=" font-size: 10pt; ">#</span></th>
+
 
                                                 </tr>
                                             </thead>
@@ -138,10 +135,7 @@
                                                    <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;"><i class="fa fa-rupee"></i>{{ useritems.wishlist_user }}</span></td>
                                                     <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;">{{ useritems.wishlist_other_info }}</span></td>
 
-                                                    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-                                                    <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;"> <a title="click to delete" href = "#"> <span class="glyphicon glyphicon-trash"></span></a>
-                                                        </span>
-                                                    </td>
+
                                                 </tr>
 
                                                 {% endfor %}</tbody>

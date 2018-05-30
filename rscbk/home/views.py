@@ -15,12 +15,45 @@ from home.models import Feedback
 
 @login_required
 def wishlist(request):
-    user_wishlist = Wishlist.objects.all()
+    global_wishlist = Wishlist.objects.all().exclude(wishlist_user=request.user.id)
+    user_wishlist = Wishlist.objects.filter(wishlist_user=request.user.id)
     localip = get_ip(request)
-    items_obj = Items.objects.all().order_by('-id')[:9]
-    context = {'items_obj':items_obj, 'localip':localip,'user_wishlist':user_wishlist}
+    usercount = User.objects.all().count()
+    freeitemc = Items.objects.filter(price=0).count()
+    itemcount = Items.objects.values('category').annotate(cate=Count('category')).exclude(itemuser=request.user)
+    zero_value_items = Items.objects.filter(price=0)
+    import collections
+    li = []
+    for i in zero_value_items:
+        li.append(i.category.category_name)
+    counter=collections.Counter(li)
 
-    return render(request,'wishlist.html',context)
+
+    cat = Category.objects.all().exclude(status=False)
+    items = Items.objects.filter(itemuser=request.user)
+    useritemscount = items.count()
+    totcount = sum([tot.price for tot in items])
+    global_items = Items.objects.all().exclude(itemuser=request.user)
+    global_items_count = global_items.count()
+    global_items_price = sum([tot.price for tot in global_items])
+    heading = "My"
+    paginator1 = Paginator(items, 10)
+    page1 = request.GET.get('page', 1)
+    items = paginator1.page(page1)
+    try:
+        up = UserFullProfile.objects.get(user=request.user)
+    except:
+        up = ''
+        pass
+    ctx = {'free_items':sorted(counter.items()),'itemc':itemcount,'localip':localip,'up':up,'allcat':cat,'items':items,'useritemscount':useritemscount,
+           'totcount':totcount,'heading':heading,'global_items_count':global_items_count,
+           'global_items_price':global_items_price,'localip':localip,'u':usercount,'fc':freeitemc,'user_wishlist':user_wishlist,'global_wishlist':global_wishlist}
+
+
+
+
+
+    return render(request,'wishlist.html',ctx)
 
 
 # Create your views here.
