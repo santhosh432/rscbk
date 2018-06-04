@@ -30,6 +30,14 @@ class ChangePasswordForm(forms.ModelForm):
     new_password = forms.CharField(max_length=30, widget=forms.PasswordInput())
     confirm_password = forms.CharField(max_length=30, widget=forms.PasswordInput())
 
+    def clean_password(self):
+        User = cache.get_model('auth', 'User')
+        user = User.objects.get(username__exact=self.username)
+        valid = user.check_password(self.cleaned_data['old_password'])
+        if not valid:
+            raise forms.ValidationError("Password Incorrect")
+        return valid
+
     class Meta:
         model = User
         fields = ('old_password',)

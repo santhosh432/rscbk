@@ -11,6 +11,7 @@ from ipware.ip import get_ip
 from .forms import *
 from home.models import Feedback
 from django.shortcuts import get_object_or_404, redirect, render
+from django.contrib import messages
 
 # Create your views here.
 
@@ -102,23 +103,95 @@ def feedback(request):
     return render(request, 'feedback.html', {'form': form,'fback':fback})
 
 
+
+
+from django.contrib import messages
+from django.contrib.auth import update_session_auth_hash
+from django.contrib.auth.forms import PasswordChangeForm
+from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login
 @login_required
+
 def change_password(request):
 
     form = ChangePasswordForm(request.POST)
+    new_password = "0"
+    confirm_password = "0"
     if request.method =='POST':
         user = User.objects.get(id=request.user.id)
         if form.is_valid():
             old_password = form.cleaned_data['old_password']
             new_password = form.cleaned_data['new_password']
             confirm_password = form.cleaned_data['confirm_password']
-
-            user.set_password(new_password)
-            user.save()
+            try:
 
 
-    context = {'form':form, 'user': request.user}
+                if new_password == confirm_password:
+                    user_check = authenticate(request, username=request.user.username, password=old_password)
+                    print (user_check,"user_hcheck")
+                    if user_check is not None:
+                        user.set_password(new_password)
+                        user.save()
+                        localip = get_ip(request)
+                        usercount = User.objects.all().count()
+                        freeitemc = Items.objects.filter(price=0).count()
+                        itemcount = Items.objects.values('category').annotate(cate=Count('category')).exclude(itemuser=request.user)
+                        zero_value_items = Items.objects.filter(price=0)
+                        import collections
+                        li = []
+                        for i in zero_value_items:
+                            li.append(i.category.category_name)
+                        counter=collections.Counter(li)
+
+
+                        cat = Category.objects.all().exclude(status=False)
+                        items = Items.objects.filter(itemuser=request.user)
+                        useritemscount = items.count()
+                        totcount = sum([tot.price for tot in items])
+                        global_items = Items.objects.all().exclude(itemuser=request.user)
+                        global_items_count = global_items.count()
+                        global_items_price = sum([tot.price for tot in global_items])
+                        heading = "My"
+                        paginator1 = Paginator(items, 10)
+                        page1 = request.GET.get('page', 1)
+                        items = paginator1.page(page1)
+                        try:
+                            up = UserFullProfile.objects.get(user=request.user)
+                        except:
+                            up = ''
+                            pass
+                        ctx = {'free_items':sorted(counter.items()),'itemc':itemcount,'localip':localip,'up':up,'allcat':cat,'items':items,'useritemscount':useritemscount,
+                               'totcount':totcount,'heading':heading,'global_items_count':global_items_count,
+                               'global_items_price':global_items_price,'localip':localip,'u':usercount,'fc':freeitemc}
+
+                        return render(request, 'userdashboard.html',ctx)
+
+
+
+
+
+
+
+                        #return reverse("myuserdashboard")
+                    else:
+                        error = "Please Enter the correct old password"
+                        context = {'form':form, 'msg':error}
+                        return render(request,'change_password.html',context)
+                else:
+
+                    error = "Please ensure the new password and confirm password are same"
+                    context = {'form':form, 'msg':error}
+                    return render(request,'change_password.html',context)
+            except Exception as e:
+                pass
+
+
+    context = {'form':form, 'user': request.user, 'new_pwd': new_password, 'conf_pwd': confirm_password}
     return render(request,'change_password.html',context)
+
+
+
+
 
 
 # Create your views here.
