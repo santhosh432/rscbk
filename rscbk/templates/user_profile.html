@@ -1,0 +1,67 @@
+
+{% extends 'base1.html' %}
+{% block content %}
+{% load staticfiles %}
+{% load static %}
+
+
+
+
+
+
+
+<!-- code added -->
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+
+<!------ Include the above in your HEAD tag ---------->
+<form method="POST"  method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+
+<div class="container" style="padding-top: 60px;">
+  <h1 class="page-header">Edit Profile</h1>
+  <div class="row">
+    <!-- left column -->
+    <div class="col-md-4 col-sm-6 col-xs-12">
+      <div class="text-center">
+        <table>
+            <tr><th><img src="{{ form.instance.user_image.url }}" /></th></tr>
+            <tr><th><center>{%for i in form %}{% if i.label == 'User image'%}<input class="btn btn-primary" value="Upload" type="file" name="user_image">{%endif%}{% endfor %}</center></th></tr>
+        </table>
+      </div>
+    </div>
+    <!-- edit form column -->
+    <div class="col-md-8 col-sm-6 col-xs-12 personal-info">
+
+      <h3>Personal info</h3>
+      <form class="form-horizontal" role="form">
+         {%for i in form %}
+         {% if i.label != 'User image'%}
+        <div class="form-group">
+          <label class="col-lg-3 control-label">{{i.label}}:</label>
+          <div class="col-lg-8">
+            {{i}}
+          </div>
+        </div>
+         {%endif%}
+        {% endfor%}
+        <br><br><br><br><br><br>
+
+        <div class="form-group">
+          <label class="col-md-3 control-label"></label>
+          <div class="col-md-8">
+            <input class="btn btn-primary" value="Save Changes" type="submit">
+            <span></span>
+            <input class="btn btn-default" value="Cancel" type="reset">
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!-- end code added -->
+</form>
+<!-- end code -->
+{% endblock %}

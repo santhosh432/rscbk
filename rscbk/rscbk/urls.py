@@ -48,6 +48,8 @@ urlpatterns = [
     url(r'myuserdashboard/', myuserdashboard ,name='myuserdashboard'),
     url(r'myuserdashboardtest/', myuserdashboardtest ,name='myuserdashboardtest'),
 
+    url(r'^profiles/new/$', NewUserProfileView.as_view(), name="new-user-profile"),
+    url(r'^users/(?P<pk>\d+)/edit/$', EditUserProfileView.as_view(), name="edit-user-profile"),
 
     url(r'addcatbrandlink/(?P<cat_id>\d+)/undefined/undefined$', catviews.addcatbrand ,name='addcatbrandlink'),
 

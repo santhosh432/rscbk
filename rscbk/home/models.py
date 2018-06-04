@@ -22,11 +22,18 @@ def mobilevalid(value):
 class UserProfile(models.Model):
     user = models.OneToOneField(User)
     mobile = models.CharField(max_length=10, help_text='10 digit mobile number')
+    city = models.CharField(max_length=100, blank=True, null=True)
+    country = models.CharField(max_length=10, blank=True, null=True)
 
 
 class UserFullProfile(models.Model):
     user = models.OneToOneField(User)
     mobile = models.CharField(max_length=10, help_text='10 digit mobile number')
+    city = models.CharField(max_length=100, blank=True, null=True)
+    country = models.CharField(max_length=10, blank=True, null=True)
+    user_image = models.ImageField(upload_to='user_image/', help_text='Upload user image',default='null')
+
+
 
 
 class Feedback(models.Model):

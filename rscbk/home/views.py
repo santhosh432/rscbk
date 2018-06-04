@@ -10,6 +10,7 @@ from home.models import UserFullProfile
 from ipware.ip import get_ip
 from .forms import *
 from home.models import Feedback
+from django.shortcuts import get_object_or_404, redirect, render
 
 # Create your views here.
 
@@ -473,3 +474,46 @@ def login(request):
             _message = 'Invalid login, please try again.'
 
     return render(request, 'main_home.html', context)
+
+
+
+
+
+
+from django.views.generic import FormView
+
+class NewUserProfileView(FormView):
+    template_name = "user_profile.html"
+    form_class = UserProfileForm
+
+    def form_valid(self, form):
+        form.save(self.request.user)
+        return super(NewUserProfileView, self).form_valid(form)
+
+    def get_success_url(self, *args, **kwargs):
+        return reverse("some url name")
+
+
+
+
+
+from django.views.generic import UpdateView
+
+class EditUserProfileView(UpdateView):
+    #Note that we are using UpdateView and not FormView
+    model = UserFullProfile
+    form_class = UserProfileForm
+    template_name = "user_profile.html"
+
+    def get_object(self, *args, **kwargs):
+        user = get_object_or_404(User, pk=self.kwargs['pk'])
+
+        # We can also get user object using self.request.user  but that doesnt work
+        # for other models.
+
+        return user.userfullprofile
+
+    def get_success_url(self, *args, **kwargs):
+        return reverse("myuserdashboard")
+
+
