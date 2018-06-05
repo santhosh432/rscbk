@@ -191,7 +191,12 @@ def change_password(request):
 
 
 
+# Create your views here.
+def welcome(request):
+    localip = get_ip(request)
 
+    context = {'localip':localip}
+    return render(request,'home.html',context)
 
 
 # Create your views here.

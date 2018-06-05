@@ -27,7 +27,7 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', login, name='login'),
+    url(r'^$', welcome, name='welcome'),
     url(r'^home/$', login, name='login'),
     url(r'^login/$', login, name='login'),
     # url(r'^$',main_home),
