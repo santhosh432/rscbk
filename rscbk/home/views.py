@@ -189,13 +189,20 @@ def change_password(request):
     context = {'form':form, 'user': request.user, 'new_pwd': new_password, 'conf_pwd': confirm_password}
     return render(request,'change_password.html',context)
 
-
+import random
+from random import randint
+from django.db.models import Max
 
 # Create your views here.
 def welcome(request):
     localip = get_ip(request)
+    max_id = Items.objects.all().aggregate(max_id=Max("id"))['max_id']
+    pk = random.randint(1, max_id)
 
-    context = {'localip':localip}
+    items_randoom = Items.objects.get(pk=pk)
+
+
+    context = {'localip':localip,'useritems':items_randoom}
     return render(request,'home.html',context)
 
 

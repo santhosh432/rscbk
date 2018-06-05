@@ -7,33 +7,34 @@
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+
+<script>
+var timeleft = 10;
+var downloadTimer = setInterval(function(){
+  document.getElementById("progressBar").value = 10 - --timeleft;
+  if(timeleft <= 0)
+    clearInterval(downloadTimer);
+},1000);
+            setTimeout(function(){
+                window.location.href="/login"; // The URL that will be redirected too.
+            }, 10500); // The bigger the number the longer the delay.
+        </script>
 <!------ Include the above in your HEAD tag ---------->
 
 <aside class="profile-card">
   <header>
     <!-- here’s the avatar -->
-    <a target="_blank" href="#">
-	            <img src="{% static 'admin/img/logo.jpg' %}" width="190" height="135" alt="" title="" />
-    </a>
-
-    <!-- the username -->
-    <h1>
-          Barterkings
-          </h1>
-<h5>Welcome to exchange goods with goods world.</h5>
-    <!-- and role or location -->
-
-
+        <h1>
+      Barterkings Ads !!!
+    </h1><hr>
   </header>
-
-  <!-- bit of a bio; who are you? -->
-  <div class="profile-bio">
-
-
-<center><a href='/login'><button>continue</button></a></center>
-  </div>
-
-
+<!-- bit of a bio; who are you? -->
+<div class="profile-bio">
+    Item code: {{ useritems.id }}<br><img  id="{{ useritems.id }}" src="{{ useritems.item_image.url }}" alt="*" class="img img-thumbnails" width="200" height="200">
+    <progress value="0" max="10" id="progressBar"></progress><br>Ads Streaming ........<br><font size=-2 color=red><i><b>!! Hurry up Exchange/Sale your goods.</b></i></font>
+    <a href='/login'><button>Skip Ads</button></a>
+</div>
 </aside>
 
 <style>
