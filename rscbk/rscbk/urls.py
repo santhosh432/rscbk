@@ -23,9 +23,21 @@ from categories import views as catviews
 from django.conf import settings
 from django.conf.urls.static import static
 
+from rest_framework import routers
+from categories.cat_api import NoteViewSet
+
+from django.conf.urls import url, include
+
+# Routers provide an easy way of automatically determining the URL conf.
+router = routers.DefaultRouter()
+router.register(r'notes', NoteViewSet)
+
+
 
 
 urlpatterns = [
+    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    url(r'^api/', include(router.urls)),
     url(r'^admin/', admin.site.urls),
     url(r'^$', welcome, name='welcome'),
     url(r'^home/$', login, name='login'),
