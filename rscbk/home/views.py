@@ -196,10 +196,19 @@ from django.db.models import Max
 # Create your views here.
 def welcome(request):
     localip = get_ip(request)
-    max_id = Items.objects.all().aggregate(max_id=Max("id"))['max_id']
-    pk = random.randint(1, max_id)
 
-    items_randoom = Items.objects.get(pk=pk)
+    try:
+        max_id = Items.objects.all().aggregate(max_id=Max("id"))['max_id']
+        pk = random.randint(1, max_id)
+        items_randoom = Items.objects.get(pk=pk)
+    except Exception:
+            get_list = Items.objects.all()
+            id_list = []
+            for i in get_list:
+                id_list.append(i.id)
+
+            pk = random.choice(id_list)
+            items_randoom = Items.objects.get(pk=pk)
 
 
     context = {'localip':localip,'useritems':items_randoom}
@@ -503,7 +512,7 @@ def login(request):
     localip = get_ip(request)
     _message = 'Please sign in'
     img_obj1 = Items.objects.all().order_by('-id')[:6]
-    img_obj2 = Items.objects.all().order_by('-id')[7:14]
+    img_obj2 = Items.objects.all().order_by('-id')[7:13]
     img_obj3 = Items.objects.all().order_by('-id')[14:20]
     context = {'message': _message,'localip':localip,'img_obj1':img_obj1,'img_obj2':img_obj2,'img_obj3':img_obj3,}
     if request.method == 'POST':
