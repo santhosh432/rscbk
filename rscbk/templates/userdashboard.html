@@ -52,7 +52,7 @@
                     <div style=" background-color: #fff;" class="row">
                         <div style=" background-color: #1b3154;" class="col-md-6 col-sm-6 col-xs-12 gutter">
 
-                            <div style=" background-color: #ffff; min-height:641px;" class="sales">
+                            <div style=" background-color:white; min-height:641px;" class="sales">
                                 <div style=" background-color: #1b3154;" class="row">
 
                                     <h4><b><center><font color="white">Global items</font></center></b></h4></div>
@@ -65,20 +65,9 @@
                                     </tr>
                                 </table>
 
-                                {% if not items_cat %}
-                                <ul class="nav nav-pills">
-                                    {% for category in allcat %}
-                                    <li style="padding: 1px;" class="catli">
-                                        <div class="well">
+                            {% include 'dashboard_globalitems.html' %}
 
-                                            <a href="{% url 'myuserdashboard_withargument' category.id %}"><img class="img img-thumbnails" width="80" height="80" src="{{ category.image.url }}" title="{{ category.category_name }}"></a>
-                                            <br> <b> ( </b> {% for it in itemc %} {% if it.category == category.id %} {{ it.cate }} {% else %} {% endif %}{% endfor %} <b> &nbsp Items) </b>
-                                            <br><a href="{% url 'myuserdashboard_with_cat_freelist' category.id %}">Free items : {% for key, values in free_items %}{% if category.category_name == key %}{{values}}{% endif %}{% endfor%}</a>
-                                        </div>
-                                    </li>
-                                    {% endfor %} {% endif %}
-
-                                </ul>{% if items_cat %}
+                                {% if items_cat %}
                                 <br>
                                 <center>
                                     <table border=1 id="myTable" class="tablesorter" width="85%">
@@ -187,12 +176,13 @@
 <label for="amount"> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp Price range - &nbsp </label>
                     Minimum :<input type=text id=min size="7" value=0> &nbsp &nbsp &nbsp
                     Maximum :<input type=text id=max size="8" value={{items_cat_max.price}}>  &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
-                    <br> {% for category in allcat %} {% if useritems.category == category %} {% for k,v in brand_dict.items%}
+                    <br>
+                <!--    {% for category in allcat %} {% if useritems.category == category %} {% for k,v in brand_dict.items%}
                     <a id="link" href="{% url 'myuserdashboard_with_cat_bnd' category.id k %}" title "show the range for {{v}}">
                         <button style="background-color: #4CAF50; border:2; color:#f6931f; font-weight:bold;"><b>{{v}}</b></button>
 
                     </a>
-                    {% endfor %}<br><b> * You can filter the outputs by changing the options as per your requirements </b>
+                    {% endfor %}  --> <br><b> * You can filter the outputs by changing the options as per your requirements </b>
                 {% endif %}
             {% endfor %}
 
@@ -243,9 +233,9 @@
                                                     <th bgcolor="#f7a01d"><span style=" font-size: 10pt; ">Exchange<br>With</span></th>
                                                     <!--
                                                 <th bgcolor="#f7a01d"><span style=" font-size: 10pt; ">Location <i class="fa fa-map-marker"></i></span></th>
-                                                -->
-                                                    <th bgcolor="#f7a01d"><span style=" font-size: 10pt; ">#</span></th>
 
+                                                    <th bgcolor="#f7a01d"><span style=" font-size: 10pt; ">#</span></th>
+ -->
                                                 </tr>
                                             </thead>
                                             <tbody>

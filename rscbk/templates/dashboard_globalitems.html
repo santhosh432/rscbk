@@ -1,0 +1,29 @@
+                                {% if not items_cat %}
+                                <ul class="nav nav-pills">
+                                    {% for category in allcat %}
+                                    <li style="padding: 1px;" class="catli">
+                                        {% for it in itemc %}
+                                            {% if it.category == category.id %}
+
+                                                {% if it.cate %}
+                                                 <div class="well">
+
+
+                                                    <img class="img img-thumbnails" width="80" height="80" src="{{ category.image.url }}" title="{{ category.category_name }}">
+                                                      <br>
+                                                    <a href="{% url 'myuserdashboard_withargument' category.id %}"> ({{ it.cate }}&nbsp Items)</a>
+                                                    <br><a>Free items :</a> {% for key, values in free_items %}{% if category.category_name == key %}  {% if values %}<a href="{% url 'myuserdashboard_with_cat_freelist' category.id %}"> {{values}} </a>{% endif %}{% endif %}{% endfor%}
+
+                                                 </div>
+
+                                                {% endif %}
+
+                                            {% endif %}
+
+                                        {% endfor %}
+                                    </li>
+                                    {% endfor %}
+
+
+                                </ul>
+                                {% endif %}

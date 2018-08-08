@@ -77,12 +77,14 @@
                                             {% for useritems in global_wishlist %}
 
                                                 <tr>
-                                                    <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;"><a href = "{% url 'view_item' useritems.id %}">{{ useritems.id }}</a></span></td>
-                                                    <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;">{{ useritems.wishlist_category }}
+                                                    <!-- <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;"><a href = "{% url 'view_item' useritems.id %}">{{ useritems.id }}</a></span></td> -->
+                                                    <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;">{{ useritems.id }}</span></td>
+
+                                                    <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;">{{ useritems.wishlist_category }}</span></td>
 
                                                     <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;">{{ useritems.wishlist_name }}</span></td>
                                                     <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;">{{ useritems.wishlist_full_desc }}</span></td>
-                                                   <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;"><i class="fa fa-rupee"></i>{{ useritems.wishlist_user }}</span></td>
+                                                   <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;">{{ useritems.wishlist_user }}</span></td>
                                                     <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;">{{ useritems.wishlist_other_info }}</span></td>
 
 
@@ -127,7 +129,7 @@
                                                 {% for useritems in user_wishlist %}
 
                                                 <tr>
-                                                    <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;"><a href = "{% url 'view_item' useritems.id %}">{{ useritems.id }}</a></span></td>
+                                                    <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;">  <a href = " " <!-- "{% url 'view_item' useritems.id %}" --> </a>  {{ useritems.id }}</a> </span></td>
                                                     <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;">{{ useritems.wishlist_category }}
 
                                                     <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;">{{ useritems.wishlist_name }}</span></td>
