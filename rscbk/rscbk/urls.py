@@ -84,6 +84,10 @@ urlpatterns = [
 
     url(r'^edititem/(?P<pk>\d+)$', catviews.edit_item, name="edit_item"),
 
-    url(r'^delete_item/(?P<item_id>\d+)/$',catviews.delete_item, name='delete_item'),]
+    url(r'^delete_item/(?P<item_id>\d+)/$',catviews.delete_item, name='delete_item'),
+    url(r'^', include('home.urls',namespace="homeapp")),
+    url(r'^', include('categories.urls',namespace="categoriesapp")),
+
+    ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

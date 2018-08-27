@@ -368,3 +368,23 @@ def edit_item(request, pk):
             return redirect('myuserdashboard')
     return render(request,template,context)
 
+# ====================== UDB ===========================
+
+def udb_add_item(request):
+    addform = AdditemForm()
+
+    context = {'addform': addform}
+    return render(request, 'categories/add_item.html' , context)
+
+# left
+def cat_details(request):
+    try:
+        del request.session['tonehome']
+    except KeyError:
+        pass
+
+    request.session['tonecatdet'] = True
+    context= {}
+
+    return render(request, 'home/udb_home.html' , context)
+

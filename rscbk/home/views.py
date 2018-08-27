@@ -609,5 +609,67 @@ class EditUserProfileView(UpdateView):
 
     def get_success_url(self, *args, **kwargs):
         return reverse("myuserdashboard")
+# ========================================= new UDB ===============
+@login_required
+def udb_home(request):
+    try:
+        del request.session['tonecatdet']
+    except KeyError:
+        pass
+
+    request.session['tonehome'] = True
+    request.session['ttwohome'] = True
+
+    context = {}
+    return render(request, 'home/udb_home.html', context)
+
+# right
+def udb_aboutus(request):
+    #del request.session['tonehome']
+    try:
+        del request.session['ttwohome']
+        del request.session['ttwohelp']
+        del request.session['ttwonotifcations']
+
+
+    except KeyError:
+        pass
+    request.session['ttwoabouts'] = True
+
+
+    context = {}
+    return render(request, 'home/udb_home.html', context)
+
+# right
+def udb_help(request):
+    try:
+        del request.session['ttwoabouts']
+        del request.session['ttwohome']
+        del request.session['ttwonotifcations']
+
+    except KeyError:
+        pass
+
+    request.session['ttwohelp'] = True
+    context = {}
+
+    return render(request, 'home/udb_home.html', context)
+
+# right
+def udb_notifications(request):
+    try:
+        del request.session['ttwohome']
+
+        del request.session['ttwoabouts']
+        del request.session['ttwohelp']
+
+    except KeyError:
+        pass
+
+    request.session['ttwonotifcations'] = True
+    context = {}
+
+    return render(request, 'home/udb_home.html', context)
+
 
 
