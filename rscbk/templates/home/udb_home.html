@@ -1,0 +1,58 @@
+{% extends 'home/udb_base.html' %}
+
+{% block body %}
+
+<div class="card card-body" style="margin-top:1px;">
+  <div class="row">
+
+    {% block left %}
+
+    {% if request.session.tonehome %}
+
+        {% include 'home/left_block.html' %}
+
+    {% elif request.session.tonecatdet %}
+        {% include 'categories/cat_details.html' %}
+
+
+
+    {% else %}
+        <p>1.Page not Found</p>
+
+    {% endif %}
+    {% endblock %}
+
+<!-- ========================================================================== -->
+    {% block right %}
+
+
+    {% if request.session.ttwohome %}
+
+        {% include 'home/right_block.html' %}
+
+    {% elif request.session.ttwoabouts %}
+
+        {% include 'home/udb_about_us.html' %}
+
+    {% elif request.session.ttwohelp %}
+
+        {% include 'home/udb_help.html' %}
+
+    {% elif request.session.ttwonotifcations %}
+
+        {% include 'home/udb_notifications.html' %}
+
+
+    {% else %}
+
+        <p>2.Page not Found</p>
+
+    {% endif %}
+
+    {% endblock %}
+
+
+  </div>
+</div>
+
+{% endblock %}

@@ -610,6 +610,14 @@ class EditUserProfileView(UpdateView):
     def get_success_url(self, *args, **kwargs):
         return reverse("myuserdashboard")
 # ========================================= new UDB ===============
+
+def delallsessions(request, ses):
+    for s in ses:
+        try:
+            del request.session[s]
+        except KeyError:
+            pass
+
 @login_required
 def udb_home(request):
     try:
@@ -626,14 +634,10 @@ def udb_home(request):
 # right
 def udb_aboutus(request):
     #del request.session['tonehome']
-    try:
-        del request.session['ttwohome']
-        del request.session['ttwohelp']
-        del request.session['ttwonotifcations']
+    ses = ['ttwohome','ttwohelp','ttwonotifcations']
+    #delallsessions(ses)
 
 
-    except KeyError:
-        pass
     request.session['ttwoabouts'] = True
 
 
@@ -642,13 +646,9 @@ def udb_aboutus(request):
 
 # right
 def udb_help(request):
-    try:
-        del request.session['ttwoabouts']
-        del request.session['ttwohome']
-        del request.session['ttwonotifcations']
+    ses = ['ttwoabouts','ttwohome','ttwonotifcations']
+    #delallsessions(ses)
 
-    except KeyError:
-        pass
 
     request.session['ttwohelp'] = True
     context = {}
@@ -657,14 +657,9 @@ def udb_help(request):
 
 # right
 def udb_notifications(request):
-    try:
-        del request.session['ttwohome']
+    ses = ['ttwohome','ttwoabouts','ttwohelp']
+    #delallsessions(ses)
 
-        del request.session['ttwoabouts']
-        del request.session['ttwohelp']
-
-    except KeyError:
-        pass
 
     request.session['ttwonotifcations'] = True
     context = {}

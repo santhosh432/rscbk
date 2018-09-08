@@ -1,0 +1,30 @@
+{% extends 'home/udb_base.html' %}
+
+{% block body %}
+
+<div class="card card-body" style="margin-top:1px;">
+  <div class="row">
+
+    {% block left %}
+
+
+    {% include 'home/left_block.html' %}
+    {% endblock %}
+
+
+    {% block right %}
+
+        <div class="col-sm-6" style="border: 7px solid #4dbec6; padding: 5px;border-radius: 10px;">
+            <div class="card"><a href="/udb_home">My Items</a></div>
+            <h3>My About</h3>
+
+        </div>
+
+
+    {% endblock %}
+
+
+  </div>
+</div>
+
+{% endblock %}

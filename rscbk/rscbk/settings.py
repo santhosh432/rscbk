@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'home',
     'categories',
     'import_export', # excel export import
+    'rest_framework',
 ]
 
 MIDDLEWARE = [

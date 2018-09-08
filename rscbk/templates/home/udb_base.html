@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Barterkings </title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+  <style>
+  .fakeimg {
+      height: 200px;
+      background: #aaa;
+  }
+  h6{font-size:12px;
+      font-weight:bold;
+  }
+  .card-columns{
+      column-count:4;
+  }
+  </style>
+</head>
+<body>
+
+{% block header %}
+
+<div class="text-center card card-body" style="margin-bottom:0; padding:0px;">
+  <h2 class="">Welcome to Barterkings</2>
+</div>
+
+{% endblock %}
+
+{% block nav %}
+
+{% include 'home/udb_nav.html' %}
+{% endblock %}
+
+
+{% block body %}
+
+<div class="card card-body">
+  <div class="row">
+
+    {% block left %}
+
+
+    {% endblock %}
+
+
+    {% block right %}
+
+
+    {% endblock %}
+
+
+  </div>
+</div>
+
+{% endblock %}
+
+
+<div class="jumbotron text-center" style="margin-bottom:0">
+
+<div class="card card-body">
+
+vistor count: counter
+Your IP address : 14.139.185.18
+© 2018 - Designed by redsuncube. All rights reserved (Ravi Gandham)</div>
+</div>
+
+</body>
+</html>

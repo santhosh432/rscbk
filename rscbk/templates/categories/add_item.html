@@ -1,0 +1,26 @@
+{% extends 'home/udb_base.html' %}
+
+{% block body %}
+
+<div class="card card-body" style="margin-top:30px;">
+  <div class="row">
+
+    {% block left %}
+
+    {% include 'home/left_block.html' %}
+
+    {% endblock %}
+
+
+    {% block right %}
+
+    {% include 'categories/add_item_form.html' %}
+
+
+    {% endblock %}
+
+
+  </div>
+</div>
+
+{% endblock %}
