@@ -619,6 +619,10 @@ def delallsessions(request, ses):
         except KeyError:
             pass
 
+def my_items(request):
+    return Items.objects.filter(itemuser=request.user)
+
+
 @login_required
 def udb_home(request):
     try:
@@ -629,12 +633,32 @@ def udb_home(request):
     request.session['tonehome'] = True
     request.session['ttwohome'] = True
 
-    myitems = Items.objects.filter(itemuser=request.user)
-    # myitems = Items.objects.all()
+    # myitems = Items.objects.filter(itemuser=request.user)
+    myitems = my_items(request)
+    # print(myitems)
+
+    context = {'myitems': myitems}
+    return render(request, 'home/udb_home.html', context)
+
+
+# right
+def udb_righthome(request):
+    ses = ['ttwoabouts','ttwohelp','ttwonotifcations','twowhishlist']
+
+    for s in ses:
+        try:
+            del request.session[s]
+        except KeyError:
+            pass
+
+    request.session['ttwohome'] = True
+
+    myitems = my_items(request)
     print(myitems)
 
     context = {'myitems': myitems}
     return render(request, 'home/udb_home.html', context)
+
 
 # right
 def udb_aboutus(request):
