@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 from django.contrib.auth.decorators import login_required
-from categories.models import *
+from categories.models import Wishlist, Items, CatBrand, Category
 from django.shortcuts import render
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
@@ -207,8 +207,9 @@ def welcome(request):
             for i in get_list:
                 id_list.append(i.id)
 
-            pk = random.choice(id_list)
-            items_randoom = Items.objects.get(pk=pk)
+            # pk = random.choice(id_list)
+            # items_randoom = Items.objects.get(pk=pk)
+            items_randoom = 0
 
 
     context = {'localip':localip,'useritems':items_randoom}
@@ -628,15 +629,23 @@ def udb_home(request):
     request.session['tonehome'] = True
     request.session['ttwohome'] = True
 
-    context = {}
+    myitems = Items.objects.filter(itemuser=request.user)
+    # myitems = Items.objects.all()
+    print(myitems)
+
+    context = {'myitems': myitems}
     return render(request, 'home/udb_home.html', context)
 
 # right
 def udb_aboutus(request):
     #del request.session['tonehome']
-    ses = ['ttwohome','ttwohelp','ttwonotifcations']
-    #delallsessions(ses)
+    ses = ['ttwohome','ttwohelp','ttwonotifcations','twowhishlist']
 
+    for s in ses:
+        try:
+            del request.session[s]
+        except KeyError:
+            pass
 
     request.session['ttwoabouts'] = True
 
@@ -646,9 +655,13 @@ def udb_aboutus(request):
 
 # right
 def udb_help(request):
-    ses = ['ttwoabouts','ttwohome','ttwonotifcations']
-    #delallsessions(ses)
+    ses = ['ttwoabouts','ttwohome','ttwonotifcations','twowhishlist']
 
+    for s in ses:
+        try:
+            del request.session[s]
+        except KeyError:
+            pass
 
     request.session['ttwohelp'] = True
     context = {}
@@ -657,9 +670,12 @@ def udb_help(request):
 
 # right
 def udb_notifications(request):
-    ses = ['ttwohome','ttwoabouts','ttwohelp']
-    #delallsessions(ses)
-
+    ses = ['ttwohome','ttwoabouts','ttwohelp','twowhishlist']
+    for s in ses:
+        try:
+            del request.session[s]
+        except KeyError:
+            pass
 
     request.session['ttwonotifcations'] = True
     context = {}
@@ -667,4 +683,17 @@ def udb_notifications(request):
     return render(request, 'home/udb_home.html', context)
 
 
+# right
+def udb_whishlist(request):
+    ses = ['ttwohome','ttwoabouts','ttwohelp','ttwonotifcations']
+    for s in ses:
+        try:
+            del request.session[s]
+        except KeyError:
+            pass
+
+    request.session['twowhishlist'] = True
+    context = {}
+
+    return render(request, 'home/udb_home.html', context)
 

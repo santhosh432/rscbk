@@ -98,9 +98,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'barterkings$rscbkings',
-        'USER': 'barterkings',
-        'PASSWORD': 'rscbkings432',
-        'HOST': 'barterkings.mysql.pythonanywhere-services.com'
+        'USER': 'root',
+        'PASSWORD': 'yskroot',
+        'HOST': ''
 
     }
 }

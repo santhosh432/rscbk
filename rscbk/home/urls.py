@@ -8,5 +8,6 @@ urlpatterns =[
     url(r'^udb_aboutus/$', views.udb_aboutus, name="udb_aboutus"), # this is site aboutus
     url(r'^udb_help/$', views.udb_help, name="udb_help"), # this is for help
     url(r'^udb_notifications/$', views.udb_notifications, name="udb_notifications"), # this is for notifications
+    url(r'^udb_whishlist/$', views.udb_whishlist, name="udb_whishlist"), # this is for notifications
 
     ]

@@ -1,37 +1,35 @@
     <div class="col-sm-6" style="border: 7px solid #4dbec6; padding: 5px;border-radius: 10px;">
-                                    <table border=1 id="myTable" class="tablesorter" width="85%">
-                                        <thead>
-                                            <tr height=4 0px; font-weight: bold;>
-                                                <!-- <th style=height=50px; bgcolor="#f7a01d" > <span style=" font-size: 10pt">R</span></th> -->
-                                                <th bgcolor="#f7a01d"> <span style=" font-size: 10pt">Item<br>Code<font color=red><i class="fa fa-fw fa-sort"></i></font></span></th>
-                                                <th bgcolor="#f7a01d"><span style=" font-size: 10pt;  ">Description</span></th>
-                                                <th bgcolor="#f7a01d"><span style=" font-size: 10pt;">Categories</span></th>
-                                                <th bgcolor="#f7a01d"><span style=" font-size: 10pt;">Brand</span></th>
-                                                <th bgcolor="#f7a01d"><span style=" font-size: 10pt;"><i class="fa fa-picture-o"></i></span></th>
-                                                <th bgcolor="#f7a01d"><span style=" font-size: 10pt;">Item<br>Worth<font color=red><i class="fa fa-fw fa-sort"></i></font></span></th>
-                                                <th bgcolor="#f7a01d"><span style=" font-size: 10pt;">Exchange<br>With</span></th>
-                                                <th bgcolor="#f7a01d"><span style=" font-size: 10pt;">Location<i class="fa fa-map-marker"></i></span></th>
-                                                <th bgcolor="#f7a01d"><span style=" font-size: 10pt;">Location<i class="fa fa-map-marker"></i></span></th>
-                                                <th bgcolor="#f7a01d"><span style=" font-size: 10pt;">Location<i class="fa fa-map-marker"></i></span></th>
-                                                <th bgcolor="#f7a01d"><span style=" font-size: 10pt;">Location<i class="fa fa-map-marker"></i></span></th>
-                                                <th bgcolor="#f7a01d"><span style=" font-size: 10pt;">Location<i class="fa fa-map-marker"></i></span></th>
 
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            {% for useritems in items_cat %}
-                                            <tr>
-                                                <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;"><a href="{% url 'view_item_global' useritems.id %}">{{ useritems.id }}</a></span></td>
-                                                <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;">{{ useritems.item_name }}</span></td>
-                                                <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;">{{ useritems.category }}</span></td>
-                                                <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;">{{ useritems.bnd.brand_name }}</span></td>
-                                                <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;"><img title="click me to view" id="{{ useritems.id }}"  src="{{ useritems.item_image.url }}" alt="*" class="img img-thumbnails" width="20" height="30"></span></td>
-                                                <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;"><i class="fa fa-rupee"></i>{{ useritems.price }}</span></td>
-                                                <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;">{{ useritems.exchange_category }}</span></td>
-                                                <td bgcolor="#FFF2A2"><span style=" font-size: 10pt; font-weight: bold;">{{ useritems.location }}</span></td>
+          <div class="card bg-info text-white">
+            <div class="card-body">User Items</div>
+          </div>
 
-                                            </tr>
-                                            {% endfor %}</tbody>
-                                    </table>
+        <table class="table">
+            <tr>
+                <th>Slno </th>
+                <th>Itemcode </th>
+                <th>Item name </th>
+                <th>Category </th>
+                <th>Price </th>
+                <th>Exchange with </th>
+                <th>Location </th>
+            </tr>
 
-</div>
+            {% for it in myitems %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ it.id }}</td>
+                <td>{{ it.item_name }}</td>
+                <td>{{ it.category.category_name }}</td>
+                <td>{{ it.price }}</td>
+                <td>{{ it.exchange_category.category_name }}</td>
+                <td>{{ it.location }}</td>
+            </tr>
+
+
+            {% endfor %}
+
+        </table>
+
+            <button type="button" class="btn btn-success">+ Add Items</button>
+    </div>
