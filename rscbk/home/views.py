@@ -12,7 +12,7 @@ from .forms import *
 from home.models import Feedback
 from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib import messages
-
+from categories.forms import AdditemForm
 # Create your views here.
 
 @login_required
@@ -643,7 +643,7 @@ def udb_home(request):
 
 # right
 def udb_righthome(request):
-    ses = ['ttwoabouts','ttwohelp','ttwonotifcations','twowhishlist']
+    ses = ['ttwoabouts','ttwohelp','ttwonotifcations','twowhishlist','twoadditems']
 
     for s in ses:
         try:
@@ -663,7 +663,7 @@ def udb_righthome(request):
 # right
 def udb_aboutus(request):
     #del request.session['tonehome']
-    ses = ['ttwohome','ttwohelp','ttwonotifcations','twowhishlist']
+    ses = ['ttwohome','ttwohelp','ttwonotifcations','twowhishlist','twoadditems']
 
     for s in ses:
         try:
@@ -679,7 +679,7 @@ def udb_aboutus(request):
 
 # right
 def udb_help(request):
-    ses = ['ttwoabouts','ttwohome','ttwonotifcations','twowhishlist']
+    ses = ['ttwoabouts','ttwohome','ttwonotifcations','twowhishlist','twoadditems']
 
     for s in ses:
         try:
@@ -694,7 +694,7 @@ def udb_help(request):
 
 # right
 def udb_notifications(request):
-    ses = ['ttwohome','ttwoabouts','ttwohelp','twowhishlist']
+    ses = ['ttwohome','ttwoabouts','ttwohelp','twowhishlist','twoadditems']
     for s in ses:
         try:
             del request.session[s]
@@ -709,7 +709,7 @@ def udb_notifications(request):
 
 # right
 def udb_whishlist(request):
-    ses = ['ttwohome','ttwoabouts','ttwohelp','ttwonotifcations']
+    ses = ['ttwohome','ttwoabouts','ttwohelp','ttwonotifcations','twoadditems']
     for s in ses:
         try:
             del request.session[s]
@@ -718,6 +718,33 @@ def udb_whishlist(request):
 
     request.session['twowhishlist'] = True
     context = {}
+
+    return render(request, 'home/udb_home.html', context)
+
+
+# right
+def udb_addmyitems(request):
+    ses = ['ttwohome','ttwoabouts','ttwohelp','ttwonotifcations','twowhishlist']
+    for s in ses:
+        try:
+            del request.session[s]
+        except KeyError:
+            pass
+
+    request.session['twoadditems'] = True
+
+    if request.method == 'POST':
+        additemform = AdditemForm(request.POST, request.FILES)
+        if additemform.is_valid():
+            additemform.itemuser = request.user
+            # additemform.
+            additemform.save()
+            return redirect('udb_addmyitems')
+    else:
+
+        additemform = AdditemForm()
+
+    context = {'additemform': additemform}
 
     return render(request, 'home/udb_home.html', context)
 

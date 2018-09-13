@@ -48,6 +48,9 @@
 
         {% include 'home/udb_whishlist.html' %}
 
+    {% elif request.session.twoadditems %}
+
+        {% include 'home/udb_additem.html' %}
 
     {% else %}
 

@@ -1,0 +1,28 @@
+
+
+        <div class="col-sm-6" style="border: 7px solid #4dbec6; padding: 5px;border-radius: 10px;">
+          <div class="card bg-info text-white card-body">
+             <div class="d-flex justify-content-between">
+                  <div>
+                     Add Item
+                  </div>
+                  <div>
+                    <a href="/udb_righthome/">Home</a>
+                  </div>
+             </div>
+
+          </div>
+
+            <div class="">
+                <form class="form-control-sm" action="" method="POST">
+                    <table class="table">
+                        {% csrf_token %}
+                        {{ additemform.as_table }}
+
+                    </table>
+                    <input type="submit" value="Submit">
+                </form>
+            </div>
+
+        </div>
+
