@@ -1,3 +1,49 @@
+<style>
+
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+.dropdown {
+    float: left;
+}
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown .dropbtn {
+    font-size: 17px;
+    border: none;
+    outline: none;
+    color: white;
+    padding: 14px 16px;
+    background-color: inherit;
+    font-family: inherit;
+    margin: 0;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+</style>
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
   <a class="navbar-brand" href="/udb_home/">Home </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -24,9 +70,6 @@
         <a class="nav-link" href="#">Others</a>
       </li>
 
-      <li>
-
-      </li>
 
 
       <li class="nav-item">
@@ -34,8 +77,17 @@
       </li>
 
 
-      <li class="nav-item">
-        <a class="nav-link" href="#">Logout</a>
+
+      <li class="nav-item dropdown" style="padding-left: 490px;" style="float:right;">
+        <a href="" class="nav-link">My Profile
+          <i class="fa fa-caret-down"></i>
+        </a>
+        <div class="dropdown-content">
+          <a href="/udb_myprofile">My Account Details</a>
+          <a href="#">Change Password</a>
+          <a href="#">Logout</a>
+        </div>
+
       </li>
 
 

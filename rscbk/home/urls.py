@@ -11,5 +11,6 @@ urlpatterns =[
     url(r'^udb_whishlist/$', views.udb_whishlist, name="udb_whishlist"), # this is for notifications
     url(r'^udb_righthome/$', views.udb_righthome, name="udb_righthome"), # this is for notifications
     url(r'^udb_addmyitems/$', views.udb_addmyitems, name="udb_addmyitems"), # this is for notifications
+    url(r'^udb_myprofile/$', views.udb_myprofile, name="udb_myprofile"), # this is for notifications
 
     ]

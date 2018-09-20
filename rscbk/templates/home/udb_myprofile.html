@@ -1,0 +1,50 @@
+
+
+
+        <div class="col-sm-6" style="border: 7px solid #4dbec6; padding: 5px;border-radius: 10px;">
+          <div class="card bg-info text-white card-body">
+             <div class="d-flex justify-content-between">
+                  <div>
+                     My Profile
+                  </div>
+                  <div>
+                    <a href="/udb_righthome/">Home</a>
+                  </div>
+             </div>
+
+          </div>
+
+
+            {% for message in messages %}
+                {% if message %}
+                <div class="alert alert-success">
+
+                    <li class="{{ message.tags }}">
+                    {% if 'safe' in message.tags %}{{ message|safe }}{% else %}{{ message }}{% endif %}
+                    </li>
+
+                {% endif %}
+                </div>
+            {% endfor %}
+
+
+          <div class="card card-body">
+
+                <form action="" class="form" method="POST">
+                    {% csrf_token %}
+                    <table class="table table-responsive">
+                        <tr> {{ uform.as_table }}</tr>
+                    </table>
+                    <div class="card card-body">
+                        <input type="submit" name="submit" value="Submit">
+                    </div>
+
+
+
+                </form>
+
+          </div>
+
+        </div>
+
+

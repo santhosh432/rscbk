@@ -643,7 +643,7 @@ def udb_home(request):
 
 # right
 def udb_righthome(request):
-    ses = ['ttwoabouts','ttwohelp','ttwonotifcations','twowhishlist','twoadditems']
+    ses = ['ttwohome','ttwoabouts','ttwohelp','ttwonotifcations','twowhishlist', 'twoadditems','twomyprofile']
 
     for s in ses:
         try:
@@ -663,7 +663,7 @@ def udb_righthome(request):
 # right
 def udb_aboutus(request):
     #del request.session['tonehome']
-    ses = ['ttwohome','ttwohelp','ttwonotifcations','twowhishlist','twoadditems']
+    ses = ['ttwohome','ttwoabouts','ttwohelp','ttwonotifcations','twowhishlist', 'twoadditems','twomyprofile']
 
     for s in ses:
         try:
@@ -679,7 +679,7 @@ def udb_aboutus(request):
 
 # right
 def udb_help(request):
-    ses = ['ttwoabouts','ttwohome','ttwonotifcations','twowhishlist','twoadditems']
+    ses = ['ttwohome','ttwoabouts','ttwohelp','ttwonotifcations','twowhishlist', 'twoadditems','twomyprofile']
 
     for s in ses:
         try:
@@ -694,7 +694,7 @@ def udb_help(request):
 
 # right
 def udb_notifications(request):
-    ses = ['ttwohome','ttwoabouts','ttwohelp','twowhishlist','twoadditems']
+    ses = ['ttwohome','ttwoabouts','ttwohelp','ttwonotifcations','twowhishlist', 'twoadditems','twomyprofile']
     for s in ses:
         try:
             del request.session[s]
@@ -709,7 +709,7 @@ def udb_notifications(request):
 
 # right
 def udb_whishlist(request):
-    ses = ['ttwohome','ttwoabouts','ttwohelp','ttwonotifcations','twoadditems']
+    ses = ['ttwohome','ttwoabouts','ttwohelp','ttwonotifcations','twowhishlist', 'twoadditems','twomyprofile']
     for s in ses:
         try:
             del request.session[s]
@@ -724,7 +724,7 @@ def udb_whishlist(request):
 
 # right
 def udb_addmyitems(request):
-    ses = ['ttwohome','ttwoabouts','ttwohelp','ttwonotifcations','twowhishlist']
+    ses = ['ttwohome','ttwoabouts','ttwohelp','ttwonotifcations','twowhishlist', 'twoadditems','twomyprofile']
     for s in ses:
         try:
             del request.session[s]
@@ -748,3 +748,31 @@ def udb_addmyitems(request):
 
     return render(request, 'home/udb_home.html', context)
 
+
+# right
+def udb_myprofile(request, pk=1):
+
+
+    print(request.session['tonehome'])
+    ses = ['ttwohome','ttwoabouts','ttwohelp','ttwonotifcations','twowhishlist', 'twoadditems','twomyprofile']
+    for s in ses:
+        try:
+            del request.session[s]
+        except KeyError:
+            pass
+    request.session['twomyprofile'] = True
+
+    myuser = UserFullProfile.objects.get(user=request.user)
+
+    if request.method == 'POST':
+        uform = MyUserprofile(request.POST or None, request.FILES, instance=myuser)
+        if uform.is_valid():
+            uform.save()
+            messages.success(request, 'Successfully Updated your Profile')
+
+        return redirect('homeapp:udb_myprofile')
+
+    uform = MyUserprofile(instance=myuser)
+    context = {'uform': uform}
+
+    return render(request, 'home/udb_home.html', context)

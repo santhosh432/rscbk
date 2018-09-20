@@ -52,6 +52,10 @@
 
         {% include 'home/udb_additem.html' %}
 
+    {% elif request.session.twomyprofile %}
+
+        {% include 'home/udb_myprofile.html' %}
+
     {% else %}
 
         <p>2.Page not Found</p>

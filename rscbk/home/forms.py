@@ -67,5 +67,7 @@ class UserProfileForm(forms.ModelForm):
         return user_profile
 
 
-
-
+class MyUserprofile(forms.ModelForm):
+    class Meta:
+        model  = UserFullProfile
+        fields = ('mobile','city', 'country','user_image') #Note that we didn't mention user field here.
