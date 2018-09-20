@@ -56,6 +56,11 @@
 
         {% include 'home/udb_myprofile.html' %}
 
+
+    {% elif request.session.twochangepwd %}
+
+        {% include 'home/udb_change_pwd.html' %}
+
     {% else %}
 
         <p>2.Page not Found</p>

@@ -642,8 +642,9 @@ def udb_home(request):
 
 
 # right
+@login_required
 def udb_righthome(request):
-    ses = ['ttwohome','ttwoabouts','ttwohelp','ttwonotifcations','twowhishlist', 'twoadditems','twomyprofile']
+    ses = ['ttwohome','ttwoabouts','ttwohelp','ttwonotifcations','twowhishlist', 'twoadditems','twomyprofile','twochangepwd']
 
     for s in ses:
         try:
@@ -661,9 +662,10 @@ def udb_righthome(request):
 
 
 # right
+@login_required
 def udb_aboutus(request):
     #del request.session['tonehome']
-    ses = ['ttwohome','ttwoabouts','ttwohelp','ttwonotifcations','twowhishlist', 'twoadditems','twomyprofile']
+    ses = ['ttwohome','ttwoabouts','ttwohelp','ttwonotifcations','twowhishlist', 'twoadditems','twomyprofile','twochangepwd']
 
     for s in ses:
         try:
@@ -677,9 +679,11 @@ def udb_aboutus(request):
     context = {}
     return render(request, 'home/udb_home.html', context)
 
+
 # right
+@login_required
 def udb_help(request):
-    ses = ['ttwohome','ttwoabouts','ttwohelp','ttwonotifcations','twowhishlist', 'twoadditems','twomyprofile']
+    ses = ['ttwohome','ttwoabouts','ttwohelp','ttwonotifcations','twowhishlist', 'twoadditems','twomyprofile','twochangepwd']
 
     for s in ses:
         try:
@@ -693,8 +697,9 @@ def udb_help(request):
     return render(request, 'home/udb_home.html', context)
 
 # right
+@login_required
 def udb_notifications(request):
-    ses = ['ttwohome','ttwoabouts','ttwohelp','ttwonotifcations','twowhishlist', 'twoadditems','twomyprofile']
+    ses = ['ttwohome','ttwoabouts','ttwohelp','ttwonotifcations','twowhishlist', 'twoadditems','twomyprofile','twochangepwd']
     for s in ses:
         try:
             del request.session[s]
@@ -708,8 +713,9 @@ def udb_notifications(request):
 
 
 # right
+@login_required
 def udb_whishlist(request):
-    ses = ['ttwohome','ttwoabouts','ttwohelp','ttwonotifcations','twowhishlist', 'twoadditems','twomyprofile']
+    ses = ['ttwohome','ttwoabouts','ttwohelp','ttwonotifcations','twowhishlist', 'twoadditems','twomyprofile','twochangepwd']
     for s in ses:
         try:
             del request.session[s]
@@ -723,8 +729,9 @@ def udb_whishlist(request):
 
 
 # right
+@login_required
 def udb_addmyitems(request):
-    ses = ['ttwohome','ttwoabouts','ttwohelp','ttwonotifcations','twowhishlist', 'twoadditems','twomyprofile']
+    ses = ['ttwohome','ttwoabouts','ttwohelp','ttwonotifcations','twowhishlist', 'twoadditems','twomyprofile','twochangepwd']
     for s in ses:
         try:
             del request.session[s]
@@ -750,11 +757,12 @@ def udb_addmyitems(request):
 
 
 # right
+@login_required
 def udb_myprofile(request, pk=1):
 
 
     print(request.session['tonehome'])
-    ses = ['ttwohome','ttwoabouts','ttwohelp','ttwonotifcations','twowhishlist', 'twoadditems','twomyprofile']
+    ses = ['ttwohome','ttwoabouts','ttwohelp','ttwonotifcations','twowhishlist', 'twoadditems','twomyprofile','twochangepwd']
     for s in ses:
         try:
             del request.session[s]
@@ -774,5 +782,32 @@ def udb_myprofile(request, pk=1):
 
     uform = MyUserprofile(instance=myuser)
     context = {'uform': uform}
+
+    return render(request, 'home/udb_home.html', context)
+
+# right
+@login_required
+def udb_change_pwd(request):
+    ses = ['ttwohome','ttwoabouts','ttwohelp','ttwonotifcations','twowhishlist', 'twoadditems','twomyprofile','twochangepwd']
+    for s in ses:
+        try:
+            del request.session[s]
+        except KeyError:
+            pass
+    request.session['twochangepwd'] = True
+
+    if request.method == 'POST':
+        change_form = PasswordChangeForm(request.user, request.POST)
+        if change_form.is_valid():
+            user = change_form.save()
+            update_session_auth_hash(request, user)  # Important!
+            messages.success(request, 'Your password was successfully updated!')
+            return redirect('change_password')
+        else:
+            messages.error(request, 'Please correct the error below.')
+    else:
+        change_form = PasswordChangeForm(request.user)
+
+    context = {'change_form': change_form}
 
     return render(request, 'home/udb_home.html', context)
