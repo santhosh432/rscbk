@@ -23,96 +23,17 @@
 
           </div>
 
-      <div class="card-deck">
-          <a href='/cat_details'>Category details...</a>
-        <div class="card bg-primary">
-          <div class="card-body text-center">
-                <img class="card-img-top" src="http://www.barterkings.in/media/images/books_MCL8mpD.JPG" alt="Card image" style="width:100%">
-                    <hr >
-                  <h6 class="card-title">ITEMS: 6</h6>
-                  <h6 class="card-title">FREE ITEMS: 16</h6>
-          </div>
-        </div>
-        <div class="card bg-warning">
-          <div class="card-body text-center">
-                <img class="card-img-top" src="http://www.barterkings.in/media/images/books_MCL8mpD.JPG" alt="Card image" style="width:100%">
-                    <hr >
-                  <h6 class="card-title">ITEMS: 6</h6>
-                  <h6 class="card-title">FREE ITEMS: 16</h6>
-            </div>
-        </div>
-        <div class="card bg-success">
-          <div class="card-body text-center">
-                <img class="card-img-top" src="http://www.barterkings.in/media/images/books_MCL8mpD.JPG" alt="Card image" style="width:100%">
-                    <hr >
-                  <h6 class="card-title">ITEMS: 6</h6>
-                  <h6 class="card-title">FREE ITEMS: 16</h6>
-            </div>
-        </div>
-        <div class="card bg-danger">
-          <div class="card-body text-center">
-                <img class="card-img-top" src="http://www.barterkings.in/media/images/books_MCL8mpD.JPG" alt="Card image" style="width:100%">
-                    <hr >
-                  <h6 class="card-title">ITEMS: 6</h6>
-                  <h6 class="card-title">FREE ITEMS: 16</h6>
-            </div>
-        </div>
+        <table>
+            {% for c in all_cat %}
+            <tr>
+                <th>Category: {{ c.category_name }} {{ c.id }} </th>
+            </tr>
+            {% endfor %}
+        </table>
 
 
-        <div class="card bg-danger">
-          <div class="card-body text-center">
-                <img class="card-img-top" src="http://www.barterkings.in/media/images/books_MCL8mpD.JPG" alt="Card image" style="width:100%">
-                    <hr >
-                  <h6 class="card-title">ITEMS: 6</h6>
-                  <h6 class="card-title">FREE ITEMS: 16</h6>
-            </div>
-        </div>
-      </div>
-      <br>
-      <div class="card-deck">
-        <div class="card bg-primary">
-          <div class="card-body text-center">
-                <img class="card-img-top" src="http://www.barterkings.in/media/images/books_MCL8mpD.JPG" alt="Card image" style="width:100%">
-                    <hr >
-                  <h6 class="card-title">ITEMS: 6</h6>
-                  <h6 class="card-title">FREE ITEMS: 16</h6>
-          </div>
-        </div>
-        <div class="card bg-warning">
-          <div class="card-body text-center">
-                <img class="card-img-top" src="http://www.barterkings.in/media/images/books_MCL8mpD.JPG" alt="Card image" style="width:100%">
-                    <hr >
-                  <h6 class="card-title">ITEMS: 6</h6>
-                  <h6 class="card-title">FREE ITEMS: 16</h6>
-            </div>
-        </div>
-        <div class="card bg-success">
-          <div class="card-body text-center">
-                <img class="card-img-top" src="http://www.barterkings.in/media/images/books_MCL8mpD.JPG" alt="Card image" style="width:100%">
-                    <hr >
-                  <h6 class="card-title">ITEMS: 6</h6>
-                  <h6 class="card-title">FREE ITEMS: 16</h6>
-            </div>
-        </div>
-        <div class="card bg-danger">
-          <div class="card-body text-center">
-                <img class="card-img-top" src="http://www.barterkings.in/media/images/books_MCL8mpD.JPG" alt="Card image" style="width:100%">
-                    <hr >
-                  <h6 class="card-title">ITEMS: 6</h6>
-                  <h6 class="card-title">FREE ITEMS: 16</h6>
-            </div>
-        </div>
 
 
-        <div class="card bg-danger">
-          <div class="card-body text-center">
-                <img class="card-img-top" src="http://www.barterkings.in/media/images/books_MCL8mpD.JPG" alt="Card image" style="width:100%">
-                    <hr >
-                  <h6 class="card-title">ITEMS: 6</h6>
-                  <h6 class="card-title">FREE ITEMS: 16</h6>
-            </div>
-        </div>
-      </div>
 
       <hr class="d-sm-none">
     </div>

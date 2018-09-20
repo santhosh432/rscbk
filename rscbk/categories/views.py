@@ -369,22 +369,30 @@ def edit_item(request, pk):
     return render(request,template,context)
 
 # ====================== UDB ===========================
+from home.views import my_items
 
 def udb_add_item(request):
     addform = AdditemForm()
+    myitems = my_items(request)
 
-    context = {'addform': addform}
+
+    context = {'addform': addform, 'myitems': myitems}
     return render(request, 'categories/add_item.html' , context)
 
 # left
 def cat_details(request):
-    try:
-        del request.session['tonehome']
-    except KeyError:
-        pass
+    ses = ['tonehome']
+    for s in ses:
+        try:
+            del request.session[s]
+        except KeyError:
+            pass
 
     request.session['tonecatdet'] = True
-    context= {}
+    myitems = my_items(request)
 
-    return render(request, 'home/udb_home.html' , context)
+    context = myitems
+    print(context)
+
+    return render(request, 'home/udb_home.html', context)
 

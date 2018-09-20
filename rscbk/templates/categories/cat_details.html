@@ -1,7 +1,39 @@
 
-
         <div class="col-sm-6" style="border: 7px solid #4dbec6; padding: 5px;border-radius: 10px;">
-            <h3>Cat details</h3>
+          <div class="card bg-info text-white card-body">
+             <div class="d-flex justify-content-between">
+                  <div>
+                     Category Details
+                  </div>
+                  <div>
+                    <a href="">Home TODO</a>
+                  </div>
+             </div>
+
+          </div>
+            <table class="table table-responsive">
+                <tr>
+                    <th>Sl no </th>
+                    <th>Item name</th>
+                    <th>Item code </th>
+                    <th>exchange with  </th>
+                    <th>Price</th>
+                    <th>Location</th>
+                </tr>
+
+                {% for cat_det in one_cat_items %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ cat_det.item_name }}</td>
+                    <td>{{ cat_det.id }}</td>
+                    <td>{{ cat_det.exchange_category.category_name }}</td>
+                    <td>{{ cat_det.price }}</td>
+                    <td>{{ cat_det.location }}</td>
+
+                </tr>
+
+                {% endfor %}
+            </table>
 
         </div>
 

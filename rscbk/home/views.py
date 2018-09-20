@@ -620,24 +620,31 @@ def delallsessions(request, ses):
             pass
 
 def my_items(request):
-    return Items.objects.filter(itemuser=request.user)
+    cat =  Category.objects.get(pk=2)
+    all_ctx = {'all_cat': Category.objects.all(),
+               'all_user_items' : Items.objects.filter(itemuser=request.user),
+               'one_cat_items': Items.objects.filter(category=cat).exclude(itemuser=request.user) }
+
+    return all_ctx
 
 
 @login_required
 def udb_home(request):
-    try:
-        del request.session['tonecatdet']
-    except KeyError:
-        pass
+    ses = ['ttwohome','ttwoabouts','ttwohelp','ttwonotifcations','twowhishlist', 'twoadditems','twomyprofile','twochangepwd']
+
+    for s in ses:
+        try:
+            del request.session[s]
+        except KeyError:
+            pass
 
     request.session['tonehome'] = True
     request.session['ttwohome'] = True
 
-    # myitems = Items.objects.filter(itemuser=request.user)
     myitems = my_items(request)
-    # print(myitems)
 
-    context = {'myitems': myitems}
+    context = myitems
+    # print(context)
     return render(request, 'home/udb_home.html', context)
 
 
@@ -657,7 +664,7 @@ def udb_righthome(request):
     myitems = my_items(request)
     print(myitems)
 
-    context = {'myitems': myitems}
+    context = myitems
     return render(request, 'home/udb_home.html', context)
 
 
@@ -675,8 +682,9 @@ def udb_aboutus(request):
 
     request.session['ttwoabouts'] = True
 
+    myitems = my_items(request)
 
-    context = {}
+    context = myitems
     return render(request, 'home/udb_home.html', context)
 
 
@@ -692,8 +700,9 @@ def udb_help(request):
             pass
 
     request.session['ttwohelp'] = True
-    context = {}
+    myitems = my_items(request)
 
+    context = myitems
     return render(request, 'home/udb_home.html', context)
 
 # right
@@ -707,8 +716,9 @@ def udb_notifications(request):
             pass
 
     request.session['ttwonotifcations'] = True
-    context = {}
+    myitems = my_items(request)
 
+    context = myitems
     return render(request, 'home/udb_home.html', context)
 
 
@@ -723,8 +733,9 @@ def udb_whishlist(request):
             pass
 
     request.session['twowhishlist'] = True
-    context = {}
+    myitems = my_items(request)
 
+    context = myitems
     return render(request, 'home/udb_home.html', context)
 
 
@@ -751,7 +762,10 @@ def udb_addmyitems(request):
 
         additemform = AdditemForm()
 
-    context = {'additemform': additemform}
+    myitems = my_items(request)
+
+    context = myitems
+    context.update({'additemform': additemform})
 
     return render(request, 'home/udb_home.html', context)
 
@@ -781,7 +795,16 @@ def udb_myprofile(request, pk=1):
         return redirect('homeapp:udb_myprofile')
 
     uform = MyUserprofile(instance=myuser)
-    context = {'uform': uform}
+
+    myitems = my_items(request)
+
+    context = myitems
+    ctx = {'uform': uform}
+    # print(context)
+    # print(ctx)
+
+    context.update(ctx)
+    # print(context)
 
     return render(request, 'home/udb_home.html', context)
 
@@ -808,6 +831,8 @@ def udb_change_pwd(request):
     else:
         change_form = PasswordChangeForm(request.user)
 
-    context = {'change_form': change_form}
+    myitems = my_items(request)
 
+    context = myitems
+    context.update({'change_form': change_form})
     return render(request, 'home/udb_home.html', context)
