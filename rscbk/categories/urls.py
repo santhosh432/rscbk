@@ -5,6 +5,7 @@ from categories import views
 
 urlpatterns =[
     url(r'^udb_add_item/$', views.udb_add_item, name="udb_add_item"), # this is user add item
-    url(r'^cat_details/$', views.cat_details, name="cat_details"), # this is cat details
+    url(r'^udb_cat_details/(?P<pk>\d+)$', views.udb_cat_details, name="udb_cat_details"), # this is cat details
+    url(r'^udb_full_item_details/(?P<pk>\d+)$', views.udb_full_item_details, name="udb_full_item_details"), # this is cat details
 
     ]

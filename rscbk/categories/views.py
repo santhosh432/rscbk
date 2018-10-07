@@ -380,7 +380,10 @@ def udb_add_item(request):
     return render(request, 'categories/add_item.html' , context)
 
 # left
-def cat_details(request):
+def udb_cat_details(request, pk):
+    pk = pk
+    request.session['catid'] = pk
+    print(request.session['catid'])
     ses = ['tonehome']
     for s in ses:
         try:
@@ -396,3 +399,7 @@ def cat_details(request):
 
     return render(request, 'home/udb_home.html', context)
 
+
+def udb_full_item_details(request , pk=1):
+    context = {'item': Items.objects.get(pk=149)}
+    return render(request, 'categories/udb_full_item_details.html', context)

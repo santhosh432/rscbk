@@ -1,13 +1,30 @@
+ <style>
+
+
+ </style>
+
     <div class="col-sm-6" style="border: 7px solid #4dbec6;padding: 5px;border-radius: 10px;">
 
 
 
           <div class="card bg-info text-white">
-            <div class="card-body">Global items
-                    <form class="form-inline" action="">
-            <input class="form-control mr-sm-4" type="text" placeholder="Search">
-            <button class="btn btn-success" type="submit">Search</button>
-            </form>
+            <div class="card-body" style="height:45px;">
+                <div class="row">
+                    <div class="col-sm-4">
+                        Global items
+
+                    </div>
+                    <div class="col-sm-8">
+
+                        <form class="form-inline" action="">
+                            <input  type="text" placeholder="Search">
+                            <button class="btn btn-success" type="submit">Search</button>
+
+                        </form>
+
+                    </div>
+
+                </div>
 
             </div>
 
@@ -23,13 +40,43 @@
 
           </div>
 
-        <table>
+        <!--<table>-->
+            <!--{% for c in all_cat %}-->
+            <!--<tr>-->
+                <!--<th>Category: {{ c.category_name }} {{ c.id }} </th>-->
+            <!--</tr>-->
+            <!--{% endfor %}-->
+        <!--</table>-->
+
+        <ul class="nav nav-pills">
             {% for c in all_cat %}
-            <tr>
-                <th>Category: {{ c.category_name }} {{ c.id }} </th>
-            </tr>
+
+            <li style="">
+                <div class="well">
+                    <div class="card" style="max-width:182 !important; padding-top:10px;">
+                        <a href="{% url 'categoriesapp:udb_cat_details' c.id %}">
+
+
+                        <img style="margin:auto; height:80; width:80;" class="card-img-top hoverable shake-img" width="80" height="80" src="{{ c.image.url }}" title="{{ c.category_name }}">
+                        <div class="card-body">
+                            <h6 class="card-title" style="font-family:ubuntu;">{{ c.category_name }}</h6>
+                            <p class="card-text">
+                                <button type="button" class="btn btn-info btn-sm">
+                                Total Items: {{ c.items_set.all|length}}
+                                </button></p>
+
+                        </div>
+                        </a>
+
+                    </div>
+
+
+                </div>
+            </li>
+
             {% endfor %}
-        </table>
+
+        </ul>
 
 
 

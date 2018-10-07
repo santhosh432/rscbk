@@ -620,10 +620,21 @@ def delallsessions(request, ses):
             pass
 
 def my_items(request):
-    cat =  Category.objects.get(pk=2)
+    myuser = UserFullProfile.objects.get(user=request.user)
+
+    uform = MyUserprofile(instance=myuser)
+    change_form = PasswordChangeForm(request.user)
+
+    try:
+        catidpk = request.session['catid']
+    except KeyError:
+        catidpk = 1
+    cat = Category.objects.get(pk=catidpk)
     all_ctx = {'all_cat': Category.objects.all(),
                'all_user_items' : Items.objects.filter(itemuser=request.user),
-               'one_cat_items': Items.objects.filter(category=cat).exclude(itemuser=request.user) }
+               'one_cat_items': Items.objects.filter(category=cat).exclude(itemuser=request.user),
+               'uform': uform,
+               'change_form': change_form}
 
     return all_ctx
 
@@ -775,7 +786,7 @@ def udb_addmyitems(request):
 def udb_myprofile(request, pk=1):
 
 
-    print(request.session['tonehome'])
+    # print(request.session['tonehome'])
     ses = ['ttwohome','ttwoabouts','ttwohelp','ttwonotifcations','twowhishlist', 'twoadditems','twomyprofile','twochangepwd']
     for s in ses:
         try:
