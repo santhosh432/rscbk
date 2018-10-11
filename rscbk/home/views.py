@@ -772,7 +772,7 @@ def udb_addmyitems(request):
             additemform.itemuser = request.user
             # additemform.
             additemform.save()
-            return redirect('udb_addmyitems')
+            return redirect('homeapp:udb_addmyitems')
     else:
 
         additemform = AdditemForm()
