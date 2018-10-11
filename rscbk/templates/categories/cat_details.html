@@ -87,15 +87,12 @@
 
                           <!-- Modal content-->
                           <div class="modal-content" style="height:700px;">
-                              <div class="card card-body" style="flex:initial;"><h3>{{ item_det.item_name }}</h3></div><br>
+                              <div class="card card-body" style="flex:initial;background-color: #0b505b;color: white;padding: 5px;"><h3>{{ item_det.item_name }}</h3></div><br>
                                 <div class="row" style=" width:95%; min-height:550px;">
 
                                     <div class="col-sm-1">
                                         <img src="{{ item_det.item_image.url }}" style="max-height:50px; min-height:50px; margin:3px"><br>
-                                        <img src="https://www.pythonanywhere.com/user/barterkings/files/home/barterkings/rscbk/rscbk/rscmedia/myitems/HP_Laptop_DV9000.jpg" style="max-height:50px; min-height:50px; margin:3px"><br>
-                                        <img src="https://www.pythonanywhere.com/user/barterkings/files/home/barterkings/rscbk/rscbk/rscmedia/myitems/HP_Laptop_DV9000.jpg" style="max-height:50px; min-height:50px; margin:3px"><br>
-                                        <img src="{{ item_det.item_image.url }}" style="max-height:50px; min-height:50px; margin:3px"><br>
-                                        <img src="{{ item_det.item_image.url }}" style="max-height:50px; min-height:50px; margin:3px"><br>
+                                        <img src="{{ item_det.item_image2.url }}" style="max-height:50px; min-height:50px; margin:3px"><br>
 
                                     </div>
                                     <div class="col-sm-4" style="border: 1px solid #ece4e4;padding: 3px;">
@@ -115,18 +112,11 @@
                                                 <i class="fas fa-map-marker-alt"></i> <i style="font-weight:bold;">{{ item_det.location }}</i>
                                             </div>
 
-
-
                                         </div>
 
                                     </div>
 
                                 </div>
-
-
-
-
-
 
                             <div class="modal-footer">
                               <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>

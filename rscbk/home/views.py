@@ -624,6 +624,8 @@ def my_items(request):
 
     uform = MyUserprofile(instance=myuser)
     change_form = PasswordChangeForm(request.user)
+    cat_brd = CatBrand.objects.all()
+
 
     try:
         catidpk = request.session['catid']
@@ -634,7 +636,9 @@ def my_items(request):
                'all_user_items' : Items.objects.filter(itemuser=request.user),
                'one_cat_items': Items.objects.filter(category=cat).exclude(itemuser=request.user),
                'uform': uform,
-               'change_form': change_form}
+               'change_form': change_form,
+               'cat_brd':cat_brd,
+               'additemform':AdditemForm()}
 
     return all_ctx
 
