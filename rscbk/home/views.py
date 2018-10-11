@@ -769,9 +769,10 @@ def udb_addmyitems(request):
     if request.method == 'POST':
         additemform = AdditemForm(request.POST, request.FILES)
         if additemform.is_valid():
-            additemform.itemuser = request.user
             # additemform.
-            additemform.save()
+            ad = additemform.save(commit=False)
+            ad.itemuser = request.user
+            ad.save()
             return redirect('homeapp:udb_righthome')
     else:
 
