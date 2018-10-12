@@ -852,3 +852,13 @@ def udb_change_pwd(request):
     context = myitems
     context.update({'change_form': change_form})
     return render(request, 'home/udb_home.html', context)
+
+
+from django.http import JsonResponse
+def del_item(request):
+    itemid = request.GET.get('itemid', None)
+
+    Items.objects.filter(pk= itemid).delete()
+    data = {}
+
+    return JsonResponse(data)

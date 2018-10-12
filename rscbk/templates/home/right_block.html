@@ -1,3 +1,24 @@
+ <script>
+  $(document).ready(function(){
+
+     $('.fa-trash-alt').click(function(){
+        alert('ok');
+        var itemid = $(this).attr('value');
+        alert(itemid);
+              $.ajax({
+                url: '/ajax/del_item/',
+                data: {
+                  'itemid': itemid
+                },
+                dataType: 'json',
+                success: function (data) {
+                    alert("Item Deleted Succefully");
+                }
+              });
+     });
+     });
+ </script>
+
     <div class="col-sm-6" style="border: 7px solid #4dbec6; padding: 5px;border-radius: 10px;">
 
           <div class="card bg-info text-white card-body">
@@ -16,29 +37,66 @@
         <table class="table">
             <tr>
                 <th>Slno </th>
-                <th>Itemcode </th>
                 <th>Item name </th>
                 <th>Category </th>
                 <th>Price </th>
-                <th>Exchange with </th>
                 <th>Location </th>
+                <th>View more</th>
+                <th>Delete</th>
             </tr>
 
             {% for it in all_user_items %}
             <tr>
                 <td>{{ forloop.counter }}</td>
-                <td>{{ it.id }}</td>
                 <td>{{ it.item_name }}</td>
                 <td>{{ it.category.category_name }}</td>
                 <td>{{ it.price }}</td>
-                <td>{{ it.exchange_category.category_name }}</td>
                 <td>{{ it.location }}</td>
+                <td>
+                    <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModa{{ forloop.counter }}">{{ it.pk }}</button>
+                  <!-- Modal -->
+                  <div class="modal fade" id="myModa{{ forloop.counter }}" role="dialog">
+                    <div class="modal-dialog">
+
+                      <!-- Modal content-->
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h4 class="modal-title">{{ it.item_name }} </h4>
+                          <h4 class="modal-title">EDIT ITEM</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row" style="min-height:300px;">
+                                <div class="col-sm-4">
+                                    <img height="50" width="50">
+                                </div>
+                                <div class="col-sm-8">
+                                    <div class="well">{{ it.item_full_desc }}</div>
+                                </div>
+                            </div>
+                          <p>Price : {{ it.price }}/-</p>
+
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                </td>
+                <td><i class="far fa-trash-alt delitem" value="{{ it.id }}"></i></td>
+
+
+
+
+
             </tr>
+
 
 
             {% endfor %}
 
-        </table>
+    </table>
 
-        <a href="/udb_addmyitems/">+ Add Items</a>
+        <a href="/udb_addmyitems/" class="btn btn-info">+ Add Items</a>
     </div>
