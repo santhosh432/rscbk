@@ -1,4 +1,29 @@
 
+<script>
+    $(document).ready(function(){
+
+    $('#image1').mouseover(function(){
+        //alert('ok');
+        var img1 = $(this).attr('src');
+        //alert(img1);
+        $('#mainimg').attr('src', img1);
+
+
+    });
+
+    $('#image2').mouseover(function(){
+        //alert('ok');
+        var img2 = $(this).attr('src');
+        //alert(img2);
+        $('#mainimg').attr('src', img2);
+
+
+    });
+
+    });
+</script>
+
+
         <div class="col-sm-6" style="border: 7px solid #4dbec6; padding: 5px;border-radius: 10px;">
           <div class="card bg-info text-white card-body">
              <div class="d-flex justify-content-between">
@@ -88,15 +113,16 @@
                           <!-- Modal content-->
                           <div class="modal-content" style="height:700px;">
                               <div class="card card-body" style="flex:initial;background-color: #0b505b;color: white;padding: 5px;"><h3>{{ item_det.item_name }}</h3></div><br>
-                                <div class="row" style=" width:95%; min-height:550px;">
+                                <br>
+                              <div class="row" style=" width:95%; min-height:550px; margin-top: 15px;">
 
                                     <div class="col-sm-1">
-                                        <img src="{{ item_det.item_image.url }}" style="max-height:50px; min-height:50px; margin:3px"><br>
-                                        <img src="{{ item_det.item_image2.url }}" style="max-height:50px; min-height:50px; margin:3px"><br>
+                                        <img src="{{ item_det.item_image.url }}" id="image1" style="max-height:50px; min-height:50px; margin:3px"><br>
+                                        <img src="{{ item_det.item_image2.url }}" id='image2' style="max-height:50px; min-height:50px; margin:3px"><br>
 
                                     </div>
                                     <div class="col-sm-4" style="border: 1px solid #ece4e4;padding: 3px;">
-                                        <img src="{{ item_det.item_image.url }}" style="max-height:350px; min-height:350px;">
+                                        <img src="{{ item_det.item_image.url }}" id="mainimg" style="max-height:350px; min-height:350px;">
 
                                     </div>
                                     <div class="col-sm-7">
