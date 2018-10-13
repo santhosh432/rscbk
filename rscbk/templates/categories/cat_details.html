@@ -127,9 +127,11 @@
                                 <br>
                               <div class="row" style=" width:95%; min-height:550px; margin-top: 15px;">
 
-                                    <div class="col-sm-1">
+                                    <div class="col-sm-1" style="margin: 10px 15px;border: 1px solid #ece4e4;">
                                         <img src="{{ item_det.item_image.url }}" id="image1" style="max-height:50px; min-height:50px; margin:3px"><br>
+                                        {% if item_det.item_image2 %}
                                         <img src="{{ item_det.item_image2.url }}" id='image2' style="max-height:50px; min-height:50px; margin:3px"><br>
+                                        {% endif %}
 
                                     </div>
                                     <div class="col-sm-4" style="border: 1px solid #ece4e4;padding: 3px;">
