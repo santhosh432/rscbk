@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 from django.contrib.auth.decorators import login_required
-from categories.models import Wishlist, Items, CatBrand, Category
+from categories.models import Wishlist, Items, CatBrand, Category, Userwhishlist
 from django.shortcuts import render
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
@@ -859,6 +859,16 @@ def del_item(request):
     itemid = request.GET.get('itemid', None)
 
     Items.objects.filter(pk= itemid).delete()
+    data = {}
+
+    return JsonResponse(data)
+
+def udb_addtowishlist(request):
+    itemid = request.GET.get('itemid', None)
+    item = Items.objects.get(pk=int(itemid))
+    addwish = Userwhishlist(item=item, user=request.user)
+    addwish.save()
+    print('wishlist added done',itemid , item.item_name)
     data = {}
 
     return JsonResponse(data)

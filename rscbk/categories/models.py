@@ -68,3 +68,11 @@ class Wishlist(models.Model):
     wishlist_other_info = models.CharField(max_length=150, help_text="Item other information", default="null")
 
 
+
+class Userwhishlist(models.Model):
+    item = models.ForeignKey(Items)
+    user = models.ForeignKey(User)
+    date = models.DateTimeField(auto_now_add=True, editable=False)
+
+    def __str__(self):
+        return '{0}-{1}'.format(self.item, self.user)

@@ -9,9 +9,34 @@
 <script type="text/javascript" src="{% static 'admin/js/fileinput.js' %}"></script>
 <link rel="stylesheet" type="text/css" href="{% static 'admin/css/_fileinput.scss' %}" />
 
+<style>
+    .far.fa-heart:hover {
+
+    font-size: 25px;
+
+}
+</style>
+
 <!-- alter image -->
 <script>
     $(document).ready(function(){
+    $('.addtowlist').click(function(){
+        var itemid = $(this).find('.itempk').val();
+        alert(itemid);
+
+              $.ajax({
+                url: '/ajax/addtowishlist/',
+                data: {
+                  'itemid': itemid
+                },
+                dataType: 'json',
+                success: function (data) {
+                    alert('Added to wishlist');
+                }
+              });
+
+
+    });
 
     $('#image1').mouseover(function(){
         //alert('ok');
@@ -141,14 +166,30 @@
                                     <div class="col-sm-6">
                                         <div class="row" style="min-height:100px;">
                                             <div class="col-sm-12">
-                                                <p>{{ item_det.item_full_desc }}</p>
 
                                             </div>
                                             <div class="col-sm-12">
-                                                <p>{{ item_det.item_full_desc }}</p>
+                                                 <article class="card-body" style="text-align:left;">
+                                                    <!-- short-info-wrap -->
+                                                     <span style="text-align:right;" class="addtowlist"> <input hidden value="{{ item_det.pk }}" class="itempk"><i class="far fa-heart hoverable shake-img"  title="Add to wishlist" style="color:#0b505b;"></i></span>
+                                                        <h3 class="title mb-3">{{ item_det.item_full_desc }}</h3>
 
-                                                 <p> Owner: {{ item_det.itemuser.first_name }}</p>
-                                                <i class="fas fa-map-marker-alt"></i> <i style="font-weight:bold;">{{ item_det.location }}</i>
+                                                    <div class="mb-3">
+                                                        <var class="price h3 text-warning">
+                                                            <span class="currency" style="color:134772e6;"><span>Price:</span>{{ item_det.price }}/-</span>
+                                                        </var>
+                                                    </div> <!-- price-detail-wrap .// -->
+                                                    <dl>
+                                                          <p> Owner: {% if item_det.itemuser.first_name %}{{ item_det.itemuser.first_name }}{% else %}{{ item_det.itemuser.username }} {% endif %}</p>
+                                                        <i class="fas fa-map-marker-alt"></i> <i style="font-weight:bold;">{{ item_det.location }}</i>
+
+                                                    </dl>
+
+                                                    </article>
+
+
+
+
                                             </div>
 
                                         </div>

@@ -15,5 +15,6 @@ urlpatterns =[
     url(r'^udb_change_pwd/$', views.udb_change_pwd, name="udb_change_pwd"), # this is for notifications
 
     url(r'^ajax/del_item/$', views.del_item, name="del_item"), # this is for notifications
+    url(r'^ajax/addtowishlist/$', views.udb_addtowishlist, name="udb_addtowishlist"),  # this is cat details
 
-    ]
+]
