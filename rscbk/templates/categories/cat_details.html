@@ -1,4 +1,15 @@
+<!-- zoom image -->
 
+{% load static %}
+
+
+<script src="{% static 'admin/js/jquery-1.8.3.min.js' %}"> </script>
+<script src="{% static 'admin/js/jquery.elevateZoom-3.0.8.min.js' %}"> </script>
+
+<script type="text/javascript" src="{% static 'admin/js/fileinput.js' %}"></script>
+<link rel="stylesheet" type="text/css" href="{% static 'admin/css/_fileinput.scss' %}" />
+
+<!-- alter image -->
 <script>
     $(document).ready(function(){
 
@@ -122,7 +133,7 @@
 
                                     </div>
                                     <div class="col-sm-4" style="border: 1px solid #ece4e4;padding: 3px;">
-                                        <img src="{{ item_det.item_image.url }}" id="mainimg" style="max-height:350px; min-height:350px;">
+                                        <img src="{{ item_det.item_image.url }}" class='zoom_08' class="img-thumbnail" data-zoom-image='{{ item_det.item_image.url }}' id="mainimg" style="max-height:350px; min-height:350px; max-width:350px;">
 
                                     </div>
                                     <div class="col-sm-7">
@@ -175,6 +186,18 @@
           <!--</li>-->
 
         </ul>
+
+
+<script>
+    $(".zoom_08").elevateZoom({
+			zoomWindowFadeIn: 500,
+			zoomWindowFadeOut: 500,
+			lensFadeIn: 500,
+			lensFadeOut: 500
+});
+
+$(".zoom_10").elevateZoom({easing : true});
+</script>
 
 
 <style>
@@ -1443,4 +1466,5 @@ background-position: center top;
 </style>
 
         </div>
+
 
