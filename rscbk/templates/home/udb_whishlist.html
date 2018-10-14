@@ -1,4 +1,20 @@
+<style>
+.wlistdet{
+color: #cb8114;
+padding: 0px;
+font-weight: bold;
+}
+.row{
+margin-right: 0px;
 
+margin-left: 0px;
+border: 1px solid #dedada;
+
+border-radius: 4px;
+
+margin: 3px;
+}
+</style>
 
         <div class="col-sm-6" style="border: 7px solid #4dbec6; padding: 5px;border-radius: 10px;">
           <div class="card bg-info text-white card-body">
@@ -11,27 +27,30 @@
                   </div>
              </div>
           </div>
-          <table class="table">
-              <tr>
-                  <th colspan="5">My wishlist </th>
-              </tr>
-              <tr>
-                  <th>SLNO </th>
-                  <th>Item </th>
-                  <th>price</th>
-                  <th>Location</th>
-                  <th>More</th>
-              </tr>
-              {% for wl in wlist %}
-              <tr>
-                  <td>{{ forloop.counter }}</td>
-                  <td>{{ wl.item.item_name }}</td>
-                  <td>{{ wl.item.price }}/-</td>
-                  <td>{{ wl.item.location }}</td>
-                  <td>
-                    <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#my{{ forloop.counter }}">{{ it.pk }}</button>
+
+            {% for wl in wlist %}
+            <div class="row well" style="min-height: 80px;">
+                <div class="col-sm-2 well">
+                    <span class="wlistdet"> <img src="{{ wl.item.item_image.url }}" class="img-thumbnail" style="max-height:70px; min-height:70px;"></span>
+
+                </div>
+                <div class="col-sm-2 well">
+                    <span class="wlistdet"> {{ wl.item.item_name }} </span>
+                     <br> <span class="wlistdet" style="font-size:12px; color:green;"> RS: {{ wl.item.price }}/- </span>
+
+                </div>
+
+                <div class="col-sm-7 well">
+                        <span class="wlistdet"> <i class="fas fa-map-marker-alt"></i>: {{ wl.item.location }} </span>
+                        <br>Owner:<span class="wlistdet"> <i class="fas fa-map-profile-alt"></i> {{ wl.item.itemuser.username }} </span>
+
+                </div>
+
+                <div class="col-sm-1 well">
+                          <span class="wlistdet">
+                    <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myit{{ forloop.counter }}"><i class="fas fa-angle-double-up"></i></button>
                   <!-- Modal -->
-                  <div class="modal fade" id="my{{ forloop.counter }}" role="dialog">
+                  <div class="modal fade" id="myit{{ forloop.counter }}" role="dialog">
                     <div class="modal-dialog">
 
                       <!-- Modal content-->
@@ -65,11 +84,12 @@
 
                     </div>
                   </div>
-                </td>
-              </tr>
-              {% endfor %}
+                </span>
 
-          </table>
+                </div>
+
+            </div>
+            {% endfor %}
 
         </div>
 
