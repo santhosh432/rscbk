@@ -3,6 +3,7 @@
 color: #cb8114;
 padding: 0px;
 font-weight: bold;
+font-size:14px;
 }
 .row{
 margin-right: 0px;
@@ -13,6 +14,11 @@ border: 1px solid #dedada;
 border-radius: 4px;
 
 margin: 3px;
+}
+.fa-arrow-alt-circle-right::before {
+    color: #aab3c6;
+    padding-right: 3px;
+
 }
 </style>
 
@@ -29,26 +35,23 @@ margin: 3px;
           </div>
 
             {% for wl in wlist %}
-            <div class="row well" style="min-height: 80px;">
+            <div class="row well" style="min-height: 80px;"data-toggle="modal" data-target="#myit{{ forloop.counter }}">
                 <div class="col-sm-2 well">
                     <span class="wlistdet"> <img src="{{ wl.item.item_image.url }}" class="img-thumbnail" style="max-height:70px; min-height:70px;"></span>
 
                 </div>
-                <div class="col-sm-2 well">
+                <div class="col-sm-4 well">
                     <span class="wlistdet"> {{ wl.item.item_name }} </span>
                      <br> <span class="wlistdet" style="font-size:12px; color:green;"> RS: {{ wl.item.price }}/- </span>
 
                 </div>
 
-                <div class="col-sm-7 well">
+                <div class="col-sm-5 well">
                         <span class="wlistdet"> <i class="fas fa-map-marker-alt"></i>: {{ wl.item.location }} </span>
                         <br>Owner:<span class="wlistdet"> <i class="fas fa-map-profile-alt"></i> {{ wl.item.itemuser.username }} </span>
 
-                </div>
 
-                <div class="col-sm-1 well">
-                          <span class="wlistdet">
-                    <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myit{{ forloop.counter }}"><i class="fas fa-angle-double-up"></i></button>
+                                              <span class="wlistdet">
                   <!-- Modal -->
                   <div class="modal fade" id="myit{{ forloop.counter }}" role="dialog">
                     <div class="modal-dialog">
@@ -66,11 +69,11 @@ margin: 3px;
                                 <div class="col-sm-8">
                                     <div class="well">{{ wl.item.item_full_desc }}</div>
                                     <ul class="list-group" style="text-align:left; text-align: left;color: #51ad29;font-weight: bold;">
-                                        <li>Price : {{ wl.item.price }}/-</li>
-                                        <li>Exchange with  : {{ wl.item.exchange_category }}</li>
-                                        <li>Location : {{ wl.item.location }}</li>
-                                        <li>Owner : {{ wl.item.itemuser }}</li>
-                                        <li>Months Used : {{ wl.item.months_used }}</li>
+                                        <li><i class="far fa-arrow-alt-circle-right"></i>Price : {{ wl.item.price }}/-</li>
+                                        <li><i class="far fa-arrow-alt-circle-right"></i>Exchange with  : {{ wl.item.exchange_category }}</li>
+                                        <li><i class="far fa-arrow-alt-circle-right"></i>Location : {{ wl.item.location }}</li>
+                                        <li><i class="far fa-arrow-alt-circle-right"></i>Owner : {{ wl.item.itemuser }}</li>
+                                        <li><i class="far fa-arrow-alt-circle-right"></i>Months Used : {{ wl.item.months_used }}</li>
                                     </ul>
                                 </div>
                             </div>
@@ -87,6 +90,8 @@ margin: 3px;
                 </span>
 
                 </div>
+
+
 
             </div>
             {% endfor %}
