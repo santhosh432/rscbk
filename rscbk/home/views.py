@@ -625,6 +625,7 @@ def my_items(request):
     uform = MyUserprofile(instance=myuser)
     change_form = PasswordChangeForm(request.user)
     cat_brd = CatBrand.objects.all()
+    wlist = Userwhishlist.objects.filter(user=request.user)
 
 
     try:
@@ -638,7 +639,8 @@ def my_items(request):
                'uform': uform,
                'change_form': change_form,
                'cat_brd':cat_brd,
-               'additemform':AdditemForm()}
+               'additemform':AdditemForm(),
+               'wlist': wlist}
 
     return all_ctx
 
@@ -863,12 +865,20 @@ def del_item(request):
 
     return JsonResponse(data)
 
+from django.db import IntegrityError
 def udb_addtowishlist(request):
     itemid = request.GET.get('itemid', None)
     item = Items.objects.get(pk=int(itemid))
-    addwish = Userwhishlist(item=item, user=request.user)
-    addwish.save()
-    print('wishlist added done',itemid , item.item_name)
+
+    try:
+        addwish = Userwhishlist(item=item, user=request.user)
+        addwish.save()
+        print('wishlist added done',itemid , item.item_name)
+
+    except IntegrityError:
+        print('inte error')
+        pass
+
     data = {}
 
     return JsonResponse(data)

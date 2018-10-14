@@ -10,8 +10,66 @@
                     <a href="/udb_righthome/">Home</a>
                   </div>
              </div>
-
           </div>
+          <table class="table">
+              <tr>
+                  <th colspan="5">My wishlist </th>
+              </tr>
+              <tr>
+                  <th>SLNO </th>
+                  <th>Item </th>
+                  <th>price</th>
+                  <th>Location</th>
+                  <th>More</th>
+              </tr>
+              {% for wl in wlist %}
+              <tr>
+                  <td>{{ forloop.counter }}</td>
+                  <td>{{ wl.item.item_name }}</td>
+                  <td>{{ wl.item.price }}/-</td>
+                  <td>{{ wl.item.location }}</td>
+                  <td>
+                    <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#my{{ forloop.counter }}">{{ it.pk }}</button>
+                  <!-- Modal -->
+                  <div class="modal fade" id="my{{ forloop.counter }}" role="dialog">
+                    <div class="modal-dialog">
+
+                      <!-- Modal content-->
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h4 class="modal-title">{{ wl.item.item_name }} </h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row" style="min-height:200px;">
+                                <div class="col-sm-4">
+                                    <img src="{{ wl.item.item_image }}" class="img-thumbnail" height="120px" width="120px">
+                                </div>
+                                <div class="col-sm-8">
+                                    <div class="well">{{ wl.item.item_full_desc }}</div>
+                                    <ul class="list-group" style="text-align:left; text-align: left;color: #51ad29;font-weight: bold;">
+                                        <li>Price : {{ wl.item.price }}/-</li>
+                                        <li>Exchange with  : {{ wl.item.exchange_category }}</li>
+                                        <li>Location : {{ wl.item.location }}</li>
+                                        <li>Owner : {{ wl.item.itemuser }}</li>
+                                        <li>Months Used : {{ wl.item.months_used }}</li>
+                                    </ul>
+                                </div>
+                            </div>
+                          <p>Price : {{ wl.item.price }}/-</p>
+
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              {% endfor %}
+
+          </table>
 
         </div>
 

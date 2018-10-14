@@ -74,5 +74,8 @@ class Userwhishlist(models.Model):
     user = models.ForeignKey(User)
     date = models.DateTimeField(auto_now_add=True, editable=False)
 
+    class Meta:
+        unique_together = (('user', 'item'), )
+
     def __str__(self):
         return '{0}-{1}'.format(self.item, self.user)
