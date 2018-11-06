@@ -239,12 +239,25 @@ display:none;
                                                         </var>
                                                     </div> <!-- price-detail-wrap .// -->
                                                     <dl>
-                                                          <p> Owner: {% if item_det.itemuser.first_name %}{{ item_det.itemuser.first_name }}{% else %}{{ item_det.itemuser.username }} {% endif %}</p>
+                                                          <p style="color:green;"> Owner: {% if item_det.itemuser.first_name %}{{ item_det.itemuser.first_name }}{% else %}{{ item_det.itemuser.username }} {% endif %}</p>
+                                                          <p  style="color:green;"> Owner prefers Exchange with : {{ item_det.exchange_category }}</p>
                                                         <i class="fas fa-map-marker-alt"></i> <i style="font-weight:bold;">{{ item_det.location }}</i>
 
                                                     </dl>
 
                                                     </article>
+
+                                                    <div class="dropdown">
+                                                      <button class="btn btn-secondary btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    Request for Exchange with
+                                                      </button>
+                                                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                        <a class="dropdown-item" href="#">Ny item </a>
+                                                        <a class="dropdown-item" href="#">Ny item </a>
+                                                        <a class="dropdown-item" href="#">Ny item </a>
+
+                                                      </div>
+                                                    </div>
 
 
 
