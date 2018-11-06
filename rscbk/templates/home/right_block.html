@@ -53,8 +53,13 @@
             </tr>
 
             {% for it in all_user_items %}
-            <tr class="myitemalert">
-                <td>{{ it.item_name }}</td>
+            <div class="">
+                            <tr class="myitemalert">
+                <td>
+                    {{ it.item_name }}
+                    <h5>Viewed :<span class="badge badge-success">{{ it.uservieweditems_set.all|length }}</span></h5>
+
+                </td>
                 <td>{{ it.category.category_name }}</td>
                 <td>{{ it.price }}</td>
                 <td>{{ it.location }}</td>
@@ -80,6 +85,16 @@
                                 </div>
                             </div>
                           <p>Price : {{ it.price }}/-</p>
+                            <div class="alert alert-info">
+                                <button type="button" class="btn btn-success btn-sm">
+                                  Viewed :<span class="badge badge-success">{{ it.uservieweditems_set.all|length }}</span>
+                                </button>
+                                <button type="button" class="btn btn-success btn-sm">
+                                  Interested :<span class="badge badge-success">{{ it.userwhishlist_set.all|length }}</span>
+                                </button>
+
+
+                            </div>
 
                         </div>
                         <div class="modal-footer">
@@ -90,13 +105,14 @@
                     </div>
                   </div>
                 </td>
-                <td><i class="far fa-trash-alt delitem" value="{{ it.id }}"></i></td>
+                <td><i class="far fa-trash-alt delitem" value="{{ it.id }}"></i>
 
 
 
-
+                </td>
 
             </tr>
+            </div>
 
 
 

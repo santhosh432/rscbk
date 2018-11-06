@@ -79,3 +79,14 @@ class Userwhishlist(models.Model):
 
     def __str__(self):
         return '{0}-{1}'.format(self.item, self.user)
+
+class UserViewedItems(models.Model):
+    vitem = models.ForeignKey(Items)
+    vuser = models.ForeignKey(User)
+    vdate = models.DateTimeField(auto_now_add=True, editable=False)
+
+    def __str__(self):
+        return '{0}-{1}'.format(self.vitem, self.vuser)
+
+
+

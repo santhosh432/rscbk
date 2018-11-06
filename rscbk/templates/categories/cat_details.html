@@ -22,6 +22,13 @@ left: 72%;
 width: 20%;
 display:none;
 }
+.viewed-alert{
+position: fixed;
+top: 84px;
+left: 72%;
+width: 20%;
+display:none;
+}
 </style>
 
 <!-- alter image -->
@@ -29,9 +36,9 @@ display:none;
     $(document).ready(function(){
 
     $('.modal').one("mouseover", function(){
-       alert('ok');
+       //alert('ok');
         var itemid = $(this).find('.itempk').val();
-        alert(itemid);
+        //alert(itemid);
         $.ajax({
 
             url: '/ajax/addto_vieweditem',
@@ -41,7 +48,14 @@ display:none;
             },
             dataType: 'json',
             success: function(data){
-              alert('added in view');
+              //alert('added in viewd items');
+
+                     $(".viewed-alert").show();
+
+                     setTimeout(function(){
+                        $(".viewed-alert").delay(600).fadeOut();
+                    }, 1000);
+
 
             }
 
@@ -216,6 +230,7 @@ display:none;
                                                     <!-- short-info-wrap -->
                                                      <span style="text-align:right;" class="addtowlist"> <input hidden value="{{ item_det.pk }}" class="itempk"><i class="far fa-heart hoverable shake-img"  title="Add to wishlist" style="color:#0b505b;"></i></span>
                                                      <span class="wishlist-alert success alert alert-success">Added in wishlist</span>
+                                                     <span class="viewed-alert success alert alert-success">Added in viewed list</span>
                                                         <h3 class="title mb-3">{{ item_det.item_full_desc }}</h3>
 
                                                     <div class="mb-3">
