@@ -20,22 +20,27 @@
 
           <table class="table">
               <tr>
-                  <th colspan="5">Following users showed intrest in these items </th>
+                  <th colspan="5">Following users requested for exchange items </th>
               </tr>
               <tr>
-                  <th>Userid </th>
-                  <th>Username</th>
-                  <th>Contact Number</th>
-                  <th>Item code</th>
-                  <th>Item Name</th>
+                  <th>Exchange details</th>
+                  <th>Location</th>
+                  <th>Price</th>
+                  <th>User</th>
               </tr>
+
+              {% for rit in all_user_items %}
+
+              {% for r in rit.req_citems.all  %}
               <tr>
-                  <td>123</td>
-                  <td>YSK</td>
-                  <td>9533396484</td>
-                  <td>1234</td>
-                  <td>Computer</td>
+                  <td>{{ r.citem.item_name }} <i class="fas fa-exchange-alt"></i> {{ r.myitem.item_name }}</td>
+                  <td>{{ r.myitem.location }}</td>
+                  <td>{{ r.myitem.price }}</td>
+                  <td>{{ r.myitem.itemuser  }} </td>
               </tr>
+              {% endfor %}
+
+              {% endfor %}
 
 
           </table>
