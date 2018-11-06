@@ -27,6 +27,30 @@ display:none;
 <!-- alter image -->
 <script>
     $(document).ready(function(){
+
+    $('.modal').one("mouseover", function(){
+       alert('ok');
+        var itemid = $(this).find('.itempk').val();
+        alert(itemid);
+        $.ajax({
+
+            url: '/ajax/addto_vieweditem',
+            data : {
+                'itemid': itemid
+
+            },
+            dataType: 'json',
+            success: function(data){
+              alert('added in view');
+
+            }
+
+
+        })
+
+
+    });
+
     $('.addtowlist').click(function(){
 
 

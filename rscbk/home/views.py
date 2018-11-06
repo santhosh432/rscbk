@@ -882,3 +882,11 @@ def udb_addtowishlist(request):
     data = {}
 
     return JsonResponse(data)
+
+def udb_addto_vieweditem(request):
+    itemid = request.GET.get('itemid', None)
+    item = Items.objects.get(pk=int(itemid))
+
+    data = {}
+
+    return JsonResponse(data)

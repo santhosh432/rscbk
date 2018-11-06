@@ -1,6 +1,13 @@
  <script>
   $(document).ready(function(){
 
+   $('.myitemalert').mouseover(function(){
+
+    //alert('mytem notification');
+
+   });
+
+
      $('.fa-trash-alt').click(function(){
         alert('ok');
         var itemid = $(this).attr('value');
@@ -12,7 +19,7 @@
                 },
                 dataType: 'json',
                 success: function (data) {
-                    alert("Item Deleted Succefully");
+                    alert("Item Deleted Successfully");
                 }
               });
 
@@ -37,7 +44,6 @@
 
         <table class="table">
             <tr>
-                <th>Slno </th>
                 <th>Item name </th>
                 <th>Category </th>
                 <th>Price </th>
@@ -47,8 +53,7 @@
             </tr>
 
             {% for it in all_user_items %}
-            <tr>
-                <td>{{ forloop.counter }}</td>
+            <tr class="myitemalert">
                 <td>{{ it.item_name }}</td>
                 <td>{{ it.category.category_name }}</td>
                 <td>{{ it.price }}</td>
