@@ -55,7 +55,14 @@
         <a class="nav-link" href="/udb_whishlist">Wish list <span class="badge badge-light">{{ wlist|length }}</span> </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/udb_notifications">Notifications <span class="badge badge-light">6</span></a>
+        <a class="nav-link" href="/udb_notifications">Notifications
+          <span class="badge badge-light">
+            {% for rit in all_user_items %}
+
+              {{ rit.req_citems.all|length }}
+
+            {% endfor %}
+        </span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/udb_aboutus/">AboutUs</a>
@@ -75,7 +82,7 @@
 
 
       <li class="nav-item dropdown" style="padding-left: 490px;" style="float:right;">
-        <a href="" class="nav-link">{{ user.get_full_name }}
+        <a href="" class="nav-link">{{ request.user }}
           <i class="fa fa-caret-down"></i>
         </a>
         <div class="dropdown-content">
