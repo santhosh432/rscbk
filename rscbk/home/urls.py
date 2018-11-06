@@ -17,5 +17,6 @@ urlpatterns =[
     url(r'^ajax/del_item/$', views.del_item, name="del_item"), # this is for notifications
     url(r'^ajax/addtowishlist/$', views.udb_addtowishlist, name="udb_addtowishlist"),  # this is cat details
     url(r'^ajax/addto_vieweditem/$', views.udb_addto_vieweditem, name="udb_addto_vieweditem"),  # the item will add when user is viewed
+    url(r'^ajax/requested_items/$', views.udb_requested_items, name="udb_requested_items"),  # the item will request for user
 
 ]

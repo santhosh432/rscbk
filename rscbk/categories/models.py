@@ -89,4 +89,11 @@ class UserViewedItems(models.Model):
         return '{0}-{1}'.format(self.vitem, self.vuser)
 
 
+class RequestedItems(models.Model):
+    ruser = models.ForeignKey(User)
+    myitem = models.ForeignKey(Items, related_name='req_myitems')
+    citem = models.ForeignKey(Items, related_name='req_citems')
+    rdate = models.DateTimeField(auto_now_add=True, editable=False)
 
+    def __str__(self):
+        return '{0}-{1}-{2}'.format(self.ruser, self.myitem, self.citem)

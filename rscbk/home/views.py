@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 from django.contrib.auth.decorators import login_required
-from categories.models import Wishlist, Items, CatBrand, Category, Userwhishlist, UserViewedItems
+from categories.models import Wishlist, Items, CatBrand, Category, Userwhishlist, UserViewedItems, RequestedItems
 from django.shortcuts import render
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
@@ -893,3 +893,16 @@ def udb_addto_vieweditem(request):
     data = {'vitem':vitem.vuser.username }
 
     return JsonResponse(data)
+
+def udb_requested_items(request):
+    myitem = request.GET.get('myitem', None)
+    citem = request.GET.get('citem', None)
+
+    myitem_obj = Items.objects.get(pk=myitem)
+    citem_obj = Items.objects.get(pk=citem)
+
+    reitem = RequestedItems(ruser= request.user, myitem= myitem_obj, citem = citem_obj)
+    reitem.save()
+    data = {}
+    return JsonResponse(data)
+

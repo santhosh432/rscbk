@@ -33,7 +33,41 @@ display:none;
 
 <!-- alter image -->
 <script>
+    var selectedmyitem;
+
     $(document).ready(function(){
+
+    $("select.myitem").change(function(){
+          selectedmyitem = $(this).children("option:selected").val();
+          alert("You have selected - " + selectedmyitem);
+     });
+
+    $('.req').click(function(){
+       //alert($(this).text());
+       //alert(selectedmyitem);
+       //alert($(this).closest('div').find('.citem').val());
+
+       var myitem = selectedmyitem;
+       var citem = $(this).closest('div').find('.citem').val();
+
+       $.ajax({
+            url : '/ajax/requested_items',
+            data : {
+                'myitem': myitem,
+                'citem' : citem
+            },
+            dataType: 'json',
+            success : function(data){
+              alert('request done success');
+
+            }
+       })
+
+
+
+    });
+
+
 
     $('.modal').one("mouseover", function(){
        //alert('ok');
@@ -247,19 +281,21 @@ display:none;
 
                                                     </article>
 
-                                                    <div class="dropdown">
-                                                      <button class="btn btn-secondary btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    Request for Exchange with
-                                                      </button>
-                                                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                        <a class="dropdown-item" href="#">Ny item </a>
-                                                        <a class="dropdown-item" href="#">Ny item </a>
-                                                        <a class="dropdown-item" href="#">Ny item </a>
 
-                                                      </div>
+                                                    <div class="form-group">
+                                                        <select class="form-control myitem">
+                                                            <option class="btn btn-success btn-sm">Exchange with </option>
+                                                            {% for a in all_user_items %}
+                                                            <option value="{{ a.id }}"><img src="{{ a.item_image.url }}" class="img-thumbnail"> {{ a.item_name }}</option>
+                                                            {% endfor %}
+                                                        </select>
                                                     </div>
 
+                                                       <div class="form-group">
+                                                           <input type="text" value="{{ item_det.id }}" name="citem" class="citem">
 
+                                                           <button type="button" class="btn btn-success btn-sm req">Request for Exchange</button>
+                                                       </div>
 
 
                                             </div>
