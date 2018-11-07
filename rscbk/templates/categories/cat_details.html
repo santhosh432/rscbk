@@ -39,7 +39,7 @@ display:none;
 
     $("select.myitem").change(function(){
           selectedmyitem = $(this).children("option:selected").val();
-          alert("You have selected - " + selectedmyitem);
+          //alert("You have selected - " + selectedmyitem);
      });
 
     $('.req').click(function(){
@@ -58,7 +58,7 @@ display:none;
             },
             dataType: 'json',
             success : function(data){
-              alert('request done success');
+              alert('request done successfully');
 
             }
        })
@@ -129,7 +129,7 @@ display:none;
 
     });
 
-    $('#image1').mouseover(function(){
+    $('img.image1').mouseover(function(){
         //alert('ok');
         var img1 = $(this).attr('src');
         //alert(img1);
@@ -138,7 +138,7 @@ display:none;
 
     });
 
-    $('#image2').mouseover(function(){
+    $('img.image2').mouseover(function(){
         //alert('ok');
         var img2 = $(this).attr('src');
         //alert(img2);
@@ -244,9 +244,9 @@ display:none;
                               <div class="row" style=" width:95%; min-height:550px; margin-top: 15px;">
 
                                     <div class="col-sm-2">
-                                        <img src="{{ item_det.item_image.url }}" id="image1" style="max-height:50px; min-height:50px; margin:3px"><br>
+                                        <img src="{{ item_det.item_image.url }}" class="image1" style="max-height:50px; min-height:50px; margin:3px"><br>
                                         {% if item_det.item_image2 %}
-                                        <img src="{{ item_det.item_image2.url }}" id='image2' style="max-height:50px; min-height:50px; margin:3px"><br>
+                                        <img src="{{ item_det.item_image2.url }}" class='image2' style="max-height:50px; min-height:50px; margin:3px"><br>
                                         {% endif %}
 
                                     </div>
@@ -292,7 +292,7 @@ display:none;
                                                     </div>
 
                                                        <div class="form-group">
-                                                           <input type="text" value="{{ item_det.id }}" name="citem" class="citem">
+                                                           <input type="hidden" value="{{ item_det.id }}" name="citem" class="citem">
 
                                                            <button type="button" class="btn btn-success btn-sm req">Request for Exchange</button>
                                                        </div>
