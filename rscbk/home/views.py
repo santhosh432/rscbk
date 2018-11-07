@@ -641,7 +641,7 @@ def my_items(request):
                'cat_brd':cat_brd,
                'additemform':AdditemForm(),
                'wlist': wlist,
-               'notification_count':Items.objects.prefetch_related('req_myitems').filter(itemuser=request.user)}
+               'notification_count':Items.objects.select_related('req_myitems').filter(itemuser=request.user).count()}
     # print(Items.objects.prefetch_related('req_myitems').filter(itemuser=request.user))
 
     return all_ctx
