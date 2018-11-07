@@ -640,7 +640,9 @@ def my_items(request):
                'change_form': change_form,
                'cat_brd':cat_brd,
                'additemform':AdditemForm(),
-               'wlist': wlist}
+               'wlist': wlist,
+               'notification_count':Items.objects.prefetch_related('req_myitems').filter(itemuser=request.user)}
+    # print(Items.objects.prefetch_related('req_myitems').filter(itemuser=request.user))
 
     return all_ctx
 
