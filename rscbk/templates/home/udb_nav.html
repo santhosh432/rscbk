@@ -61,14 +61,8 @@ background-color: #8f2e14;
       <li class="nav-item">
         <a class="nav-link" href="/udb_notifications">Notifications
           <span class="badge badge-light">
-              {% for rit in all_user_items %}
 
-              {% for r in rit.req_citems.all  %}
-
-                {{ r|length }}
-           {% endfor %}
-           {% endfor %}
-
+            {{ req_items }}
 
         </span></a>
       </li>
