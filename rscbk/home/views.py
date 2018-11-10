@@ -13,6 +13,7 @@ from home.models import Feedback
 from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib import messages
 from categories.forms import AdditemForm
+from django.db.models import Sum
 # Create your views here.
 
 @login_required
@@ -641,9 +642,11 @@ def my_items(request):
                'cat_brd':cat_brd,
                'additemform':AdditemForm(),
                'wlist': wlist,
-               'notification_count':Items.objects.select_related('req_myitems').filter(itemuser=request.user).count()}
-    # print(Items.objects.prefetch_related('req_myitems').filter(itemuser=request.user))
-
+               'notification_count':Items.objects.select_related('req_myitems').filter(itemuser=request.user).count(),
+               'req_items': RequestedItems.objects.select_related('citem').filter(citem__itemuser=request.user).count(),
+               'item_price': Items.objects.aggregate(Sum('price')),
+               'total_items' : Items.objects.all().count()}
+    print(Items.objects.aggregate(Sum('price')))
     return all_ctx
 
 
