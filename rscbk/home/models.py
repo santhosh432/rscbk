@@ -27,7 +27,7 @@ class UserProfile(models.Model):
 
 
 class UserFullProfile(models.Model):
-    user = models.OneToOneField(User)
+    user = models.OneToOneField(User , related_name='userdetails')
     mobile = models.CharField(max_length=10, help_text='10 digit mobile number')
     city = models.CharField(max_length=100, blank=True, null=True)
     country = models.CharField(max_length=10, blank=True, null=True)
