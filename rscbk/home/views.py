@@ -645,6 +645,7 @@ def my_items(request):
                'notification_count':Items.objects.select_related('req_myitems').filter(itemuser=request.user).count(),
                'req_items': RequestedItems.objects.select_related('citem').filter(citem__itemuser=request.user).count(),
                'item_price': Items.objects.aggregate(Sum('price')),
+               'myitem_price': Items.objects.filter(itemuser=request.user).aggregate(Sum('price')),
                'total_items' : Items.objects.all().count()}
     print(Items.objects.aggregate(Sum('price')))
     return all_ctx
