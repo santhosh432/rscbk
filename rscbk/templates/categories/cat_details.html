@@ -285,6 +285,8 @@ display:none;
                                                     <div class="form-group">
                                                         <select class="form-control myitem">
                                                             <option class="btn btn-success btn-sm">Exchange with </option>
+                                                            <option>Cash</option>
+
                                                             {% for a in all_user_items %}
                                                             <option value="{{ a.id }}"><img src="{{ a.item_image.url }}" class="img-thumbnail"> {{ a.item_name }}</option>
                                                             {% endfor %}
