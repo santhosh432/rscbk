@@ -23,22 +23,23 @@
                   <th colspan="5">Following users requested for exchange items </th>
               </tr>
               <tr>
-                  <th>Exchange details</th>
+                  <th>My Item    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  Exchange Item</th>
                   <th>Location</th>
-                  <th>Price</th>
                   <th>User</th>
+                  <th>More details</th>
               </tr>
 
               {% for rit in all_user_items %}
 
               {% for r in rit.req_citems.all  %}
-              <tr>
+              <tr data-toggle="modal" data-target="#myit{{ forloop.counter }}">
                   <td>
                       <div class="row" style="min-height:100px;">
                           <div class="col-sm-5">
                               <img src="{{ r.citem.item_image.url }}" style="max-height:70px; min-height:70px;"><br>
 
                                 <!--{{ r.citem.item_name }} <i class="fas fa-exchange-alt"></i>-->
+                                Rs : {{ r.citem.price }}
                           </div>
                           <div class="col-sm-2">
                               <i class="fas fa-exchange-alt"></i>
@@ -48,17 +49,54 @@
 
                             <img src="{{ r.myitem.item_image.url }}" style="max-height:70px; min-height:70px;"><br>
                             <!--{{ r.myitem.item_name }}-->
+                              Rs: {{ r.myitem.price }}
+
                           </div>
 
                       </div>
 
 
-
-
                   </td>
                   <td>{{ r.myitem.location }}</td>
-                  <td>{{ r.myitem.price }}</td>
                   <td>{{ r.myitem.itemuser  }} </td>
+                  <td><button class="btn btn-success btn-sm">Proceed</button> </td>
+
+                                    <!-- Modal -->
+                  <div class="modal fade" id="myit{{ forloop.counter }}" role="dialog">
+                    <div class="modal-dialog">
+
+                      <!-- Modal content-->
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h4 class="modal-title" style="font-weight: bold;color: #ad8b3c;font-size: 20px;">{{ wl.item.item_name }} </h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row" style="min-height:200px;">
+                                <div class="col-sm-4">
+                                    <img src="{{ wl.item.item_image.url }}" class="img-thumbnail" height="120px" width="120px">
+                                </div>
+                                <div class="col-sm-8">
+                                    <div class="well">{{ wl.item.item_full_desc }}</div>
+                                    <ul class="list-group" style="text-align:left; text-align: left;color: #51ad29;font-weight: bold;">
+                                        <li><i class="far fa-arrow-alt-circle-right"></i>Price : {{ wl.item.price }}/-</li>
+                                        <li><i class="far fa-arrow-alt-circle-right"></i>Exchange with  : {{ wl.item.exchange_category }}</li>
+                                        <li><i class="far fa-arrow-alt-circle-right"></i>Location : {{ wl.item.location }}</li>
+                                        <li><i class="far fa-arrow-alt-circle-right"></i>Owner : {{ wl.item.itemuser }}</li>
+                                        <li><i class="far fa-arrow-alt-circle-right"></i>Months Used : {{ wl.item.months_used }}</li>
+                                    </ul>
+                                </div>
+                            </div>
+                          <p>Price : {{ wl.item.price }}/-</p>
+
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+
               </tr>
               {% endfor %}
 
