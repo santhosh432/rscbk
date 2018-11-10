@@ -31,12 +31,26 @@
 
           </div>
 
+<script>
+$(document).ready(function(){
+    $('.Count').each(function () {
+    $(this).prop('Counter',0).animate({
+        Counter: $(this).text()
+    }, {
+        duration: 2000,
+        easing: 'swing',
+        step: function (now) {
+            $(this).text(Math.ceil(now));
+        }
+    });
+});
+});
+</script>
 
 
-
-          <div class="alert alert-success" style="background-color:#594d81;">
-               <span>Total Items : </b>{{ total_items }}</span>,
-              <span>  Total Value : Rs: <b>{{ item_price.price__sum }}/-</b></span>
+          <div class="alert alert-success" style="background-color:#594d81; color:white;">
+              <span>Total Items : <b class="Count">{{ total_items }}</b></span>,
+              <span>  Total Value : Rs: <b class="Count">{{ item_price.price__sum }}</b>/-</span>
 
           </div>
 
