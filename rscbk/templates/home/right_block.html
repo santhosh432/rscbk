@@ -48,27 +48,29 @@
           </div>
 
         <table class="table">
-            <tr>
-                <th>Item name </th>
+            <tr><th>Item</th>
+                <th>Name </th>
                 <th>Category </th>
                 <th>Price </th>
-                <th>Location </th>
-                <th>View more</th>
-                <th>Delete</th>
                 <th><i class="fas fa-eye"></i></th>
+
+                <th>Delete</th>
             </tr>
 
             {% for it in all_user_items %}
             <div class="">
-                <tr class="myitemalert">
+                <tr class="myitemalert" data-toggle="modal" data-target="#myModa{{ forloop.counter }}">
                 <td>
-                    {{ it.item_name }}
+                    <img src="{{ it.item_image.url }}" class="img-thumbnail" style="max-height:70px; min-height:70px;"><br>
                 </td>
+
+                    <td>
+                       {{ it.item_name }}
+                    </td>
                 <td>{{ it.category.category_name }}</td>
                 <td>{{ it.price }}</td>
-                <td>{{ it.location }}</td>
-                <td>
-                    <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModa{{ forloop.counter }}">{{ it.pk }}</button>
+                <td>                    <span class="badge badge-success">{{ it.uservieweditems_set.all|length }}</span>
+
                   <!-- Modal -->
                   <div class="modal fade" id="myModa{{ forloop.counter }}" role="dialog">
                     <div class="modal-dialog">
@@ -82,17 +84,36 @@
                         <div class="modal-body">
                             <div class="row" style="min-height:300px;">
                                 <div class="col-sm-6">
-                                    <img src="{{ it.item_image.url }}" height="250" width="150">
+                                    <img src="{{ it.item_image.url }}" height="250" width="150"><br>
+                                    Full description:
+                                    <b>{{ it.item_full_desc }}</b>
+
                                 </div>
                                 <div class="col-sm-6">
-                                    <div class="well" style="color:green;">
-                                       Full description: {{ it.item_full_desc }}<br>
-                                       Category : {{ it.category }}<br>
-                                       Location : {{ it.location }}<br>
-                                       Price : Rs. {{ it.price }}/-<br>
+                                    <div class="well" style="color:black;">
+
+                                        <div class="row" style="min-height:50px;">
+                                            <div class="col-sm-6"> Category :</div>
+                                            <div class="col-sm-6"><b> <b>{{ it.category }}</b></div>
+
+                                        </div>
+
+                                        <div class="row" style="min-height:50px;">
+                                            <div class="col-sm-6">Location :</div>
+                                            <div class="col-sm-6"><b>{{ it.location }}</b></div>
+
+                                        </div>
+                                        <div class="row" style="min-height:50px;">
+                                            <div class="col-sm-6">Price :</div>
+                                            <div class="col-sm-6">
+                                                <i class="fas fa-rupee-sign"></i> <b>{{ it.price }}</b>
+                                            </div>
+                                        </div>
+
                                     </div>
                                 </div>
                             </div>
+
                             <div class="alert alert-info">
 
                                 <button type="button" class="btn btn-success btn-sm">
@@ -113,9 +134,11 @@
 
                     </div>
                   </div>
+
                 </td>
-                <td><i class="far fa-trash-alt delitem" value="{{ it.id }}"></i></td>
-                <td><span class="badge badge-success">{{ it.uservieweditems_set.all|length }}</span></td>
+                <td>
+                    <i class="far fa-trash-alt delitem" value="{{ it.id }}"></i>
+                </td>
 
             </tr>
             </div>
