@@ -72,7 +72,7 @@
                 <td>                    <span class="badge badge-success">{{ it.uservieweditems_set.all|length }}</span>
 
                   <!-- Modal -->
-                  <div class="modal fade" id="myModa{{ forloop.counter }}" role="dialog">
+                  <div class="modal fade" id="myModa{{ forloop.counter }}" role="dialog" style="min-width:80%;" >
                     <div class="modal-dialog">
 
                       <!-- Modal content-->
@@ -82,9 +82,9 @@
                           <h4 class="modal-title">EDIT ITEM</h4>
                         </div>
                         <div class="modal-body">
-                            <div class="row" style="min-height:300px;">
+                            <div class="row" style="min-height:300px; ">
                                 <div class="col-sm-6">
-                                    <img src="{{ it.item_image.url }}" height="250" width="150"><br>
+                                    <img src="{{ it.item_image.url }}" height="150" width="150"><br>
                                     Full description:
                                     <b>{{ it.item_full_desc }}</b>
 

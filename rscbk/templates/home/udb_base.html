@@ -3,7 +3,8 @@
 <head>
   <title>Barterkings </title>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!--<meta name="viewport" content="width=1024">-->
+
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
@@ -12,6 +13,17 @@
 
 
   <style>
+  body { width : 1024px !important;
+         margin: auto; }
+
+  @media (max-width: 768px) {
+    .col-height.var-height-mobile{
+      display:block;
+      height: auto;
+    }
+  }
+
+
   .fakeimg {
       height: 200px;
       background: #aaa;
@@ -51,16 +63,18 @@ height:80;
   100% { transform: translate(1px, -2px) rotate(-1deg); }
 }
 
-.card-body {
-padding:10px;}
+
   </style>
+
+
+
 </head>
 <body>
 
 {% block header %}
 
 <div class="text-center card card-body" style="margin-bottom:0; padding:0px;">
-  <h2 class="">Welcome to Barterkings</2>
+  <h2 class="">Welcome to Barterkings</h2>
 </div>
 
 {% endblock %}
