@@ -101,7 +101,7 @@ WSGI_APPLICATION = 'rscbk.wsgi.application'
 #         'USER': 'root',
 #         'PASSWORD': 'yskroot',
 #         'HOST': ''
-#
+# 
 #     }
 # }
 
@@ -180,8 +180,8 @@ STATICFILES_FINDERS = (
     'compressor.finders.CompressorFinder',
 )
 STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.CachedStaticFilesStorage'
-LOGIN_URL = '/login/'
-LOGIN_REDIRECT_URL= '/myuserdashboard/'
+LOGIN_URL = '/'
+LOGIN_REDIRECT_URL= '/udb_home/'
 
 
 MEDIA_URL = '/media/'
