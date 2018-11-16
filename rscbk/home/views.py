@@ -621,6 +621,8 @@ def delallsessions(request, ses):
             pass
 
 def my_items(request):
+    localip = get_ip(request)
+
     myuser = UserFullProfile.objects.get(user=request.user)
 
     uform = MyUserprofile(instance=myuser)
@@ -646,7 +648,8 @@ def my_items(request):
                'req_items': RequestedItems.objects.select_related('citem').filter(citem__itemuser=request.user).count(),
                'item_price': Items.objects.aggregate(Sum('price')),
                'myitem_price': Items.objects.filter(itemuser=request.user).aggregate(Sum('price')),
-               'total_items' : Items.objects.all().count()}
+               'total_items' : Items.objects.all().count(),
+               'localip':localip}
     print(Items.objects.aggregate(Sum('price')))
     return all_ctx
 
