@@ -7,29 +7,29 @@
 
 
 
-          <div class="card bg-info text-white">
-            <div class="card-body" style="height:45px;">
-                <div class="row">
-                    <div class="col-sm-4">
-                        Global items
+          <!--<div class="card bg-info text-white">-->
+            <!--<div class="card-body" style="height:45px;">-->
+                <!--<div class="row">-->
+                    <!--<div class="col-sm-4">-->
+                        <!--Global items-->
 
-                    </div>
-                    <div class="col-sm-8">
+                    <!--</div>-->
+                    <!--<div class="col-sm-8">-->
 
-                        <form class="form-inline" action="">
-                            <input  type="text" placeholder="Search">
-                            <button class="btn btn-success" type="submit">Search</button>
+                        <!--<form class="form-inline" action="">-->
+                            <!--<input  type="text" placeholder="Search">-->
+                            <!--<button class="btn btn-success" type="submit">Search</button>-->
 
-                        </form>
+                        <!--</form>-->
 
-                    </div>
+                    <!--</div>-->
 
-                </div>
+                <!--</div>-->
 
-            </div>
+            <!--</div>-->
 
 
-          </div>
+          <!--</div>-->
 
 <script>
 $(document).ready(function(){
@@ -46,10 +46,21 @@ $(document).ready(function(){
 });
 });
 </script>
+          <div class="card bg-info text-white card-body" style="padding:5px;">
+             <div class="d-flex justify-content-between">
+                  <div class="" style="font-size: 24px;font-family: it;">
+                     Global Items
+                  </div>
+                  <div>
+                    <a href="/udb_home">Home</a>
+                  </div>
+             </div>
+
+          </div>
 
 
           <div class="alert alert-success" style="background-color:#594d81; color:white;">
-              <span>Total Items : <b class="Count">{{ total_items }}</b></span>,
+              <span>Global Items : <b class="Count">{{ total_items }}</b></span>,
               <span>  Total Value : Rs: <b class="Count">{{ item_price.price__sum }}</b>/-</span>
 
           </div>
@@ -62,7 +73,7 @@ $(document).ready(function(){
             <!--{% endfor %}-->
         <!--</table>-->
 
-        <ul class="nav nav-pills">
+        <ul class="nav nav-pills" style="justify-content: center;">
             {% for c in all_cat %}
 
             <li style="">
