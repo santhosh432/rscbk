@@ -403,3 +403,20 @@ def udb_cat_details(request, pk):
 def udb_full_item_details(request , pk=1):
     context = {'item': Items.objects.get(pk=149)}
     return render(request, 'categories/udb_full_item_details.html', context)
+
+@login_required
+def udb_lefthome(request):
+    ses = ['tonecatdet', 'tonehome']
+    for s in ses:
+        try:
+            del request.session[s]
+        except KeyError:
+            pass
+
+    request.session['tonehome'] = True
+
+    myitems = my_items(request)
+    print(myitems)
+
+    context = myitems
+    return render(request, 'home/udb_home.html', context)
