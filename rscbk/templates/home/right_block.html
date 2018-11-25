@@ -27,6 +27,11 @@
      });
  </script>
 
+ <style>
+     .maintab{
+     min-height:35px !im;
+     }
+ </style>
     <div class="col-sm-6" style="border: 7px solid #4dbec6; padding: 5px;border-radius: 10px;">
 
           <div class="card bg-info text-white card-body" style="padding:5px;">
@@ -47,14 +52,13 @@
 
           </div>
 
-        <table class="table">
+        <table class="table" style="font-size:13px;">
             <tr><th>Item</th>
                 <th>Name </th>
                 <th>Category </th>
                 <th>Price </th>
-                <th><i class="fas fa-eye"></i></th>
 
-                <th>Delete</th>
+                <th>#</th>
             </tr>
 
             {% for it in all_user_items %}
@@ -65,12 +69,11 @@
                 </td>
 
                     <td>
-                       {{ it.item_name }}
+                       {{ it.item_name }}<br>
+                         <span class="badge badge-success">{{ it.uservieweditems_set.all|length }}</span>
                     </td>
                 <td>{{ it.category.category_name }}</td>
-                <td>{{ it.price }}</td>
-                <td>                    <span class="badge badge-success">{{ it.uservieweditems_set.all|length }}</span>
-
+                <td>{{ it.price }}
                   <!-- Modal -->
                   <div class="modal fade" id="myModa{{ forloop.counter }}" role="dialog" style="min-width:80%;" >
                     <div class="modal-dialog">
@@ -148,6 +151,105 @@
             {% endfor %}
 
     </table>
+        <!--<div class="row maintab myitemalert" >-->
+            <!--<div class="col-sm-3">-->
+                <!--Item-->
+            <!--</div>-->
+             <!--<div class="col-sm-3">-->
+                 <!--Name-->
+            <!--</div>-->
+             <!--<div class="col-sm-3">-->
+                <!--Category-->
+            <!--</div>-->
+             <!--<div class="col-sm-3">-->
+                <!--Price-->
+            <!--</div>-->
 
-        <a href="/udb_addmyitems/" class="btn btn-info">+ Add Items</a>
+        <!--</div>-->
+        <!--{% for it in all_user_items %}-->
+
+        <!--<div class="row maintab" data-toggle="modal" data-target="#myModa{{ forloop.counter }}">-->
+            <!--<div class="col-sm-3">-->
+                <!--<img src="{{ it.item_image.url }}" class="img-thumbnail" style="max-height:70px; min-height:70px;"><br>-->
+
+            <!--</div>-->
+            <!--<div class="col-sm-3">-->
+                <!--{{ it.item_name }}<br>-->
+                <!--<span class="badge badge-success">{{ it.uservieweditems_set.all|length }}</span>-->
+            <!--</div>-->
+            <!--<div class="col-sm-3">-->
+                <!--{{ it.category.category_name }}-->
+            <!--</div>-->
+            <!--<div class="col-sm-3">-->
+                <!--Rs: {{ it.price }}-->
+                  <!--&lt;!&ndash; Modal &ndash;&gt;-->
+                  <!--<div class="modal fade" id="myModa{{ forloop.counter }}" role="dialog" style="min-width:80%;" >-->
+                    <!--<div class="modal-dialog">-->
+
+                      <!--&lt;!&ndash; Modal content&ndash;&gt;-->
+                      <!--<div class="modal-content">-->
+                        <!--<div class="modal-header">-->
+                          <!--<h4 class="modal-title">{{ it.item_name }} </h4>-->
+                          <!--<h4 class="modal-title">EDIT ITEM</h4>-->
+                        <!--</div>-->
+                        <!--<div class="modal-body">-->
+                            <!--<div class="row" style="min-height:300px; ">-->
+                                <!--<div class="col-sm-6">-->
+                                    <!--<img src="{{ it.item_image.url }}" height="150" width="150"><br>-->
+                                    <!--Full description:-->
+                                    <!--<b>{{ it.item_full_desc }}</b>-->
+
+                                <!--</div>-->
+                                <!--<div class="col-sm-6">-->
+                                    <!--<div class="well" style="color:black;">-->
+
+                                        <!--<div class="row" style="min-height:50px;">-->
+                                            <!--<div class="col-sm-6"> Category :</div>-->
+                                            <!--<div class="col-sm-6"><b> <b>{{ it.category }}</b></div>-->
+
+                                        <!--</div>-->
+
+                                        <!--<div class="row" style="min-height:50px;">-->
+                                            <!--<div class="col-sm-6">Location :</div>-->
+                                            <!--<div class="col-sm-6"><b>{{ it.location }}</b></div>-->
+
+                                        <!--</div>-->
+                                        <!--<div class="row" style="min-height:50px;">-->
+                                            <!--<div class="col-sm-6">Price :</div>-->
+                                            <!--<div class="col-sm-6">-->
+                                                <!--<i class="fas fa-rupee-sign"></i> <b>{{ it.price }}</b>-->
+                                            <!--</div>-->
+                                        <!--</div>-->
+
+                                    <!--</div>-->
+                                <!--</div>-->
+                            <!--</div>-->
+
+                            <!--<div class="alert alert-info">-->
+
+                                <!--<button type="button" class="btn btn-success btn-sm">-->
+                                  <!--Viewed :<span class="badge badge-success">{{ it.uservieweditems_set.all|length }}</span>-->
+                                <!--</button>-->
+                                <!--<button type="button" class="btn btn-success btn-sm">-->
+                                  <!--Interested :<span class="badge badge-success">{{ it.userwhishlist_set.all|length }}</span>-->
+                                <!--</button>-->
+
+
+                            <!--</div>-->
+
+                        <!--</div>-->
+                        <!--<div class="modal-footer">-->
+                          <!--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
+                        <!--</div>-->
+                      <!--</div>-->
+
+                    <!--</div>-->
+                  <!--</div>-->
+
+            <!--</div>-->
+
+        <!--</div>-->
+        <!--{% endfor %}-->
+
+        <a href="/udb_addmyitems/" class="btn btn-info"> Add Items</a>
     </div>
