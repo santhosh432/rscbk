@@ -1,180 +1,176 @@
-{% load staticfiles %} {% load static %}
-
-<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js "></script>
-<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.9.1/jquery.tablesorter.min.js"></script>
-
-<!--<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">-->
-
-<! image preview -->
-<script type="text/javascript" src="{% static 'admin/js/fileinput.js' %}"></script>
-<link rel="stylesheet" type="text/css" href="{% static 'admin/css/_fileinput.scss' %}" />
+{% load staticfiles %}
+{% load static %}
 
 <!-- link file -->
+<link rel="stylesheet" type="text/css" href="{% static 'admin/css/_fileinput.scss' %}" />
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
 
 
-        <div class="col-sm-6" style="border: 7px solid #4dbec6; padding: 5px;border-radius: 10px;">
-          <div class="card bg-info text-white card-body">
-             <div class="d-flex justify-content-between">
-                  <div>
+<!-- script file -->
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js "></script>
+<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.9.1/jquery.tablesorter.min.js"></script>
+<script type="text/javascript" src="{% static 'admin/js/fileinput.js' %}"></script>
+
+
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+
+<!-- scripts -->
+
+
+
+
+<script>
+    $(document).ready(function() {
+        $("#myTable").tablesorter();
+        $("#myTable_own").tablesorter();
+        var code = {};
+        $("select[name='bnd'] > option").each(function() {
+        if (code[this.text]) {
+                $(this).remove();
+        } else {
+                code[this.text] = this.value;
+        }
+    });
+  });
+</script>
+
+
+<script>
+$(document).ready(function(){
+    $("#id_category option[value=0]").hide();
+    $('#id_category').on('change', function() {
+         $("#id_bnd option").remove();
+         var href_link = '/addcatbrandlink/'+this.value+'/';
+         $("#link").attr('href',href_link);
+        {% for i in cat_brd %}
+            if({{i.cat_nam.id}} == this.value){
+                $("#id_bnd").append('<option value="{{i.bnd_name.id}}">{{i.bnd_name}}</option>');
+            }
+        {%endfor%}
+})
+});
+</script>
+
+
+<!-- heading -->
+<div class="col-sm-6" style="border: 7px solid #4dbec6; padding: 5px;border-radius: 10px;">
+    <div class="card bg-info text-white card-body">
+        <div class="d-flex justify-content-between">
+              <div>
                      Add Item
-                  </div>
-                  <div>
-                      <a href="/udb_righthome/" class="home"><i class="fas fa-home"></i></a>
-                  </div>
-             </div>
-
-          </div>
-
-                    <script>
-                        $(document).ready(function() {
-                            $("#myTable").tablesorter();
-
-                            $("#myTable_own").tablesorter();
-
-                            var code = {};
-                            $("select[name='bnd'] > option").each(function() {
-                                if (code[this.text]) {
-                                    $(this).remove();
-                                } else {
-                                    code[this.text] = this.value;
-                                }
-                            });
-                        });
-                    </script>
+              </div>
+         <div>
+            <a href="/udb_righthome/" class="home"><i class="fas fa-home"></i></a>
+         </div>
+    </div>
+</div>
 
 
-            <div class="">
-                {% comment %}
-                <form class="form-control-sm" action="" method="POST">
-                    <table class="table">
-                        {% csrf_token %}
-                        {{ additemform.as_table }}
+<!-- style -->
 
-                    </table>
-                    <input type="submit" value="Submit">
-                </form>
-                {% endcomment %}
-                <hr>
+<!-- form -->
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 
-                <form class="form" action="{% url 'homeapp:udb_addmyitems' %}" method="POST" enctype="multipart/form-data">
-                    {% csrf_token %}
-                       <table   cellpadding="1" cellspacing="0" border="0" >
-                        <tr>
-                            <th><b> Category </b></th>
-                            <td> {{ additemform.category }} </td>
-
-                            <th><b> Item Name </b></th>
-                            <td> {{ additemform.item_name }} </td>
-                        </tr>
-                        <tr>
-                            <th><b> Brand </b></th>
-                            <td>
-                            <script>
-                                $(document).ready(function(){
-                            $("#id_category option[value=0]").hide();
-                              $('#id_category').on('change', function() {
-                              alert('ok');
-                                   $("#id_bnd option").remove();
-
-                                    var href_link = '/addcatbrandlink/'+this.value+'/';
-                                    $("#link").attr('href',href_link);
-                                    {% for i in cat_brd%}
-                                        if({{i.cat_nam.id}} == this.value){
-                                            $("#id_bnd").append('<option value="{{i.bnd_name.id}}">{{i.bnd_name}}</option>');
-                                            }
-                                    {%endfor%}
-                            })
 
 
-                            });
-                            </script>
+<table border=3>
+ <form class="form" action="{% url 'homeapp:udb_addmyitems' %}" method="POST" enctype="multipart/form-data">
 
-                            <select name="bnd" id="id_bnd">
+    <div class="container">
+            <div id="login-row" class="row ">
+                <div id="login-column" class="col-md-6">
+                    <div id="login-box" class="col-md-12">
+                           {% csrf_token %}<br><br>
+                                <div  class="form-group" style="background-color:lightblue">
+                                    <label for="username" class="text-info"><i class="fa fa-arrows"></i>  <b>Category</b></label><br>
+                                </div>
+                                {{ additemform.category }}<br><br>
+                                <div  class="form-group" style="background-color:lightblue">
+                                    <label for="username" class="text-info"><i class="fa fa-arrows"></i>  <b>Item Name </b></label><br>
 
-                            </select>
-                              <a id="link" href="addcatbrandlink/1"> Add </a>  </td>
 
-                            <th><b> Months Used </b></th>
-                            <td> {{ additemform.months_used }} {{ additemform.months_used.errors }} </td>
-                        </tr>
-                        <tr>
-                            <th><b> Item Worth </b></th>
-                            <td> {{ additemform.price }} {{ additemform.price.errors }} </td>
 
-                            <th><b> Location </b></th>
-                            <td> {{ additemform.location }} {{ additemform.location.errors }}</td>
-                        </tr>
+                                </div>{{ additemform.item_name }}<br><br>
+                                <div  class="form-group" style="background-color:lightblue">
+                                    <label for="username" class="text-info"><i class="fa fa-arrows"></i>  <b>Brand</b> </label><br>
 
-                        <tr>
-                            <th><b> Exchangable with</b></th>
-                            <td> {{ additemform.exchange_category  }} {{ additemform.exchange_category.errors  }} </td>
 
-                            <th><b> Item Status </b></th>
-                            <td> {{ additemform.item_status }} {{ additemform.item_status.errors }}</td>
-                        </tr>
-                        <tr>
-                            <th><b> Item Image </b></th>
-                            <!--<td>{{ additemform.item_image }} {{ additemform.item_image.errors }}</td>-->
 
-                            <td>
+                                </div>
+                                   <select name="bnd" id="id_bnd"></select>
+                                        <a id="link" href="addcatbrandlink/1"> Add </a><br><br>
 
-                <div class="fileinput fileinput-new" data-provides="fileinput">
-                  <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 110px; height: 120px;"></div>
-                  <div>
-                   <span class="btn btn-default btn-file" style="width: 110px;"><br>
-                       <span class="fileinput-new" style="width: 110px; height: 120px;">Select image</span>
-                 <span class="fileinput-exists">Change</span>
-                 <input type="file" name="item_image" value="S"></span>
-                 <!-- <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>-->
-                  </div>
+
+                                <div  class="form-group" style="background-color:lightblue">
+                                    <label for="username" class="text-info"><i class="fa fa-arrows"></i>  <b>Months Used</b> </label><br>
+
+
+
+                                </div>  {{ additemform.months_used }} {{ additemform.months_used.errors }}<br><br>
+                                <div  class="form-group" style="background-color:lightblue">
+                                    <label for="username" class="text-info"><i class="fa fa-arrows"></i>  <b>Item Worth </b> </label><br>
+
+
+
+                                </div> {{ additemform.price }} {{ additemform.price.errors }}<br><br>
+                                <div  class="form-group" style="background-color:lightblue">
+                                    <label for="username" class="text-info"><i class="fa fa-arrows"></i>  <b>Location</b> </label><br>
+
+
+
+                                </div> {{ additemform.location }} {{ additemform.location.errors }}<br><br>
+                                <div  class="form-group" style="background-color:lightblue">
+                                    <label for="username" class="text-info"><i class="fa fa-arrows"></i>  <b>Exchangable with</b></label><br>
+
+                                </div> {{ additemform.exchange_category  }} {{ additemform.exchange_category.errors  }}<br><br>
+
+                                <div  class="form-group" style="background-color:lightblue">
+                                    <label for="username" class="text-info"><i class="fa fa-arrows"></i>  <b>Item Status </b> </label><br>
+
+                                </div>{{ additemform.item_status }} {{ additemform.item_status.errors }}<br><br>
+
+                                <div  class="form-group" style="background-color:lightblue">
+                                   <label for="username" class="text-info"><i class="fa fa-arrows"></i>  <b>Item Image1</b></label><br>
+
+                                  </div> <input type="file" name="item_image" value="S"><br><br>
+                                <div  class="form-group" style="background-color:lightblue">
+                                        <label for="username" class="text-info"><i class="fa fa-arrows"></i>  <b>Item Image2</b></label><br>
+
+                                </div><input type="file" name="item_image2"><br><br>
+                                <div  class="form-group" style="background-color:lightblue">
+                                        <label for="username" class="text-info"><i class="fa fa-arrows"></i>  <b>Item Description</b></label><br>
+
+                                </div>{{ additemform.item_full_desc }}{{ additemform.item_full_desc.errors }}<br><br>
+                                <div  class="form-group" style="background-color:lightblue">
+                                   <label for="username" class="text-info"><i class="fa fa-arrows"></i>  <b>Other Information</b> </label><br>
+
+                                </div>{{ additemform.other_info }} {{ additemform.other_info.errors }}<br><br>
+                            <div class="form-group">
+                                <input type="submit" name="submit" class="btn btn-info btn-md" value="submit">
+                            </div>
+
+
+                    </div>
                 </div>
-
-
-
-                            </td>
-
-
-
-
-
-                            <th><b> Item Image2 </b></th>
-                            <!--<td>{{ additemform.item_image2 }} {{ additemform.item_image2.errors }}</td>-->
-
-                    <td>
-
-                <div class="fileinput fileinput-new" data-provides="fileinput">
-                  <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 110px; height: 120px;"></div>
-                  <div>
-                     <span class="btn btn-default btn-file" style="width: 110px;"><br>
-                       <span class="fileinput-new" style="width: 110px; height: 120px;">Select image</span><span class="fileinput-exists">Change</span><input type="file" name="item_image2"></span>
-                <!--<a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>  -->
-                  </div>
-                </div>
-
-
-
-                    </td>
-
-
-                        </tr>
-
-                        <tr>
-                            <th><b> Item Description </b></th>
-                            <td colspan='3'> {{ additemform.item_full_desc }}{{ additemform.item_full_desc.errors }} </td>
-                        </tr>
-                        <tr>
-                            <th><b> Other Information </b></th>
-                            <td colspan='3'> {{ additemform.other_info }} {{ additemform.other_info.errors }} </td>
-                        </tr>
-                     </table>
-                    <input type="submit" name="submit" value="Submit">
-                     <br>
-                </form>
-
-
-
             </div>
+    </div>
 
-        </div>
 
+
+
+
+
+
+ </form>
+
+</table>
