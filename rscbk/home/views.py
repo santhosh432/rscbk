@@ -620,6 +620,7 @@ def delallsessions(request, ses):
         except KeyError:
             pass
 
+@login_required
 def my_items(request):
     localip = get_ip(request)
 
@@ -915,3 +916,9 @@ def udb_requested_items(request):
     data = {}
     return JsonResponse(data)
 
+from django.shortcuts import HttpResponse
+
+
+def homepage(request):
+    all_ctx = {'all_cat': Category.objects.all()}
+    return render(request, 'home/homepage.html', all_ctx)

@@ -42,7 +42,7 @@ urlpatterns = [
     # url(r'^$', welcome, name='welcome'),
     # url(r'^home/$', login, name='login'),
     # url(r'^login/$', login, name='login'),
-    url(r'^$', auth_views.login, name='login'),
+    url(r'^login/$', auth_views.login, name='login'),
     # url(r'^logout/$', auth_views.logout, {'template_name': 'core/login.html'}, name='logout'),
     # url(r'^$',main_home),
     #url(r'^$',auth_views.login, {'template_name': 'home.html'} ,name='login'),

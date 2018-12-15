@@ -4,6 +4,7 @@ from home import views
 
 
 urlpatterns =[
+    url(r'^$', views.homepage, name='homepage'),
     url(r'^udb_home/$', views.udb_home, name="udb_home"), # this is user dashboard
     url(r'^udb_aboutus/$', views.udb_aboutus, name="udb_aboutus"), # this is site aboutus
     url(r'^udb_help/$', views.udb_help, name="udb_help"), # this is for help

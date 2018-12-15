@@ -380,6 +380,7 @@ def udb_add_item(request):
     return render(request, 'categories/add_item.html' , context)
 
 # left
+@login_required
 def udb_cat_details(request, pk):
     pk = pk
     request.session['catid'] = pk

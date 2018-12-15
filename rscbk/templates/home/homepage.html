@@ -1,0 +1,58 @@
+{% extends 'home/udb_base.html' %}
+
+{% block body %}
+
+<div class="row">
+
+<div class="col-sm-12">
+
+
+          <div class="alert alert-success" style="background-color:#594d81; color:white;">
+
+          </div>
+
+        <!--<table>-->
+            <!--{% for c in all_cat %}-->
+            <!--<tr>-->
+                <!--<th>Category: {{ c.category_name }} {{ c.id }} </th>-->
+            <!--</tr>-->
+            <!--{% endfor %}-->
+        <!--</table>-->
+
+        <ul class="nav nav-pills" style="justify-content: center;">
+            {% for c in all_cat %}
+
+            <li style="">
+                <div class="well">
+                    <div class="card" style="max-width:182 !important; padding-top:10px;">
+                        <a href="{% url 'categoriesapp:udb_cat_details' c.id %}">
+
+
+                        <img style="margin:auto; height:80; width:80;" class="card-img-top hoverable shake-img" width="80" height="80" src="{{ c.image.url }}" title="{{ c.category_name }}">
+                        <div class="card-body">
+                            <h6 class="card-title" style="font-family:ubuntu;">{{ c.category_name }}</h6>
+                            <p class="card-text">
+                                <button type="button" class="btn btn-info btn-sm">
+                                Total Items: {{ c.items_set.all|length}}
+                                </button></p>
+
+                        </div>
+                        </a>
+
+                    </div>
+
+
+                </div>
+            </li>
+
+            {% endfor %}
+
+        </ul>
+
+
+</div>
+
+</div>
+
+
+{% endblock %}

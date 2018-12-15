@@ -66,14 +66,21 @@ nav .nav-link:hover {
   <div class="collapse navbar-collapse" id="collapsibleNavbar">
     <ul class="navbar-nav navbar-right" >
       <li class="nav-item">
-        <a class="nav-link" href="/udb_whishlist">Wish list <span class="badge badge-light" >{{ wlist|length }}</span> </a>
+        <a class="nav-link" href="/udb_whishlist">Wish list
+                {% if request.user.is_active %}
+
+                  <span class="badge badge-light" >{{ wlist|length }}</span>
+                {% endif %}
+
+        </a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/udb_notifications">Notifications
+      {% if request.user.is_active %}
           <span class="badge badge-light">
 
             {{ req_items }}
-
+      {% endif %}
         </span></a>
       </li>
       <li class="nav-item">
@@ -85,7 +92,7 @@ nav .nav-link:hover {
         <a class="nav-link" href="/udb_help/">Help</a>
       </li>
 
-
+      {% if request.user.is_active %}
       <li class="nav-item dropdown"  style="float:right;">
         <a href="" class="nav-link">{{ request.user }}
           <i class="fa fa-caret-down"></i>
@@ -97,6 +104,7 @@ nav .nav-link:hover {
         </div>
 
       </li>
+      {% endif %}
 
 
 
