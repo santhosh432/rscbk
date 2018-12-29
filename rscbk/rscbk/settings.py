@@ -95,31 +95,29 @@ WSGI_APPLICATION = 'rscbk.wsgi.application'
 
 # ysk local to use MySQL:
 
-try:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.mysql',
-            'NAME': 'barterkings$rscbkings',
-            'USER': 'root',
-            'PASSWORD': 'yskroot',
-            'HOST': ''
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'barterkings$rscbkings',
+#         'USER': 'root',
+#         'PASSWORD': 'yskroot',
+#         'HOST': ''
+#
+#     }
+# }
 
-        }
+
+# production  use MySQL:
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'barterkings$rscbkings',
+        'USER': 'barterkings',
+        'PASSWORD': 'rscbkings432',
+        'HOST': 'barterkings.mysql.pythonanywhere-services.com'
+
     }
-
-
-except :
-    # production  use MySQL:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.mysql',
-            'NAME': 'barterkings$rscbkings',
-            'USER': 'barterkings',
-            'PASSWORD': 'rscbkings432',
-            'HOST': 'barterkings.mysql.pythonanywhere-services.com'
-
-        }
-    }
+}
 
 
 #
