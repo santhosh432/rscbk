@@ -1,58 +1,111 @@
 {% extends 'home/udb_base.html' %}
 
 {% block body %}
+<style>
+    .just{
+    text-align: justify;
+    text-justify: inter-word;
+    }
+
+</style>
 
 <div class="row">
+    <div class="col-sm-12">
+        <div class="card-body">
+            <div class="card-header">
+                About Barterkings (LOGO )
+            </div>
+            <div class="card-content just" >
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BarterKings Portal gives us the platform to exchange our unused or Idle products/Items with other Products which is with other likeminded users.
 
-<div class="col-sm-12">
+The concept of BarterKings portal came into real existences by the group of IT software architects who have some valued items which are not in used by them anymore also they can’t be thrown away Here the Idea has born to exchange their products with the likeminded people who wants to exchange their products.
 
+BarterKings portal facilitates the user to Add their Products into the portal with relevant product details and facilitates them in searching their interested products from the global products which was added by the global users.
 
-          <div class="alert alert-success" style="background-color:#594d81; color:white;">
-
-          </div>
-
-        <!--<table>-->
-            <!--{% for c in all_cat %}-->
-            <!--<tr>-->
-                <!--<th>Category: {{ c.category_name }} {{ c.id }} </th>-->
-            <!--</tr>-->
-            <!--{% endfor %}-->
-        <!--</table>-->
-
-        <ul class="nav nav-pills" style="justify-content: center;">
-            {% for c in all_cat %}
-
-            <li style="">
-                <div class="well">
-                    <div class="card" style="max-width:182 !important; padding-top:10px;">
-                        <a href="{% url 'categoriesapp:udb_cat_details' c.id %}">
-
-
-                        <img style="margin:auto; height:80; width:80;" class="card-img-top hoverable shake-img" width="80" height="80" src="{{ c.image.url }}" title="{{ c.category_name }}">
-                        <div class="card-body">
-                            <h6 class="card-title" style="font-family:ubuntu;">{{ c.category_name }}</h6>
-                            <p class="card-text">
-                                <button type="button" class="btn btn-info btn-sm">
-                                Total Items: {{ c.items_set.all|length}}
-                                </button></p>
-
-                        </div>
-                        </a>
-
-                    </div>
-
-
-                </div>
-            </li>
-
-            {% endfor %}
-
-        </ul>
-
+This Portal is built on the concept of serving its users with no expectation of gaining any profits out of their exchange of products and portal will not be involving in any financial dealings.
+            </div>
+        </div>
+    </div>
 
 </div>
 
+<hr>
+<hr>
+<style>
+    .cardhome{height:350px;}
+
+    .img-thumbnail{
+        margin: auto;
+    }
+
+</style>
+
+<div class="row" style="margin:auto;">
+    <div class="col-sm-12">
+
+     <div class="card card-body cardhome">
+         <div class=""><b>Recently uploaded</b></div>
+
+                <nav class="navbar navbar-expand-sm bg-light justify-content-center">
+
+                  <ul class="navbar-nav">
+                      {% for i in recent_items %}
+                        <li class="nav-item">
+                              <div class="card">
+                                <img class="card-img-top img-thumbnail" style="margin:auto; max-width: 100px; max-height: 70px; min-height: 150px;" src="{{ i.item_image.url }}" alt="Card image cap">
+                                <div class="card-body">
+                                    <h5 class="card-title"><b style="font-size:14px;">{{ i.item_name }}</b></h5>
+                                  <p class="card-text" style="color:green;">Rs: <b> {{ i.price }}</b></p>
+                                  <p class="card-text"><small class="text-muted">Uploaded on 3 days ago</small></p>
+                                </div>
+                              </div>
+                        </li>
+                      {% endfor %}
+
+                  </ul>
+                </nav>
+     </div>
+     <div class="card card-body cardhome">
+         <div class=""><b>Free Items</b></div>
+
+                <nav class="navbar navbar-expand-sm bg-light justify-content-center">
+
+                  <ul class="navbar-nav">
+                      {% for f in free_items %}
+                        <li class="nav-item">
+                              <div class="card">
+                                <img class="card-img-top img-thumbnail" style="margin:auto; max-width: 100px; max-height: 70px; min-height: 150px;" src="{{ i.item_image.url }}" alt="Card image cap">
+                                <div class="card-body">
+                                    <h5 class="card-title"><b style="font-size:14px;">{{ i.item_name }}</b></h5>
+                                  <p class="card-text" style="color:green;">Rs: <b> Free </b></p>
+                                  <p class="card-text"><small class="text-muted">Uploaded on 3 days ago</small></p>
+                                </div>
+                              </div>
+                        </li>
+                      {% endfor %}
+
+                  </ul>
+                </nav>
+
+     </div>
+     <div class="card card-body cardhome">
+         Most viewed
+     </div>
+     <div class="card card-body cardhome">
+         Top Rated
+     </div>
+     <div class="card card-body cardhome">
+         Recommended to you
+     </div>
+     <div class="card card-body cardhome">
+         Latest
+     </div>
+
+    </div>
 </div>
+
+
+
 
 
 {% endblock %}

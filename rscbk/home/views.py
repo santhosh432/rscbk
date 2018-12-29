@@ -920,5 +920,7 @@ from django.shortcuts import HttpResponse
 
 
 def homepage(request):
-    all_ctx = {'all_cat': Category.objects.all()}
+    all_ctx = {'all_cat': Category.objects.all(),
+               'recent_items' : Items.objects.filter().order_by('-id')[:5],
+               'free_items': Items.objects.filter(price=0)}
     return render(request, 'home/homepage.html', all_ctx)
