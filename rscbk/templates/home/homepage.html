@@ -74,9 +74,9 @@ This Portal is built on the concept of serving its users with no expectation of 
                       {% for f in free_items %}
                         <li class="nav-item">
                               <div class="card">
-                                <img class="card-img-top img-thumbnail" style="margin:auto; max-width: 100px; max-height: 70px; min-height: 150px;" src="{{ i.item_image.url }}" alt="Card image cap">
+                                <img class="card-img-top img-thumbnail" style="margin:auto; max-width: 100px; max-height: 70px; min-height: 150px;" src="{{ f.item_image.url }}" alt="Card image cap">
                                 <div class="card-body">
-                                    <h5 class="card-title"><b style="font-size:14px;">{{ i.item_name }}</b></h5>
+                                    <h5 class="card-title"><b style="font-size:14px;">{{ f.item_name }}</b></h5>
                                   <p class="card-text" style="color:green;">Rs: <b> Free </b></p>
                                   <p class="card-text"><small class="text-muted">Uploaded on 3 days ago</small></p>
                                 </div>
