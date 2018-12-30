@@ -13,21 +13,48 @@
 }
 </style>
 
+
+<script>
+$(document).ready(function(){
+
+    var i = 0;
+    var txt = $('#aboutbk').text();
+    //alert(txt);
+    var speed = 60;
+
+    function typeWriter() {
+      if (i < txt.length) {
+      //alert(i);
+        document.getElementById("demo").innerHTML += txt.charAt(i);
+        i++;
+        setTimeout(typeWriter, speed);
+      }
+    }
+    typeWriter()
+});
+
+</script>
+
 <div class="row">
     <div class="col-sm-12">
         <div class="card-body">
             <div class="card-header">
-                About Barterkings (LOGO )
+                About Barterkings <img src="/media/images/logo.jpg" class="img-thumbnail" height="80px" width="80px">
             </div>
-            <div class="card-content just" >
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BarterKings Portal gives us the platform to exchange our unused or Idle products/Items with other Products which is with other likeminded users.
+            <div class="card-content just" id="demo">
+
+            </div>
+
+            <p id="aboutbk" style="display:none;">
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BarterKings Portal gives us the platform to exchange our unused or Idle products/Items with other Products which is with other likeminded users.
 
 The concept of BarterKings portal came into real existences by the group of IT software architects who have some valued items which are not in used by them anymore also they can’t be thrown away Here the Idea has born to exchange their products with the likeminded people who wants to exchange their products.
 
 BarterKings portal facilitates the user to Add their Products into the portal with relevant product details and facilitates them in searching their interested products from the global products which was added by the global users.
 
 This Portal is built on the concept of serving its users with no expectation of gaining any profits out of their exchange of products and portal will not be involving in any financial dealings.
-            </div>
+
+            </p>
         </div>
     </div>
 
