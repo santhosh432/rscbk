@@ -3,6 +3,7 @@ from django.db.models import Q
 # Create your models here.
 from django.contrib.auth.models import User
 from home.models import Brand
+from django.utils import timezone
 # all categories...
 
 
@@ -51,6 +52,7 @@ class Items(models.Model):
     item_image = models.ImageField(upload_to='myitems/', help_text='Upload item image 1',default='null')
     item_image2 = models.ImageField(upload_to='myitems/', help_text='Upload item image 2',default='null')
     other_info = models.CharField(max_length=150, help_text="Item other information", default="null")
+    upload_date = models.DateTimeField(default=timezone.now)
     def __str__(self):
         return '{0}'.format(self.category, self.item_name)
 

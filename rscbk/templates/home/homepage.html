@@ -6,7 +6,11 @@
     text-align: justify;
     text-justify: inter-word;
     }
+.nav-item > .card {
 
+    background-color: #aab0b3;
+
+}
 </style>
 
 <div class="row">
@@ -54,9 +58,14 @@ This Portal is built on the concept of serving its users with no expectation of 
                               <div class="card">
                                 <img class="card-img-top img-thumbnail" style="margin:auto; margin-top:3px; max-width: 100px; max-height: 70px; min-height: 150px;" src="{{ i.item_image.url }}" alt="Card image cap">
                                 <div class="card-body">
-                                    <h5 class="card-title"><b style="font-size:14px;">{{ i.item_name }}</b></h5>
+                                    <h5 class="card-title"><b style="font-size:14px;">{{ i.item_name|truncatechars:15 }}</b></h5>
                                   <p class="card-text" style="color:green;">Rs: <b> {{ i.price }}</b></p>
-                                  <p class="card-text"><small class="text-muted">Uploaded on 3 days ago</small></p>
+                                  <p class="card-text">
+                                      <small class="text-muted">
+
+                                          Uploaded on {{ i.upload_date|timesince }} ago
+                                      </small>
+                                  </p>
                                 </div>
                               </div>
                         </li>
@@ -78,7 +87,10 @@ This Portal is built on the concept of serving its users with no expectation of 
                                 <div class="card-body">
                                     <h5 class="card-title"><b style="font-size:14px;">{{ f.item_name }}</b></h5>
                                   <p class="card-text" style="color:green;">Rs: <b> Free </b></p>
-                                  <p class="card-text"><small class="text-muted">Uploaded on 3 days ago</small></p>
+                                  <p class="card-text">
+                                      <small class="text-muted">
+                                          Uploaded on {{ f.upload_date|timesince }} ago
+                                      </small></p>
                                 </div>
                               </div>
                         </li>
