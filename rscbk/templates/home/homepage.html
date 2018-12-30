@@ -112,7 +112,7 @@ This Portal is built on the concept of serving its users with no expectation of 
                               <div class="card">
                                 <img class="card-img-top img-thumbnail" style="margin:auto; margin-top:3px; max-width: 100px; max-height: 70px; min-height: 150px;" src="{{ f.item_image.url }}" alt="Card image cap">
                                 <div class="card-body">
-                                    <h5 class="card-title"><b style="font-size:14px;">{{ f.item_name }}</b></h5>
+                                    <h5 class="card-title"><b style="font-size:14px;">{{ f.item_name|truncatechars:15  }}</b></h5>
                                   <p class="card-text" style="color:green;">Rs: <b> Free </b></p>
                                   <p class="card-text">
                                       <small class="text-muted">
