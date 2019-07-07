@@ -39,14 +39,11 @@ urlpatterns = [
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'^api/', include(router.urls)),
     url(r'^admin/', admin.site.urls),
-    # url(r'^$', welcome, name='welcome'),
-    # url(r'^home/$', login, name='login'),
-    # url(r'^login/$', login, name='login'),
+
     url(r'^login/$', auth_views.login, name='login'),
-    # url(r'^logout/$', auth_views.logout, {'template_name': 'core/login.html'}, name='logout'),
-    # url(r'^$',main_home),
-    #url(r'^$',auth_views.login, {'template_name': 'home.html'} ,name='login'),
-    #url(r'^home/$',auth_views.login, {'template_name': 'home.html'} ,name='login'),
+    #url(r'^login/$',login, name='login'),
+
+
     url(r'^terms/$', terms),
     url(r'^privacy/$', privacy),
     url(r'^wishlist/$', wishlist),
@@ -56,7 +53,7 @@ urlpatterns = [
     url(r'^dash_help/$', dash_help),
     url(r'^change_password/$', change_password),
     url(r'^signup/$', sign_up),
-    #url(r'^login', auth_views.login, {'template_name': 'home.html'} ,name='login'),
+
     url(r'^logout/$', auth_views.logout, {'next_page': '/'}, name="logout"),
 
     url(r'myuserdashboard/', myuserdashboard ,name='myuserdashboard'),
@@ -65,7 +62,7 @@ urlpatterns = [
     url(r'^profiles/new/$', NewUserProfileView.as_view(), name="new-user-profile"),
     url(r'^users/(?P<pk>\d+)/edit/$', EditUserProfileView.as_view(), name="edit-user-profile"),
 
-    url(r'addcatbrandlink/(?P<cat_id>\d+)/undefined/undefined$', catviews.addcatbrand ,name='addcatbrandlink'),
+    url(r'addcatbrandlink/(?P<cat_id>\d+)/$', catviews.addcatbrand ,name='addcatbrandlink'),
 
     url(r'myuserdashboard_with_cat/(?P<cat_id>\d+)/$', myuserdashboard_with_cat ,name='myuserdashboard_withargument'),
     url(r'myuserdashboard_with_cat_bnd/(?P<cat_id>\d+)/(?P<bnd_id>\d+)/$', myuserdashboard_with_cat_bnd ,name='myuserdashboard_with_cat_bnd'),

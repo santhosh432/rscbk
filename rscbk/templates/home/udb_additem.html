@@ -1,24 +1,6 @@
 {% load staticfiles %}
 {% load static %}
 
-<!-- link file -->
-<link rel="stylesheet" type="text/css" href="{% static 'admin/css/_fileinput.scss' %}" />
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
-
-
-<!-- script file -->
-<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js "></script>
-<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.9.1/jquery.tablesorter.min.js"></script>
-<script type="text/javascript" src="{% static 'admin/js/fileinput.js' %}"></script>
-
-
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
-
-
-<!-- scripts -->
 
 
 
@@ -41,6 +23,9 @@
 
 <script>
 $(document).ready(function(){
+    $('#id_itemuser option[value="{{request.user.id}}"]').attr("selected", "selected");
+    $('#id_itemuser').hide()
+
     $("#id_category option[value=0]").hide();
     $('#id_category').on('change', function() {
          $("#id_bnd option").remove();
@@ -72,105 +57,67 @@ $(document).ready(function(){
 
 <!-- style -->
 
-<!-- form -->
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
+	<div class="container">
+			<div class="main">
+				<div class="main-center">
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-
-
-
-<table border=3>
  <form class="form" action="{% url 'homeapp:udb_addmyitems' %}" method="POST" enctype="multipart/form-data">
 
-    <div class="container">
-            <div id="login-row" class="row ">
-                <div id="login-column" class="col-md-6">
-                    <div id="login-box" class="col-md-12">
-                           {% csrf_token %}<br><br>
-                                <div  class="form-group" style="background-color:lightblue">
-                                    <label for="username" class="text-info"><i class="fa fa-arrows"></i>  <b>Category</b></label><br>
-                                </div>
-                                {{ additemform.category }}<br><br>
-                                <div  class="form-group" style="background-color:lightblue">
-                                    <label for="username" class="text-info"><i class="fa fa-arrows"></i>  <b>Item Name </b></label><br>
+
+                           {% csrf_token %}
+
+
+                           {% for i in additemform %}
+	<div class="form-group">
+							<label for="name">   {{i.label}}</label>
+								<div class="input-group">
+                           {%if i.label == 'Itemuser'%} <input type=text disabled='True' value="{{request.user}}"> {%endif %}{{i}}<br>
+{% if i.label == "Bnd" %}<!--<a id="link" href=""> Add </a>-->{%endif%}
+                           	</div>
+						</div>
+                           {%endfor %}
 
 
 
-                                </div>{{ additemform.item_name }}<br><br>
-                                <div  class="form-group" style="background-color:lightblue">
-                                    <label for="username" class="text-info"><i class="fa fa-arrows"></i>  <b>Brand</b> </label><br>
-
-
-
-                                </div>
-                                   <select name="bnd" id="id_bnd"></select>
-                                        <a id="link" href="addcatbrandlink/1"> Add </a><br><br>
-
-
-                                <div  class="form-group" style="background-color:lightblue">
-                                    <label for="username" class="text-info"><i class="fa fa-arrows"></i>  <b>Months Used</b> </label><br>
-
-
-
-                                </div>  {{ additemform.months_used }} {{ additemform.months_used.errors }}<br><br>
-                                <div  class="form-group" style="background-color:lightblue">
-                                    <label for="username" class="text-info"><i class="fa fa-arrows"></i>  <b>Item Worth </b> </label><br>
-
-
-
-                                </div> {{ additemform.price }} {{ additemform.price.errors }}<br><br>
-                                <div  class="form-group" style="background-color:lightblue">
-                                    <label for="username" class="text-info"><i class="fa fa-arrows"></i>  <b>Location</b> </label><br>
-
-
-
-                                </div> {{ additemform.location }} {{ additemform.location.errors }}<br><br>
-                                <div  class="form-group" style="background-color:lightblue">
-                                    <label for="username" class="text-info"><i class="fa fa-arrows"></i>  <b>Exchangable with</b></label><br>
-
-                                </div> {{ additemform.exchange_category  }} {{ additemform.exchange_category.errors  }}<br><br>
-
-                                <div  class="form-group" style="background-color:lightblue">
-                                    <label for="username" class="text-info"><i class="fa fa-arrows"></i>  <b>Item Status </b> </label><br>
-
-                                </div>{{ additemform.item_status }} {{ additemform.item_status.errors }}<br><br>
-
-                                <div  class="form-group" style="background-color:lightblue">
-                                   <label for="username" class="text-info"><i class="fa fa-arrows"></i>  <b>Item Image1</b></label><br>
-
-                                  </div> <input type="file" name="item_image" value="S"><br><br>
-                                <div  class="form-group" style="background-color:lightblue">
-                                        <label for="username" class="text-info"><i class="fa fa-arrows"></i>  <b>Item Image2</b></label><br>
-
-                                </div><input type="file" name="item_image2"><br><br>
-                                <div  class="form-group" style="background-color:lightblue">
-                                        <label for="username" class="text-info"><i class="fa fa-arrows"></i>  <b>Item Description</b></label><br>
-
-                                </div>{{ additemform.item_full_desc }}{{ additemform.item_full_desc.errors }}<br><br>
-                                <div  class="form-group" style="background-color:lightblue">
-                                   <label for="username" class="text-info"><i class="fa fa-arrows"></i>  <b>Other Information</b> </label><br>
-
-                                </div>{{ additemform.other_info }} {{ additemform.other_info.errors }}<br><br>
-                            <div class="form-group">
-                                <input type="submit" name="submit" class="btn btn-info btn-md" value="submit">
-                            </div>
-
-
-                    </div>
-                </div>
-            </div>
-    </div>
-
-
-
+ <input type=submit>
 
 
 
 
  </form>
 
-</table>
+
+  </div>
+</div>
+</div>
+
+<style>
+    .main{
+ 	padding: 40px 0;
+}
+.main input,
+.main input::-webkit-input-placeholder {
+    font-size: 11px;
+    padding-top: 3px;
+}
+.main-center{
+ 	margin-top: 30px;
+ 	margin: 0 auto;
+ 	max-width: 400px;
+    padding: 10px 40px;
+	background:#17a2b8;
+	    color: #FFF;
+    text-shadow: none;
+	-webkit-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.31);
+-moz-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.31);
+box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.31);
+
+}
+span.input-group-addon i {
+    color: #009edf;
+    font-size: 17px;
+}
+</style>
+
+
+

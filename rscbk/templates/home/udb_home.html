@@ -8,8 +8,8 @@
     {% block left %}
 
     {% if request.session.tonehome %}
-
         {% include 'home/left_block.html' %}
+
 
     {% elif request.session.tonecatdet %}
         {% include 'categories/cat_details.html' %}

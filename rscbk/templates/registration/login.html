@@ -1,12 +1,115 @@
-{% extends 'base.html' %}
 
-{% block title %}Login{% endblock %}
+{% extends 'home/udb_base1.html' %}
 
-{% block content %}
-  <h2>Login</h2>
-  <form method="post">
+{% block body %}
+
+
+<style>
+    .just{
+    text-align: justify;
+    text-justify: inter-word;
+    }
+.nav-item > .card {
+
+    background-color: #aab0b3;
+
+}
+</style>
+
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<section class="login-block">
+    <div class="container">
+	<div class="row">
+		<div class="col-md-4 login-sec">
+		    		   <center> <img src="/media/images/logo.jpg" class="img-thumbnail" height="180px" width="180px">
+</center>
+		    <h2 class="text-center">Login Now</h2>
+
+<form method="post" class="login-form" >
     {% csrf_token %}
-    {{ form.as_p }}
+    {% for i in form %}
+    <div class="form-group">
+     <label for="exampleInputEmail1" class="text-uppercase">{{i.label}}</label>{{i}}
+     </div>
+    {% endfor %}
     <button type="submit">Login</button>
   </form>
+
+
+
+
+
+		</div>
+		<div class="col-md-8 ">
+
+
+
+
+
+
+<hr>
+<center><h5>About Barterkings</h5>
+</center><hr>
+<p class="more">BarterKings Portal gives us the platform to exchange our unused or Idle products/Items with other Products which is with other likeminded users.</p>
+<p class="more">The concept of BarterKings portal came into real existences by the group of IT software architects who have some valued items which are not in used by them anymore also they can’t be thrown away Here the Idea has born to exchange their products with the likeminded people who wants to exchange their products.</p>
+<p class="more">BarterKings portal facilitates the user to Add their Products into the portal with relevant product details and facilitates them in searching their interested products from the global products which was added by the global users.
+</p><p class="more">This Portal is built on the concept of serving its users with no expectation of gaining any profits out of their exchange of products and portal will not be involving in any financial dealings.
+</p>
+<center>
+
+
+
+</center>
+<style>
+    .morecontent span {
+    display: none;
+}
+</style>
+
+
+
+
+	</div>
+</div>
+</section>
+<style>@import url("//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css");
+.login-block{
+    background: #DE6262;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to bottom, #FFB88C, #DE6262);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to bottom, #FFB88C, #DE6262); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+float:left;
+width:100%;
+padding : 50px 0;
+}
+.banner-sec{background:url(https://static.pexels.com/photos/33972/pexels-photo.jpg)  no-repeat left bottom; background-size:cover; min-height:500px; border-radius: 0 10px 10px 0; padding:0;}
+.container{background:#fff; border-radius: 10px; box-shadow:15px 20px 0px rgba(0,0,0,0.1);}
+.carousel-inner{border-radius:0 10px 10px 0;}
+.carousel-caption{text-align:left; left:5%;}
+.login-sec{padding: 50px 30px; position:relative;}
+.login-sec .copy-text{position:absolute; width:80%; bottom:20px; font-size:13px; text-align:center;}
+.login-sec .copy-text i{color:#FEB58A;}
+.login-sec .copy-text a{color:#E36262;}
+.login-sec h2{margin-bottom:30px; font-weight:800; font-size:30px; color: #DE6262;}
+.login-sec h2:after{content:" "; width:100px; height:5px; background:#FEB58A; display:block; margin-top:20px; border-radius:3px; margin-left:auto;margin-right:auto}
+.btn-login{background: #DE6262; color:#fff; font-weight:600;}
+.banner-text{width:70%; position:absolute; bottom:40px; padding-left:20px;}
+.banner-text h2{color:#fff; font-weight:600;}
+.banner-text h2:after{content:" "; width:100px; height:5px; background:#FFF; display:block; margin-top:20px; border-radius:3px;}
+.banner-text p{color:#fff;}</style>
+
+
+
+
+
+
+
+
+
+
+
 {% endblock %}

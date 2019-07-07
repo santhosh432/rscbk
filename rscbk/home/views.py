@@ -777,24 +777,22 @@ def udb_addmyitems(request):
             pass
 
     request.session['twoadditems'] = True
-
     if request.method == 'POST':
         additemform = AdditemForm(request.POST, request.FILES)
-        if additemform.is_valid():
-            # additemform.
-            ad = additemform.save(commit=False)
-            ad.itemuser = request.user
-            ad.save()
-            return redirect('homeapp:udb_righthome')
+        x=additemform.is_valid()
+        try:
+                ad = additemform.save(commit=False)
+                ad.itemuser = request.user
+                ad.save()
+                return redirect('homeapp:udb_righthome')
+        except Exception as e:
+            res = 'test - {}'.format(e)
+            print (res)
     else:
-
         additemform = AdditemForm()
-
     myitems = my_items(request)
-
     context = myitems
     context.update({'additemform': additemform})
-
     return render(request, 'home/udb_home.html', context)
 
 
@@ -921,6 +919,6 @@ from django.shortcuts import HttpResponse
 
 def homepage(request):
     all_ctx = {'all_cat': Category.objects.all(),
-               'recent_items' : Items.objects.filter().order_by('-id')[:6],
+               'recent_items' : Items.objects.filter().order_by('-id')[:3],
                'free_items': Items.objects.filter(price=0).order_by('?')[:6]}
     return render(request, 'home/homepage.html', all_ctx)
