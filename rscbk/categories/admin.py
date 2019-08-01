@@ -1,14 +1,14 @@
 from django.contrib import admin
-from import_export import resources # dj import -export
+from import_export import resources
 from import_export.admin import ImportExportModelAdmin
 
 # Register your models here.
-from .models import * #,CategoryBrand
+from categories.models import * #,CategoryBrand
 
 
 #@admin.register(CategoryBrand)
-#class CategoryBrandAdmin(admin.ModelAdmin):
-#    pass#list_display = ['category_name','status']
+class CategoryBrandAdmin(admin.ModelAdmin):
+    pass#list_display = ['category_name','status']
 
 
 @admin.register(Items)
@@ -36,5 +36,5 @@ class CatBrandAdmin(ImportExportModelAdmin, admin.ModelAdmin):
 class WishlistAdmin(admin.ModelAdmin):
     list_display = ['wishlist_category','wishlist_name','wishlist_full_desc','wishlist_user','wishlist_other_info']
 
-Wishlist
+#Wishlist
 #CatBrand

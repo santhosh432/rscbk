@@ -3,6 +3,7 @@ from django.db import models
 # Create your models here.
 from datetime import date
 import datetime
+from django.contrib.auth.models import User
 
 # Create your models here.
 PRIORITY = (
@@ -42,3 +43,6 @@ class Bugs(models.Model):
     status = models.CharField(max_length=100, blank=True, null=True, choices=STATUS)
     remark= models.CharField(max_length=100 ,blank=True, null=True)
     category = models.CharField(max_length=100, blank=True, null=True, choices=STATUS1)
+    reported_by = models.ForeignKey(User,related_name = "reported_by", blank=True, null=True, on_delete=models.CASCADE)
+    assigned_to = models.ForeignKey(User, blank=True,null=True, related_name = "assigned_to", on_delete=models.CASCADE)
+    document = models.FileField(upload_to='documents/',default = 'bugissue/default/no-img.jpg')

@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = ')_skici6_!9h0$zjbxm26yxr!wca@2daw^(4jd%=crnsivyw*f'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 import os
 # import warnings
 
@@ -51,8 +51,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'home',
     'categories',
-    'import_export', # excel export import
-    'rest_framework',
+    'bugsreport',
+    #'import_export', # excel export import
+    #'rest_framework',
 ]
 
 MIDDLEWARE = [

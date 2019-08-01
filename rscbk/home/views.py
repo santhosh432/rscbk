@@ -111,8 +111,10 @@ from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.forms import PasswordChangeForm
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
-@login_required
+from django.views.decorators.csrf import csrf_exempt
 
+@login_required
+#@csrf_exempt
 def change_password(request):
 
     form = ChangePasswordForm(request.POST)
@@ -120,6 +122,7 @@ def change_password(request):
     confirm_password = "0"
     if request.method =='POST':
         user = User.objects.get(id=request.user.id)
+
         if form.is_valid():
             old_password = form.cleaned_data['old_password']
             new_password = form.cleaned_data['new_password']
@@ -166,29 +169,23 @@ def change_password(request):
                                'global_items_price':global_items_price,'localip':localip,'u':usercount,'fc':freeitemc}
 
                         return render(request, 'userdashboard.html',ctx)
-
-
-
-
-
-
-
                         #return reverse("myuserdashboard")
                     else:
                         error = "Please Enter the correct old password"
                         context = {'form':form, 'msg':error}
                         return render(request,'change_password.html',context)
                 else:
-
                     error = "Please ensure the new password and confirm password are same"
                     context = {'form':form, 'msg':error}
                     return render(request,'change_password.html',context)
             except Exception as e:
                 pass
+            messages.info(request,'Your password has been changed successfully!')
+            context = {'form':form, 'user': request.user, 'new_pwd': new_password, 'conf_pwd': confirm_password}
+            return render(request,'change_password.html',context)
 
 
-    context = {'form':form, 'user': request.user, 'new_pwd': new_password, 'conf_pwd': confirm_password}
-    return render(request,'change_password.html',context)
+
 
 import random
 from random import randint
@@ -624,12 +621,20 @@ def delallsessions(request, ses):
 def my_items(request):
     localip = get_ip(request)
 
-    myuser = UserFullProfile.objects.get(user=request.user)
+    try:
+       myuser = UserFullProfile.objects.get(user=request.user)
 
-    uform = MyUserprofile(instance=myuser)
-    change_form = PasswordChangeForm(request.user)
-    cat_brd = CatBrand.objects.all()
-    wlist = Userwhishlist.objects.filter(user=request.user)
+       uform = MyUserprofile(instance=myuser)
+       change_form = PasswordChangeForm(request.user)
+       cat_brd = CatBrand.objects.all()
+       wlist = Userwhishlist.objects.filter(user=request.user)
+    except:
+       myuser = User.objects.get(id=request.user.id)
+
+       uform = MyUserprofile(instance=myuser)
+       change_form = PasswordChangeForm(request.user)
+       cat_brd = CatBrand.objects.all()
+       wlist = Userwhishlist.objects.filter(user=request.user)
 
 
     try:
@@ -809,8 +814,10 @@ def udb_myprofile(request, pk=1):
         except KeyError:
             pass
     request.session['twomyprofile'] = True
-
-    myuser = UserFullProfile.objects.get(user=request.user)
+    try:
+      myuser = UserFullProfile.objects.get(user=request.user)
+    except:
+       myuser = User.objects.get(id=request.user.id)
 
     if request.method == 'POST':
         uform = MyUserprofile(request.POST or None, request.FILES, instance=myuser)
@@ -850,8 +857,12 @@ def udb_change_pwd(request):
         if change_form.is_valid():
             user = change_form.save()
             update_session_auth_hash(request, user)  # Important!
-            messages.success(request, 'Your password was successfully updated!')
-            return redirect('change_password')
+            message = "Your password was successfully updated!"
+                        context = {'form':form, 'msg':message}
+                        return render(request,'change_password.html',context)
+            #messages.info(request, 'Your password was successfully updated!')
+            #return redirect("/change_password/")
+            return redirect('/login/')
         else:
             messages.error(request, 'Please correct the error below.')
     else:
@@ -922,3 +933,12 @@ def homepage(request):
                'recent_items' : Items.objects.filter().order_by('-id')[:3],
                'free_items': Items.objects.filter(price=0).order_by('?')[:6]}
     return render(request, 'home/homepage.html', all_ctx)
+
+def edit_items(request):
+
+    content = {}
+    content['all_categories'] = Category.objects.all()
+
+
+    return render(request, 'home/edit_items.html', content)
+
