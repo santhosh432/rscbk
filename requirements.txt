@@ -44,7 +44,7 @@ PyYAML==3.12
 qrcode==4.0.4
 rabbitmq==0.2.0
 rcssmin==1.0.6
-requests==2.18.4
+requests==2.20.0
 rjsmin==1.0.12
 sendgrid==5.3.0
 six==1.11.0
